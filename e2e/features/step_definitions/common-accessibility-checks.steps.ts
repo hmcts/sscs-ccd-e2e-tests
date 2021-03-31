@@ -9,5 +9,5 @@ const anyCcdPage = new AnyCcdPage();
 
 Given(/^I go to the sign in page$/, async function () {
     await authenticationFlow.goToSignInPage();
-    await anyCcdPage.pageHeadingContains('Sign in or create an account')
+    await anyCcdPage.pageHeadingContains('Sign in')
 });
