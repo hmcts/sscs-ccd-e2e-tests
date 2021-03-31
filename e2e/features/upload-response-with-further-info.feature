@@ -15,7 +15,9 @@ Feature: The alternate happy path
 
     When I switch to be a Case Officer
     When I choose "Response reviewed"
+    And The page is accessible
     And I choose Requires Interlocutory Review No "Response reviewed"
+    And The page is accessible
     And I submit "Response reviewed"
     Then the case should be in "Ready to list" state
 

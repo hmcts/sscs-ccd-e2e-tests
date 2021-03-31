@@ -3,6 +3,8 @@ import { AnyPage } from './any.page';
 import { Wait } from '../enums/wait';
 const serviceConfig = require('../service.conf');
 
+const AxeRunner = require('../helpers/axe-runner');
+
 export class AnyCcdPage extends AnyPage {
 
     private signOutLink = '#sign-out';
@@ -253,11 +255,15 @@ export class AnyCcdPage extends AnyPage {
         await this.clickAction(elementRef1);
         await this.setText('//textarea[@rows=\'3\']', 'I am very busy');
 
+        await this.runAccessbility();
         await this.click('Continue');
         await browser.sleep(waitTime);
+        await this.runAccessbility();
         await this.click('Continue');
         await browser.sleep(waitTime);
+        await this.runAccessbility();
         await this.click('Continue');
+        await this.runAccessbility();
         await this.click('Submit');
         await browser.sleep(5000);
     }
@@ -276,4 +282,10 @@ export class AnyCcdPage extends AnyPage {
         }
 
         }
+        
+    async runAccessbility() {
+        if (serviceConfig.TestForAccessibility) {
+            await AxeRunner.runAndReportAccessibility();
+        }
+    }
 }

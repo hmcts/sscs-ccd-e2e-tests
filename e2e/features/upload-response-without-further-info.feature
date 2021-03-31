@@ -10,11 +10,14 @@ Feature: The happy path
 
     When I switch to be a DWPResponse Writer
     When I choose "Upload response"
+    Then The page is accessible
     And I upload contains further information "NO" for "PIP"
     Then the case should be in "Ready to list" state
+    Then The page is accessible
 
     When I switch to be a Case Officer
     Then the case should be in "Ready to list" state
+    And The page is accessible
 
 
  @happy-path @nightly-test @dwp-upload-response

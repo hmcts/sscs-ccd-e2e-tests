@@ -6,7 +6,7 @@
     "postinstall": "webdriver-manager update",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "e2e": "yarn test:fullfunctional",
-    "test:fullfunctional": "yarn install && cross-env TRIBUNALS_API_URL=http://sscs-tribunals-api-aat.service.core-compute-aat.internal protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@migrated-to-exui",
+    "test:fullfunctional": "TESTS_FOR_ACCESSIBILITY='true' yarn install && cross-env TRIBUNALS_API_URL=http://sscs-tribunals-api-aat.service.core-compute-aat.internal protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@migrated-to-exui",
     "test:crossbrowser": "TEST_FOR_CROSS_BROWSER='true' yarn install && protractor ./e2e/features.crossbrowser.conf.js --cucumberOpts.tags='@crossbrowser' --cucumberOpts.tags=~@OnlyIfSaveAndContinueIsEnabled",
     "test:prod": "yarn install && protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@nightly-test --cucumberOpts.tags=~@issue-decision --cucumberOpts.tags=~@uc --cucumberOpts.tags=~@reinstatement --cucumberOpts.tags=~@bundle",
     "test:nsp": "nsp check"
@@ -14,12 +14,14 @@
   "dependencies": {
     "@angular/compiler": "^7.0.0",
     "@angular/core": "^7.0.0",
+    "@axe-core/webdriverjs": "^4.1.1",
     "@hmcts/eslint-config": "^1.4.0",
     "@hmcts/nodejs-logging": "^3.0.0",
     "@types/chai": "^4.1.6",
     "@types/cucumber": "^4.0.4",
     "@types/jasmine": "^2.8.9",
     "@types/node": "^10.12.0",
+    "axe-core": "^4.1.3",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "codelyzer": "^4.5.0",
@@ -38,11 +40,11 @@
     "protractor-multiple-cucumber-html-reporter-plugin": "^1.8.1",
     "protractor-retry": "^1.2.13",
     "puppeteer": "^1.9.0",
+    "request-promise": "^4.2.5",
     "rxjs": "^6.3.3",
     "ts-loader": "^5.2.2",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
-    "typescript": "^3.1.3",
-    "request-promise": "^4.2.5"
+    "typescript": "^3.1.3"
   }
 }

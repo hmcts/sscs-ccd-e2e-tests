@@ -13,6 +13,7 @@ Feature: Record the death of an appellant
     And I enter date of appellant death with "No" to appointee
     Then I see field "Event" with value "Death of appellant" in "History" tab
     Then I see field "Want SMS Notifications" with value "No" in "Subscriptions" tab
+    And The page is accessible
     Then I see field "Subscribed to Email" with value "No" in "Subscriptions" tab
     
 

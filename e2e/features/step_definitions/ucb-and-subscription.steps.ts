@@ -25,13 +25,16 @@ Then(/^I set UCB flag to "(.+)"$/, async function (ucbFlag) {
    } else {
      await anyCcdPage.clickElementById('dwpUCB-No');
    }
+   await anyCcdPage.runAccessbility();
    await anyCcdPage.click('Continue');
+   await anyCcdPage.runAccessbility();
    await anyCcdPage.click('Submit');
    await browser.sleep(10);
    if (ucbFlag === 'Yes') {
-   await anyCcdPage.click('Listing Requirements');
-   await browser.sleep(10);
-   expect(await anyCcdPage.contentContains(ucbFlag)).to.equal(true);
+    await anyCcdPage.click('Listing Requirements');
+    await browser.sleep(10);
+    await anyCcdPage.runAccessbility();
+    expect(await anyCcdPage.contentContains(ucbFlag)).to.equal(true);
    }
    expect(await anyCcdPage.contentContains(ucbFlag)).to.equal(true);
 });
@@ -50,23 +53,24 @@ Then(/^I set PHME Granted flag to "(.+)"$/, async function (phmeGranted) {
 Then(/^I enter date of appellant death with "(.+)" to appointee$/, async function (hasAppointee) {
    caseDetailsPage.addPastDate('dateOfAppellantDeath')
    if (hasAppointee === 'No') {
-   await anyCcdPage.clickElementById('appeal_appellant_isAppointee-No');
-   await anyCcdPage.click('Continue');
+    await anyCcdPage.clickElementById('appeal_appellant_isAppointee-No');
+    await anyCcdPage.runAccessbility();
+    await anyCcdPage.click('Continue');
    } else {
      await anyCcdPage.clickElementById('appeal_appellant_isAppointee-Yes');
      await appointeePage.addAppointeeDetails();
+     await anyCcdPage.runAccessbility();
      await anyCcdPage.click('Continue');
    }
    await anyCcdPage.click('Submit');
    await anyCcdPage.clickTab('Appeal Details');
    expect(await anyCcdPage.contentContains('Date of appellant death')).to.equal(true);
    if (hasAppointee === 'No') {
-   browser.driver.sleep(10);
-   expect(await anyCcdPage.contentContains('Appointee details needed')).to.equal(true);
+    browser.driver.sleep(10);
+    expect(await anyCcdPage.contentContains('Appointee details needed')).to.equal(true);
    }
    await anyCcdPage.clickTab('History');
    expect(await anyCcdPage.contentContains('Awaiting Admin Action')).to.equal(true);
-
 });
 
 Then(/^I enter "(.+)" to appointee and continue$/, async function (hasAppointee) {
@@ -95,19 +99,25 @@ When(/^I upload a "(.+)" doc contains further information "(.+)" for "(.+)"$/,
     if (benefitType !== 'UC') {
         await anyCcdPage.selectIssueCode();
     }
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     if (benefitType === 'UC') {
       await anyCcdPage.clickElementById('elementsDisputedList-general');
+      await anyCcdPage.runAccessbility();
       await anyCcdPage.click('Continue');
       await anyCcdPage.addNewCollectionItem('General');
       await anyCcdPage.selectGeneralIssueCode();
+      await anyCcdPage.runAccessbility();
       await anyCcdPage.click('Continue');
       await anyCcdPage.clickElementById('elementsDisputedIsDecisionDisputedByOthers-No');
+      await anyCcdPage.runAccessbility();
       await anyCcdPage.click('Continue');
       await anyCcdPage.clickElementById('jointParty-No');
+      await anyCcdPage.runAccessbility();
       await anyCcdPage.click('Continue');
 
     }
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Submit');
     browser.driver.sleep(30);
 });
@@ -116,7 +126,9 @@ When(/^I upload a doc$/, async function () {
    const docLink = 'tl1Form_documentLink';
     await dwpresponse.uploadDoc(docLink);
     await browser.sleep(2000);
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Submit');
 });
 

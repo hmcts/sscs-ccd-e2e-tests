@@ -14,12 +14,15 @@ Feature: Issue decision
     When I switch to be a Judge
     And I navigate to an existing case
     When I choose "Write final decision"
+    And The page is accessible
+    
 
   @issue-decision @nightly-test
   Scenario: Should end up in "Dormant" state when decision is issued with generate notice is no
     And I write a final decision generate notice no generate
 
     When I choose "Issue final decision"
+    And The page is accessible
     And I issue a final decision generate decision no
     Then the case should end in "Dormant" state
     Then I  should see "Final Decision Notice" in documents tab

@@ -24,8 +24,10 @@ When(/^I fill the further evidence form with "(.+)"$/, async function (requestTy
     await furtherEvidencePage.enterFileName('scannedDocuments_0_fileName', 'testfile.pdf');
     await furtherEvidencePage.enterScannedDate('20', '1', '2021');
     await browser.sleep(3000);
+    await anyCcdPage.runAccessbility();
 
     await anyCcdPage.click('Continue');
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Submit');
 });
 
@@ -44,8 +46,10 @@ When(/^I fill the direction notice form with "(.+)"$/, async function (reinstate
     await furtherEvidencePage.uploadFile('sscsInterlocDirectionDocument_documentLink', 'issue2.pdf');
     await furtherEvidencePage.enterFileName('sscsInterlocDirectionDocument_documentFileName', 'testfile.pdf');
     await browser.sleep(3000);
+    await anyCcdPage.runAccessbility();
 
     await anyCcdPage.click('Continue');
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Submit');
 });
 

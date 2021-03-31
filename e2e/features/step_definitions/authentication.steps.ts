@@ -8,7 +8,7 @@ const authenticationFlow = new AuthenticationFlow();
 
 Given(/^I am signed in as a Case Officer$/, async function () {
     await authenticationFlow.signInAsCaseOfficer();
-    await anyCcdPage.waitUntilLoaded();
+    await anyCcdPage.pageHeadingContains('Case List');
 });
 
 Given(/^I am signed in as a DWPResponse Writer$/, async function () {
@@ -28,6 +28,7 @@ Given(/^I switch to be a DWPResponse Writer$/, async function () {
     await browser.sleep(100);
     await anyCcdPage.waitUntilLoaded();
     await anyCcdPage.get(currentUrl);
+    await browser.sleep(5000);
 });
 
 Given(/^I switch to be a Case Officer$/, async function () {

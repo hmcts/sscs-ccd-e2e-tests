@@ -3,6 +3,9 @@ import { AnyPage } from './any.page';
 import * as path from 'path';
 import { AnyCcdFormPage } from './any-ccd-form.page';
 import { NIGenerator } from '../helpers/ni-generator';
+import { AnyCcdPage } from './any-ccd.page';
+
+const anyCcdPage = new AnyCcdPage();
 
 const anyCcdFormPage = new AnyCcdFormPage();
 const niGenerator = new NIGenerator();
@@ -88,22 +91,31 @@ export class DwpResponsePage extends AnyPage {
                                        disputedByOthersYesOrNo: string, dwpFurtherInfoYesOrNo: string) {
         const dwpState = 'NO';
         await this.uploadResponse(dwpFurtherInfoYesOrNo.toUpperCase(), dwpState, benefitType);
+        await anyCcdPage.runAccessbility();
         await anyCcdFormPage.click('Continue');
         await this.elementsDisputedPage(disputed)
+        await anyCcdPage.runAccessbility();
         await anyCcdFormPage.click('Continue');
         await this.issueCodePage(disputed);
+        await anyCcdPage.runAccessbility();
         await anyCcdFormPage.click('Continue');
         await this.disputedPage(disputedByOthersYesOrNo, 'reference');
+        await anyCcdPage.runAccessbility();
         await anyCcdFormPage.click('Continue');
         await this.jointParty('Yes');
+        await anyCcdPage.runAccessbility();
         await anyCcdFormPage.click('Continue');
         await this.jointPartyName();
+        await anyCcdPage.runAccessbility();
         await anyCcdFormPage.click('Continue');
         await this.jointPartyIdentityDetails();
+        await anyCcdPage.runAccessbility();
         await anyCcdFormPage.click('Continue');
         await this.jointPartyAddress('Yes');
+        await anyCcdPage.runAccessbility();
         await anyCcdFormPage.click('Continue');
         // Check your Answers
+        await anyCcdPage.runAccessbility();
         await anyCcdFormPage.click('Submit');
     }
 

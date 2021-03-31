@@ -13,6 +13,7 @@ const anyCcdFormPage = new AnyCcdFormPage();
 When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)" To Allowed "(.+)"$/,
     async function (appealType, wcaAppeal, supportGroup, allowed) {
     await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice-Yes');
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
     if (allowed === 'YES') {
@@ -20,19 +21,23 @@ When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)"
     } else {
         await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-refused');
     }
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
     await anyCcdPage.clickElementById('writeFinalDecisionTypeOfHearing-faceToFace');
     await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion-Yes');
     await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion-Yes');
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(1000);
     await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(750);
     await caseDetailsPage.addDayItems('writeFinalDecisionDateOfDecision');
     await browser.sleep(3000);
     await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(2000);
     if (wcaAppeal === 'YES') {
@@ -46,6 +51,7 @@ When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)"
     } else if (wcaAppeal === 'YES') {
         await anyCcdPage.clickElementById('supportGroupOnlyAppeal-No');
     }
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
 });
@@ -104,15 +110,18 @@ When(/^I select schedule 3 activities$/, async function () {
 
 When(/^I continue writing final decision non WCA appeal$/, async function () {
     await issueDecisionPage.pageReference();
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
     await issueDecisionPage.fillSummary();
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
 });
 
 When(/^I continue writing final decision WCA appeal$/, async function () {
     await issueDecisionPage.pageReference();
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
 });
@@ -120,6 +129,7 @@ When(/^I continue writing final decision WCA appeal$/, async function () {
 When(/^I provide reasons and check answers To Allowed "(.+)"$/, async function (allowed) {
     if (allowed === 'YES') {
       await anyCcdPage.clickElementById('dwpReassessTheAward-noRecommendation');
+      await anyCcdPage.runAccessbility();
       await anyCcdPage.click('Continue');
       await browser.sleep(500);
     }
@@ -131,12 +141,16 @@ When(/^I provide reasons and check answers To Allowed "(.+)"$/, async function (
         'Reasons for decision',
         'Some Reason'
     );
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(2000);
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(4000);
-    await anyCcdPage.click('Continue'); // Bit flakey
+    await anyCcdPage.runAccessbility();
+    await anyCcdPage.click('Continue');
     await browser.sleep(750);
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Submit');
     await browser.sleep(5000);
 });
@@ -150,12 +164,16 @@ When(/^I provide reasons and check answers for non WCA To Allowed "(.+)"$/, asyn
         'Reasons for decision',
         'Some Reason'
     );
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(2000);
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(4000);
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(750);
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Submit');
     await browser.sleep(5000);
 });
@@ -163,15 +181,19 @@ When(/^I provide reasons and check answers for non WCA To Allowed "(.+)"$/, asyn
 When(/^I choose manual upload$/, async function () {
     await browser.sleep(1000)
     await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice-No');
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(1000);
     await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-allowed');
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(2000);
     await issueDecisionPage.uploadDirection();
     await browser.sleep(5000);
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     await browser.sleep(1000);
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Submit');
     await browser.sleep(5000);
 });

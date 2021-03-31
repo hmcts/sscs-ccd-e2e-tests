@@ -11,10 +11,12 @@ Feature: Issue direction
     Then the case should be in "With DWP" state
 
     And I choose "Admin - send to Incomplete App"
+    And The page is accessible
     And I complete the event
     Then the case should be in "Incomplete Application" state
 
     And I choose "Send to interloc - pre-valid"
+    And The page is accessible
     And I submit the interloc reason
     Then the case should be in "Interlocutory Review - Pre-Valid" state
 

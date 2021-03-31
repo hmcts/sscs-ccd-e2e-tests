@@ -33,20 +33,27 @@ When(/^I upload contains further information (.+) for "(.+)"$/, async function (
     if (benefitType !== 'UC') {
         await anyCcdPage.selectIssueCode();
     }
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
     if (benefitType === 'UC') {
       await anyCcdPage.clickElementById('elementsDisputedList-general');
+      await anyCcdPage.runAccessbility();
       await anyCcdPage.click('Continue');
       await anyCcdPage.addNewCollectionItem('General');
       await anyCcdPage.selectGeneralIssueCode();
+      await anyCcdPage.runAccessbility();
       await anyCcdPage.click('Continue');
       await anyCcdPage.clickElementById('elementsDisputedIsDecisionDisputedByOthers-No');
+      await anyCcdPage.runAccessbility();
       await anyCcdPage.click('Continue');
       await anyCcdPage.clickElementById('jointParty-No');
+      await anyCcdPage.runAccessbility();
       await anyCcdPage.click('Continue');
 
     }
     await anyCcdPage.scrollBar('//button[@type=\'submit\']');
+    await anyCcdPage.runAccessbility();
+    await anyCcdPage.click('Submit');
 });
 
 When(/^I upload (.+) further information with disputed (.+) disputed by others (.+) and further info (.+)$/,

@@ -12,8 +12,10 @@ Feature: The Update UCB
     And I upload a "UCB" doc contains further information "YES" for "PIP"
     Then the case should be in "Response received" state
     Then I should see UCB flag
+    And The page is accessible
 
     And I choose "Update UCB flag"
+    And The page is accessible
     And I set UCB flag to "No"
 
 

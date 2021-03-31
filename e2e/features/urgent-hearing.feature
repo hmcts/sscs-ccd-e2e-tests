@@ -10,14 +10,19 @@ Feature: Urgent hearing functionality
     Then the case should be in "With DWP" state
 
     When I switch to be a DWPResponse Writer
+    Then The page is accessible
     When I choose "Action further evidence"
+    Then The page is accessible
     And I fill the further evidence form with "Urgent hearing request"
     Then the case should have successfully processed "Action further evidence" event
 
     When I switch to be a Judge
+    Then The page is accessible
     When I choose "Issue directions notice"
+    Then The page is accessible
     And I fill the direction notice form with "Grant urgent hearing"
     Then the case should be "Granted" permissions for "Urgent hearing"
+    And The page is accessible
 
   Scenario: Refuse urgent hearing for a case
     Given I preset up a test case

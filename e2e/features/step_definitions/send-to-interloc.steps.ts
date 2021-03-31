@@ -11,6 +11,8 @@ When(/^I submit the interloc reason$/, async function () {
     await anyCcdPage.clickAction('//button[contains(text(), \'Add new\')]')
     await anyCcdPage.fillNote();
 
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Continue');
+    await anyCcdPage.runAccessbility();
     await anyCcdPage.click('Submit');
 });
