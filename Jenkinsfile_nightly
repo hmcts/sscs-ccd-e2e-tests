@@ -47,8 +47,33 @@ withNightlyPipeline("nodejs", product, component) {
     env.TEST_E2E_FAIL_FAST = 'false'
     env.TEST_E2E_ANNOTATION = params.NIGHTLY_TAG
 
+    //enableCrossBrowserTest()
     enableFullFunctionalTest(120)
 
+
+    /*
+    after('crossBrowserTest') {
+        publishHTML([
+            allowMissing         : true,
+            alwaysLinkToLastBuild: true,
+            keepAll              : true,
+            reportDir            : "reports/tests/crossbrowser/",
+            reportFiles          : 'index.html',
+            reportName           : 'SSCS - Manage Cases Cross Browser Tests'
+        ])
+    }
+    */
+
+    after('fullFunctionalTest') {
+        publishHTML([
+            allowMissing         : true,
+            alwaysLinkToLastBuild: true,
+            keepAll              : true,
+            reportDir            : "reports/tests/functional/",
+            reportFiles          : 'index.html',
+            reportName           : 'SSCS - Manage Cases Functional Test'
+        ])
+    }
 //    enableSlackNotifications('#sscs-tech')    // can be turned back on once the overnight functionality is working fully
 
 }

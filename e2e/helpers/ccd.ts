@@ -6,6 +6,7 @@ const logger = Logger.getLogger('ccd.ts');
 const timeout = serviceConfig.ApiCallTimeout;
 const ucPayload = require('../features/json/uc_sya.json');
 const pipPayload = require('../features/json/pip_sya.json');
+const esaPayload = require('../features/json/esa_sya.json');
 
 async function createCase(hearingType) {
     const randomNumber = parseInt(Math.random() * 10000000 + '', 10);
@@ -16,26 +17,24 @@ async function createCase(hearingType) {
       json: true,
       timeout
     };
-  
     let body;
     try {
       body = await rp.post(options);
     } catch (error) {
       logger.error('Error at CCD createCase:', error.error);
     }
-  
     const { id, case_reference, appellant_tya, joint_party_tya, representative_tya } = body;
+    // tslint:disable-next-line:max-line-length
     console.log(`Created CCD case for ${email} with ID ${id} and reference ${case_reference} and appellant_tya ${appellant_tya} and jp_tya ${joint_party_tya} and representative_tya ${representative_tya}`);
     return { email, id, case_reference, appellant_tya, joint_party_tya, representative_tya };
 }
-  
 
-async function createSYACase(caseType: string){
+async function createSYACase(caseType: string) {
 
     let caseId;
     let options;
 
-    if(caseType == "UC"){
+    if (caseType === 'UC') {
         options = {
             method: 'POST',
             uri: `${serviceConfig.TribunalApiUri}/appeals`,
@@ -43,7 +42,7 @@ async function createSYACase(caseType: string){
             json: true,
             resolveWithFullResponse: true
         };
-    } else if(caseType == "PIP"){
+    } else if (caseType === 'PIP') {
         options = {
             method: 'POST',
             uri: `${serviceConfig.TribunalApiUri}/appeals`,
@@ -51,10 +50,18 @@ async function createSYACase(caseType: string){
             json: true,
             resolveWithFullResponse: true
         };
+    } else if (caseType === 'ESA') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/appeals`,
+            body: esaPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
     } else {
-        throw "Unsupported case type passed";
+        throw 'Unsupported case type passed';
     }
-   
+
     await rp.post(options)
             .then(function (response) {
                 let locationUrl = response.headers['location'];
@@ -66,6 +73,5 @@ async function createSYACase(caseType: string){
 
     return caseId;
 }
-
 
 export { createCase, createSYACase };

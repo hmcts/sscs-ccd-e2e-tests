@@ -14,7 +14,8 @@ const dwpresponse = new DwpResponsePage();
 When(/^I populate fields and continue$/, async function () {
     await caseDetailsPage.addReasonAndDate('notListableDueDate');
     await anyCcdPage.click('Submit');
-    await anyCcdPage.click('Summary');
+    await anyCcdPage.reloadPage();
+    await anyCcdPage.clickTab('Summary');
 });
 
 Then(/^I set UCB flag to "(.+)"$/, async function (ucbFlag) {
@@ -72,9 +73,11 @@ Then(/^I enter "(.+)" to appointee and continue$/, async function (hasAppointee)
      await anyCcdPage.clickElementById('appeal_appellant_isAppointee-Yes');
      await appointeePage.addAppointeeDetails()
      browser.driver.sleep(10);
+     await anyCcdPage.click('Continue');
+     browser.driver.sleep(10);
      await anyCcdPage.click('Submit');
      browser.driver.sleep(10);
-     await anyCcdPage.click('History');
+     await anyCcdPage.clickTab('History');
 
      expect(await anyCcdPage.contentContains('Awaiting Admin Action')).to.equal(true);
      browser.driver.sleep(5);
@@ -82,18 +85,18 @@ Then(/^I enter "(.+)" to appointee and continue$/, async function (hasAppointee)
 });
 
 When(/^I upload a "(.+)" doc contains further information "(.+)" for "(.+)"$/,
-    async function (docType: string, action: string, benefitCode: string) {
+    async function (docType: string, action: string, benefitType: string) {
     const dwpState = 'YES';
     const docLink = 'dwpUcbEvidenceDocument'
     const isContainsFurtherInfo = action === 'YES'
     const isUCB = docType === 'UCB'
     const isPHME = docType === 'PHME'
     await dwpresponse.uploadResponseWithUcbAndPhme(dwpState, docLink, isUCB, isPHME, isContainsFurtherInfo);
-    if (benefitCode !== 'UC') {
+    if (benefitType !== 'UC') {
         await anyCcdPage.selectIssueCode();
     }
     await anyCcdPage.click('Continue');
-    if (benefitCode === 'UC') {
+    if (benefitType === 'UC') {
       await anyCcdPage.clickElementById('elementsDisputedList-general');
       await anyCcdPage.click('Continue');
       await anyCcdPage.addNewCollectionItem('General');
@@ -139,7 +142,7 @@ Then(/^I should see UCB flag$/, async function () {
 });
 
 Then(/^I should see PHME flag as "(.+)"$/, async function (state) {
-    await anyCcdPage.click('Summary');
+    await anyCcdPage.clickTab('Summary');
     await browser.sleep(50);
 
     if (state === 'Under Review') {
@@ -171,7 +174,7 @@ When(/^I choose not listable direction full filled to "(.+)" and interloc review
                     await anyCcdPage.chooseOptionByElementId('updateNotListableWhoReviewsCase', 'A Judge');
                     await anyCcdPage.click('Continue');
                     await anyCcdPage.click('Submit');
-                    await anyCcdPage.click('History');
+                    await anyCcdPage.clickTab('History');
                     expect(await anyCcdPage.contentContains('Review by Judge')).to.equal(true);
                     await browser.sleep(50);
             } else {
@@ -190,8 +193,6 @@ When(/^I choose not listable direction full filled to "(.+)" and interloc review
 Then(/^I subscribed to all parties to "(.+)"$/, async function (isSubscribed) {
 
  const action = isSubscribed;
- console.log('Subscribed to parties : ' + action)
-
  if (action === 'Yes') {
    await anyCcdPage.clickElementById('subscriptions_appellantSubscription_wantSmsNotifications-' + action);
    await anyCcdPage.setValueByElementId('subscriptions_appellantSubscription_tya', 'appellant123')
@@ -203,6 +204,7 @@ Then(/^I subscribed to all parties to "(.+)"$/, async function (isSubscribed) {
   await anyCcdPage.clickElementById('subscriptions_representativeSubscription_wantSmsNotifications-' + action);
   await anyCcdPage.setValueByElementId('subscriptions_representativeSubscription_tya', 'representative123')
   await anyCcdPage.setValueByElementId('subscriptions_representativeSubscription_email', 'representative-test@mailinator.com')
+  await anyCcdPage.setTextFiledValueNull('subscriptions_representativeSubscription_mobile');
   await anyCcdPage.setValueByElementId('subscriptions_representativeSubscription_mobile', '01234567890')
   await anyCcdPage.clickElementById('subscriptions_representativeSubscription_subscribeEmail-' + action);
   await anyCcdPage.clickElementById('subscriptions_representativeSubscription_subscribeSms-' + action);
@@ -238,7 +240,7 @@ Then(/^I subscribed to all parties to "(.+)"$/, async function (isSubscribed) {
     await anyCcdPage.click('Submit');
 
     await browser.sleep(50);
-    await anyCcdPage.click('Subscriptions');
+    await anyCcdPage.clickTab('Subscriptions');
 
     expect(await anyCcdPage.contentContains(action)).to.equal(true);
 

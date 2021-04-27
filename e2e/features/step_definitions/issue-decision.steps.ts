@@ -20,8 +20,7 @@ When(/^I write a final decision generate notice no generate$/, async function ()
   await issueDecisionPage.uploadDirection();
   await browser.sleep(5000);
   await anyCcdPage.click('Continue');
-  await anyCcdPage.click('Submit');
-  await browser.sleep(5000);
+  await anyCcdPage.scrollBar('//button[@type=\'submit\']');
 });
 
 When(/^I write a final decision generate notice yes daily living mobility is no face to face$/, async function () {
@@ -37,6 +36,7 @@ When(/^I write a final decision generate notice yes daily living mobility is no 
   await anyCcdPage.click('Continue');
   await issueDecisionPage.addPanelMembers();
   await anyCcdPage.click('Continue');
+  await browser.sleep(1000);
   await caseDetailsPage.addDayItems('writeFinalDecisionDateOfDecision');
   await browser.sleep(3000);
   await anyCcdPage.click('Continue');
@@ -82,9 +82,10 @@ When(/^I write a final decision generate notice yes daily living mobility is yes
   await browser.sleep(500);
   await caseDetailsPage.addDayItems('writeFinalDecisionEndDate');
   await browser.sleep(3000);
-  await anyCcdPage.click('Continue');
+  await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
   await issueDecisionPage.addPanelMembers();
   await anyCcdPage.click('Continue');
+  await browser.sleep(2000)
   await caseDetailsPage.addDayItems('writeFinalDecisionDateOfDecision');
   await anyCcdPage.click('Continue');
   await browser.sleep(3000);
@@ -98,26 +99,11 @@ When(/^I write a final decision generate notice yes daily living mobility is yes
   await anyCcdPage.click('Continue');
   await issueDecisionPage.pageReference();
   await anyCcdPage.click('Continue');
-  await anyCcdFormPage.addNewCollectionItem('Reasons for decision');
-  await anyCcdFormPage.setCollectionItemFieldValue(
-      'Reasons for decision',
-      0,
-      'Reasons for decision',
-      'Some text'
-  );
-  await anyCcdPage.click('Continue');
-  await browser.sleep(500);
-  await anyCcdPage.click('Continue');
-  // decision generated
-  await browser.sleep(3000);
-  await anyCcdPage.click('Continue');
-  await browser.sleep(3000);
-  await anyCcdPage.click('Submit');
-  await browser.sleep(3000);
+  await anyCcdPage.setFinalDecisionsReasons('//button[contains(text(), \'Add new\')]', 500);
 });
 
 When(/^I see "(.+)"$/, async function (notice) {
-  await anyCcdPage.click('Documents');
+  await anyCcdPage.clickTab('Documents');
   await browser.sleep(500);
   expect(await anyCcdPage.contentContains(notice)).to.equal(true);
 });

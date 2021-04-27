@@ -8,7 +8,7 @@ const anyCcdFormPage = new AnyCcdFormPage();
 const niGenerator = new NIGenerator();
 export class DwpResponsePage extends AnyPage {
 
-    async uploadResponse(action: string, dwpState: string) {
+    async uploadResponse(action: string, dwpState: string, benefitType: string) {
         await browser.waitForAngular();
         let remote = require('selenium-webdriver/remote');
         browser.setFileDetector(new remote.FileDetector());
@@ -24,7 +24,7 @@ export class DwpResponsePage extends AnyPage {
             await anyCcdFormPage.clickElementById('dwpUCB-No');
             await browser.sleep(3000);
         }
-        if (dwpState === 'YES') {
+        if (dwpState === 'YES' && benefitType !== 'UC') {
             await anyCcdFormPage.chooseOptionByElementId('benefitCode', '001');
             await anyCcdFormPage.clickElementById('dwpUCB-No');
             await anyCcdFormPage.chooseOptionByElementId('dwpFurtherEvidenceStates', 'No action');
@@ -84,9 +84,10 @@ export class DwpResponsePage extends AnyPage {
         await element(by.id(inputElement)).sendKeys(absolutePath);
     }
 
-    async uploadResponseWithJointParty(disputed: string, disputedByOthersYesOrNo: string, dwpFurtherInfoYesOrNo: string) {
+    async uploadResponseWithJointParty(benefitType: string, disputed: string,
+                                       disputedByOthersYesOrNo: string, dwpFurtherInfoYesOrNo: string) {
         const dwpState = 'NO';
-        await this.uploadResponse(dwpFurtherInfoYesOrNo.toUpperCase(), dwpState);
+        await this.uploadResponse(dwpFurtherInfoYesOrNo.toUpperCase(), dwpState, benefitType);
         await anyCcdFormPage.click('Continue');
         await this.elementsDisputedPage(disputed)
         await anyCcdFormPage.click('Continue');

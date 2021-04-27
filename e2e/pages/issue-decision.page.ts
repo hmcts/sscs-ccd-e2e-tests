@@ -1,4 +1,4 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element, ExpectedConditions } from 'protractor';
 import { AnyPage } from './any.page';
 import * as path from 'path';
 import { expect } from 'chai';
@@ -24,10 +24,12 @@ export class IssueDecisionPage extends AnyPage {
     }
 
     async pageReference() {
+        await browser.wait(ExpectedConditions.presenceOf(element(by.id('writeFinalDecisionPageSectionReference'))), 5000);
         element(by.id('writeFinalDecisionPageSectionReference')).sendKeys('20');
     }
 
     async fillSummary() {
+        await browser.wait(ExpectedConditions.presenceOf(element(by.id('writeFinalDecisionDetailsOfDecision'))), 5000);
         element(by.id('writeFinalDecisionDetailsOfDecision')).sendKeys('This is the summary');
     }
 

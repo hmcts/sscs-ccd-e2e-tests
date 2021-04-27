@@ -1,10 +1,10 @@
+@migrated-to-exui
 Feature: The Update UCB
 
-@update-phme @nightly-test
-  Scenario: Update UCB flag with upload response Granted and Refused
-    Given I am signed in as a Case Officer
-    And I have a PIP bulk-scanned document with SSCSPE fields
-    When I choose the next step "Create new case from exception"
+  Background:
+    Given I presetup an "PIP" SYA case
+    And I am signed in as a Case Officer
+    And I navigate to an existing case
     Then the case should be in "With DWP" state
 
     When I switch to be a DWPResponse Writer
@@ -15,13 +15,14 @@ Feature: The Update UCB
 
     When I switch to be a Judge
     And I choose "Review PHME request"
+
+  @update-phme @nightly-test
+  Scenario: Update UCB flag with upload response Granted and Refused
     And I set PHME Granted flag to "Yes"
     Then I should see PHME flag as "Granted"
 
     When I switch to be a Case Officer
-    And I choose "Create an edited bundle"
-    And I submit "Create an edited bundle"
-    Then The edited bundles should be successfully listed in "History" tab
+    And I choose "Create a bundle"
+    And I submit "Create a bundle"
+    Then the bundles should be successfully listed in "History" tab
     And the case bundle details should be listed in "Bundles" tab
-
-

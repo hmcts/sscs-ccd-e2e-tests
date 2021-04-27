@@ -12,9 +12,11 @@ export class LapseCasePage extends AnyPage {
         browser.setFileDetector(new remote.FileDetector());
         await this.uploadFile('dwpLT203_documentLink', 'issue1.pdf');
         await this.uploadFile('dwpLapseLetter_documentLink', 'issue2.pdf');
+        await browser.sleep(5000);
 
         await anyCcdPage.chooseOptionByElementId('dwpState', 'No action');
         await anyCcdPage.chooseOptionByElementId('interlocReviewState', 'N/A');
+        await anyCcdPage.click('Continue');
     }
 
     async uploadFile(inputElement: string, fileName: string) {

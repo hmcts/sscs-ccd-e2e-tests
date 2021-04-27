@@ -1,6 +1,7 @@
 import { $, $$, browser, by, element, ExpectedConditions } from 'protractor';
 import { AnyPage } from './any.page';
 import { Wait } from '../enums/wait';
+const serviceConfig = require('../service.conf');
 
 export class AnyCcdPage extends AnyPage {
 
@@ -24,13 +25,15 @@ export class AnyCcdPage extends AnyPage {
             .all(by.xpath(linkPath))
             .first()
             .click();
+
+        await this.smartWait(2000);
     }
 
     async clickElementById(elementId: string) {
         await browser.wait(
             async () => {
                 return await element(by.id(elementId))
-                            .isPresent();
+                    .isPresent();
             },
             Wait.normal,
             'Button did not show in time'
@@ -38,22 +41,38 @@ export class AnyCcdPage extends AnyPage {
         await element(by.id(elementId)).click();
     }
 
-    async clickTab(tabTitle: string) {
-        await browser.wait(ExpectedConditions.visibilityOf(element(by.xpath('//div[text()="'+ tabTitle +'"]'))), 30000);
-        await element(by.xpath('//div[text()="'+ tabTitle +'"]')).click();
+    async clickAction(elementId: string) {
+        await browser.wait(
+            async () => {
+                return await element(by.xpath(elementId))
+                    .isPresent();
+            },
+            Wait.normal,
+            'Button did not show in time'
+        );
+        await element(by.xpath(elementId)).click();
+        await this.smartWait(2000)
+    }
+
+    async clickTab(tabTitle: string, waitTime = 30000) {
+        if (serviceConfig.TestsForCrossBrowser) {
+            waitTime = 90000;
+        }
+        await browser.wait(ExpectedConditions.visibilityOf(element(by.xpath('//div[text()="' + tabTitle + '"]'))), waitTime);
+        await element(by.xpath('//div[text()="' + tabTitle + '"]')).click();
     }
 
     async chooseOptionByElementId(elementId: string, option: string) {
         await element(by.id(elementId))
-        .element(by.xpath('.//option[normalize-space()="' + option + '"]'))
-        .click();
+            .element(by.xpath('.//option[normalize-space()="' + option + '"]'))
+            .click();
     }
 
     async chooseOptionContainingText(elementId: string, option: string) {
         await browser.wait(
             async () => {
                 return await element(by.css(elementId))
-                            .isPresent();
+                    .isPresent();
             },
             Wait.normal,
             'Button did not show in time'
@@ -147,8 +166,8 @@ export class AnyCcdPage extends AnyPage {
     }
 
     async waitForTabToLoad(fieldLabel: string) {
-        await browser.wait(ExpectedConditions.visibilityOf(element(by.xpath('//span[normalize-space()="' + fieldLabel + '"]'))), 30000);
-
+        await browser.wait(ExpectedConditions.visibilityOf(
+                            element(by.xpath('//div[@class="mat-tab-label-content" and normalize-space()="' + fieldLabel + '"]'))), 30000);
     }
 
     async reloadPage() {
@@ -162,7 +181,7 @@ export class AnyCcdPage extends AnyPage {
 
     async selectGeneralIssueCode() {
         element(by.id('elementsDisputedGeneral_0_issueCode'))
-        .element(by.xpath('//*[@id="elementsDisputedGeneral_0_issueCode"]/option[2]')).click();
+            .element(by.xpath('//*[@id="elementsDisputedGeneral_0_issueCode"]/option[2]')).click();
     }
 
     async eventsPresentInHistory(linkText: string) {
@@ -214,4 +233,47 @@ export class AnyCcdPage extends AnyPage {
         }
     }
 
+    async smartWait(number) {
+        await browser.driver.sleep(number)
+
+    }
+
+    async scrollBar(locator: string) {
+        let button = await element(by.xpath(locator));
+        await browser.executeScript('arguments[0].scrollIntoView();', button);
+        await this.smartWait(1000);
+        button.click();
+        await this.smartWait(2000);
+    }
+
+    async setFinalDecisionsReasons(
+        elementRef1: string,
+        waitTime: number
+    ) {
+        await this.clickAction(elementRef1);
+        await this.setText('//textarea[@rows=\'3\']', 'I am very busy');
+
+        await this.click('Continue');
+        await browser.sleep(waitTime);
+        await this.click('Continue');
+        await browser.sleep(waitTime);
+        await this.click('Continue');
+        await this.click('Submit');
+        await browser.sleep(5000);
+    }
+
+    async setText(key: string, value: string) {
+         let textBoxRef =  async () => {
+                    return (await element
+                        .all(by.xpath(key))
+                        .filter(e => e.isPresent() && e.isDisplayed())
+                        .count()) > 0;
+             return true;
+                }
+
+        if (textBoxRef) {
+            await element.all(by.xpath(key)).sendKeys(value);
+        }
+
+        }
 }

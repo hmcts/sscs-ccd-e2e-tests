@@ -6,7 +6,7 @@ import { DwpOffice } from '../../helpers/dwp-office';
 import { Given, Then, When } from 'cucumber';
 import { expect } from 'chai';
 import { browser } from 'protractor';
-import * as ccd  from "../../helpers/ccd";
+import * as ccd  from '../../helpers/ccd';
 
 const anyCcdPage = new AnyCcdPage();
 const anyCcdFormPage = new AnyCcdFormPage();
@@ -152,6 +152,7 @@ Given('I have a PIP bulk-scanned document filled with incomplete fields', async 
 });
 
 When(/^I choose "(.+)" for an incomplete application$/, async function (action) {
+    await browser.sleep(500)
     await caseDetailsPage.doNextStep(action);
     await anyCcdPage.click('Go');
     expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
@@ -195,15 +196,17 @@ When(/^I choose the next step "(.+)"$/, async function (action) {
 });
 
 Then(/^the case should be in "(.+)" state$/, async function (state) {
+    await browser.sleep(5000)
     await anyCcdPage.clickTab('History');
-    await delay(5000);
+    await anyCcdPage.reloadPage();
+    await browser.sleep(5000)
     expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
 });
 
 Then(/^the bundles should be successfully listed in "(.+)" tab$/, async function (tabName) {
     await delay(10000);
     await caseDetailsPage.reloadPage();
-    await anyCcdPage.click(tabName);
+    await anyCcdPage.clickTab('History');
     expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
     expect(await caseDetailsPage.eventsPresentInHistory('Create a bundle')).to.equal(true);
     await browser.sleep(500);
@@ -218,7 +221,8 @@ Then(/^The edited bundles should be successfully listed in "(.+)" tab$/, async f
 });
 
 Then(/^the case bundle details should be listed in "(.+)" tab$/, async function (tabName) {
-    await anyCcdPage.click(tabName);
+    await anyCcdPage.clickTab('Bundles');
+    await browser.sleep(1000);
     expect(await caseDetailsPage.isFieldValueDisplayed('Stitch status', 'DONE')).to.equal(true);
     expect(await caseDetailsPage.isFieldValueDisplayed('Config used for bundle', 'SSCS Bundle')).to.equal(true);
 });
@@ -230,7 +234,6 @@ Given('I preset up a test case', async function () {
 });
 
 Given(/^I presetup an "(.+)" SYA case$/, async function (caseType) {
-   
     caseReference = await ccd.createSYACase(caseType);
 });
 

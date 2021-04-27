@@ -100,6 +100,7 @@ export class CaseDetailsPage extends AnyCcdPage {
     async addDayItems(dateType: String) {
         browser.driver.sleep(100);
         const today = new Date();
+        await browser.wait(ExpectedConditions.presenceOf(element(by.id('writeFinalDecisionDateOfDecision-day'))), 5000);
         element(by.id(dateType + '-day')).clear();
         element(by.id(dateType + '-day')).sendKeys(today.getDate() - 1);
         element(by.id(dateType + '-month')).clear();
@@ -112,7 +113,7 @@ export class CaseDetailsPage extends AnyCcdPage {
             element(by.id(dateType + '-year')).sendKeys(today.getFullYear());
         }
 
-        browser.driver.sleep(100);
+        await browser.driver.sleep(100);
     }
 
     async addFormType(formType: string) {

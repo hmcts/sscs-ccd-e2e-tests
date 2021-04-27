@@ -18,7 +18,7 @@ When(/^I generate an adjournment notice$/, async function () {
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCasePanelMembersExcluded-No');
   await anyCcdPage.click('Continue');
-  await adjournmentPage.addPanelMembers();
+  // await adjournmentPage.addPanelMembers();
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCaseTypeOfHearing-faceToFace');
   await anyCcdPage.click('Continue');
@@ -35,7 +35,7 @@ When(/^I generate an adjournment notice$/, async function () {
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCaseNextHearingDateType-firstAvailableDate');
   await anyCcdPage.click('Continue');
-  await adjournmentPage.addReasons();
+  await adjournmentPage.setAdjournCaseReasonsText();
 
   await anyCcdPage.click('Continue');
   await anyCcdPage.click('Continue');

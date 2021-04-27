@@ -1,5 +1,5 @@
 import { When } from 'cucumber';
-import { browser } from 'protractor';
+import { browser, ExpectedConditions, element, by } from 'protractor';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { IssueDecisionPage } from '../../pages/issue-decision.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
@@ -26,17 +26,19 @@ When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)"
     await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion-Yes');
     await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion-Yes');
     await anyCcdPage.click('Continue');
-    await browser.sleep(500);
+    await browser.sleep(1000);
+    await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
     await anyCcdPage.click('Continue');
-    await browser.sleep(500);
+    await browser.sleep(750);
     await caseDetailsPage.addDayItems('writeFinalDecisionDateOfDecision');
     await browser.sleep(3000);
+    await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
     await anyCcdPage.click('Continue');
     await browser.sleep(2000);
     if (wcaAppeal === 'YES') {
-        await anyCcdPage.clickElementById(appealType + 'Appeal-Yes');
+        await anyCcdPage.clickElementById('wcaAppeal-Yes');
     } else {
-        await anyCcdPage.clickElementById(appealType + 'Appeal-No');
+        await anyCcdPage.clickElementById('wcaAppeal-No');
     }
     await browser.sleep(500);
     if (supportGroup === 'YES') {
@@ -130,11 +132,11 @@ When(/^I provide reasons and check answers To Allowed "(.+)"$/, async function (
         'Some Reason'
     );
     await anyCcdPage.click('Continue');
-    await browser.sleep(500);
+    await browser.sleep(2000);
     await anyCcdPage.click('Continue');
-    await browser.sleep(500);
-    await anyCcdPage.click('Continue');
-    await browser.sleep(500);
+    await browser.sleep(4000);
+    await anyCcdPage.click('Continue'); // Bit flakey
+    await browser.sleep(750);
     await anyCcdPage.click('Submit');
     await browser.sleep(5000);
 });
@@ -149,25 +151,27 @@ When(/^I provide reasons and check answers for non WCA To Allowed "(.+)"$/, asyn
         'Some Reason'
     );
     await anyCcdPage.click('Continue');
-    await browser.sleep(500);
+    await browser.sleep(2000);
     await anyCcdPage.click('Continue');
-    await browser.sleep(500);
+    await browser.sleep(4000);
     await anyCcdPage.click('Continue');
-    await browser.sleep(500);
+    await browser.sleep(750);
     await anyCcdPage.click('Submit');
     await browser.sleep(5000);
 });
 
 When(/^I choose manual upload$/, async function () {
+    await browser.sleep(1000)
     await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice-No');
     await anyCcdPage.click('Continue');
-    await browser.sleep(500);
+    await browser.sleep(1000);
     await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-allowed');
     await anyCcdPage.click('Continue');
-    await browser.sleep(500);
+    await browser.sleep(2000);
     await issueDecisionPage.uploadDirection();
     await browser.sleep(5000);
     await anyCcdPage.click('Continue');
+    await browser.sleep(1000);
     await anyCcdPage.click('Submit');
     await browser.sleep(5000);
 });

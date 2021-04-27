@@ -20,6 +20,7 @@ module.exports = {
   UseProxy: process.env.TEST_E2E_USE_PROXY !== 'false',
   WaitForAngular: process.env.TEST_E2E_WAIT_FOR_ANGULAR !== 'false',
   FailFast: process.env.TEST_E2E_FAIL_FAST !== 'false',
+  TestsForCrossBrowser: process.env.TEST_FOR_CROSS_BROWSER || 'false',
 
 
   NightlyTag: process.env.TEST_E2E_ANNOTATION || '--cucumberOpts.tags=@nightly-test'

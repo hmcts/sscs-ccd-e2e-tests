@@ -25,6 +25,11 @@ export class AnyCcdFormPage extends AnyCcdPage {
           element(by.id(key)).sendKeys(value);
    }
 
+    async setTextFiledValueNull(key: string) {
+        element(by.id(key)).clear();
+        await browser.sleep(500);
+    }
+
     async setCollectionItemFieldValue(
         collectionLabel: string,
         collectionItemNumber: string | number,
@@ -149,7 +154,7 @@ export class AnyCcdFormPage extends AnyCcdPage {
         } else if (await fieldContainer.$$('ccd-write-text-area-field').isPresent()) {
 
             await this.formFiller.replaceText(
-                await fieldContainer.element(by.xpath('.//textarea[@id="writeFinalDecisionReasons_0"]')),
+                await fieldContainer.element(by.xpath('.//textarea[@id="writeFinalDecisionReasons_value"]')),
                 fieldValue
             );
 
