@@ -6,6 +6,8 @@ const anyCcdPage = new AnyCcdPage();
 When(/^I choose Requires Interlocutory Review Yes "(.+)"$/, async function (action) {
     await anyCcdPage.clickElementById('isInterlocRequired-Yes');
     await anyCcdPage.chooseOptionByElementId('selectWhoReviewsCase', 'Review by Judge');
+    await anyCcdPage.chooseOptionByElementId('interlocReferralReason', 'Complex Case');
+    await anyCcdPage.fillNote();
     await anyCcdPage.click('Continue');
 });
 
