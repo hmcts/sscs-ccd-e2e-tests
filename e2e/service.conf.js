@@ -2,7 +2,7 @@ module.exports = {
   CcdGatewayUrl: process.env.TEST_E2E_URL_GATEWAY || 'https://gateway-ccd.aat.platform.hmcts.net',
   // CcdWebUrl: process.env.TEST_E2E_URL_WEB || 'https://www-ccd.aat.platform.hmcts.net/list/case?jurisdiction=sscs',
   CcdWebUrl: process.env.TEST_E2E_URL_WEB || 'https://manage-case.aat.platform.hmcts.net/list/case?jurisdiction=sscs',
-  TribunalApiUri: 'http://sscs-tribunals-api-aat.service.core-compute-aat.internal',
+  TribunalApiUri: process.env.TRIBUNALS_API_URL || 'http://sscs-tribunals-api-aat.service.core-compute-aat.internal',
   ApiCallTimeout: 40000,
   UseHeadlessBrowser: process.env.TEST_E2E_HEADLESS || 'true',
   TestCaseOfficerUserName: process.env.TEST_CASEOFFICER_USERNAME || '',
@@ -17,7 +17,7 @@ module.exports = {
 
   ProxyUrl: process.env.TEST_E2E_URL_PROXY || 'http://proxyout.reform.hmcts.net:8080',
   RunWithNumberOfBrowsers: process.env.TEST_E2E_NUM_BROWSERS || 2,
-  UseProxy: process.env.TEST_E2E_USE_PROXY !== 'false',
+  UseProxy: process.env.TEST_E2E_USE_PROXY == 'false',
   WaitForAngular: process.env.TEST_E2E_WAIT_FOR_ANGULAR !== 'false',
   FailFast: process.env.TEST_E2E_FAIL_FAST !== 'false',
   TestsForCrossBrowser: process.env.TEST_FOR_CROSS_BROWSER || 'false',
