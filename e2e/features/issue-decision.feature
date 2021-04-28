@@ -15,7 +15,7 @@ Feature: Issue decision
     And I navigate to an existing case
     When I choose "Write final decision"
 
-  @issue-decision @nightly-test @crossbrowser
+  @issue-decision @nightly-test
   Scenario: Should end up in "Dormant" state when decision is issued with generate notice is no
     And I write a final decision generate notice no generate
 
