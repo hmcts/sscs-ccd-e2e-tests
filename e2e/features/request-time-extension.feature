@@ -1,6 +1,7 @@
 @request-time-extension @nightly-test @migrated-to-exui
 Feature: The Request time extension functionality
 
+  @crossbrowser
   Scenario: Request time extension
     Given I preset up a test case
     And I am signed in as a Case Officer
