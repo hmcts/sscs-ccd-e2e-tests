@@ -1,5 +1,7 @@
 const tsNode = require('ts-node');
 const path = require('path');
+const minimist = require('minimist');
+const argv = minimist(process.argv.slice(2));
 const serviceConfig = require('./service.conf');
 const browserPlatformMatrix = require('./browser.platform.matrix');
 
@@ -72,6 +74,5 @@ const config = {
     });
   }
 };
-
 
 exports.config = config;

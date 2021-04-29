@@ -47,11 +47,9 @@ withNightlyPipeline("nodejs", product, component) {
     env.TEST_E2E_FAIL_FAST = 'false'
     env.TEST_E2E_ANNOTATION = params.NIGHTLY_TAG
 
-    //enableCrossBrowserTest()
-    enableFullFunctionalTest(120)
+    enableCrossBrowserTest()
+//    enableFullFunctionalTest(120)
 
-
-    /*
     after('crossBrowserTest') {
         publishHTML([
             allowMissing         : true,
@@ -62,7 +60,6 @@ withNightlyPipeline("nodejs", product, component) {
             reportName           : 'SSCS - Manage Cases Cross Browser Tests'
         ])
     }
-    */
 
     after('fullFunctionalTest') {
         publishHTML([
