@@ -7,7 +7,7 @@ Feature: The lapse
   And I navigate to an existing case
   Then the case should be in "With DWP" state
 
-  @lapse @nightly-test
+  @lapse @nightly-test @crossbrowser99
   Scenario: Should end up in "With DWP" state when ALL fields are present
     When I choose "Lapse appeal"
     And I set DWP State to Lapsed "Lapse appeal"
