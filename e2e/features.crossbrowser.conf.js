@@ -24,7 +24,7 @@ const config = {
   },
 
   sauceSeleniumAddress: 'ondemand.eu-central-1.saucelabs.com:443/wd/hub',
-  webDriverProxy: 'ondemand.eu-central-1.saucelabs.com',
+  host: 'ondemand.eu-central-1.saucelabs.com',
   sauceRegion: 'eu',
   port: 80,
   sauceConnect: true,
