@@ -3,28 +3,6 @@ module.exports = {
       {
         browserName: 'chrome',
         version: 'latest',
-        platform: 'Windows 10',
-        name: 'sscs-chrome-windows-test',
-        tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
-        extendedDebugging: true,
-        capturePerformance: true,
-        sharedTestFiles: false,
-        maxInstances: 1
-      },
-      {
-        browserName: 'firefox',
-        version: 'latest',
-        platform: 'Windows 10',
-        name: 'sscs-firefox-windows-test',
-        tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
-        extendedDebugging: true,
-        capturePerformance: true,
-        sharedTestFiles: false,
-        maxInstances: 1
-      },
-      {
-        browserName: 'chrome',
-        version: 'latest',
         platform: 'macOS 10.13',
         name: 'sscs-chrome-mac-test',
         tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
@@ -44,6 +22,28 @@ module.exports = {
         sharedTestFiles: false,
         maxInstances: 1
       },
+     {
+      browserName: 'chrome',
+      version: 'latest',
+      platform: 'Windows 10',
+      name: 'sscs-chrome-windows-test',
+      tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
+      extendedDebugging: true,
+      capturePerformance: true,
+      sharedTestFiles: false,
+      maxInstances: 1
+    },
+    {
+      browserName: 'firefox',
+      version: 'latest',
+      platform: 'Windows 10',
+      name: 'sscs-firefox-windows-test',
+      tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
+      extendedDebugging: true,
+      capturePerformance: true,
+      sharedTestFiles: false,
+      maxInstances: 1
+    },
       {
         browserName: 'safari',
         platform: 'macOS 10.13',
