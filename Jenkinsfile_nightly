@@ -47,8 +47,8 @@ withNightlyPipeline("nodejs", product, component) {
     env.TEST_E2E_FAIL_FAST = 'false'
     env.TEST_E2E_ANNOTATION = params.NIGHTLY_TAG
 
-    enableCrossBrowserTest(30)
-//    enableFullFunctionalTest(120)
+    enableCrossBrowserTest(25)
+    enableFullFunctionalTest(30)
 
     after('crossBrowserTest') {
         publishHTML([

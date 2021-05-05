@@ -56,7 +56,7 @@ export class AnyCcdPage extends AnyPage {
 
     async clickTab(tabTitle: string, waitTime = 30000) {
         if (serviceConfig.TestsForCrossBrowser) {
-            waitTime = 30000;
+            waitTime = 60000;
         }
         await browser.wait(ExpectedConditions.visibilityOf(element(by.xpath('//div[text()="' + tabTitle + '"]'))), waitTime);
         await element(by.xpath('//div[text()="' + tabTitle + '"]')).click();

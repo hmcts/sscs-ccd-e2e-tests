@@ -4,6 +4,7 @@ import { Then, When } from 'cucumber';
 import { expect } from 'chai';
 import { DwpResponsePage } from '../../pages/dwpresponse.page';
 import { browser } from 'protractor';
+const serviceConfig = require('../../service.conf')
 
 const anyCcdPage = new AnyCcdFormPage();
 const caseDetailsPage = new CaseDetailsPage();
@@ -17,9 +18,13 @@ When(/^I choose "(.+)"$/, async function (action) {
         await anyCcdPage.reloadPage();
     }
     await caseDetailsPage.doNextStep(action);
-
-    await anyCcdPage.click('Go');
-    expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
+    if (serviceConfig.TestsForCrossBrowser) {
+        await anyCcdPage.click('Go');
+        await browser.sleep(30000);
+    } else {
+        await anyCcdPage.click('Go');
+        expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
+    }
 });
 
 When(/^I upload contains further information (.+) for "(.+)"$/, async function (action: string, benefitType: string) {
