@@ -22,12 +22,12 @@ const config = {
     strict: true,
     format: ['node_modules/cucumber-pretty', 'json:./cb_reports/saucelab_results.json'],
   },
-
   sauceSeleniumAddress: 'ondemand.eu-central-1.saucelabs.com:443/wd/hub',
   host: 'ondemand.eu-central-1.saucelabs.com',
   sauceRegion: 'eu',
   port: 80,
   sauceConnect: true,
+  webDriverProxy: 'ondemand.eu-central-1.saucelabs.com',
   sauceProxy: 'http://proxyout.reform.hmcts.net:8080',  // Proxy for the REST API
   sauceUser: process.env.SAUCE_USERNAME,
   sauceKey: process.env.SAUCE_ACCESS_KEY,
