@@ -9,7 +9,9 @@ module.exports = {
         extendedDebugging: true,
         capturePerformance: true,
         sharedTestFiles: false,
+        maxSessions:1,
         maxInstances: 1
+
       },
       {
         browserName: 'firefox',
@@ -20,6 +22,7 @@ module.exports = {
         extendedDebugging: true,
         capturePerformance: true,
         sharedTestFiles: false,
+        maxSessions:1,
         maxInstances: 1
       },
      {
@@ -31,6 +34,7 @@ module.exports = {
       extendedDebugging: true,
       capturePerformance: true,
       sharedTestFiles: false,
+       maxSessions:1,
       maxInstances: 1
     },
     {
@@ -42,6 +46,7 @@ module.exports = {
       extendedDebugging: true,
       capturePerformance: true,
       sharedTestFiles: false,
+      maxSessions:1,
       maxInstances: 1
     },
       {
