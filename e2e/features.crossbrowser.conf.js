@@ -4,9 +4,6 @@ const minimist = require('minimist');
 const argv = minimist(process.argv.slice(2));
 const serviceConfig = require('./service.conf');
 const browserPlatformMatrix = require('./browser.platform.matrix');
-const chai = require('chai');
-const chaiAsPromised = require('chai-as-promised');
-chai.use(chaiAsPromised);
 
 const config = {
   framework: 'custom',
@@ -62,23 +59,20 @@ const config = {
       .window()
       .maximize();
     browser.waitForAngularEnabled(true);
-    global.expect = chai.expect;
-    global.assert = chai.assert;
-    global.should = chai.should;
 
     tsNode.register({
       project: path.join(__dirname, './tsconfig.e2e.json')
     });
   },
 
-  // onComplete() {
-  //   return browser.getProcessedConfig().then(function (c) {
-  //     return browser.getSession().then(function (session) {
-  //       // required to be here so saucelabs picks up reports to put in jenkins
-  //       console.log('SauceOnDemandSessionID=' + session.getId() + ' job-name=sscs-ccd-e2e-tests');
-  //     });
-  //   });
-  // }
+  onComplete() {
+    return browser.getProcessedConfig().then(function (c) {
+      return browser.getSession().then(function (session) {
+        // required to be here so saucelabs picks up reports to put in jenkins
+        console.log('SauceOnDemandSessionID=' + session.getId() + ' job-name=sscs-ccd-e2e-tests');
+      });
+    });
+  }
 };
 
 exports.config = config;

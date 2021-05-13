@@ -6,7 +6,7 @@ Feature: The Request time extension functionality
     And I am signed in as a Case Officer
     And I navigate to an existing case
 
-  @crossbrowser @nightly99
+  @crossbrowser
   Scenario: Request time extension
     And I choose "Admin - send to With DWP"
     Given I complete the event
