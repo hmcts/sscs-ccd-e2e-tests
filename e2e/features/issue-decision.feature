@@ -15,7 +15,6 @@ Feature: Issue decision
     And I navigate to an existing case
     When I choose "Write final decision"
     And The page is accessible
-    
 
   @issue-decision @nightly-test
   Scenario: Should end up in "Dormant" state when decision is issued with generate notice is no
