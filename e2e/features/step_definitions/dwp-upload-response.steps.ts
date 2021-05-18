@@ -4,27 +4,29 @@ import { Then, When } from 'cucumber';
 import { expect } from 'chai';
 import { DwpResponsePage } from '../../pages/dwpresponse.page';
 import { browser } from 'protractor';
-const serviceConfig = require('../../service.conf')
+// const serviceConfig = require('../../service.conf')
 
 const anyCcdPage = new AnyCcdFormPage();
 const caseDetailsPage = new CaseDetailsPage();
 const dwpresponse = new DwpResponsePage();
 
 When(/^I choose "(.+)"$/, async function (action) {
-    await browser.sleep(2000)
+    // await browser.sleep(2000)
     if (action === 'Write adjournment notice'
     || action === 'Not listable' || action === 'Update not listable'
     || action === 'Update subscription') {
         await anyCcdPage.reloadPage();
     }
     await caseDetailsPage.doNextStep(action);
-    if (serviceConfig.TestsForCrossBrowser) {
-        await anyCcdPage.click('Go');
-        await browser.sleep(30000);
-    } else {
-        await anyCcdPage.click('Go');
-        expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
-    }
+    await anyCcdPage.click('Go');
+    expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
+    // if (serviceConfig.TestsForCrossBrowser) {
+    //     await anyCcdPage.click('Go');
+    //     await browser.sleep(30000);
+    // } else {
+    //     await anyCcdPage.click('Go');
+    //     expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
+    // }
 });
 
 When(/^I upload contains further information (.+) for "(.+)"$/, async function (action: string, benefitType: string) {
