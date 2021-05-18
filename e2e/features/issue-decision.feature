@@ -16,7 +16,7 @@ Feature: Issue decision
     When I choose "Write final decision"
     And The page is accessible
 
-  @issue-decision @nightly-test
+  @issue-decision @nightly-test99
   Scenario: Should end up in "Dormant" state when decision is issued with generate notice is no
     And I write a final decision generate notice no generate
 
