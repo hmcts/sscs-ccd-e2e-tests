@@ -32,7 +32,6 @@ const config = {
   sauceUser: process.env.SAUCE_USERNAME,
   sauceKey: process.env.SAUCE_ACCESS_KEY,
   SAUCE_REST_ENDPOINT: 'https://eu-central-1.saucelabs.com/rest/v1/',
-  // webDriverProxy: 'ondemand.eu-central-1.saucelabs.com:443/wd/hub',
 
   specs: ['./features/*.feature'],
   baseUrl: serviceConfig.CcdWebUrl,

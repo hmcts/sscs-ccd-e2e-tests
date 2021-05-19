@@ -13,7 +13,7 @@ module.exports = {
       },
     {
       browserName: 'chrome',
-      version: 'latest',
+      version: '71',
       platform: 'macOS 10.13',
       name: 'sscs-chrome-mac-test',
       tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
