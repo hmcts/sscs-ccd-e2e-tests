@@ -28,6 +28,7 @@ const config = {
   sauceRegion: 'eu',
   port: 80,
   sauceConnect: true,
+  webDriverProxy: 'http://proxyout.reform.hmcts.net:8080',
   sauceProxy: 'http://proxyout.reform.hmcts.net:8080',  // Proxy for the REST API
   sauceUser: process.env.SAUCE_USERNAME,
   sauceKey: process.env.SAUCE_ACCESS_KEY,
