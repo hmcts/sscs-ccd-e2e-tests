@@ -16,4 +16,4 @@ Feature: The Request time extension functionality
     When I choose "Request time extension"
     And The page is accessible
     And I upload a doc
-#    Then I see field "Event" with value "Request time extension" in "History" tab
+    Then I see field "Event" with value "Request time extension" in "History" tab

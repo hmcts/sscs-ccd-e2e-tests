@@ -1,17 +1,6 @@
 module.exports = {
   multiCapabilities: [
       {
-        browserName: 'chrome',
-        version: 'latest',
-        platform: 'macOS 10.13',
-        name: 'sscs-chrome-mac-test',
-        tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
-        extendedDebugging: true,
-        capturePerformance: true,
-        sharedTestFiles: false,
-        maxInstances: 1
-      },
-      {
         browserName: 'firefox',
         version: 'latest',
         platform: 'macOS 10.13',
@@ -22,6 +11,17 @@ module.exports = {
         sharedTestFiles: false,
         maxInstances: 1
       },
+    {
+      browserName: 'chrome',
+      version: 'latest',
+      platform: 'macOS 10.13',
+      name: 'sscs-chrome-mac-test',
+      tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
+      extendedDebugging: true,
+      capturePerformance: true,
+      sharedTestFiles: false,
+      maxInstances: 1
+    },
      {
       browserName: 'chrome',
       version: 'latest',

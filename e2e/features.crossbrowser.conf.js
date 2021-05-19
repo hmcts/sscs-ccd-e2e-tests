@@ -39,7 +39,7 @@ const config = {
   allScriptsTimeout: 220000,
   useAllAngular2AppRoots: true,
   multiCapabilities: browserPlatformMatrix.multiCapabilities,
-  maxSessions: 1,
+  maxSessions: 2,
 
   plugins: [
     {
