@@ -282,7 +282,7 @@ export class AnyCcdPage extends AnyPage {
         }
 
         }
-        
+
     async runAccessbility() {
         if (serviceConfig.TestForAccessibility) {
             await AxeRunner.runAndReportAccessibility();
