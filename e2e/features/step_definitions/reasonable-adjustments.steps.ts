@@ -1,16 +1,23 @@
 import { When, Then } from 'cucumber';
 import { browser } from 'protractor';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
-import { assert } from 'chai';
+import { assert, expect } from 'chai';
 import { CaseDetailsPage } from '../../pages/case-details.page';
+import { exception } from 'console';
 
 const anyCcdPage = new AnyCcdPage();
 const caseDetailsPage = new CaseDetailsPage();
 
-When(/^generate a letter in "(.+)"$/, async function (letterFormat) {
+When(/^generate a letter in "(.+)" with "(.+)" option$/, async function (letterFormat, adjustmentOption) {
     await anyCcdPage.chooseOptionContainingText('#reasonableAdjustmentChoice', letterFormat);
-    await anyCcdPage.clickElementById('reasonableAdjustments_appellant_wantsReasonableAdjustment-Yes');
-    await anyCcdPage.fillValues('reasonableAdjustments_appellant_reasonableAdjustmentRequirements', 'A2');
+    if (adjustmentOption === 'Yes') {
+        await anyCcdPage.clickElementById(`reasonableAdjustments_appellant_wantsReasonableAdjustment-${adjustmentOption}`);
+        await anyCcdPage.fillValues('reasonableAdjustments_appellant_reasonableAdjustmentRequirements', 'A2');
+    } else if (adjustmentOption === 'No') {
+        await anyCcdPage.clickElementById(`reasonableAdjustments_appellant_wantsReasonableAdjustment-${adjustmentOption}`);
+    } else {
+        throw new exception('No adjustment option passed in test');
+    }
     await browser.sleep(1000);
 
     await anyCcdPage.click('Continue');
@@ -21,6 +28,11 @@ When(/^generate a letter in "(.+)"$/, async function (letterFormat) {
 Then('reasonable adjustment details are seen in summary page', async function () {
     await anyCcdPage.isFieldValueDisplayed('Wants Reasonable Adjustment', 'Yes');
     await anyCcdPage.isFieldValueDisplayed('Alternative Format Requirements', 'A2');
+});
+
+Then('reasonable adjustment details are not seen in summary page', async function () {
+    expect(await anyCcdPage.isFieldValueDisplayed('Wants Reasonable Adjustment', 'Yes')).to.equal(false);
+    expect(await anyCcdPage.isFieldValueDisplayed('Alternative Format Requirements', 'A2')).to.equal(false);
 });
 
 Then(/^Reasonable adjustment tab is seen with "(.+)" as "(.+)"$/, async function (field, value) {
