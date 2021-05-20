@@ -6,7 +6,7 @@ Feature: Issue direction
     And I am signed in as a Case Officer
     And I navigate to an existing case
 
-  @nightly-test @issue-direction
+  @nightly-test @issue-direction @e2e
   Scenario: Judge should be able to proceed incomplete application without mrn-date
     Then the case should be in "With DWP" state
 
