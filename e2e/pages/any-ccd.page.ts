@@ -69,7 +69,7 @@ export class AnyCcdPage extends AnyPage {
                 }
 
             } else if ($$('cut-tabs').isPresent()) {
-                if ($$('ccd-event-log').isPresent()) {
+                if ($$('ccd-event-log').isPresent() || $$('ccd-read-complex-field-table').isPresent()) {
                     return await element(by.xpath('//span[normalize-space()="' + fieldLabel + '"]/../..' +
                         '//td[normalize-space()="' + fieldValue + '"]'))
                         .isDisplayed();
@@ -88,7 +88,7 @@ export class AnyCcdPage extends AnyPage {
 
     async getFieldValue(fieldLabel: string) {
         return await element
-            .all(by.xpath('//div[normalize-space()="' + fieldLabel + '"]/../../td'))
+            .all(by.xpath('//*[normalize-space()="' + fieldLabel + '"]/../../td'))
             .first()
             .getText();
     }

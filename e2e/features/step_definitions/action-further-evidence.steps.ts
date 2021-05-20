@@ -37,6 +37,7 @@ Then(/^the case should have successfully processed "(.+)" event$/, async functio
 When(/^I fill the direction notice form with "(.+)"$/, async function (reinstatement) {
 
     await anyCcdPage.chooseOptionContainingText('#directionTypeDl', reinstatement);
+    await caseDetailsPage.addDayItems('directionDueDate');
     await anyCcdPage.clickElementById('generateNotice-No');
     await anyCcdPage.chooseOptionContainingText('#sscsInterlocDirectionDocument_documentType', 'Directions Notice');
     await furtherEvidencePage.uploadFile('sscsInterlocDirectionDocument_documentLink', 'issue2.pdf');
