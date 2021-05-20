@@ -20,6 +20,7 @@ When(/^generate a letter in "(.+)"$/, async function (letterFormat) {
 
 Then('reasonable adjustment details are seen in summary page', async function () {
     await anyCcdPage.isFieldValueDisplayed('Wants Reasonable Adjustment', 'Yes');
+    await anyCcdPage.isFieldValueDisplayed('Alternative Format Requirements', 'A2');
 });
 
 Then(/^Reasonable adjustment tab is seen with "(.+)" as "(.+)"$/, async function (field, value) {
