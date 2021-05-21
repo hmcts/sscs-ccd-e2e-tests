@@ -276,4 +276,12 @@ export class AnyCcdPage extends AnyPage {
         }
 
         }
+    async scrollPage(locator: string) {
+        let button = await element(by.xpath(locator));
+        await browser.manage().window().maximize()
+        button.click();
+        await browser.executeScript('arguments[0].scrollIntoView();', button);
+        await this.smartWait(5000);
+    }
+
 }
