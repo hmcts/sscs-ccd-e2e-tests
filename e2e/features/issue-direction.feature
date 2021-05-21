@@ -6,7 +6,7 @@ Feature: Issue direction
     And I am signed in as a Case Officer
     And I navigate to an existing case
 
-  @nightly-test @issue-direction @e2e
+  @nightly-test @issue-direction
   Scenario: Judge should be able to proceed incomplete application without mrn-date
     Then the case should be in "With DWP" state
 
@@ -21,4 +21,4 @@ Feature: Issue direction
     When I switch to be a Judge
     And I choose "Issue directions notice"
     And I allow the appeal to proceed
-    Then I  should see "Directions Notice" in documents tab
+#    Then I  should see "Directions Notice" in documents tab :Refer TA-644
