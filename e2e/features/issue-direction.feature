@@ -21,4 +21,4 @@ Feature: Issue direction
     When I switch to be a Judge
     And I choose "Issue directions notice"
     And I allow the appeal to proceed
-#    Then I  should see "Directions Notice" in documents tab :Refer TA-644
+    Then I  should see "Directions Notice" in documents tab
