@@ -5,8 +5,9 @@ Feature: UC Final Decision Notices 2
     Given I presetup an "UC" SYA case
     Given I am signed in as a Case Officer
     And I navigate to an existing case
-    When I choose the next step "Admin - send to Ready to List"
-    Then the case should be in "Ready to list" state
+
+    When I choose execute CCD event "Admin - send to Ready to List"
+    Then I should see case should be in "Ready to list" state
 
     When I switch to be a Judge
     When I choose "Write final decision"
