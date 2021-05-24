@@ -6,8 +6,7 @@
     "postinstall": "webdriver-manager update",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "e2e": "yarn test:fullfunctional",
-    "test:fullfunctional_org": "yarn install && cross-env TRIBUNALS_API_URL=http://sscs-tribunals-api-aat.service.core-compute-aat.internal protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@nightly-test",
-    "test:fullfunctional": "yarn install && cross-env TEST_JUDGE_USERNAME='sscs.judge.user@mailinator.com' TEST_JUDGE_PASSWORD='Testing123' TEST_DWP_USERNAME='sscs.dwp.user@mailinator.com' TEST_DWP_PASSWORD='Testing123' TEST_CASEOFFICER_USERNAME='jrich3683@gmail.com' TEST_CASEOFFICER_PASSWORD='Testing123' protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@e2e",
+    "test:fullfunctional": "yarn install && cross-env TRIBUNALS_API_URL=http://sscs-tribunals-api-aat.service.core-compute-aat.internal protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@nightly-test",
     "test:crossbrowser": "TEST_FOR_CROSS_BROWSER='true' yarn install && protractor ./e2e/features.crossbrowser.conf.js --cucumberOpts.tags='@crossbrowser' --cucumberOpts.tags=~@OnlyIfSaveAndContinueIsEnabled",
     "test:prod": "yarn install && protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@nightly-test --cucumberOpts.tags=~@issue-decision --cucumberOpts.tags=~@uc --cucumberOpts.tags=~@reinstatement --cucumberOpts.tags=~@bundle",
     "test:nsp": "nsp check"
