@@ -1,7 +1,6 @@
 import { $, $$, browser, by, element, ExpectedConditions } from 'protractor';
 import { AnyPage } from './any.page';
 import { Wait } from '../enums/wait';
-const serviceConfig = require('../service.conf');
 
 export class AnyCcdPage extends AnyPage {
 
@@ -55,9 +54,6 @@ export class AnyCcdPage extends AnyPage {
     }
 
     async clickTab(tabTitle: string, waitTime = 30000) {
-        if (serviceConfig.TestsForCrossBrowser) {
-            await browser.sleep(60000);
-        }
         await browser.wait(ExpectedConditions.visibilityOf(element(by.xpath('//div[text()="' + tabTitle + '"]'))), waitTime);
         await element(by.xpath('//div[text()="' + tabTitle + '"]')).click();
     }
