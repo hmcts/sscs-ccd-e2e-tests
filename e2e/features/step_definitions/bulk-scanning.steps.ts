@@ -248,7 +248,6 @@ Given(/^I complete the event$/, async function () {
 });
 
 Then(/^I should see case should be in "(.+)" state$/, async function (state) {
-    // await anyCcdPage.clickTab('History');
     await anyCcdPage.reloadPage();
     await browser.sleep(2000)
 });
