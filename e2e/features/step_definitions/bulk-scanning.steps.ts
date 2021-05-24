@@ -246,3 +246,26 @@ Given(/^I navigate to an existing case$/, async function () {
 Given(/^I complete the event$/, async function () {
     await anyCcdPage.click('Submit');
 });
+
+Then(/^I should see case should be in "(.+)" state$/, async function (state) {
+    await anyCcdPage.reloadPage();
+    await browser.sleep(2000)
+});
+
+When(/^I choose execute CCD event "(.+)"$/, async function (action) {
+    switch (action) {
+        case 'Create new case from exception':
+            await caseDetailsPage.doNextStep(action);
+            break;
+        case 'Create a bundle':
+            await caseDetailsPage.doNextStep(action);
+            break;
+        case 'Admin - send to Ready to List':
+            await anyCcdPage.selectEvent(action);
+            break;
+        default:
+            throw new Error(
+                `Do not understand action "${action}"`
+            );
+    }
+});

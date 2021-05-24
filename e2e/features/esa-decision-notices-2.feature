@@ -5,7 +5,7 @@ Feature: ESA Final Decision WCA And Refuse
     Given I presetup an "ESA" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
-    When I choose the next step "Admin - send to Ready to List"
+    When I choose execute CCD event "Admin - send to Ready to List"
 
     When I switch to be a Judge
     When I choose "Write final decision"
