@@ -29,7 +29,7 @@ When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)"
     await browser.sleep(500);
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
-    await caseDetailsPage.addDayItems('writeFinalDecisionDateOfDecision');
+    await caseDetailsPage.addPastDate('writeFinalDecisionDateOfDecision');
     await browser.sleep(1000);
     await anyCcdPage.click('Continue');
     if (wcaAppeal === 'YES') {

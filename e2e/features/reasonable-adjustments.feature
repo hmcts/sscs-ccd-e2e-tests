@@ -1,4 +1,4 @@
-@reasonable-adjustments @nightly-test
+@reasonable-adjustments @nightly-test-ignore-until-definition-fix
 Feature: Reasonable adjustments functionality
 
   Scenario: Actioned reasonable adjustments
