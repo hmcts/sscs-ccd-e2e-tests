@@ -99,8 +99,9 @@ export class CaseDetailsPage extends AnyCcdPage {
     async addDayItems(dateType: String) {
         browser.driver.sleep(100);
         const today = new Date();
+        today.setDate(new Date().getDate() - 1)
         await element(by.id(dateType + '-day')).clear();
-        await element(by.id(dateType + '-day')).sendKeys(today.getDate() - 1);
+        await element(by.id(dateType + '-day')).sendKeys(today.getDate());
         await element(by.id(dateType + '-month')).clear();
         await element(by.id(dateType + '-month')).sendKeys(today.getMonth() + 1);
         if (dateType === 'writeFinalDecisionEndDate') {
