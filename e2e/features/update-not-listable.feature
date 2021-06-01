@@ -1,4 +1,4 @@
-@migrated-to-exui
+@migrated-to-exui @nightly-test
 Feature: The Update Not Listable
 
   Background:
@@ -13,20 +13,20 @@ Feature: The Update Not Listable
     Then not listable reason is "Visible" on summary page
     Then the case should be in "Not listable" appeal status
 
-  @update-not-listable @nightly-test
+  @update-not-listable
   Scenario: Update not listable : Yes to direction full filled and end to Ready to list
     And I choose "Update not listable case"
     And I choose not listable direction full filled to "YES" and interloc review to "NO"
     Then not listable reason is " Invisible" on summary page
     Then the case should end in "Ready to list" state
 
-  @update-not-listable @nightly-test
+  @update-not-listable
   Scenario: Update not listable : No to direction full filled and interloc review to NO
     And I choose "Update not listable case"
     And I choose not listable direction full filled to "NO" and interloc review to "NO"
     Then the case should be in "With DWP" appeal status
 
-  @update-not-listable @nightly-test @TA-598
+  @update-not-listable @TA-598
   Scenario: Update not listable : No to direction full filled and interloc review to YES
     And I choose "Update not listable case"
     And I choose not listable direction full filled to "NO" and interloc review to "YES"

@@ -6,7 +6,7 @@ properties([
                 string(name: 'URL_TO_TEST', defaultValue: 'https://manage-case.aat.platform.hmcts.net/list/case?jurisdiction=sscs', description: 'The URL you want to run these tests against'),
                 string(name: 'CCD_GATEWAY_URL', defaultValue: 'https://gateway-ccd.aat.platform.hmcts.net', description: 'The CCD Gateway URL these tests will need to run'),
                 string(name: 'NUM_TESTS_IN_PARALLEL', defaultValue: '2', description: 'The number of tests to run in parallel'),
-                string(name: 'NIGHTLY_TAG', defaultValue: '--cucumberOpts.tags=@migrated-to-exui', description: 'Tag for nightly build')
+                string(name: 'NIGHTLY_TAG', defaultValue: '--cucumberOpts.tags=@nightly-test', description: 'Tag for nightly build')
         ])
 ])
 
@@ -47,19 +47,19 @@ withNightlyPipeline("nodejs", product, component) {
     env.TEST_E2E_FAIL_FAST = 'false'
     env.TEST_E2E_ANNOTATION = params.NIGHTLY_TAG
 
-    enableCrossBrowserTest(60)
+    // enableCrossBrowserTest(60)
     enableFullFunctionalTest(60)
 
-    after('crossBrowserTest') {
-        publishHTML([
-            allowMissing         : true,
-            alwaysLinkToLastBuild: true,
-            keepAll              : true,
-            reportDir            : "reports/tests/crossbrowser/",
-            reportFiles          : 'index.html',
-            reportName           : 'SSCS - EXUI Cross Browser Report'
-        ])
-    }
+    // after('crossBrowserTest') {
+    //     publishHTML([
+    //         allowMissing         : true,
+    //         alwaysLinkToLastBuild: true,
+    //         keepAll              : true,
+    //         reportDir            : "reports/tests/crossbrowser/",
+    //         reportFiles          : 'index.html',
+    //         reportName           : 'SSCS - EXUI Cross Browser Report'
+    //     ])
+    // }
 
     after('fullFunctionalTest') {
         publishHTML([

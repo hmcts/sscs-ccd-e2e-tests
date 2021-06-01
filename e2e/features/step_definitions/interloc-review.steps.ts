@@ -12,6 +12,8 @@ When(/^I choose Requires Interlocutory Review Yes "(.+)"$/, async function (acti
     await browser.sleep(500);
     await anyCcdPage.chooseOptionByElementId('selectWhoReviewsCase', 'Review by Judge');
     await browser.sleep(500);
+    await anyCcdPage.chooseOptionByElementId('interlocReferralReason', 'Complex Case');
+    await anyCcdPage.fillNote();
     await anyCcdPage.click('Continue');
 });
 

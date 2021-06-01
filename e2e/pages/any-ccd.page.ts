@@ -186,7 +186,7 @@ export class AnyCcdPage extends AnyPage {
     }
 
     async fillNote() {
-        element(by.id('appealNotePad_notesCollection_0_noteDetail')).sendKeys('This is a test');
+        element(by.id('tempNoteDetail')).sendKeys('This is a test');
     }
 
     async contentContains(match: string, wait: Wait = Wait.normal) {

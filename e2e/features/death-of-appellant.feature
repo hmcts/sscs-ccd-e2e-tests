@@ -1,7 +1,7 @@
-@migrated-to-exui
+@migrated-to-exui @nightly-test
 Feature: Record the death of an appellant
 
-  @death-of-appellant @nightly-test
+  @death-of-appellant
   Scenario: Record the death of an appellant : No Appointee
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
@@ -16,7 +16,7 @@ Feature: Record the death of an appellant
     Then I see field "Subscribed to Email" with value "No" in "Subscriptions" tab
     
 
-  @death-of-appellant @nightly-test
+  @death-of-appellant
   Scenario: Record the death of an appellant : No Appointee
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer

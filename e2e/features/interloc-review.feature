@@ -1,4 +1,4 @@
-@migrated-to-exui
+@migrated-to-exui @nightly-test
 Feature: The interloc review
 
   Background:
@@ -12,7 +12,7 @@ Feature: The interloc review
     And I upload contains further information YES for "PIP"
     Then the case should end in "Response received" state
 
-  @interloc @nightly-test @TA-614
+  @interloc @TA-614
   Scenario: Should end up in "With DWP" state when ALL fields are present
     When I switch to be a Case Officer
     When I choose "Response reviewed"

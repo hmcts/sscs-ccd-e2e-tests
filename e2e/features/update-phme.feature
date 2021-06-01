@@ -16,7 +16,7 @@ Feature: The Update UCB
     When I switch to be a Judge
     And I choose "Review PHME request"
 
-  @update-phme @nightly-test
+  @update-phme @bug-EUI-4125
   Scenario: Update UCB flag with upload response Granted and Refused
     And I set PHME Granted flag to "Yes"
     Then I should see PHME flag as "Granted"

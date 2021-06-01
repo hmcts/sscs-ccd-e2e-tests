@@ -39,14 +39,17 @@ Then(/^the case should have successfully processed "(.+)" event$/, async functio
 When(/^I fill the direction notice form with "(.+)"$/, async function (reinstatement) {
 
     await anyCcdPage.chooseOptionContainingText('#directionTypeDl', reinstatement);
-    await anyCcdPage.clickElementById('generateNotice-No');
+    await browser.sleep(3000);
+    await anyCcdPage.scrollPage('//*[@id="generateNotice-No"]');
+    await browser.sleep(2000);
     await anyCcdPage.chooseOptionContainingText('#sscsInterlocDirectionDocument_documentType', 'Directions Notice');
     await furtherEvidencePage.uploadFile('sscsInterlocDirectionDocument_documentLink', 'issue2.pdf');
     await furtherEvidencePage.enterFileName('sscsInterlocDirectionDocument_documentFileName', 'testfile.pdf');
     await browser.sleep(3000);
 
-    await anyCcdPage.click('Continue');
-    await anyCcdPage.click('Submit');
+    await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
+    await browser.sleep(2000);
+    await anyCcdPage.clickAction('//button[contains(text(),\'Submit\')]');
 });
 
 Then(/^the case should be "(.+)" permissions for "(.+)"$/, async function (reinstatement, directionType) {

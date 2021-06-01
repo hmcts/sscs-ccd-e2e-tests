@@ -16,7 +16,7 @@ Feature: ESA Final Decision Notices
     And I navigate to an existing case
     When I choose "Write final decision"
 
-  @esa-decision @nightly-test @ESA-DN-1
+  @esa-decision @ESA-DN-1 @nightly-test-wip
   Scenario: Write ESA final decision WCA and refuse all
     And I write a final decision of "wca" appeal "YES" and Support group "NO" To Allowed "NO"
     And I select schedule 2 activities with <15 points and reg 29 "NO"
@@ -29,7 +29,7 @@ Feature: ESA Final Decision Notices
     Then the case should end in "Dormant" state
     And I see "Final Decision Notice"
 
-  @esa-decision @nightly-test @ESA-DN-3
+  @esa-decision @ESA-DN-3 @nightly-test-wip
   Scenario: Write ESA final decision WCA and Support group, >= points for schedule 2, No Schedule 3, reg 35 YES and allow
     And I write a final decision of "wca" appeal "YES" and Support group "NO" To Allowed "YES"
     And I select schedule 2 activities with >=15 points
@@ -126,7 +126,7 @@ Feature: ESA Final Decision Notices
     Then the case should be in "Dormant" appeal status
     And I see "Final Decision Notice"
 
-  @esa-decision @nightly-test @ESA-DN-10
+  @esa-decision @nightly-test-10 @ESA-DN-10
   Scenario: Write ESA final decision non WCA and refuse all
     And I write a final decision of "wca" appeal "NO" and Support group "NO" To Allowed "NO"
     And I continue writing final decision non WCA appeal
@@ -138,7 +138,7 @@ Feature: ESA Final Decision Notices
     Then the case should be in "Dormant" appeal status
     And I see "Final Decision Notice"
 
-  @esa-decision @nightly-test @ESA-DN-11
+  @esa-decision @nightly-test-10 @ESA-DN-11
   Scenario: Write ESA final decision non WCA and allow
     And I write a final decision of "wca" appeal "NO" and Support group "NO" To Allowed "YES"
     And I continue writing final decision non WCA appeal

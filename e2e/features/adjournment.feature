@@ -1,4 +1,4 @@
-@migrated-to-exui @adjournment
+@migrated-to-exui @adjournment @nightly-test-wip
 Feature: Issue decision
 
   Background:

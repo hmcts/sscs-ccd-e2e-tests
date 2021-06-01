@@ -48,14 +48,16 @@ Then(/^I set PHME Granted flag to "(.+)"$/, async function (phmeGranted) {
 });
 
 Then(/^I enter date of appellant death with "(.+)" to appointee$/, async function (hasAppointee) {
-   caseDetailsPage.addPastDate('dateOfAppellantDeath')
+   caseDetailsPage.addPastDate('dateOfAppellantDeath');
    if (hasAppointee === 'No') {
-   await anyCcdPage.clickElementById('appeal_appellant_isAppointee-No');
-   await anyCcdPage.click('Continue');
+        await anyCcdPage.clickElementById('appeal_appellant_isAppointee-No');
+        await anyCcdPage.click('Continue');
+   } else if (hasAppointee === 'Yes') {
+        await anyCcdPage.clickElementById('appeal_appellant_isAppointee-Yes');
+        await appointeePage.addAppointeeDetails();
+        await anyCcdPage.click('Continue');
    } else {
-     await anyCcdPage.clickElementById('appeal_appellant_isAppointee-Yes');
-     await appointeePage.addAppointeeDetails();
-     await anyCcdPage.click('Continue');
+       throw new Error('Appointee option not provided ');
    }
    await anyCcdPage.click('Submit');
    await anyCcdPage.clickTab('Appeal Details');
@@ -108,8 +110,8 @@ When(/^I upload a "(.+)" doc contains further information "(.+)" for "(.+)"$/,
       await anyCcdPage.click('Continue');
 
     }
-    await anyCcdPage.click('Submit');
-    browser.driver.sleep(30);
+    await browser.sleep(2000);
+    await anyCcdPage.scrollBar('//button[contains(text(),\'Submit\')]');
 });
 
 When(/^I upload a doc$/, async function () {
@@ -206,22 +208,21 @@ Then(/^I subscribed to all parties to "(.+)"$/, async function (isSubscribed) {
   await anyCcdPage.setValueByElementId('subscriptions_representativeSubscription_email', 'representative-test@mailinator.com')
   await anyCcdPage.setTextFiledValueNull('subscriptions_representativeSubscription_mobile');
   await anyCcdPage.setValueByElementId('subscriptions_representativeSubscription_mobile', '01234567890')
-  await anyCcdPage.clickElementById('subscriptions_representativeSubscription_subscribeEmail-' + action);
-  await anyCcdPage.clickElementById('subscriptions_representativeSubscription_subscribeSms-' + action);
 
   await anyCcdPage.clickElementById('subscriptions_appointeeSubscription_wantSmsNotifications-' + action);
   await anyCcdPage.setValueByElementId('subscriptions_appointeeSubscription_tya', 'appointee123')
   await anyCcdPage.setValueByElementId('subscriptions_appointeeSubscription_email', 'appointee-test@mailinator.com')
   await anyCcdPage.setValueByElementId('subscriptions_appointeeSubscription_mobile', '01234567890')
-  await anyCcdPage.clickElementById('subscriptions_appointeeSubscription_subscribeEmail-' + action);
-  await anyCcdPage.clickElementById('subscriptions_appointeeSubscription_subscribeSms-' + action);
-
   await anyCcdPage.clickElementById('subscriptions_jointPartySubscription_wantSmsNotifications-' + action);
   await anyCcdPage.setValueByElementId('subscriptions_jointPartySubscription_tya', 'jointParty123')
   await anyCcdPage.setValueByElementId('subscriptions_jointPartySubscription_email', 'jointparty-test@mailinator.com')
   await anyCcdPage.setValueByElementId('subscriptions_jointPartySubscription_mobile', '01234567890')
-  await anyCcdPage.clickElementById('subscriptions_jointPartySubscription_subscribeEmail-' + action);
-  await anyCcdPage.clickElementById('subscriptions_jointPartySubscription_subscribeSms-' + action);
+
+   await anyCcdPage.clickElementById('subscriptions_supporterSubscription_wantSmsNotifications-' + action);
+   await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_tya', 'supportParty123')
+   await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_email', 'supportparty-test@mailinator.com')
+   await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_mobile', '01234567890')
+
 
   } else {
      await anyCcdPage.clickElementById('subscriptions_appellantSubscription_wantSmsNotifications-' + action);
@@ -235,9 +236,17 @@ Then(/^I subscribed to all parties to "(.+)"$/, async function (isSubscribed) {
 
    await anyCcdPage.clickElementById('subscriptions_jointPartySubscription_wantSmsNotifications-' + action);
    await anyCcdPage.clickElementById('subscriptions_jointPartySubscription_subscribeEmail-' + action);
+
+   await anyCcdPage.clickElementById('subscriptions_supporterSubscription_wantSmsNotifications-' + action);
+   await anyCcdPage.clickElementById('subscriptions_supporterSubscription_subscribeEmail-' + action);
+
   }
-    await anyCcdPage.click('Continue');
-    await anyCcdPage.click('Submit');
+
+    await browser.sleep(500);
+    await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
+    await browser.sleep(2000);
+    await anyCcdPage.clickAction('//button[contains(text(),\'Submit\')]');
+
 
     await browser.sleep(50);
     await anyCcdPage.clickTab('Subscriptions');

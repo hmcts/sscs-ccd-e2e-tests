@@ -23,6 +23,7 @@ When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)"
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
     await anyCcdPage.clickElementById('writeFinalDecisionTypeOfHearing-faceToFace');
+    await browser.sleep(1000);
     await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion-Yes');
     await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion-Yes');
     await anyCcdPage.click('Continue');
@@ -36,14 +37,16 @@ When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)"
     await anyCcdPage.click('Continue');
     await browser.sleep(2000);
     if (wcaAppeal === 'YES') {
-        await anyCcdPage.clickElementById('wcaAppeal-Yes');
+        const wcaYes = appealType + 'Appeal-Yes';
+        await anyCcdPage.clickElementById(wcaYes);
     } else {
-        await anyCcdPage.clickElementById('wcaAppeal-No');
+        const wcaNo = appealType + 'Appeal-No';
+        await anyCcdPage.clickElementById(wcaNo);
     }
     await browser.sleep(500);
     if (supportGroup === 'YES') {
         await anyCcdPage.clickElementById('supportGroupOnlyAppeal-Yes');
-    } else if (wcaAppeal === 'YES') {
+    } else {
         await anyCcdPage.clickElementById('supportGroupOnlyAppeal-No');
     }
     await anyCcdPage.click('Continue');
@@ -53,7 +56,9 @@ When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)"
 When(/^I select schedule 2 activities with <15 points and reg 29 "(.+)"$/, async function (reg29Apply) {
     await anyCcdPage.clickElementById('esaWriteFinalDecisionPhysicalDisabilitiesQuestion-consciousness');
     await anyCcdPage.clickElementById('esaWriteFinalDecisionMentalAssessmentQuestion-copingWithChange');
-    await anyCcdPage.click('Continue');
+    await browser.sleep(3000);
+    // await anyCcdPage.click('Continue');
+    await anyCcdPage.clickAction('//*[self::button or self::a][normalize-space()=\'Continue\']');
     await browser.sleep(500);
     await anyCcdPage.clickElementById('esaWriteFinalDecisionConsciousnessQuestion-consciousness10c');
     await anyCcdPage.click('Continue');
