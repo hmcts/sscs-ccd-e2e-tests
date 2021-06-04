@@ -35,6 +35,7 @@ When(/^I upload contains further information (.+) for "(.+)"$/, async function (
     }
     await anyCcdPage.click('Continue');
     if (benefitType === 'UC') {
+      await browser.sleep(3000);
       await anyCcdPage.clickElementById('elementsDisputedList-general');
       await anyCcdPage.click('Continue');
       await anyCcdPage.addNewCollectionItem('General');

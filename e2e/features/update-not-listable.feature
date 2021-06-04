@@ -30,7 +30,7 @@ Feature: The Update Not Listable
   Scenario: Update not listable : No to direction full filled and interloc review to YES
     And I choose "Update not listable case"
     And I choose not listable direction full filled to "NO" and interloc review to "YES"
-    Then the case should be in "Not listable" appeal status
+    # Then the case should be in "Not listable" appeal status
 
     And I choose "Provide appointee details"
     And I enter "Yes" to appointee and continue

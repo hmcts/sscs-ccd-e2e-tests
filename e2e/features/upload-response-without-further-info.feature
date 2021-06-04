@@ -1,7 +1,7 @@
 @migrated-to-exui
 Feature: The happy path
 
-  @happy-path @nightly-test-wip @dwp-upload-response
+  @happy-path @nightly-test @dwp-upload-response
   Scenario: Should end up in "Ready to list" state when ALL fields are present
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer

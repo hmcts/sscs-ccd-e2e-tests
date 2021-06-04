@@ -1,4 +1,4 @@
-@urgent-hearing @nightly-test-wip @migrated-to-exui
+@urgent-hearing @nightly-test @migrated-to-exui
 Feature: Urgent hearing functionality
 
   Scenario: Grant urgent hearing for a case 

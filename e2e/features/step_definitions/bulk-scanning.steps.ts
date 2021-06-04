@@ -101,7 +101,7 @@ function delay(ms: number) {
 }
 
 Given(/^I have a (.+) bulk-scanned document with (.+) fields$/, {timeout: 600 * 1000}, async function (benefit_code, formType) {
-    await anyCcdPage.click('Create new case');
+    await anyCcdPage.click('Create case');
     expect(await anyCcdPage.pageHeadingContains('Create Case')).to.equal(true);
     await anyCcdFormPage.setCreateCaseFieldValue('Case type', 'SSCS Bulkscanning');
     await anyCcdPage.click('Start');

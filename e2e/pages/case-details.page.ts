@@ -100,17 +100,17 @@ export class CaseDetailsPage extends AnyCcdPage {
     async addDayItems(dateType: String) {
         browser.driver.sleep(100);
         const today = new Date();
-        await browser.wait(ExpectedConditions.presenceOf(element(by.id('writeFinalDecisionDateOfDecision-day'))), 5000);
-        element(by.id(dateType + '-day')).clear();
-        element(by.id(dateType + '-day')).sendKeys(today.getDate() - 1);
-        element(by.id(dateType + '-month')).clear();
-        element(by.id(dateType + '-month')).sendKeys(today.getMonth() + 1);
+        today.setDate(new Date().getDate() - 1)
+        await element(by.id(dateType + '-day')).clear();
+        await element(by.id(dateType + '-day')).sendKeys(today.getDate());
+        await element(by.id(dateType + '-month')).clear();
+        await element(by.id(dateType + '-month')).sendKeys(today.getMonth() + 1);
         if (dateType === 'writeFinalDecisionEndDate') {
-            element(by.id(dateType + '-year')).clear();
-            element(by.id(dateType + '-year')).sendKeys(today.getFullYear() + 1);
+            await element(by.id(dateType + '-year')).clear();
+            await element(by.id(dateType + '-year')).sendKeys(today.getFullYear() + 1);
         } else {
-            element(by.id(dateType + '-year')).clear();
-            element(by.id(dateType + '-year')).sendKeys(today.getFullYear());
+            await element(by.id(dateType + '-year')).clear();
+            await element(by.id(dateType + '-year')).sendKeys(today.getFullYear());
         }
 
         await browser.driver.sleep(100);

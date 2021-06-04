@@ -173,12 +173,13 @@ When(/^I choose not listable direction full filled to "(.+)" and interloc review
         await anyCcdPage.click('Continue');
             if (isReview === 'YES') {
                     await anyCcdPage.clickElementById('updateNotListableInterlocReview-Yes');
+                    await browser.sleep(2000);
                     await anyCcdPage.chooseOptionByElementId('updateNotListableWhoReviewsCase', 'A Judge');
                     await anyCcdPage.click('Continue');
                     await anyCcdPage.click('Submit');
                     await anyCcdPage.clickTab('History');
                     expect(await anyCcdPage.contentContains('Review by Judge')).to.equal(true);
-                    await browser.sleep(50);
+                    await browser.sleep(2000);
             } else {
                     await anyCcdPage.clickElementById('updateNotListableInterlocReview-No');
                     await anyCcdPage.click('Continue');
@@ -187,7 +188,7 @@ When(/^I choose not listable direction full filled to "(.+)" and interloc review
                     await anyCcdPage.clickElementById('updateNotListableWhereShouldCaseMoveTo-withDwp');
                      await anyCcdPage.click('Continue');
                      await anyCcdPage.click('Submit');
-                     await browser.sleep(50);
+                     await browser.sleep(2000);
                     }
    }
 });
@@ -239,6 +240,10 @@ Then(/^I subscribed to all parties to "(.+)"$/, async function (isSubscribed) {
 
    await anyCcdPage.clickElementById('subscriptions_supporterSubscription_wantSmsNotifications-' + action);
    await anyCcdPage.clickElementById('subscriptions_supporterSubscription_subscribeEmail-' + action);
+   await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_tya', 'supportParty123')
+   await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_email', 'supportparty-test@mailinator.com')
+   await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_mobile', '01234567890')
+
 
   }
 

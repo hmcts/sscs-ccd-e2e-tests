@@ -9,10 +9,10 @@ Feature: The withdrawal
     Given I complete the event
     Then the case should be in "With DWP" state
 
-  @withdrawal  @nightly-test-wip @crossbrowser99
+  @withdrawal  @nightly-test @crossbrowser99
   Scenario: Should end up in "With DWP" state when ALL fields are present
     When I choose "Admin Appeal Withdrawn"
-#    And I click submit withdrawal "Admin Appeal Withdrawn"
+    And I click submit withdrawal "Admin Appeal Withdrawn"
     And I submit "Admin Appeal Withdrawn"
     Then the case should be in "Dormant" state
 

@@ -120,7 +120,7 @@ export class AnyCcdPage extends AnyPage {
 
     async getFieldValue(fieldLabel: string) {
         return await element
-            .all(by.xpath('//div[normalize-space()="' + fieldLabel + '"]/../../td'))
+            .all(by.xpath('//*[normalize-space()="' + fieldLabel + '"]/../../td'))
             .first()
             .getText();
     }

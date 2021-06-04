@@ -58,7 +58,8 @@ When(/^I select schedule 2 activities with <15 points and reg 29 "(.+)"$/, async
     await anyCcdPage.clickElementById('esaWriteFinalDecisionMentalAssessmentQuestion-copingWithChange');
     await browser.sleep(3000);
     // await anyCcdPage.click('Continue');
-    await anyCcdPage.clickAction('//*[self::button or self::a][normalize-space()=\'Continue\']');
+    await anyCcdPage.scrollBar('//div/form/div/button[2]');
+    // await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
     await browser.sleep(500);
     await anyCcdPage.clickElementById('esaWriteFinalDecisionConsciousnessQuestion-consciousness10c');
     await anyCcdPage.click('Continue');
@@ -78,7 +79,8 @@ When(/^I select schedule 2 activities with <15 points and reg 29 "(.+)"$/, async
 When(/^I select schedule 2 activities with >=15 points$/, async function () {
     await anyCcdPage.clickElementById('esaWriteFinalDecisionPhysicalDisabilitiesQuestion-reaching');
     await anyCcdPage.clickElementById('esaWriteFinalDecisionMentalAssessmentQuestion-learningTasks');
-    await anyCcdPage.click('Continue');
+    // await anyCcdPage.click('Continue');
+    await anyCcdPage.scrollBar('//div/form/div/button[2]');
     await browser.sleep(500);
     await anyCcdPage.clickElementById('esaWriteFinalDecisionReachingQuestion-reaching3b');
     await anyCcdPage.click('Continue');
@@ -90,14 +92,14 @@ When(/^I select schedule 2 activities with >=15 points$/, async function () {
 
 When(/^I opt out schedule 3 activities and reg 35 "(.+)"$/, async function (reg35Apply) {
     await anyCcdPage.clickElementById('esaWriteFinalDecisionSchedule3ActivitiesApply-No');
-    await anyCcdPage.click('Continue');
+    await anyCcdPage.scrollBar('//div/form/div/button[2]');
     await browser.sleep(500);
     if (reg35Apply === 'YES') {
         await anyCcdPage.clickElementById('doesRegulation35Apply-Yes');
     } else {
         await anyCcdPage.clickElementById('doesRegulation35Apply-No');
     }
-    await anyCcdPage.click('Continue');
+    await anyCcdPage.scrollBar('//div/form/div/button[2]');
     await browser.sleep(500);
 });
 
@@ -140,9 +142,9 @@ When(/^I provide reasons and check answers To Allowed "(.+)"$/, async function (
     await browser.sleep(2000);
     await anyCcdPage.click('Continue');
     await browser.sleep(4000);
-    await anyCcdPage.click('Continue'); // Bit flakey
+    await anyCcdPage.scrollBar('//div/form/div/button[2]'); // Bit flakey
     await browser.sleep(750);
-    await anyCcdPage.click('Submit');
+    await anyCcdPage.scrollBar('//form/div/button[2]');
     await browser.sleep(5000);
 });
 
@@ -161,7 +163,7 @@ When(/^I provide reasons and check answers for non WCA To Allowed "(.+)"$/, asyn
     await browser.sleep(4000);
     await anyCcdPage.click('Continue');
     await browser.sleep(750);
-    await anyCcdPage.click('Submit');
+    await anyCcdPage.scrollBar('//form/div/button[2]');
     await browser.sleep(5000);
 });
 
