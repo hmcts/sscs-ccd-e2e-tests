@@ -223,8 +223,6 @@ Then(/^I subscribed to all parties to "(.+)"$/, async function (isSubscribed) {
    await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_tya', 'supportParty123')
    await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_email', 'supportparty-test@mailinator.com')
    await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_mobile', '01234567890')
-
-
   } else {
      await anyCcdPage.clickElementById('subscriptions_appellantSubscription_wantSmsNotifications-' + action);
      await anyCcdPage.clickElementById('subscriptions_appellantSubscription_subscribeEmail-' + action);
@@ -243,15 +241,12 @@ Then(/^I subscribed to all parties to "(.+)"$/, async function (isSubscribed) {
    await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_tya', 'supportParty123')
    await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_email', 'supportparty-test@mailinator.com')
    await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_mobile', '01234567890')
-
-
   }
 
     await browser.sleep(500);
     await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
     await browser.sleep(2000);
     await anyCcdPage.clickAction('//button[contains(text(),\'Submit\')]');
-
 
     await browser.sleep(50);
     await anyCcdPage.clickTab('Subscriptions');
