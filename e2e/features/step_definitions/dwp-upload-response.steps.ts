@@ -56,7 +56,7 @@ When(/^I upload (.+) further information with disputed (.+) disputed by others (
 });
 
 Then(/^the case should be in "(.+)" appeal status$/, async function (state) {
-    await browser.sleep(3000);
+    await browser.sleep(5000);
     // await anyCcdPage.reloadPage();
     expect(await anyCcdPage.contentContains(state)).to.equal(true);
 });

@@ -6,7 +6,7 @@ Feature: Reasonable adjustments functionality
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
-    Then the case should be in "With DWP" state
+    Then the case should end in "With DWP" state
 
     When I choose "Update reasonable adjustment"
     And generate a letter in "Alternative Letter Format" with "Yes" option

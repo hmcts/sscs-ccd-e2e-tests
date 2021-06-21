@@ -5,7 +5,7 @@ Feature: The Update Not Listable
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
-    Then the case should be in "With DWP" state
+    Then the case should end in "With DWP" state
 
     And I switch to be a DWPResponse Writer
     And I navigate to an existing case
