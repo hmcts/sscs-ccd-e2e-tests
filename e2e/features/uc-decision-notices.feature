@@ -15,7 +15,7 @@ Feature: UC Final Decision Notices
     When I switch to be a Judge
     When I choose "Write final decision"
 
-  @uc-decision @nightly-test-wip @UC-DN-1
+  @uc-decision @nightly-test-wip @UC-DN-1 @bug-ticket-EUI-2744
   Scenario: Write UC final decision WCA and refuse all
     And I write a final decision of "wca" appeal "YES" and Support group "NO" To Allowed "NO"
     And I select schedule 6 activities with <15 points and schedule 8 para 4 "NO"
@@ -28,7 +28,7 @@ Feature: UC Final Decision Notices
     Then the case should be in "Dormant" state
     And I see "Final Decision Notice"
 
-  @uc-decision @nightly-test-wip @UC-DN-3
+  @uc-decision @nightly-test-wip @UC-DN-3 @bug-ticket-EUI-2744
   Scenario: Write UC final decision LCWA and Support group, >= points for schedule 6, No Schedule 7, schedule 9 para 4 YES and allow
     And I write a final decision of "lcwa" appeal "YES" and Support group "NO" To Allowed "YES"
     And I select schedule 6 activities with >=15 points

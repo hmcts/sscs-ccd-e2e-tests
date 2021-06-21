@@ -8,6 +8,7 @@ Feature: Issue decision
     Then the case should be in "With DWP" state
 
     When I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     When I choose "Upload response"
     And I upload contains further information "NO" for "PIP"
 

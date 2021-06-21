@@ -1,4 +1,4 @@
-@migrated-to-exui @adjournment @nightly-test-wip
+@migrated-to-exui @adjournment
 Feature: Issue decision
 
   Background:
@@ -22,7 +22,7 @@ Feature: Issue decision
     When I switch to be a Judge
     When I choose "Write adjournment notice"
 
-  @nightly-test-5-disabled-due-to-ccd-bug-SSCS-8628
+  @nightly-test-5-disabled-due-to-ccd-bug-SSCS-8628 @nightly-test-wip
   Scenario: Should end up in "Ready to list" state when decision is issued with generate notice is no
     And I generate an adjournment notice
     And I see "Draft Adjournment Notice"
@@ -31,7 +31,7 @@ Feature: Issue decision
     And I submit "Issue adjournment notice"
     Then the case should end in "Ready to list" state
 
-    @nightly-test-5 @TA-619
+    @nightly-test-5 @TA-619 @nightly-test-wip
     Scenario: Should end up in "Ready to list" state when decision is issued with generate notice is yes and issue direction is no
       And I upload an adjournment notice and issue direction "No"
       And I see "Draft Adjournment Notice"

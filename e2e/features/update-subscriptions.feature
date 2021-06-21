@@ -8,6 +8,7 @@ Feature: The Update subscriptions
     Then the case should be in "With DWP" state
 
     When I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     And I choose "Update subscription"
 
   Scenario: Update Subscription - Yes

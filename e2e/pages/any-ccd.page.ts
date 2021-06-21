@@ -38,6 +38,7 @@ export class AnyCcdPage extends AnyPage {
             'Button did not show in time'
         );
         await element(by.id(elementId)).click();
+        await this.smartWait(2000);
     }
 
     async clickAction(elementId: string) {

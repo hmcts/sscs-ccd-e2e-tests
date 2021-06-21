@@ -8,6 +8,7 @@ Feature: The Update Not Listable
     Then the case should be in "With DWP" state
 
     And I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     And I choose "Not listable"
     And I populate fields and continue
     Then not listable reason is "Visible" on summary page

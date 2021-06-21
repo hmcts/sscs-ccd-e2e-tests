@@ -8,9 +8,9 @@ Feature: ESA Final Decision Notices
     Then the case should be in "With DWP" state
 
     When I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     When I choose "Upload response"
     And I upload contains further information "NO" for "ESA"
-    Then the case should end in "Ready to list" state
 
     When I switch to be a Judge
     And I navigate to an existing case

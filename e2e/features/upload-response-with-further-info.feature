@@ -9,18 +9,20 @@ Feature: The alternate happy path
     Then the case should be in "With DWP" state
 
     When I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     When I choose "Upload response"
     And I upload contains further information YES for "PIP"
     Then the case should be in "Response received" state
 
     When I switch to be a Case Officer
+    And I navigate to an existing case
     When I choose "Response reviewed"
     And I choose Requires Interlocutory Review No "Response reviewed"
     And I submit "Response reviewed"
     Then the case should be in "Ready to list" state
 
   
-  @happy-path @dwp-upload-response @uc @bug-ticket-EUI-3623
+  @happy-path @dwp-upload-response @uc @bug-ticket-EUI-2744
   Scenario: Should end up in "Ready to List" state when a UC disputed case has been response reviewed
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
@@ -28,6 +30,7 @@ Feature: The alternate happy path
     Then the case should be in "With DWP" state
 
     When I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     And I choose "Upload response"
     And I upload UC further information with disputed General disputed by others Yes and further info Yes
     Then the case should be in "Response received" state

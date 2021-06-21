@@ -8,11 +8,13 @@ Feature: The Reinstatement functionality
     Then the case should be in "With DWP" state
 
     When I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     When I choose "Action further evidence"
     And I fill the further evidence form with "Reinstatement request"
     Then the case should have successfully processed "Action further evidence" event
 
     When I switch to be a Judge
+    And I navigate to an existing case
     When I choose "Issue directions notice"
 
   Scenario: Grant reinstatement

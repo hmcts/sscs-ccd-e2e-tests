@@ -19,6 +19,7 @@ Feature: Issue direction
     Then the case should be in "Interlocutory Review - Pre-Valid" state
 
     When I switch to be a Judge
+    And I navigate to an existing case
     And I choose "Issue directions notice"
     And I allow the appeal to proceed
     Then I  should see "Directions Notice" in documents tab

@@ -9,6 +9,7 @@ Feature: Record the death of an appellant
     Then the case should be in "With DWP" state
    
     When I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     And I choose "Death of appellant"
     And I enter date of appellant death with "No" to appointee
     Then I see field "Event" with value "Death of appellant" in "History" tab
@@ -24,6 +25,7 @@ Feature: Record the death of an appellant
     Then the case should be in "With DWP" state
 
     When I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     And I choose "Death of appellant"
     And I enter date of appellant death with "Yes" to appointee
     Then I see field "Event" with value "Death of appellant" in "History" tab

@@ -4,6 +4,8 @@ import { FormFiller } from '../helpers/form-filler';
 import { OrdinalToCardinal } from '../helpers/ordinal-to-cardinal';
 import moment = require('moment');
 
+const anyCcdPage = new AnyCcdPage();
+
 export class AnyCcdFormPage extends AnyCcdPage {
 
     private formFiller = new FormFiller();
@@ -19,6 +21,10 @@ export class AnyCcdFormPage extends AnyCcdPage {
             .all(by.xpath('.//button[normalize-space()="Add new"]'))
             .last()
             .click();
+    }
+
+    async addNewOCRCollectionItem() {
+        await anyCcdPage.scrollBar('//*[@id="scanOCRData"]/div/button');
     }
 
    async setValueByElementId(key: string, value: string) {

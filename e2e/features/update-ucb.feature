@@ -8,6 +8,7 @@ Feature: The Update UCB
     Then the case should be in "With DWP" state
 
     When I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     And I choose "Upload response"
     And I upload a "UCB" doc contains further information "YES" for "PIP"
     Then the case should be in "Response received" state

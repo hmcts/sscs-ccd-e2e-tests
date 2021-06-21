@@ -11,7 +11,7 @@ const caseDetailsPage = new CaseDetailsPage();
 const dwpresponse = new DwpResponsePage();
 
 When(/^I choose "(.+)"$/, async function (action) {
-    await browser.sleep(2000)
+    await browser.sleep(4000)
     if (action === 'Write adjournment notice'
     || action === 'Not listable' || action === 'Update not listable'
     || action === 'Update subscription') {
@@ -33,7 +33,7 @@ When(/^I upload contains further information (.+) for "(.+)"$/, async function (
     if (benefitType !== 'UC') {
         await anyCcdPage.selectIssueCode();
     }
-    await anyCcdPage.click('Continue');
+    await anyCcdPage.scrollBar('//div/form/div/button[2]');
     if (benefitType === 'UC') {
       await browser.sleep(3000);
       await anyCcdPage.clickElementById('elementsDisputedList-general');
@@ -56,14 +56,14 @@ When(/^I upload (.+) further information with disputed (.+) disputed by others (
 });
 
 Then(/^the case should be in "(.+)" appeal status$/, async function (state) {
-    await browser.sleep(1000);
-    await anyCcdPage.reloadPage();
+    await browser.sleep(3000);
+    // await anyCcdPage.reloadPage();
     expect(await anyCcdPage.contentContains(state)).to.equal(true);
 });
 
 Then(/^the case should end in "(.+)" state$/, async function (state) {
     await anyCcdPage.clickTab('History');
-    await anyCcdPage.reloadPage();
+    // await anyCcdPage.reloadPage();
     await browser.sleep(10000);
     expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
     await browser.sleep(500);
