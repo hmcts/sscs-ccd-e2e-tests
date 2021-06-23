@@ -49,6 +49,8 @@ withNightlyPipeline("nodejs", product, component) {
 
     enableFullFunctionalTest(120)
 
-//    enableSlackNotifications('#sscs-tech')    // can be turned back on once the overnight functionality is working fully
+        
+//    enableSlackNotifications('#sscs-tech')    
+ // can be turned back on once the overnight functionality is working fully
 
 }
