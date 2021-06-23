@@ -1,7 +1,6 @@
 #!groovy
 
 properties([
-        pipelineTriggers([cron('H 5 * * *')]),
         parameters([
                 string(name: 'URL_TO_TEST', defaultValue: 'https://www-ccd.aat.platform.hmcts.net/list/case?jurisdiction=sscs', description: 'The URL you want to run these tests against'),
                 string(name: 'CCD_GATEWAY_URL', defaultValue: 'https://gateway-ccd.aat.platform.hmcts.net', description: 'The CCD Gateway URL these tests will need to run'),
