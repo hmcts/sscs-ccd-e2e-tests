@@ -3,16 +3,8 @@ Feature: Issue decision
 
   Background:
     Given I presetup an "PIP" SYA case
-    And I am signed in as a Case Officer
-    And I navigate to an existing case
-    Then the case should be in "With DWP" state
-
-    When I switch to be a DWPResponse Writer
-    When I choose "Upload response"
-    And I upload contains further information "NO" for "PIP"
-    Then the case should end in "Ready to list" state
-
     When I switch to be a Case Officer
+    And I navigate to an existing case
     When I choose "Add a hearing"
     And I book a hearing
     And I choose "Hearing booked"
@@ -20,9 +12,10 @@ Feature: Issue decision
     Then the case should end in "Hearing" state
 
     When I switch to be a Judge
+    And I navigate to an existing case
     When I choose "Write adjournment notice"
 
-  @nightly-test-5-disabled-due-to-ccd-bug-SSCS-8628 @nightly-test-wip
+  @nightly-test-5-disabled-due-to-ccd-bug-SSCS-8628 @nightly-test
   Scenario: Should end up in "Ready to list" state when decision is issued with generate notice is no
     And I generate an adjournment notice
     And I see "Draft Adjournment Notice"
@@ -31,7 +24,7 @@ Feature: Issue decision
     And I submit "Issue adjournment notice"
     Then the case should end in "Ready to list" state
 
-    @nightly-test-5 @TA-619 @nightly-test-wip
+    @nightly-test-5 @TA-619 @nightly-test
     Scenario: Should end up in "Ready to list" state when decision is issued with generate notice is yes and issue direction is no
       And I upload an adjournment notice and issue direction "No"
       And I see "Draft Adjournment Notice"
