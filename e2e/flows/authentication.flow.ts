@@ -50,4 +50,9 @@ export class AuthenticationFlow {
             serviceConfig.TestJudgePassword
         );
     }
+
+    async goToSignInPage() {
+        await this.signOut();
+        await this.idamSignInPage.waitUntilLoaded();
+    }
 }

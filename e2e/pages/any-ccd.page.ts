@@ -2,6 +2,9 @@ import { $, $$, browser, by, element, ExpectedConditions } from 'protractor';
 import { AnyPage } from './any.page';
 import { Wait } from '../enums/wait';
 
+const serviceConfig = require('../service.conf');
+const AxeRunner = require('../helpers/axe-runner');
+
 export class AnyCcdPage extends AnyPage {
 
     private signOutLink = '#sign-out';
@@ -290,6 +293,12 @@ export class AnyCcdPage extends AnyPage {
         await this.smartWait(5000);
         await this.clickAction('//div[text()=\'History\']');
         await this.smartWait(2000);
+    };
+
+    async runAccessibility() {
+        if (serviceConfig.TestForAccessibility) {
+            await AxeRunner.runAndReportAccessibility();
+        }
     };
 
 }
