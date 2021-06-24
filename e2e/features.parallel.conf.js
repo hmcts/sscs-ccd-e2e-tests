@@ -15,6 +15,9 @@ const puppeteer = require('puppeteer');
 const serviceConfig = require('./service.conf');
 const tsNode = require('ts-node');
 const path = require('path');
+const { generateAccessibilityReport } = require('../reporter/customReporter');
+const { getAccessibilityTestResult } = require('./helpers/axe-runner.ts');
+
 
 let capabilities = {
   browserName: 'chrome',
@@ -140,6 +143,23 @@ class BaseConfig {
     this.afterLaunch = () => {
       return retry.afterLaunch(2);
     }
+
+    this.onComplete = () => {
+      generateAccessibilityReport(getAccessibilityTestResult());
+    };
+
+    this.plugins = [
+      {
+          package: 'protractor-multiple-cucumber-html-reporter-plugin',
+          options: {
+              automaticallyGenerateReport: true,
+              removeExistingJsonReportFile: true,
+              reportName: 'SSCS ExUI E2E Tests',
+              jsonDir: 'reports/tests/functional',
+              reportPath: 'reports/tests/functional'
+          }
+      }
+    ]
   }
 
   /*

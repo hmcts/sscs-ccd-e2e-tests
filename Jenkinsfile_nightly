@@ -70,6 +70,15 @@ withNightlyPipeline("nodejs", product, component) {
             reportFiles          : 'index.html',
             reportName           : 'SSCS - EXUI Functional Test Report'
         ])
+
+        publishHTML([
+                allowMissing         : true,
+                alwaysLinkToLastBuild: true,
+                keepAll              : true,
+                reportDir            : "reports/tests/",
+                reportFiles          : 'a11y.html',
+                reportName           : 'SSCS ExUI - Manage Cases a11y Test Report'
+        ])
     }
 //    enableSlackNotifications('#sscs-tech')    // can be turned back on once the overnight functionality is working fully
 

@@ -1,6 +1,5 @@
 module.exports = {
   CcdGatewayUrl: process.env.TEST_E2E_URL_GATEWAY || 'https://gateway-ccd.aat.platform.hmcts.net',
-  // CcdWebUrl: process.env.TEST_E2E_URL_WEB || 'https://www-ccd.aat.platform.hmcts.net/list/case?jurisdiction=sscs',
   CcdWebUrl: process.env.TEST_E2E_URL_WEB || 'https://manage-case.aat.platform.hmcts.net/list/case?jurisdiction=sscs',
   TribunalApiUri: process.env.TRIBUNALS_API_URL || 'http://sscs-tribunals-api-aat.service.core-compute-aat.internal',
   ApiCallTimeout: 40000,
@@ -11,6 +10,8 @@ module.exports = {
   TestJudgePassword: process.env.TEST_JUDGE_PASSWORD || '',
   TestDWPResponseWriterUserName: process.env.TEST_DWP_USERNAME || '',
   TestDWPResponseWriterPassword: process.env.TEST_DWP_PASSWORD || '',
+  TestOutputDir: process.env.E2E_OUTPUT_DIR || './reports/tests',
+  TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
 
   // CcdGatewayUrl: process.env.TEST_E2E_URL_GATEWAY || 'http://localhost:3453',
   // CcdWebUrl: process.env.TEST_E2E_URL_WEB ||  'http://localhost:3451',
