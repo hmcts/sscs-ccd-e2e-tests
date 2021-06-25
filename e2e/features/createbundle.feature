@@ -5,7 +5,8 @@ Feature: Create bundle for a case
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
-    Then the case should end in "With DWP" state
+    Then the page is accessible
+    And the case should end in "With DWP" state
 
     When I choose "Upload response"
     And I upload contains further information NO for "PIP"

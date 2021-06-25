@@ -3,4 +3,4 @@ Feature: Common accessibility checks
 @now @nightly-test
 Scenario: Go to Sign in page
     Given I go to the sign in page
-    Then The page is accessible
+    Then the page is accessible

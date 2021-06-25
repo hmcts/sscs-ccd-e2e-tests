@@ -5,6 +5,7 @@ import { expect } from 'chai';
 import { DwpResponsePage } from '../../pages/dwpresponse.page';
 import { browser } from 'protractor';
 const serviceConfig = require('../../service.conf')
+const { accessibilityCheck } = require('../step_definitions/accessibility.steps')
 
 const anyCcdPage = new AnyCcdFormPage();
 const caseDetailsPage = new CaseDetailsPage();
@@ -65,6 +66,7 @@ Then(/^the case should end in "(.+)" state$/, async function (state) {
     await anyCcdPage.clickTab('History');
     // await anyCcdPage.reloadPage();
     await browser.sleep(10000);
+    await accessibilityCheck();
     expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
     await browser.sleep(500);
 });

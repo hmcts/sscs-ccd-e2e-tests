@@ -1,11 +1,17 @@
-import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { Then } from 'cucumber';
+const serviceConfig = require('../../service.conf')
 
-const serviceConfig = require('../../service.conf');
+import { AnyCcdPage } from '../../pages/any-ccd.page';
 const anyCcdPage = new AnyCcdPage();
 
-Then(/^The page is accessible$/, async function () {
+async function accessibilityCheck() {
     if (serviceConfig.TestForAccessibility) {
-        await anyCcdPage.runAccessibility();
+      await anyCcdPage.runAccessibility();
     }
+  }
+
+Then(/^the page is accessible$/, async function () {
+    accessibilityCheck()
 });
+
+module.exports = { accessibilityCheck }
