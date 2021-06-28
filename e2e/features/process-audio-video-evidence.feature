@@ -1,4 +1,4 @@
-@nightly-test @migrated-to-exui @now
+@nightly-test @migrated-to-exui
 Feature: Process audio video evidence event
 
     Background: Set up PIP case
