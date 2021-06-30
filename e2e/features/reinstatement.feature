@@ -9,7 +9,7 @@ Feature: The Reinstatement functionality
 
     When I switch to be a DWPResponse Writer
     When I choose "Action further evidence"
-    And I fill the further evidence form with "Reinstatement request"
+    And I fill the further evidence form with "Other document type" and "Reinstatement request"
     Then the case should have successfully processed "Action further evidence" event
 
     When I switch to be a Judge
@@ -21,7 +21,7 @@ Feature: The Reinstatement functionality
     Given I am signed in as a Case Officer
     And navigate to an existing case
     When I choose "Action further evidence"
-    And I fill the further evidence form with "Reinstatement request"
+    And I fill the further evidence form with "Other document type" and "Reinstatement request"
     Then the case should have successfully processed "Action further evidence" event
 
     When I switch to be a Judge

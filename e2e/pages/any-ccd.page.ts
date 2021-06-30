@@ -197,4 +197,42 @@ export class AnyCcdPage extends AnyPage {
         }
     }
 
+    async contentContainsSubstring(substring: string, wait: Wait = Wait.normal) {
+
+        const contentPath =
+            '//*[' +
+            'self::h1 or ' +
+            'self::h2 or ' +
+            'self::h3 or ' +
+            'self::h4 or ' +
+            'self::caption or ' +
+            'self::label or ' +
+            'self::p or ' +
+            'self::li or ' +
+            'self::div or ' +
+            'self::ccd-read-date-field or ' +
+            'self::dt or ' +
+            'self::ccd-read-fixed-list-field or ' +
+            'self::ng-component or ' +
+            'self::span or ' +
+            'self::td' +
+            ']'
+
+        try {
+            await browser.wait(
+                async () => {
+                    return (await element
+                        .all(by.xpath(contentPath))
+                        .filter(e => e.isPresent() && e.isDisplayed() && e.elementTextContains(substring))
+                        .count()) > 0;
+                },
+                wait
+            );
+
+            return true;
+
+        } catch (error) {
+            return false;
+        }
+    }
 }

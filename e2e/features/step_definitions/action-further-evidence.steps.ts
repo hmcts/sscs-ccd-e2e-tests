@@ -13,8 +13,8 @@ function delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
 }
 
-When(/^I fill the further evidence form with "(.+)"$/, async function (requestType) {
-    await anyCcdPage.chooseOptionContainingText('#furtherEvidenceAction', 'Other document type');
+When(/^I fill the further evidence form with "(.+)" and "(.+)"$/, async function (actionType, requestType) {
+    await anyCcdPage.chooseOptionContainingText('#furtherEvidenceAction', actionType);
     await anyCcdPage.click('Add new');
     await browser.sleep(1000);
 
