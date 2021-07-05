@@ -39,6 +39,7 @@ When(/^I generate an adjournment notice$/, async function () {
 
   await anyCcdPage.click('Continue');
   await anyCcdPage.click('Continue');
+  await browser.sleep(2000);
   await anyCcdPage.click('Continue');
   await anyCcdPage.click('Submit');
   await browser.sleep(5000);
