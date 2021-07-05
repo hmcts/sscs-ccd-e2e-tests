@@ -147,4 +147,27 @@ export class DwpResponsePage extends AnyPage {
     async jointPartyAddress(yesOrNo: string) {
         await anyCcdFormPage.clickElementById('jointPartyAddressSameAsAppellant_' + yesOrNo);
     }
-}
+
+    async uploadResponseWithAV(dwpState: string, benefitType: string) {
+        await browser.waitForAngular();
+        let remote = require('selenium-webdriver/remote');
+        browser.setFileDetector(new remote.FileDetector());
+        await this.uploadFile('dwpResponseDocument_documentLink', 'issue1.pdf');
+        await this.uploadFile('dwpAT38Document_documentLink', 'issue2.pdf');
+        await this.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
+        await browser.sleep(5000);
+
+        await anyCcdFormPage.click('Add new')
+        await this.uploadFile('dwpUploadAudioVideoEvidence_0_rip1Document', 'rip1.pdf');
+        await this.uploadFile('dwpUploadAudioVideoEvidence_0_documentLink', 'test_av.mp3');
+        await browser.sleep(8000);
+
+        await anyCcdFormPage.clickElementById('dwpFurtherInfo-No');
+        await anyCcdFormPage.clickElementById('dwpUCB-No');
+        await browser.sleep(3000);
+        await anyCcdFormPage.chooseOptionByElementId('benefitCode', '001');
+        await anyCcdFormPage.clickElementById('dwpUCB-No');
+        await anyCcdFormPage.chooseOptionByElementId('dwpFurtherEvidenceStates', 'No action');
+        await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (DWP)');
+        }
+    }

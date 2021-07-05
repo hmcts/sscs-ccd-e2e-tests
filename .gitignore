@@ -6,3 +6,5 @@ yarn-error.log
 .vscode/
 dist/
 *.iml
+reports/
+protractorFailuresReport/
