@@ -14,7 +14,7 @@ When(/^I book a hearing$/, async function () {
 });
 
 When(/^I generate an adjournment notice$/, async function () {
-  await anyCcdPage.clickElementById('adjournCaseGenerateNotice-Yes');
+  await anyCcdPage.clickElementById('adjournCaseGenerateNotice_Yes');
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCasePanelMembersExcluded-No');
   await anyCcdPage.click('Continue');
@@ -23,7 +23,7 @@ When(/^I generate an adjournment notice$/, async function () {
   await anyCcdPage.clickElementById('adjournCaseTypeOfHearing-faceToFace');
   await anyCcdPage.click('Continue');
 
-  await anyCcdPage.clickElementById('adjournCaseCanCaseBeListedRightAway-Yes');
+  await anyCcdPage.clickElementById('adjournCaseCanCaseBeListedRightAway_Yes');
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCaseTypeOfNextHearing-faceToFace');
   await anyCcdPage.click('Continue');
@@ -31,7 +31,7 @@ When(/^I generate an adjournment notice$/, async function () {
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCaseNextHearingListingDurationType-standardTimeSlot');
   await anyCcdPage.click('Continue');
-  await anyCcdPage.clickElementById('adjournCaseInterpreterRequired-No');
+  await anyCcdPage.clickElementById('adjournCaseInterpreterRequired_No');
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCaseNextHearingDateType-firstAvailableDate');
   await anyCcdPage.click('Continue');
@@ -46,13 +46,13 @@ When(/^I generate an adjournment notice$/, async function () {
 });
 
 When(/^I upload an adjournment notice and issue direction "(.+)"$/, async function (issueDirection) {
-  await anyCcdPage.clickElementById('adjournCaseGenerateNotice-No');
+  await anyCcdPage.clickElementById('adjournCaseGenerateNotice_No');
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCasePanelMembersExcluded-No');
   await anyCcdPage.click('Continue');
   await adjournmentPage.addPanelMembers();
   await anyCcdPage.click('Continue');
-  await anyCcdPage.clickElementById('adjournCaseAreDirectionsBeingMadeToParties-' + issueDirection);
+  await anyCcdPage.clickElementById('adjournCaseAreDirectionsBeingMadeToParties_' + issueDirection);
   await anyCcdPage.click('Continue');
   if (issueDirection === 'Yes' ) {
     await anyCcdPage.clickElementById('adjournCaseDirectionsDueDateDaysOffset-14');
@@ -64,7 +64,7 @@ When(/^I upload an adjournment notice and issue direction "(.+)"$/, async functi
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCaseNextHearingListingDurationType-standardTimeSlot');
   await anyCcdPage.click('Continue');
-  await anyCcdPage.clickElementById('adjournCaseInterpreterRequired-No');
+  await anyCcdPage.clickElementById('adjournCaseInterpreterRequired_No');
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCaseNextHearingDateType-firstAvailableDate');
   await anyCcdPage.click('Continue');

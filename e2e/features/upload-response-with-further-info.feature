@@ -22,7 +22,7 @@ Feature: The alternate happy path
     Then the case should be in "Ready to list" state
 
   
-  @happy-path @dwp-upload-response @uc @bug-ticket-EUI-2744
+  @happy-path @dwp-upload-response @uc @nightly-test
   Scenario: Should end up in "Ready to List" state when a UC disputed case has been response reviewed
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer

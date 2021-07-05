@@ -12,8 +12,8 @@ const caseDetailsPage = new CaseDetailsPage();
 const anyCcdFormPage = new AnyCcdFormPage();
 
 When(/^I write a final decision generate notice no generate$/, async function () {
-  await anyCcdPage.clickElementById('writeFinalDecisionIsDescriptorFlow-No');
-  await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice-No');
+  await anyCcdPage.clickElementById('writeFinalDecisionIsDescriptorFlow_No');
+  await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_No');
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-allowed');
   await anyCcdPage.click('Continue');

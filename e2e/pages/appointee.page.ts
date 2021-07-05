@@ -10,9 +10,9 @@ export class AppointeePage extends AnyCcdPage {
             await element(by.id('appeal_appellant_appointee_name_firstName')).sendKeys('AppointeeFirstName');
             await element(by.id('appeal_appellant_appointee_name_lastName')).sendKeys('AppointeeLastName');
 
-            await element(by.id('appeal_appellant_appointee_identity_dob-day')).sendKeys('1');
-            await element(by.id('appeal_appellant_appointee_identity_dob-month')).sendKeys('1');
-            await element(by.id('appeal_appellant_appointee_identity_dob-year')).sendKeys('1990');
+            await element(by.id('dob-day')).sendKeys('1');
+            await element(by.id('dob-month')).sendKeys('1');
+            await element(by.id('dob-year')).sendKeys('1990');
 
             await element(by.id('appeal_appellant_appointee_identity_nino')).sendKeys('KL335252C');
 

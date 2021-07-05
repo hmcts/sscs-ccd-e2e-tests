@@ -1,7 +1,7 @@
-@reasonable-adjustments
+@reasonable-adjustments @nightly-test
 Feature: Reasonable adjustments functionality
 
-  @nightly-test
+ 
   Scenario: Actioned reasonable adjustments
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
@@ -18,7 +18,7 @@ Feature: Reasonable adjustments functionality
 
     When I choose "Process reasonable adjustment"
     And I update adjustment status to be "Actioned"
-    # Then Reasonable adjustment tab is seen with "Reasonable adjustment status" as "Actioned"
+    Then Reasonable adjustment tab is seen with "Reasonable adjustment status" as "Actioned"
 
   
   Scenario: Required reasonable adjustments

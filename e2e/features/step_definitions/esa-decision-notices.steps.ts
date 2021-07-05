@@ -12,7 +12,7 @@ const anyCcdFormPage = new AnyCcdFormPage();
 
 When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)" To Allowed "(.+)"$/,
     async function (appealType, wcaAppeal, supportGroup, allowed) {
-    await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice-Yes');
+    await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
     if (allowed === 'YES') {
@@ -24,8 +24,8 @@ When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)"
     await browser.sleep(500);
     await anyCcdPage.clickElementById('writeFinalDecisionTypeOfHearing-faceToFace');
     await browser.sleep(1000);
-    await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion-Yes');
-    await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion-Yes');
+    await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion_Yes');
+    await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion_Yes');
     await anyCcdPage.click('Continue');
     await browser.sleep(1000);
     await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
@@ -37,17 +37,17 @@ When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)"
     await anyCcdPage.click('Continue');
     await browser.sleep(2000);
     if (wcaAppeal === 'YES') {
-        const wcaYes = appealType + 'Appeal-Yes';
+        const wcaYes = appealType + 'Appeal_Yes';
         await anyCcdPage.clickElementById(wcaYes);
     } else {
-        const wcaNo = appealType + 'Appeal-No';
+        const wcaNo = appealType + 'Appeal_No';
         await anyCcdPage.clickElementById(wcaNo);
     }
     await browser.sleep(500);
     if (supportGroup === 'YES') {
-        await anyCcdPage.clickElementById('supportGroupOnlyAppeal-Yes');
+        await anyCcdPage.clickElementById('supportGroupOnlyAppeal_Yes');
     } else {
-        await anyCcdPage.clickElementById('supportGroupOnlyAppeal-No');
+        await anyCcdPage.clickElementById('supportGroupOnlyAppeal_No');
     }
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
@@ -68,9 +68,9 @@ When(/^I select schedule 2 activities with <15 points and reg 29 "(.+)"$/, async
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
     if (reg29Apply === 'YES') {
-        await anyCcdPage.clickElementById('doesRegulation29Apply-Yes');
+        await anyCcdPage.clickElementById('doesRegulation29Apply_Yes');
     } else {
-        await anyCcdPage.clickElementById('doesRegulation29Apply-No');
+        await anyCcdPage.clickElementById('doesRegulation29Apply_No');
     }
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
@@ -95,9 +95,9 @@ When(/^I opt out schedule 3 activities and reg 35 "(.+)"$/, async function (reg3
     await anyCcdPage.scrollBar('//div/form/div/button[2]');
     await browser.sleep(500);
     if (reg35Apply === 'YES') {
-        await anyCcdPage.clickElementById('doesRegulation35Apply-Yes');
+        await anyCcdPage.clickElementById('doesRegulation35Apply_Yes');
     } else {
-        await anyCcdPage.clickElementById('doesRegulation35Apply-No');
+        await anyCcdPage.clickElementById('doesRegulation35Apply_No');
     }
     await anyCcdPage.scrollBar('//div/form/div/button[2]');
     await browser.sleep(500);

@@ -21,8 +21,8 @@ export class FurtherEvidencePage extends AnyPage {
     }
 
     async enterScannedDate(date: string, month: string, year: string) {
-        await element(by.id('scannedDocuments_0_scannedDate-day')).sendKeys(date);
-        await element(by.id('scannedDocuments_0_scannedDate-month')).sendKeys(month);
-        await element(by.id('scannedDocuments_0_scannedDate-year')).sendKeys(year);
+        await element(by.id('scannedDate-day')).sendKeys(date);
+        await element(by.id('scannedDate-month')).sendKeys(month);
+        await element(by.id('scannedDate-year')).sendKeys(year);
     }
 }

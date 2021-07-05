@@ -19,7 +19,7 @@ export class ResponseReviewedPage extends AnyPage {
     }
 
     async isInterlocRequired(yesOrNo: string) {
-        await anyCcdPage.clickElementById('isInterlocRequired-' + yesOrNo);
+        await anyCcdPage.clickElementById('isInterlocRequired_' + yesOrNo);
     }
 
 }

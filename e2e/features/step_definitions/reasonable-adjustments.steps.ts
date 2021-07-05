@@ -12,13 +12,13 @@ When(/^generate a letter in "(.+)" with "(.+)" option$/, async function (letterF
     await anyCcdPage.chooseOptionContainingText('#reasonableAdjustmentChoice', letterFormat);
     if (adjustmentOption === 'Yes') {
         await browser.sleep(2000);
-        await anyCcdPage.clickElementById(`reasonableAdjustments_appellant_wantsReasonableAdjustment-${adjustmentOption}`);
+        await anyCcdPage.clickElementById(`reasonableAdjustments_appellant_wantsReasonableAdjustment_${adjustmentOption}`);
         await browser.sleep(2000);
         await anyCcdPage.fillValues('reasonableAdjustments_appellant_reasonableAdjustmentRequirements', 'A2');
-        await anyCcdPage.clickElementById('reasonableAdjustments_representative_wantsReasonableAdjustment-No');
+        await anyCcdPage.clickElementById('reasonableAdjustments_representative_wantsReasonableAdjustment_No');
     } else if (adjustmentOption === 'No') {
         await browser.sleep(2000);
-        await anyCcdPage.clickElementById(`reasonableAdjustments_appellant_wantsReasonableAdjustment-${adjustmentOption}`);
+        await anyCcdPage.clickElementById(`reasonableAdjustments_appellant_wantsReasonableAdjustment_${adjustmentOption}`);
     } else {
         throw new exception('No adjustment option passed in test');
     }
@@ -39,7 +39,7 @@ Then('reasonable adjustment details are not seen in summary page', async functio
 });
 
 Then(/^Reasonable adjustment tab is seen with "(.+)" as "(.+)"$/, async function (field, value) {
-    await browser.sleep(5000);
+    await browser.sleep(8000);
     await anyCcdPage.reloadPage();
     await browser.sleep(2000);
     await anyCcdPage.clickTab('Reasonable Adjustments Letters');

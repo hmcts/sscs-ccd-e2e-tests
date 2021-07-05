@@ -17,16 +17,16 @@ export class DwpResponsePage extends AnyPage {
         await this.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
         if (action === 'YES') {
             await browser.sleep(10000);
-            await anyCcdFormPage.clickElementById('dwpFurtherInfo-Yes');
+            await anyCcdFormPage.clickElementById('dwpFurtherInfo_Yes');
         } else {
             await browser.sleep(5000);
-            await anyCcdFormPage.clickElementById('dwpFurtherInfo-No');
-            await anyCcdFormPage.clickElementById('dwpUCB-No');
+            await anyCcdFormPage.clickElementById('dwpFurtherInfo_No');
+            await anyCcdFormPage.clickElementById('dwpUCB_No');
             await browser.sleep(3000);
         }
         if (dwpState === 'YES' && benefitType !== 'UC') {
             await anyCcdFormPage.chooseOptionByElementId('benefitCode', '001');
-            await anyCcdFormPage.clickElementById('dwpUCB-No');
+            await anyCcdFormPage.clickElementById('dwpUCB_No');
             await anyCcdFormPage.chooseOptionByElementId('dwpFurtherEvidenceStates', 'No action');
             await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (DWP)');
         }
@@ -41,7 +41,7 @@ export class DwpResponsePage extends AnyPage {
             await this.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
             if (isUCB) {
                  await browser.sleep(1000);
-                 await anyCcdFormPage.clickElementById('dwpUCB-Yes');
+                 await anyCcdFormPage.clickElementById('dwpUCB_Yes');
                  console.log('uploading ucb doc....')
                  await this.uploadFile(docLink, 'issue3.pdf');
                  await browser.sleep(10000);
@@ -57,11 +57,11 @@ export class DwpResponsePage extends AnyPage {
             }
 
             if (containsFurtherInfo) {
-                await anyCcdFormPage.clickElementById('dwpFurtherInfo-Yes');
+                await anyCcdFormPage.clickElementById('dwpFurtherInfo_Yes');
                 await browser.sleep(1000);
             } else {
                 await browser.sleep(1000);
-                await anyCcdFormPage.clickElementById('dwpFurtherInfo-No');
+                await anyCcdFormPage.clickElementById('dwpFurtherInfo_No');
             }
             if (dwpState === 'YES') {
                 anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (DWP)');
@@ -118,14 +118,14 @@ export class DwpResponsePage extends AnyPage {
     }
 
     async disputedPage(yesOrNo: string, reference: string) {
-        await anyCcdFormPage.clickElementById('elementsDisputedIsDecisionDisputedByOthers-' + yesOrNo);
+        await anyCcdFormPage.clickElementById('elementsDisputedIsDecisionDisputedByOthers_' + yesOrNo);
         if (yesOrNo === 'Yes') {
             await element(by.id('elementsDisputedLinkedAppealRef')).sendKeys(reference);
         }
     }
 
     async jointParty(yesOrNo: string) {
-        await anyCcdFormPage.clickElementById('jointParty-' + yesOrNo);
+        await anyCcdFormPage.clickElementById('jointParty_' + yesOrNo);
     }
 
     async jointPartyName() {
@@ -136,15 +136,15 @@ export class DwpResponsePage extends AnyPage {
 
     async jointPartyIdentityDetails() {
         await browser.sleep(2000);
-        await element(by.id('jointPartyIdentity_dob-day')).sendKeys('20')
-        await element(by.id('jointPartyIdentity_dob-month')).sendKeys('12')
-        await element(by.id('jointPartyIdentity_dob-year')).sendKeys('1980')
+        await element(by.id('dob-day')).sendKeys('20')
+        await element(by.id('dob-month')).sendKeys('12')
+        await element(by.id('dob-year')).sendKeys('1980')
 
         const nino = niGenerator.myNIYearPrefix() + niGenerator.myNIMonthPrefix() + niGenerator.myNINumberFromDay() + 'C';
         await element(by.id('jointPartyIdentity_nino')).sendKeys(nino);
     }
 
     async jointPartyAddress(yesOrNo: string) {
-        await anyCcdFormPage.clickElementById('jointPartyAddressSameAsAppellant-' + yesOrNo);
+        await anyCcdFormPage.clickElementById('jointPartyAddressSameAsAppellant_' + yesOrNo);
     }
 }

@@ -41,7 +41,7 @@ When(/^I fill the direction notice form with "(.+)"$/, async function (reinstate
     await anyCcdPage.chooseOptionContainingText('#directionTypeDl', reinstatement);
     await caseDetailsPage.addDayItems('directionDueDate');
     await browser.sleep(3000);
-    await anyCcdPage.scrollPage('//*[@id="generateNotice-No"]');
+    await anyCcdPage.scrollPage('//*[@id="generateNotice_No"]');
     await browser.sleep(2000);
     await anyCcdPage.chooseOptionContainingText('#sscsInterlocDirectionDocument_documentType', 'Directions Notice');
     await furtherEvidencePage.uploadFile('sscsInterlocDirectionDocument_documentLink', 'issue2.pdf');
