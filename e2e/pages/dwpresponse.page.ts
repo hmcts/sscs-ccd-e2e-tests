@@ -162,11 +162,10 @@ export class DwpResponsePage extends AnyPage {
         await this.uploadFile('dwpUploadAudioVideoEvidence_0_documentLink', 'test_av.mp3');
         await browser.sleep(8000);
 
-        await anyCcdFormPage.clickElementById('dwpFurtherInfo-No');
-        await anyCcdFormPage.clickElementById('dwpUCB-No');
+        await anyCcdFormPage.clickElementById('dwpFurtherInfo_No');
+        await anyCcdFormPage.clickElementById('dwpUCB_No');
         await browser.sleep(3000);
         await anyCcdFormPage.chooseOptionByElementId('benefitCode', '001');
-        await anyCcdFormPage.clickElementById('dwpUCB-No');
         await anyCcdFormPage.chooseOptionByElementId('dwpFurtherEvidenceStates', 'No action');
         await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (DWP)');
         }
