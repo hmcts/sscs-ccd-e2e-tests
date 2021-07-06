@@ -21,9 +21,9 @@ When(/^I populate fields and continue$/, async function () {
 Then(/^I set UCB flag to "(.+)"$/, async function (ucbFlag) {
 
    if (ucbFlag === 'Yes') {
-   await anyCcdPage.clickElementById('dwpUCB-Yes');
+   await anyCcdPage.clickElementById('dwpUCB_Yes');
    } else {
-     await anyCcdPage.clickElementById('dwpUCB-No');
+     await anyCcdPage.clickElementById('dwpUCB_No');
    }
    await anyCcdPage.click('Continue');
    await anyCcdPage.click('Submit');
@@ -38,9 +38,9 @@ Then(/^I set UCB flag to "(.+)"$/, async function (ucbFlag) {
 
 Then(/^I set PHME Granted flag to "(.+)"$/, async function (phmeGranted) {
     if (phmeGranted === 'Yes') {
-        await anyCcdPage.clickElementById('phmeGranted-Yes');
+        await anyCcdPage.clickElementById('phmeGranted_Yes');
     } else {
-        await anyCcdPage.clickElementById('phmeGranted-No');
+        await anyCcdPage.clickElementById('phmeGranted_No');
     }
     await anyCcdPage.click('Continue');
     await anyCcdPage.click('Submit');
