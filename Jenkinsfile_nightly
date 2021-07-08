@@ -49,19 +49,19 @@ withNightlyPipeline("nodejs", product, component) {
     env.TEST_E2E_FAIL_FAST = 'false'
     env.TEST_E2E_ANNOTATION = params.NIGHTLY_TAG
 
-    // enableCrossBrowserTest(60)
+    enableCrossBrowserTest(60)
     enableFullFunctionalTest(120)
 
-    // after('crossBrowserTest') {
-    //     publishHTML([
-    //         allowMissing         : true,
-    //         alwaysLinkToLastBuild: true,
-    //         keepAll              : true,
-    //         reportDir            : "reports/tests/crossbrowser/",
-    //         reportFiles          : 'index.html',
-    //         reportName           : 'SSCS - EXUI Cross Browser Report'
-    //     ])
-    // }
+    after('crossBrowserTest') {
+        publishHTML([
+            allowMissing         : true,
+            alwaysLinkToLastBuild: true,
+            keepAll              : true,
+            reportDir            : "reports/tests/crossbrowser/",
+            reportFiles          : 'index.html',
+            reportName           : 'SSCS - EXUI Cross Browser Report'
+        ])
+    }
 
     after('fullFunctionalTest') {
         publishHTML([
