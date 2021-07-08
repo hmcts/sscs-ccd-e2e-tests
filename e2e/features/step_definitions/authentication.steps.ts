@@ -9,7 +9,7 @@ const serviceConfig = require('../../service.conf');
 
 Given(/^I am signed in as a Case Officer$/, async function () {
     await authenticationFlow.signInAsCaseOfficer();
-    if(!serviceConfig.TestsForCrossBrowser){
+    if (!serviceConfig.TestsForCrossBrowser) {
         await anyCcdPage.waitUntilLoaded();
     }
 });
