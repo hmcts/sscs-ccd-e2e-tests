@@ -16,7 +16,6 @@ const serviceConfig = require('./service.conf');
 const tsNode = require('ts-node');
 const path = require('path');
 const { generateAccessibilityReport } = require('../reporter/customReporter');
-const { getAccessibilityTestResult } = require('./helpers/axe-runner.ts');
 
 
 let capabilities = {
@@ -145,7 +144,7 @@ class BaseConfig {
     }
 
     this.onComplete = () => {
-      generateAccessibilityReport(getAccessibilityTestResult());
+      generateAccessibilityReport();
     };
 
     this.plugins = [

@@ -2,7 +2,6 @@ import { $, $$, browser, by, element, ExpectedConditions } from 'protractor';
 import { AnyPage } from './any.page';
 import { Wait } from '../enums/wait';
 
-const serviceConfig = require('../service.conf');
 const AxeRunner = require('../helpers/axe-runner');
 
 export class AnyCcdPage extends AnyPage {
@@ -296,9 +295,7 @@ export class AnyCcdPage extends AnyPage {
     };
 
     async runAccessibility() {
-        if (serviceConfig.TestForAccessibility) {
-            await AxeRunner.runAndReportAccessibility();
-        }
+        await AxeRunner.runAndReportAccessibility();
     };
 
 }

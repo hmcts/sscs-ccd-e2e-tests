@@ -11,7 +11,7 @@ async function accessibilityCheck() {
   }
 
 Then(/^the page is accessible$/, async function () {
-    accessibilityCheck()
+    await accessibilityCheck()
 });
 
 module.exports = { accessibilityCheck }
