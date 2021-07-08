@@ -58,7 +58,7 @@ const config = {
     browser.manage()
       .window()
       .maximize();
-    browser.waitForAngularEnabled(true);
+    browser.waitForAngularEnabled(false);
 
     tsNode.register({
       project: path.join(__dirname, './tsconfig.e2e.json')
