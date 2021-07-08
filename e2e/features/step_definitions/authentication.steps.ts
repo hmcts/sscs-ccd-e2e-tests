@@ -5,10 +5,13 @@ import { browser } from 'protractor';
 
 const anyCcdPage = new AnyCcdPage();
 const authenticationFlow = new AuthenticationFlow();
+const serviceConfig = require('../../service.conf');
 
 Given(/^I am signed in as a Case Officer$/, async function () {
     await authenticationFlow.signInAsCaseOfficer();
-    await anyCcdPage.waitUntilLoaded();
+    if(!serviceConfig.TestsForCrossBrowser){
+        await anyCcdPage.waitUntilLoaded();
+    }
 });
 
 Given(/^I am signed in as a DWPResponse Writer$/, async function () {
