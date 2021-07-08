@@ -65,14 +65,14 @@ const config = {
     });
   },
 
-  onComplete() {
-    return browser.getProcessedConfig().then(function (c) {
-      return browser.getSession().then(function (session) {
-        // required to be here so saucelabs picks up reports to put in jenkins
-        console.log('SauceOnDemandSessionID=' + session.getId() + ' job-name=sscs-ccd-e2e-tests');
-      });
-    });
-  }
+  // onComplete() {
+  //   return browser.getProcessedConfig().then(function (c) {
+  //     return browser.getSession().then(function (session) {
+  //       // required to be here so saucelabs picks up reports to put in jenkins
+  //       console.log('SauceOnDemandSessionID=' + session.getId() + ' job-name=sscs-ccd-e2e-tests');
+  //     });
+  //   });
+  // }
 };
 
 exports.config = config;
