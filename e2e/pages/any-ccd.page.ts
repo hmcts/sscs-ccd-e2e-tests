@@ -43,6 +43,19 @@ export class AnyCcdPage extends AnyPage {
         await this.smartWait(2000);
     }
 
+    async clickElementByCss(elementId: string) {
+        await browser.wait(
+            async () => {
+                return await element(by.css(elementId))
+                    .isPresent();
+            },
+            Wait.normal,
+            'Button did not show in time'
+        );
+        await element(by.css(elementId)).click();
+        await this.smartWait(2000);
+    }
+
     async clickAction(elementId: string) {
         await browser.wait(
             async () => {

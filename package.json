@@ -6,11 +6,11 @@
     "postinstall": "webdriver-manager update --gecko=false",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "e2e": "yarn test:fullfunctional",
-    "test:fullfunctional": "yarn install && cross-env TRIBUNALS_API_URL=http://sscs-tribunals-api-aat.service.core-compute-aat.internal protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@nightly-test",
-    "test:crossbrowser": "TEST_FOR_CROSS_BROWSER='true' yarn install && protractor ./e2e/features.crossbrowser.conf.js --cucumberOpts.tags='@crossbrowser' --cucumberOpts.tags=~@OnlyIfSaveAndContinueIsEnabled",
+    "test:fullfunctional": "yarn install && protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@nightly-test",
+    "test:crossbrowser": "yarn install && cross-env TEST_FOR_CROSS_BROWSER='true' protractor ./e2e/features.crossbrowser.conf.js --cucumberOpts.tags='@crossbrowser' --cucumberOpts.tags=~@OnlyIfSaveAndContinueIsEnabled",
     "test:prod": "yarn install && protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@nightly-test --cucumberOpts.tags=~@issue-decision --cucumberOpts.tags=~@uc --cucumberOpts.tags=~@reinstatement --cucumberOpts.tags=~@bundle",
     "test:nsp": "nsp check",
-    "test:a11y": "yarn install && TEST_E2E_NUM_BROWSERS='1' TRIBUNALS_API_URL='http://sscs-tribunals-api-aat.service.core-compute-aat.internal' protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@a11y"
+    "test:a11y": "yarn install && TEST_E2E_NUM_BROWSERS='1' protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@a11y"
   },
   "dependencies": {
     "@angular/compiler": "^7.0.0",
@@ -35,7 +35,7 @@
     "moment": "^2.28.0",
     "nsp": "^3.2.1",
     "path": "^0.12.7",
-    "protractor": "^5.4.1",
+    "protractor": "~5.4.0",
     "protractor-beautiful-reporter": "^1.2.5",
     "protractor-cucumber-framework": "^6.1.1",
     "protractor-multiple-cucumber-html-reporter-plugin": "^1.8.1",
