@@ -28,6 +28,8 @@ def secrets = [
     ]
 ]
 
+def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
+
 static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
     [$class     : 'AzureKeyVaultSecret',
      secretType : 'Secret',
@@ -72,6 +74,8 @@ withNightlyPipeline("nodejs", product, component) {
             reportFiles          : 'index.html',
             reportName           : 'SSCS - EXUI Functional Test Report'
         ])
+
+        yarnBuilder.yarn('test:a11y')
 
         publishHTML([
                 allowMissing         : true,
