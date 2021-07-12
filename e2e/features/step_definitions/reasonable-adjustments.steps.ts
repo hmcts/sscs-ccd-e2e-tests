@@ -2,8 +2,8 @@ import { When, Then } from 'cucumber';
 import { browser } from 'protractor';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { assert, expect } from 'chai';
-import { CaseDetailsPage } from '../../pages/case-details.page';
 import { exception } from 'console';
+import { CaseDetailsPage } from '../../pages/case-details.page';
 
 const anyCcdPage = new AnyCcdPage();
 const caseDetailsPage = new CaseDetailsPage();
@@ -19,6 +19,8 @@ When(/^generate a letter in "(.+)" with "(.+)" option$/, async function (letterF
     } else if (adjustmentOption === 'No') {
         await browser.sleep(2000);
         await anyCcdPage.clickElementById(`reasonableAdjustments_appellant_wantsReasonableAdjustment_${adjustmentOption}`);
+        await browser.sleep(2000);
+        await anyCcdPage.clickElementById('reasonableAdjustments_representative_wantsReasonableAdjustment_No');
     } else {
         throw new exception('No adjustment option passed in test');
     }
@@ -41,7 +43,9 @@ Then('reasonable adjustment details are not seen in summary page', async functio
 Then(/^Reasonable adjustment tab is seen with "(.+)" as "(.+)"$/, async function (field, value) {
     await browser.sleep(8000);
     await anyCcdPage.reloadPage();
-    await browser.sleep(2000);
+    await browser.manage().window().maximize();
+    await anyCcdPage.clickElementByCss('div .mat-tab-header-pagination-after');
+    await browser.sleep(5000);
     await anyCcdPage.clickTab('Reasonable Adjustments Letters');
     await browser.sleep(1000);
 
