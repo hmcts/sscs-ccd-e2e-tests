@@ -10,6 +10,7 @@ module.exports = {
   TestJudgePassword: process.env.TEST_JUDGE_PASSWORD || '',
   TestDWPResponseWriterUserName: process.env.TEST_DWP_USERNAME || '',
   TestDWPResponseWriterPassword: process.env.TEST_DWP_PASSWORD || '',
+  TestOutputDir: process.env.E2E_OUTPUT_DIR || './reports/tests',
 
   // CcdGatewayUrl: process.env.TEST_E2E_URL_GATEWAY || 'http://localhost:3453',
   // CcdWebUrl: process.env.TEST_E2E_URL_WEB ||  'http://localhost:3451',
