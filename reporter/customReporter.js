@@ -1,5 +1,5 @@
 const testConfig = require('../e2e/service.conf.js')
-const AxeRunner = require('../e2e/helpers/axe-runner.ts');
+const AxeRunner = require('../e2e/helpers/axe-runner.js');
 const fs = require('fs');
 
 function generateAccessibilityReport() {
