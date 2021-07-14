@@ -41,9 +41,9 @@ When(/^I upload contains further information (.+) for "(.+)"$/, async function (
       await anyCcdPage.addNewCollectionItem('General');
       await anyCcdPage.selectGeneralIssueCode();
       await anyCcdPage.click('Continue');
-      await anyCcdPage.clickElementById('elementsDisputedIsDecisionDisputedByOthers-No');
+      await anyCcdPage.clickElementById('elementsDisputedIsDecisionDisputedByOthers_No');
       await anyCcdPage.click('Continue');
-      await anyCcdPage.clickElementById('jointParty-No');
+      await anyCcdPage.clickElementById('jointParty_No');
       await anyCcdPage.click('Continue');
 
     }

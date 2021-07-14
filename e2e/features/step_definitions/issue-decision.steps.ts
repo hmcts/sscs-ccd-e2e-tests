@@ -24,15 +24,15 @@ When(/^I write a final decision generate notice no generate$/, async function ()
 });
 
 When(/^I write a final decision generate notice yes daily living mobility is no face to face$/, async function () {
-  await anyCcdPage.clickElementById('writeFinalDecisionIsDescriptorFlow-No');
-  await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice-Yes');
+  await anyCcdPage.clickElementById('writeFinalDecisionIsDescriptorFlow_No');
+  await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-allowed');
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('writeFinalDecisionTypeOfHearing-faceToFace');
   await browser.sleep(500);
-  await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion-Yes');
-  await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion-Yes');
+  await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion_Yes');
+  await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion_Yes');
   await anyCcdPage.click('Continue');
   await issueDecisionPage.addPanelMembers();
   await anyCcdPage.click('Continue');
@@ -64,13 +64,13 @@ When(/^I write a final decision generate notice yes daily living mobility is no 
 });
 
 When(/^I write a final decision generate notice yes daily living mobility is yes face to face$/, async function () {
-  await anyCcdPage.clickElementById('writeFinalDecisionIsDescriptorFlow-Yes');
-  await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice-Yes');
+  await anyCcdPage.clickElementById('writeFinalDecisionIsDescriptorFlow_Yes');
+  await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('writeFinalDecisionTypeOfHearing-faceToFace');
   await browser.sleep(500);
-  await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion-Yes');
-  await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion-Yes');
+  await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion_Yes');
+  await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion_Yes');
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('pipWriteFinalDecisionDailyLivingQuestion-standardRate');
   await anyCcdPage.clickElementById('pipWriteFinalDecisionComparedToDWPDailyLivingQuestion-higher');

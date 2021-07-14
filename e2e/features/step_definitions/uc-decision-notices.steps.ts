@@ -18,9 +18,9 @@ When(/^I select schedule 6 activities with <15 points and schedule 8 para 4 "(.+
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
     if (para4Apply === 'YES') {
-        await anyCcdPage.clickElementById('doesSchedule8Paragraph4Apply-Yes');
+        await anyCcdPage.clickElementById('doesSchedule8Paragraph4Apply_Yes');
     } else {
-        await anyCcdPage.clickElementById('doesSchedule8Paragraph4Apply-No');
+        await anyCcdPage.clickElementById('doesSchedule8Paragraph4Apply_No');
     }
     await anyCcdPage.click('Continue');
     await browser.sleep(1000);

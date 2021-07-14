@@ -25,7 +25,7 @@ Feature: Issue decision
     Then the case should end in "Dormant" state
     Then I  should see "Final Decision Notice" in documents tab
 
-  @issue-decision @nightly-test-1 @PIP-DN-2
+  @issue-decision @nightly-test @PIP-DN-2
   Scenario: Yes to generate decision and award is about daily living or mobility
     And I write a final decision generate notice yes daily living mobility is no face to face
 
@@ -34,7 +34,7 @@ Feature: Issue decision
     Then the case should be in "Dormant" appeal status
     Then I  should see "Final Decision Notice" in documents tab
 
-    @issue-decision @nightly-test-1 @PIP-DN-3
+    @issue-decision @nightly-test @PIP-DN-3
     Scenario: Yes to generate decision and award is about daily living or mobility
       And I write a final decision generate notice yes daily living mobility is yes face to face
       And I see "Draft Decision Notice"
