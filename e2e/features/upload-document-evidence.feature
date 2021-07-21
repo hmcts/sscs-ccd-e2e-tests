@@ -1,5 +1,5 @@
 @migrated-to-exui-1 @nightly-test
-Feature: Create bundle for a case
+Feature: Upload evidences to a case
 
   Scenario: Upload an evidence using Upload document event
     Given I presetup an "PIP" SYA case
