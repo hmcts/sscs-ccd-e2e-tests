@@ -66,7 +66,7 @@ Then(/^the bundle should include the AV evidence$/, async function () {
 Given(/^I submit "(.+)" as "(.+)" in the Upload document FE event$/, async function (filename, type) {
     await anyCcdPage.click('Add new');
     await anyCcdPage.chooseOptionContainingText('#draftSscsFurtherEvidenceDocument_0_documentType', type);
-    await dwpresponse.uploadFile('draftSscsFurtherEvidenceDocument_0_documentLink', 'test_av.mp3');
+    await dwpresponse.uploadFile('draftSscsFurtherEvidenceDocument_0_documentLink', filename);
     await browser.sleep(8000);
     await anyCcdPage.click('Continue');
     expect(await anyCcdPage.contentContains('Event summary (optional)')).to.equal(true);

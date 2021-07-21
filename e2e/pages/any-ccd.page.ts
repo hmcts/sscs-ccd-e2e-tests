@@ -123,7 +123,7 @@ export class AnyCcdPage extends AnyPage {
                         .isDisplayed();
 
                 } else {
-                    return await element(by.xpath('//div[normalize-space()="' + fieldLabel + '"]/../..' +
+                    return await element(by.xpath('//*[normalize-space()="' + fieldLabel + '"]/../..' +
                         '//td[normalize-space()="' + fieldValue + '"]'))
                         .isDisplayed();
                 }
