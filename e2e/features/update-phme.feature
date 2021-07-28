@@ -26,3 +26,5 @@ Feature: The Update UCB
     And I submit "Create a bundle"
     Then the bundles should be successfully listed in "History" tab
     And the case bundle details should be listed in "Bundles" tab
+    And the "SSCS Bundle Edited" bundle configuration should have been used
+    And the "SSCS Bundle Original" bundle configuration should have been used

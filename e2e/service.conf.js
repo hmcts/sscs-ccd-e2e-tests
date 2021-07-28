@@ -17,7 +17,7 @@ module.exports = {
 
   ProxyUrl: process.env.TEST_E2E_URL_PROXY || '',
   RunWithNumberOfBrowsers: process.env.TEST_E2E_NUM_BROWSERS || 2,
-  UseProxy: process.env.TEST_E2E_USE_PROXY == 'false',
+  UseProxy: process.env.TEST_E2E_USE_PROXY === 'false',
   WaitForAngular: process.env.TEST_E2E_WAIT_FOR_ANGULAR !== 'false',
   FailFast: process.env.TEST_E2E_FAIL_FAST !== 'false',
   TestsForCrossBrowser: process.env.TEST_FOR_CROSS_BROWSER || 'false',

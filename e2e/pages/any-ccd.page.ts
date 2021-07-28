@@ -74,6 +74,10 @@ export class AnyCcdPage extends AnyPage {
         await element(by.xpath('//div[text()="' + tabTitle + '"]')).click();
     }
 
+   async clickElementByIdXPath(xPathStr: string) {
+            await element(by.xpath(xPathStr)).click();
+   }
+
     async chooseOptionByElementId(elementId: string, option: string) {
         await element(by.id(elementId))
             .element(by.xpath('.//option[normalize-space()="' + option + '"]'))
@@ -117,7 +121,7 @@ export class AnyCcdPage extends AnyPage {
                 }
 
             } else if ($$('cut-tabs').isPresent()) {
-                if ($$('ccd-event-log').isPresent()) {
+                if ($$('ccd-event-log').isPresent() || $$('ccd-read-complex-field-table').isPresent()) {
                     return await element(by.xpath('//span[normalize-space()="' + fieldLabel + '"]/../..' +
                         '//td[normalize-space()="' + fieldValue + '"]'))
                         .isDisplayed();
@@ -188,11 +192,11 @@ export class AnyCcdPage extends AnyPage {
     }
 
     async selectIssueCode() {
-        element(by.id('issueCode')).element(by.xpath('//*[@id="issueCode"]/option[2]')).click();
+        await element(by.id('issueCode')).element(by.xpath('//*[@id="issueCode"]/option[3]')).click();
     }
 
     async selectGeneralIssueCode() {
-        element(by.id('elementsDisputedGeneral_0_issueCode'))
+        await element(by.id('elementsDisputedGeneral_0_issueCode'))
             .element(by.xpath('//*[@id="elementsDisputedGeneral_0_issueCode"]/option[2]')).click();
     }
 
@@ -311,4 +315,42 @@ export class AnyCcdPage extends AnyPage {
         await AxeRunner.runAndReportAccessibility();
     };
 
+    async contentContainsSubstring(substring: string, wait: Wait = Wait.normal) {
+
+        const contentPath =
+            '//*[' +
+            'self::h1 or ' +
+            'self::h2 or ' +
+            'self::h3 or ' +
+            'self::h4 or ' +
+            'self::caption or ' +
+            'self::label or ' +
+            'self::p or ' +
+            'self::li or ' +
+            'self::div or ' +
+            'self::ccd-read-date-field or ' +
+            'self::dt or ' +
+            'self::ccd-read-fixed-list-field or ' +
+            'self::ng-component or ' +
+            'self::span or ' +
+            'self::td' +
+            ']'
+
+        try {
+            await browser.wait(
+                async () => {
+                    return (await element
+                        .all(by.xpath(contentPath))
+                        .filter(e => e.isPresent() && e.isDisplayed() && e.elementTextContains(substring))
+                        .count()) > 0;
+                },
+                wait
+            );
+
+            return true;
+
+        } catch (error) {
+            return false;
+        }
+    }
 }

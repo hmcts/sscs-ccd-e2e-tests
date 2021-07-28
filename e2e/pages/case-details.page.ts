@@ -73,29 +73,29 @@ export class CaseDetailsPage extends AnyCcdPage {
     }
 
     async addReasonAndDate(dateType: String) {
-            element(by.id('notListableProvideReasons')).sendKeys('reason for not listable goes here')
+            await element(by.id('notListableProvideReasons')).sendKeys('reason for not listable goes here')
             await this.click('Continue');
             browser.driver.sleep(100);
-            this.addFutureDate(dateType);
+            await this.addFutureDate(dateType);
        }
 
     async addFutureDate(dateType: String) {
-                    const tomorrow = new Date();
-                    tomorrow.setDate(new Date().getDate() + 1)
-                    element(by.id(dateType + '-day')).sendKeys(tomorrow.getDate() + 1)
-                    element(by.id(dateType + '-month')).sendKeys(tomorrow.getMonth() + 1)
-                    element(by.id(dateType + '-year')).sendKeys(tomorrow.getFullYear())
-                    await this.click('Continue');
+            const tomorrow = new Date();
+            tomorrow.setDate(new Date().getDate() + 1)
+            await element(by.id(dateType + '-day')).sendKeys(tomorrow.getDate())
+            await element(by.id(dateType + '-month')).sendKeys(tomorrow.getMonth() + 1)
+            await element(by.id(dateType + '-year')).sendKeys(tomorrow.getFullYear())
+            await this.click('Continue');
       }
 
-       async addPastDate(dateType: String) {
-                          const tomorrow = new Date();
+    async addPastDate(dateType: String) {
+            const tomorrow = new Date();
 
-                          tomorrow.setDate(new Date().getDate() - 1)
-                          element(by.id(dateType + '-day')).sendKeys(tomorrow.getDate())
-                          element(by.id(dateType + '-month')).sendKeys(tomorrow.getMonth() + 1)
-                          element(by.id(dateType + '-year')).sendKeys(tomorrow.getFullYear())
-            }
+            tomorrow.setDate(new Date().getDate() - 1)
+            await element(by.id(dateType + '-day')).sendKeys(tomorrow.getDate())
+            await element(by.id(dateType + '-month')).sendKeys(tomorrow.getMonth() + 1)
+            await element(by.id(dateType + '-year')).sendKeys(tomorrow.getFullYear())
+    }
 
     async addDayItems(dateType: String) {
         browser.driver.sleep(100);

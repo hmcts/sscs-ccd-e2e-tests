@@ -32,20 +32,26 @@ When(/^I upload contains further information (.+) for "(.+)"$/, async function (
     await dwpresponse.uploadResponse(action, dwpState, benefitType);
     if (benefitType !== 'UC') {
         await anyCcdPage.selectIssueCode();
+        await browser.sleep(2000);
     }
+    await browser.sleep(500);
     await anyCcdPage.scrollBar('//div/form/div/button[2]');
+    await browser.sleep(500);
     if (benefitType === 'UC') {
       await browser.sleep(3000);
       await anyCcdPage.clickElementById('elementsDisputedList-general');
       await anyCcdPage.click('Continue');
+      await browser.sleep(500);
       await anyCcdPage.addNewCollectionItem('General');
       await anyCcdPage.selectGeneralIssueCode();
       await anyCcdPage.click('Continue');
+      await browser.sleep(500);
       await anyCcdPage.clickElementById('elementsDisputedIsDecisionDisputedByOthers_No');
       await anyCcdPage.click('Continue');
+      await browser.sleep(500);
       await anyCcdPage.clickElementById('jointParty_No');
       await anyCcdPage.click('Continue');
-
+      await browser.sleep(500);
     }
     await anyCcdPage.scrollBar('//button[@type=\'submit\']');
 });
@@ -57,13 +63,11 @@ When(/^I upload (.+) further information with disputed (.+) disputed by others (
 
 Then(/^the case should be in "(.+)" appeal status$/, async function (state) {
     await browser.sleep(5000);
-    // await anyCcdPage.reloadPage();
     expect(await anyCcdPage.contentContains(state)).to.equal(true);
 });
 
 Then(/^the case should end in "(.+)" state$/, async function (state) {
     await anyCcdPage.clickTab('History');
-    // await anyCcdPage.reloadPage();
     await browser.sleep(10000);
     expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
     await browser.sleep(500);

@@ -67,8 +67,6 @@ Then(/^I enter date of appellant death with "(.+)" to appointee$/, async functio
    expect(await anyCcdPage.contentContains('Appointee details needed')).to.equal(true);
    }
    await anyCcdPage.clickTab('History');
-//    expect(await anyCcdPage.contentContains('Awaiting Admin Action')).to.equal(true);
-
 });
 
 Then(/^I enter "(.+)" to appointee and continue$/, async function (hasAppointee) {

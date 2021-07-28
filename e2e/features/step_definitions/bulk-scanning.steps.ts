@@ -69,19 +69,6 @@ async function addIncompleteDataItems() {
 
 }
 
-// async function checkDataItems(formType: string) {
-//     let testData = (formType === 'SSCSPE') ? await formData : await sscsPeuFormData;
-//     for (let i = 0; i < testData.length; i++) {
-//         expect(
-//             await caseDetailsPage.isCollectionItemFieldValueDisplayed(
-//             'Form OCR Data',
-//             i + 1,
-//             'Key',
-//             testData[i].question
-//             )
-//         ).to.equal(true);
-//     }
-// }
 
 async function checkIncompDataItems() {
     for (let i = 0; i < incompFormData.length; i++) {
@@ -125,9 +112,6 @@ Given(/^I have a (.+) bulk-scanned document with (.+) fields$/, {timeout: 600 * 
         'Create an exception record'
     )).to.equal(true);
     await browser.sleep(3000);
-    // await anyCcdPage.clickTab('Form OCR');
-    // await browser.sleep(10000);
-    // await checkDataItems(formType);
 });
 
 Given('I have a PIP bulk-scanned document filled with incomplete fields', async function() {
@@ -211,7 +195,7 @@ Then(/^the case should be in "(.+)" state$/, async function (state) {
 Then(/^the bundles should be successfully listed in "(.+)" tab$/, async function (tabName) {
     await delay(10000);
     await caseDetailsPage.reloadPage();
-    await anyCcdPage.clickTab('History');
+    await anyCcdPage.click(tabName);
     expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
     expect(await caseDetailsPage.eventsPresentInHistory('Create a bundle')).to.equal(true);
     await browser.sleep(500);
@@ -228,17 +212,21 @@ Then(/^The edited bundles should be successfully listed in "(.+)" tab$/, async f
 Then(/^the Stitching bundle event should be successfully listed in "(.+)" tab$/, async function (tabName) {
     await delay(5000);
     await caseDetailsPage.reloadPage();
-    await anyCcdPage.clickTab('History');
+    await anyCcdPage.clickTab(tabName);
     expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
     await browser.sleep(500);
 });
 
 Then(/^the case bundle details should be listed in "(.+)" tab$/, async function (tabName) {
-    await anyCcdPage.clickTab('Bundles');
+    await anyCcdPage.click(tabName);
     await browser.sleep(1000);
     expect(await caseDetailsPage.isFieldValueDisplayed('Stitch status', 'DONE')).to.equal(true);
     expect(await caseDetailsPage.isFieldValueDisplayed('Config used for bundle', 'SSCS Bundle Original')).to.equal(true);
 });
+
+Then(/^the "(.+)" bundle configuration should have been used$/, async function (config) {
+    expect(await caseDetailsPage.isFieldValueDisplayed('Config used for bundle', config)).to.equal(true);
+})
 
 Given('I preset up a test case', async function () {
 

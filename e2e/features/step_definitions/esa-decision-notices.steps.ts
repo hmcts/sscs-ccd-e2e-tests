@@ -31,7 +31,7 @@ When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)"
     await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
     await anyCcdPage.click('Continue');
     await browser.sleep(750);
-    await caseDetailsPage.addDayItems('writeFinalDecisionDateOfDecision');
+    await caseDetailsPage.addPastDate('writeFinalDecisionDateOfDecision');
     await browser.sleep(3000);
     await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
     await anyCcdPage.click('Continue');
@@ -43,7 +43,7 @@ When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)"
         const wcaNo = appealType + 'Appeal_No';
         await anyCcdPage.clickElementById(wcaNo);
     }
-    await browser.sleep(500);
+    await browser.sleep(1000);
     if (supportGroup === 'YES') {
         await anyCcdPage.clickElementById('supportGroupOnlyAppeal_Yes');
     } else {
@@ -57,9 +57,7 @@ When(/^I select schedule 2 activities with <15 points and reg 29 "(.+)"$/, async
     await anyCcdPage.clickElementById('esaWriteFinalDecisionPhysicalDisabilitiesQuestion-consciousness');
     await anyCcdPage.clickElementById('esaWriteFinalDecisionMentalAssessmentQuestion-copingWithChange');
     await browser.sleep(3000);
-    // await anyCcdPage.click('Continue');
     await anyCcdPage.scrollBar('//div/form/div/button[2]');
-    // await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
     await browser.sleep(500);
     await anyCcdPage.clickElementById('esaWriteFinalDecisionConsciousnessQuestion-consciousness10c');
     await anyCcdPage.click('Continue');
@@ -79,7 +77,6 @@ When(/^I select schedule 2 activities with <15 points and reg 29 "(.+)"$/, async
 When(/^I select schedule 2 activities with >=15 points$/, async function () {
     await anyCcdPage.clickElementById('esaWriteFinalDecisionPhysicalDisabilitiesQuestion-reaching');
     await anyCcdPage.clickElementById('esaWriteFinalDecisionMentalAssessmentQuestion-learningTasks');
-    // await anyCcdPage.click('Continue');
     await anyCcdPage.scrollBar('//div/form/div/button[2]');
     await browser.sleep(500);
     await anyCcdPage.clickElementById('esaWriteFinalDecisionReachingQuestion-reaching3b');
@@ -142,7 +139,7 @@ When(/^I provide reasons and check answers To Allowed "(.+)"$/, async function (
     await browser.sleep(2000);
     await anyCcdPage.click('Continue');
     await browser.sleep(4000);
-    await anyCcdPage.scrollBar('//div/form/div/button[2]'); // Bit flakey
+    await anyCcdPage.scrollBar('//div/form/div/button[2]');
     await browser.sleep(750);
     await anyCcdPage.scrollBar('//form/div/button[2]');
     await browser.sleep(5000);
