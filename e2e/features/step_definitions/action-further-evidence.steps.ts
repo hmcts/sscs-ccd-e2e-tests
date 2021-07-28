@@ -72,3 +72,33 @@ Then(/^the case should be "(.+)" permissions for "(.+)"$/, async function (reins
         assert.equal(todayDate, actualDate);
     });
 });
+
+When('resend evidence to appellant and dwp user', async function () {
+
+    await browser.sleep(2000);
+    await anyCcdPage.clickElementById('resendToAppellant_Yes');
+    await anyCcdPage.clickElementById('resendToRepresentative_No');
+    await anyCcdPage.clickElementById('resendToDwp_Yes');
+
+    await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
+    await browser.sleep(2000);
+    await anyCcdPage.clickAction('//button[contains(text(),\'Submit\')]');
+
+});
+
+Then('I see {string} and {string} event being processed successfully', async function (eventName, anotherEventName) {
+
+    await delay(5000);
+    await caseDetailsPage.reloadPage();
+    await anyCcdPage.clickTab('History');
+    expect(await caseDetailsPage.eventsPresentInHistory(anotherEventName)).to.equal(true);
+    expect(await caseDetailsPage.eventsPresentInHistory(eventName)).to.equal(true);
+    await browser.sleep(500);
+});
+
+Then('I should still see previous uploaded file collection within documents tab', async function () {
+    await anyCcdPage.clickTab('Documents');
+    expect(await anyCcdPage.isFieldValueDisplayed('Type', 'DWP evidence')).to.equal(true);
+    expect(await anyCcdPage.isFieldValueDisplayed('Evidence issued', 'Yes')).to.equal(true);
+    expect(await anyCcdPage.isFieldValueDisplayed('Original document URL', 'issue1.pdf')).to.equal(true);
+});
