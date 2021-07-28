@@ -69,7 +69,6 @@ async function addIncompleteDataItems() {
 
 }
 
-
 async function checkIncompDataItems() {
     for (let i = 0; i < incompFormData.length; i++) {
         expect(
