@@ -1,17 +1,21 @@
+@migrated-to-exui
 Feature: The withdrawal
 
-  @withdrawal  @nightly-test
-  Scenario: Should end up in "With DWP" state when ALL fields are present
-    Given I am signed in as a Case Officer
-    And I have a PIP bulk-scanned document with SSCSPE fields
-    When I choose the next step "Create new case from exception"
+  Background:
+    Given I preset up a test case
+    And I am signed in as a Case Officer
+    Given I navigate to an existing case
+    And I choose "Admin - send to With DWP"
+    Given I complete the event
     Then the case should be in "With DWP" state
 
+  @withdrawal  @nightly-test @crossbrowser99
+  Scenario: Should end up in "With DWP" state when ALL fields are present
     When I choose "Admin Appeal Withdrawn"
     And I click submit withdrawal "Admin Appeal Withdrawn"
     And I submit "Admin Appeal Withdrawn"
-    Then the case should end in "Dormant" state
+    Then the case should be in "Dormant" state
 
     When I choose "Dwp Action Withdrawal"
     And I submit "Dwp Action Withdrawal"
-    Then the case should end in "Dormant" state
+    Then the case should be in "Dormant" state

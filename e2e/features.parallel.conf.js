@@ -15,6 +15,8 @@ const puppeteer = require('puppeteer');
 const serviceConfig = require('./service.conf');
 const tsNode = require('ts-node');
 const path = require('path');
+const { generateAccessibilityReport } = require('../reporter/customReporter');
+
 
 let capabilities = {
   browserName: 'chrome',
@@ -90,6 +92,7 @@ class BaseConfig {
     this.frameworkPath = require.resolve('protractor-cucumber-framework');
 
     this.cucumberOpts = {
+      format: ['node_modules/cucumber-pretty', 'json:reports/tests/functionTestResult.json'],
       require: [
         './cucumber.conf.js',
         './features/step_definitions/*.steps.ts'
@@ -101,6 +104,19 @@ class BaseConfig {
       'nightly-tag': serviceConfig.NightlyTag,
       'no-source': true
     };
+
+    this.plugins = [
+      {
+          package: 'protractor-multiple-cucumber-html-reporter-plugin',
+          options: {
+              automaticallyGenerateReport: true,
+              removeExistingJsonReportFile: true,
+              reportName: 'SSCS CCD E2E Tests',
+              jsonDir: 'reports/tests/functional',
+              reportPath: 'reports/tests/functional'
+          }
+      }
+    ]
 
     this.onCleanUp = (results) => {
       retry.onCleanUp(results);
@@ -126,6 +142,23 @@ class BaseConfig {
     this.afterLaunch = () => {
       return retry.afterLaunch(2);
     }
+
+    this.onComplete = () => {
+      generateAccessibilityReport();
+    };
+
+    this.plugins = [
+      {
+          package: 'protractor-multiple-cucumber-html-reporter-plugin',
+          options: {
+              automaticallyGenerateReport: true,
+              removeExistingJsonReportFile: true,
+              reportName: 'SSCS ExUI E2E Tests',
+              jsonDir: 'reports/tests/functional',
+              reportPath: 'reports/tests/functional'
+          }
+      }
+    ]
   }
 
   /*
@@ -183,6 +216,5 @@ class BaseConfig {
   }
 
 }
-
 
 exports.config = new BaseConfig();

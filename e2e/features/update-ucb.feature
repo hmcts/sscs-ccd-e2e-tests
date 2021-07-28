@@ -1,16 +1,17 @@
 Feature: The Update UCB
 
-@update-ucb @nightly-test
+@update-ucb @migrated-to-exui @nightly-test
   Scenario: Update UCB flag with upload response Granted and Refused
-    Given I am signed in as a Case Officer
-    And I have a PIP bulk-scanned document with SSCSPE fields
-    When I choose the next step "Create new case from exception"
-    Then the case should be in "With DWP" state
+    Given I presetup an "PIP" SYA case
+    And I am signed in as a Case Officer
+    Given I navigate to an existing case
+    Then the case should end in "With DWP" state
 
     When I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     And I choose "Upload response"
     And I upload a "UCB" doc contains further information "YES" for "PIP"
-    Then the case should end in "Response received" state
+    Then the case should be in "Response received" state
     Then I should see UCB flag
 
     And I choose "Update UCB flag"

@@ -33,25 +33,25 @@ export class AdjournmentPage extends AnyPage {
         await element(by.id('hearings_0_venue_googleMapLink'))
                 .sendKeys('https://www.google.com/maps/place/4th+Floor+30+Brooke+Street+EC1N+7RS/@51.518706,-0.110348');
         await element(by.id('hearings_0_judge')).sendKeys('Judge');
-        await element(by.id('hearings_0_hearingDate-day')).sendKeys('20');
-        await element(by.id('hearings_0_hearingDate-month')).sendKeys('10');
-        await element(by.id('hearings_0_hearingDate-year')).sendKeys('2020');
+        await element(by.id('hearingDate-day')).sendKeys('20');
+        await element(by.id('hearingDate-month')).sendKeys('10');
+        await element(by.id('hearingDate-year')).sendKeys('2020');
         await element(by.id('hearings_0_time')).sendKeys('13:00');
 
-        await element(by.id('hearings_0_postponedDate-day')).sendKeys('20');
-        await element(by.id('hearings_0_postponedDate-month')).sendKeys('10');
-        await element(by.id('hearings_0_postponedDate-year')).sendKeys('2020');
-        await anyCcdPage.clickElementById('hearings_0_adjourned-Yes');
+        await element(by.id('postponedDate-day')).sendKeys('20');
+        await element(by.id('postponedDate-month')).sendKeys('10');
+        await element(by.id('postponedDate-year')).sendKeys('2020');
+        await anyCcdPage.clickElementById('hearings_0_adjourned_Yes');
 
-        await element(by.id('hearings_0_adjournedDate-day')).sendKeys('20');
-        await element(by.id('hearings_0_adjournedDate-month')).sendKeys('10');
-        await element(by.id('hearings_0_adjournedDate-year')).sendKeys('2020');
+        await element(by.id('adjournedDate-day')).sendKeys('20');
+        await element(by.id('adjournedDate-month')).sendKeys('10');
+        await element(by.id('adjournedDate-year')).sendKeys('2020');
 
         await element(by.id('hearings_0_hearingId')).sendKeys('12345');
 
-        await element(by.id('hearings_0_eventDate-day')).sendKeys('20');
-        await element(by.id('hearings_0_eventDate-month')).sendKeys('10');
-        await element(by.id('hearings_0_eventDate-year')).sendKeys('2020');
+        await element(by.id('eventDate-day')).sendKeys('20');
+        await element(by.id('eventDate-month')).sendKeys('10');
+        await element(by.id('eventDate-year')).sendKeys('2020');
 
         await anyCcdPage.click('Continue');
         await anyCcdPage.click('Submit');
@@ -67,4 +67,8 @@ export class AdjournmentPage extends AnyPage {
       await element(by.id('adjournCaseReasons_0')).sendKeys('Appellant not available');
     }
 
+    async setAdjournCaseReasonsText() {
+        await anyCcdPage.click('Add new');
+        await anyCcdPage.setText('//textarea[@rows=\'3\']', 'I am very busy so i cannot');
+    }
 }

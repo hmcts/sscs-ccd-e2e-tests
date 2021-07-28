@@ -1,7 +1,7 @@
 import { When, Then } from 'cucumber';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { browser } from 'protractor';
-import { assert } from 'chai';
+import { assert, expect } from 'chai';
 import { FurtherEvidencePage } from '../../pages/further-evidence.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
 
@@ -15,6 +15,7 @@ function delay(ms: number) {
 
 When(/^I fill the further evidence form with "(.+)" and "(.+)"$/, async function (actionType, requestType) {
     await anyCcdPage.chooseOptionContainingText('#furtherEvidenceAction', actionType);
+    await anyCcdPage.chooseOptionContainingText('#originalSender', 'DWP');
     await anyCcdPage.click('Add new');
     await browser.sleep(1000);
 
@@ -29,34 +30,33 @@ When(/^I fill the further evidence form with "(.+)" and "(.+)"$/, async function
 });
 
 Then(/^the case should have successfully processed "(.+)" event$/, async function (event) {
-
-    await anyCcdPage.click('History');
-    await delay(1000);
+    await delay(5000);
+    await anyCcdPage.clickTab('History');
+    expect(await caseDetailsPage.eventsPresentInHistory(event)).to.equal(true);
+    await delay(500);
 });
 
 When(/^I fill the direction notice form with "(.+)"$/, async function (reinstatement) {
 
     await anyCcdPage.chooseOptionContainingText('#directionTypeDl', reinstatement);
     await caseDetailsPage.addDayItems('directionDueDate');
-    await anyCcdPage.clickElementById('generateNotice-No');
+    await browser.sleep(3000);
+    await anyCcdPage.scrollPage('//*[@id="generateNotice_No"]');
+    await browser.sleep(2000);
     await anyCcdPage.chooseOptionContainingText('#sscsInterlocDirectionDocument_documentType', 'Directions Notice');
     await furtherEvidencePage.uploadFile('sscsInterlocDirectionDocument_documentLink', 'issue2.pdf');
     await furtherEvidencePage.enterFileName('sscsInterlocDirectionDocument_documentFileName', 'testfile.pdf');
     await browser.sleep(3000);
 
-    await anyCcdPage.click('Continue');
-    await anyCcdPage.click('Submit');
+    await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
+    await browser.sleep(2000);
+    await anyCcdPage.clickAction('//button[contains(text(),\'Submit\')]');
 });
 
 Then(/^the case should be "(.+)" permissions for "(.+)"$/, async function (reinstatement, directionType) {
-
-    const today = new Date();
-    let day = today.getDate();
-    let month = today.toLocaleString('default', { month: 'short' });
-    let year = today.getFullYear();
-
-    let expDate = day + ' ' + month + ' ' + year;
-    await anyCcdPage.click('Appeal Details');
+    let todayDate = new Date().toISOString().slice(0, 10);
+    await delay(5000);
+    await anyCcdPage.clickTab('Appeal Details');
     await anyCcdPage.reloadPage();
     await delay(10000);
     let outcomeText = (directionType === 'Reinstatement') ? 'Outcome' : 'outcome';
@@ -65,6 +65,40 @@ Then(/^the case should be "(.+)" permissions for "(.+)"$/, async function (reins
         assert.equal(reinstatement, actText);
     });
     await caseDetailsPage.getFieldValue(`${directionType} ${regText}`).then(function(actText) {
-        assert.equal(expDate, actText);
+        let date = new Date(actText);
+        let actualDate = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
+            .toISOString()
+            .split('T')[0];
+        assert.equal(todayDate, actualDate);
     });
+});
+
+When('resend evidence to appellant and dwp user', async function () {
+
+    await browser.sleep(2000);
+    await anyCcdPage.clickElementById('resendToAppellant_Yes');
+    await anyCcdPage.clickElementById('resendToRepresentative_No');
+    await anyCcdPage.clickElementById('resendToDwp_Yes');
+
+    await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
+    await browser.sleep(2000);
+    await anyCcdPage.clickAction('//button[contains(text(),\'Submit\')]');
+
+});
+
+Then('I see {string} and {string} event being processed successfully', async function (eventName, anotherEventName) {
+
+    await delay(5000);
+    await caseDetailsPage.reloadPage();
+    await anyCcdPage.clickTab('History');
+    expect(await caseDetailsPage.eventsPresentInHistory(anotherEventName)).to.equal(true);
+    expect(await caseDetailsPage.eventsPresentInHistory(eventName)).to.equal(true);
+    await browser.sleep(500);
+});
+
+Then('I should still see previous uploaded file collection within documents tab', async function () {
+    await anyCcdPage.clickTab('Documents');
+    expect(await anyCcdPage.isFieldValueDisplayed('Type', 'DWP evidence')).to.equal(true);
+    expect(await anyCcdPage.isFieldValueDisplayed('Evidence issued', 'Yes')).to.equal(true);
+    expect(await anyCcdPage.isFieldValueDisplayed('Original document URL', 'issue1.pdf')).to.equal(true);
 });

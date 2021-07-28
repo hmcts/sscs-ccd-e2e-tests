@@ -1,17 +1,25 @@
+@migrated-to-exui @nightly-test
 Feature: Issue direction
-  
-  @issue-direction  @nightly-test
+
+  Background:
+    Given I presetup an "PIP" SYA case
+    And I am signed in as a Case Officer
+    And I navigate to an existing case
+
+  @issue-direction
   Scenario: Judge should be able to proceed incomplete application without mrn-date
-    Given I am signed in as a Case Officer
-    And I have a PIP bulk-scanned document filled with incomplete fields
-    When I choose "Create new case from exception" for an incomplete application
+    Then the case should end in "With DWP" state
+
+    And I choose "Admin - send to Incomplete App"
+    And I complete the event
     Then the case should be in "Incomplete Application" state
 
-    When I choose "Send to interloc - pre-valid"
+    And I choose "Send to interloc - pre-valid"
     And I submit the interloc reason
-    Then the case should end in "Interlocutory Review - Pre-Valid" state
+    Then the case should be in "Interlocutory Review - Pre-Valid" state
 
     When I switch to be a Judge
+    And I navigate to an existing case
     And I choose "Issue directions notice"
-    When I allow the appeal to proceed
-    Then the case should end in "With DWP" state
+    And I allow the appeal to proceed
+    Then I  should see "Directions Notice" in documents tab

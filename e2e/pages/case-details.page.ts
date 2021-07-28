@@ -1,4 +1,4 @@
-import { by, element, browser } from 'protractor';
+import { by, element, browser, ExpectedConditions } from 'protractor';
 import { AnyCcdPage } from './any-ccd.page';
 import { AnyCcdFormPage } from './any-ccd-form.page';
 import { OrdinalToCardinal } from '../helpers/ordinal-to-cardinal';
@@ -13,6 +13,7 @@ export class CaseDetailsPage extends AnyCcdPage {
                 .all(by.xpath('.//label[@class="form-label" and normalize-space()="Next step"]/ancestor::ccd-event-trigger'))
                 .last();
 
+        await browser.wait(ExpectedConditions.visibilityOf(nextStepContainer), 5000);
         await anyCcdFormPage.setFieldValueWithinContainer(nextStepContainer, actionItem);
     }
 
@@ -111,6 +112,8 @@ export class CaseDetailsPage extends AnyCcdPage {
             await element(by.id(dateType + '-year')).clear();
             await element(by.id(dateType + '-year')).sendKeys(today.getFullYear());
         }
+
+        await browser.driver.sleep(100);
     }
 
     async addFormType(formType: string) {

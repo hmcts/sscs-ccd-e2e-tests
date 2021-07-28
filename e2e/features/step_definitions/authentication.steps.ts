@@ -46,4 +46,5 @@ Given(/^I switch to be a Judge$/, async function () {
     await browser.sleep(100);
     await anyCcdPage.waitUntilLoaded();
     await anyCcdPage.get(currentUrl);
+    await browser.sleep(5000);
 });

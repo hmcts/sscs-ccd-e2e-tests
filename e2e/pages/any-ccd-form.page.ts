@@ -4,6 +4,8 @@ import { FormFiller } from '../helpers/form-filler';
 import { OrdinalToCardinal } from '../helpers/ordinal-to-cardinal';
 import moment = require('moment');
 
+const anyCcdPage = new AnyCcdPage();
+
 export class AnyCcdFormPage extends AnyCcdPage {
 
     private formFiller = new FormFiller();
@@ -14,15 +16,25 @@ export class AnyCcdFormPage extends AnyCcdPage {
 
         const collectionContainer = await this.findCollectionContainer(collectionLabel);
 
+        await browser.wait(ExpectedConditions.elementToBeClickable(element(by.xpath('.//button[normalize-space()="Add new"]'))), 5000);
         await collectionContainer
             .all(by.xpath('.//button[normalize-space()="Add new"]'))
             .last()
             .click();
     }
 
+    async addNewOCRCollectionItem() {
+        await anyCcdPage.scrollBar('//*[@id="scanOCRData"]/div/button');
+    }
+
    async setValueByElementId(key: string, value: string) {
           element(by.id(key)).sendKeys(value);
    }
+
+    async setTextFiledValueNull(key: string) {
+        element(by.id(key)).clear();
+        await browser.sleep(500);
+    }
 
     async setCollectionItemFieldValue(
         collectionLabel: string,
@@ -148,7 +160,7 @@ export class AnyCcdFormPage extends AnyCcdPage {
         } else if (await fieldContainer.$$('ccd-write-text-area-field').isPresent()) {
 
             await this.formFiller.replaceText(
-                await fieldContainer.element(by.xpath('.//textarea[@id="writeFinalDecisionReasons_0"]')),
+                await fieldContainer.element(by.xpath('.//textarea[@id="writeFinalDecisionReasons_value"]')),
                 fieldValue
             );
 
@@ -160,6 +172,7 @@ export class AnyCcdFormPage extends AnyCcdPage {
 
         } else if (await fieldContainer.$$('select.ccd-dropdown').isPresent()) {
 
+            await fieldContainer.$$('select.ccd-dropdown').click();
             await fieldContainer
                 .element(by.xpath('.//option[normalize-space()="' + fieldValue + '"]'))
                 .click();

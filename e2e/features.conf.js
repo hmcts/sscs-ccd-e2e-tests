@@ -8,7 +8,7 @@ const path = require('path');
 exports.config = {
 
   baseUrl: serviceConfig.CcdWebUrl,
-  specs: ['./features/**/*.feature'],
+  specs: ['./features/*.feature'],
   allScriptsTimeout: 120000,
   getPageTimeout: 120000,
   capabilities: {

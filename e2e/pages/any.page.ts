@@ -3,7 +3,7 @@ import { browser } from 'protractor';
 export class AnyPage {
 
     async get(uri: string) {
-        await browser.waitForAngularEnabled(true);
+        await browser.waitForAngularEnabled(false);
         await browser.get(uri);
     }
 
