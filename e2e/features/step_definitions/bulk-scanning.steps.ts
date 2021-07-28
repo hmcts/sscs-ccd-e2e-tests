@@ -195,7 +195,7 @@ Then(/^the case should be in "(.+)" state$/, async function (state) {
 Then(/^the bundles should be successfully listed in "(.+)" tab$/, async function (tabName) {
     await delay(10000);
     await caseDetailsPage.reloadPage();
-    await anyCcdPage.click(tabName);
+    await anyCcdPage.clickTab(tabName);
     expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
     expect(await caseDetailsPage.eventsPresentInHistory('Create a bundle')).to.equal(true);
     await browser.sleep(500);
@@ -204,7 +204,7 @@ Then(/^the bundles should be successfully listed in "(.+)" tab$/, async function
 Then(/^The edited bundles should be successfully listed in "(.+)" tab$/, async function (tabName) {
     await delay(10000);
     await caseDetailsPage.reloadPage();
-    await anyCcdPage.click(tabName);
+    await anyCcdPage.clickTab(tabName);
     expect(await caseDetailsPage.eventsPresentInHistory('Create an edited bundle')).to.equal(true);
     await browser.sleep(500);
 });
@@ -218,7 +218,7 @@ Then(/^the Stitching bundle event should be successfully listed in "(.+)" tab$/,
 });
 
 Then(/^the case bundle details should be listed in "(.+)" tab$/, async function (tabName) {
-    await anyCcdPage.click(tabName);
+    await anyCcdPage.clickTab(tabName);
     await browser.sleep(1000);
     expect(await caseDetailsPage.isFieldValueDisplayed('Stitch status', 'DONE')).to.equal(true);
     expect(await caseDetailsPage.isFieldValueDisplayed('Config used for bundle', 'SSCS Bundle Original')).to.equal(true);

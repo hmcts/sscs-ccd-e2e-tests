@@ -2,12 +2,12 @@ Feature: Enhanced confidentiality
 
     @nightly-test
     Scenario: Happy path
-        Given I am signed in as a Case Officer
-        And I have a UC bulk-scanned document with SSCSPE fields
-        When I choose the next step "Create new case from exception"
+        Given I presetup an "UC" SYA case
+        And I am signed in as a Case Officer
+        And I navigate to an existing case
         Then the case should be in "With DWP" state
-        Given I switch to be a DWPResponse Writer
-        And I choose "Upload response"
+        When I switch to be a DWPResponse Writer
+        Given I choose "Upload response"
         And I upload UC further information with disputed General disputed by others No and further info No
         And I wait "8" seconds
         And I choose "Action further evidence"
