@@ -290,8 +290,8 @@ export class AnyCcdPage extends AnyPage {
         if (textBoxRef) {
             await element.all(by.xpath(key)).sendKeys(value);
         }
+    };
 
-    }
     async scrollPage(locator: string) {
         let button = await element(by.xpath(locator));
         await browser.manage().window().maximize()
