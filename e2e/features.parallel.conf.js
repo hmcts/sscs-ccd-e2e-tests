@@ -95,7 +95,8 @@ class BaseConfig {
       format: ['node_modules/cucumber-pretty', 'json:reports/tests/functionTestResult.json'],
       require: [
         './cucumber.conf.js',
-        './features/step_definitions/*.steps.ts'
+        './features/step_definitions/*.steps.ts',
+        './support/hooks.js'
       ],
       keepAlive: false,
       tags: false,
