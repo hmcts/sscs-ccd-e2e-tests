@@ -5,8 +5,12 @@ After(async function(scenario) {
 
     console.log(`Scenario results are ################ ${scenario.result.status}`);
     if (scenario.result.status === 'failed') {
-            const screenShot = await browser.takeScreenshot();
-            this.attach(screenShot, "image/png");
+            // const screenShot = await browser.takeScreenshot();
+            // this.attach(screenShot, "image/png");
+
+            const stream = await browser.takeScreenshot();
+            const decodedImage = new Buffer(stream.replace(/^data:image\/(png|gif|jpeg);base64,/, ''), 'base64');
+            this.attach(decodedImage, "image/png");
 
             //fetch browser logs
             let browserLog = await browser.manage().logs().get('browser');
@@ -22,6 +26,5 @@ After(async function(scenario) {
             catch(err) {
                  console.log("Error occured adding message to report. " + err.stack);
             }
-            console.log(JSON.stringify(browserErrorLogs, null, 2));
     }
 });
