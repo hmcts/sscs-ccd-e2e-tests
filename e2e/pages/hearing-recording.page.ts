@@ -26,4 +26,8 @@ export class HearingRecordingPage extends AnyPage {
         await anyCcdPage.click('Continue');
         await anyCcdPage.click('Submit');
     }
+
+    async selectHearing() {
+        await element(by.id('selectHearingDetails')).element(by.xpath('//*[@id="selectHearingDetails"]/option[1]')).click();
+    }
 }

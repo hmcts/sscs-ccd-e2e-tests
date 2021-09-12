@@ -1,6 +1,5 @@
 import { browser } from 'protractor';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
-import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
 // @ts-ignore
 import { HearingRecordingPage } from '../../pages/hearing-recording.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
@@ -9,7 +8,6 @@ import { expect } from 'chai';
 import { delay } from 'rxjs/operators';
 
 const anyCcdPage = new AnyCcdPage();
-const anyCcdFormPage = new AnyCcdFormPage();
 const hearingRecordingPage = new HearingRecordingPage();
 const caseDetailsPage = new CaseDetailsPage();
 
@@ -20,7 +18,8 @@ When(/^I upload a hearing recording$/, async function () {
 
 When(/^I select a hearing$/, async function () {
   expect(await anyCcdPage.pageHeadingContains('Upload hearing recording')).to.equal(true);
-  await anyCcdFormPage.setFieldValueWithinContainer('selectHearingDetails', 'Fox Court 13:00:00 20 Oct 2020');
+  await hearingRecordingPage.selectHearing();
+  await browser.sleep(500);
   await anyCcdPage.click('Continue');
 });
 

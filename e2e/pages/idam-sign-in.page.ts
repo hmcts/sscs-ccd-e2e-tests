@@ -15,6 +15,8 @@ export class IdamSignInPage extends AnyPage {
         emailAddress: string,
         password: string
     ) {
+        console.log('111111111');
+
         await this.waitUntilLoaded();
         await this.formFiller.replaceText($(this.username), emailAddress);
         await this.formFiller.replaceText($(this.password), password);
