@@ -13,7 +13,6 @@ const caseDetailsPage = new CaseDetailsPage();
 
 When(/^I upload a hearing recording$/, async function () {
   await hearingRecordingPage.uploadHearingRecording();
-  await browser.sleep(500);
 });
 
 When(/^I select a hearing$/, async function () {
@@ -23,20 +22,41 @@ When(/^I select a hearing$/, async function () {
   await anyCcdPage.click('Continue');
 });
 
-Then(/^the hearing recording should be in Hearing Recordings tab$/, async function () {
+Then(/^the hearing recording should (be|not be) in "(.+)" tab$/, async function (seeOrNotSee, tabName) {
+  const isDisplayed = (seeOrNotSee === 'be');
   await browser.sleep(500);
   await anyCcdPage.reloadPage();
-  await anyCcdPage.clickTab('Hearing recordings');
-  expect(await anyCcdPage.contentContains('Hearing Recordings')).to.equal(true);
-  expect(await anyCcdPage.contentContains('Hearing Recordings 1')).to.equal(true);
-
+  await anyCcdPage.clickTab(tabName);
+  expect(await anyCcdPage.contentContains('Hearing recordings')).to.equal(isDisplayed);
+  expect(await anyCcdPage.contentContains('Hearing recordings 1')).to.equal(isDisplayed);
+  expect(await anyCcdPage.contentContains('Recordings')).to.equal(isDisplayed);
   await browser.sleep(5000);
 });
 
-Then(/^the upload hearing recording should be successfully listed in "(.+)" tab$/, async function (tabName) {
+Then(/^the "(.+)" should be successfully listed in "(.+)" tab$/, async function (action, tabName) {
   await delay(10000);
   await caseDetailsPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
-  expect(await caseDetailsPage.eventsPresentInHistory('Upload hearing recording')).to.equal(true);
+  expect(await caseDetailsPage.eventsPresentInHistory(action)).to.equal(true);
+  await browser.sleep(500);
+});
+
+When(/^I request for Hearing recording$/, async function () {
+  expect(await anyCcdPage.pageHeadingContains('Request hearing recording')).to.equal(true);
+  await hearingRecordingPage.requestDwpHearingRecording();
+  await anyCcdPage.click('Continue');
+  await anyCcdPage.click('Submit');
+  await browser.sleep(500);
+});
+
+When(/^I grant request for Hearing recording$/, async function () {
+  expect(await anyCcdPage.pageHeadingContains('Please review the hearing recordings')).to.equal(true);
+  console.log('--------- page heading');
+  await hearingRecordingPage.grantRequestDwpHearingRecording();
+  console.log('--------- option');
+  await anyCcdPage.click('Continue');
+  await browser.sleep(500);
+  await anyCcdPage.click('Ignore Warning and Continue');
+  await anyCcdPage.click('Submit');
   await browser.sleep(500);
 });
