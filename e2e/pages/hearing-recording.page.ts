@@ -11,7 +11,8 @@ export class HearingRecordingPage extends AnyPage {
         await browser.waitForAngular();
         let remote = require('selenium-webdriver/remote');
         browser.setFileDetector(new remote.FileDetector());
-        await this.uploadFile('hearingRecording_recordings_0', 'test_av.mp3');
+        await this.uploadFile('hearingRecording_recordings_0_documentLink', 'test_av.mp3');
+        await browser.sleep(8000);
     }
 
     async uploadFile(inputElement: string, fileName: string) {
@@ -29,5 +30,15 @@ export class HearingRecordingPage extends AnyPage {
 
     async selectHearing() {
         await element(by.id('selectHearingDetails')).element(by.xpath('//*[@id="selectHearingDetails"]/option[1]')).click();
+    }
+
+    async requestDwpHearingRecording() {
+        await element(by.id('processHearingRecordingRequests_0_dwp'))
+            .element(by.xpath('//*[@id="processHearingRecordingRequests_0_dwp"]/option[1]')).click();
+    }
+
+    async grantRequestDwpHearingRecording() {
+        await element(by.id('processHearingRecordingRequests_0_dwp'))
+            .element(by.xpath('//*[@id="processHearingRecordingRequests_0_dwp"]/option[1]')).click();
     }
 }
