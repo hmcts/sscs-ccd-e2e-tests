@@ -239,8 +239,12 @@ Given(/^I presetup an "(.+)" SYA case$/, async function (caseType) {
 
 Given(/^I navigate to an existing case$/, async function () {
     console.log(`the saved case id is ################## ${caseReference}`);
-    await anyCcdPage.get(`/v2/case/${caseReference}`);
+    await anyCcdPage.get(`/v2/case/1631274861719967`);
     await delay(10000);
+});
+
+When('I navigate to an existing case with known reference', function () {
+    return 'pending';
 });
 
 Given(/^I complete the event$/, async function () {

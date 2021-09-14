@@ -33,8 +33,7 @@ export class HearingRecordingPage extends AnyPage {
     }
 
     async requestDwpHearingRecording() {
-        await element(by.id('processHearingRecordingRequests_0_dwp'))
-            .element(by.xpath('//*[@id="processHearingRecordingRequests_0_dwp"]/option[1]')).click();
+        await element(by.id('requestableHearingDetails')).element(by.xpath('//*[@id="requestableHearingDetails"]/option[1]')).click();
     }
 
     async grantRequestDwpHearingRecording() {

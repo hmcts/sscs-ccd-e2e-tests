@@ -33,16 +33,16 @@ Then(/^the hearing recording should be in "(.+)" tab$/, async function (tabName)
   await browser.sleep(5000);
 });
 
-Then(/^the upload hearing recording should be successfully listed in "(.+)" tab$/, async function (tabName) {
+Then(/^the "(.+)" should be successfully listed in "(.+)" tab$/, async function (action, tabName) {
   await delay(10000);
   await caseDetailsPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
-  expect(await caseDetailsPage.eventsPresentInHistory('Upload hearing recording')).to.equal(true);
+  expect(await caseDetailsPage.eventsPresentInHistory(action)).to.equal(true);
   await browser.sleep(500);
 });
 
 When(/^I request for Hearing recording$/, async function () {
-  expect(await anyCcdPage.pageHeadingContains('Process hearing recording')).to.equal(true);
+  expect(await anyCcdPage.pageHeadingContains('Request hearing recording')).to.equal(true);
   await hearingRecordingPage.requestDwpHearingRecording();
   await anyCcdPage.click('Continue');
   await anyCcdPage.click('Submit');
@@ -53,6 +53,8 @@ When(/^I grant request for Hearing recording$/, async function () {
   expect(await anyCcdPage.pageHeadingContains('Process hearing recording')).to.equal(true);
   await hearingRecordingPage.grantRequestDwpHearingRecording();
   await anyCcdPage.click('Continue');
+  await browser.sleep(500);
+  await anyCcdPage.click('Ignore Warning and Continue');
   await anyCcdPage.click('Submit');
   await browser.sleep(500);
 });
