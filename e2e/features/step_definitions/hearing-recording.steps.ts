@@ -23,12 +23,13 @@ When(/^I select a hearing$/, async function () {
   await anyCcdPage.click('Continue');
 });
 
-Then(/^the hearing recording should be in "(.+)" tab$/, async function (tabName) {
+Then(/^the hearing recording should (be|not be) in "(.+)" tab$/, async function (seeOrNotSee, tabName) {
+  const isDisplayed = (seeOrNotSee === 'be');
   await browser.sleep(500);
   await anyCcdPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
-  expect(await anyCcdPage.contentContains('Hearing Recordings')).to.equal(true);
-  expect(await anyCcdPage.contentContains('Hearing Recordings 1')).to.equal(true);
+  expect(await anyCcdPage.contentContains('Hearing Recordings')).to.equal(isDisplayed);
+  expect(await anyCcdPage.contentContains('Hearing Recordings 1')).to.equal(isDisplayed);
 
   await browser.sleep(5000);
 });
