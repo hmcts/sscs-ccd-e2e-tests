@@ -37,7 +37,7 @@ async function createSYACase(caseType: string) {
     if (caseType === 'UC') {
         options = {
             method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/appeals`,
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
             body: ucPayload,
             json: true,
             resolveWithFullResponse: true
@@ -45,7 +45,7 @@ async function createSYACase(caseType: string) {
     } else if (caseType === 'PIP') {
         options = {
             method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/appeals`,
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
             body: pipPayload,
             json: true,
             resolveWithFullResponse: true
@@ -53,7 +53,7 @@ async function createSYACase(caseType: string) {
     } else if (caseType === 'ESA') {
         options = {
             method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/appeals`,
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
             body: esaPayload,
             json: true,
             resolveWithFullResponse: true
