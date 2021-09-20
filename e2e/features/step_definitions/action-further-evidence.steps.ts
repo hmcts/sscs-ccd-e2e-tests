@@ -15,7 +15,7 @@ function delay(ms: number) {
 
 When(/^I fill the further evidence form with "(.+)" and "(.+)"$/, async function (actionType, requestType) {
     await anyCcdPage.chooseOptionContainingText('#furtherEvidenceAction', actionType);
-    await anyCcdPage.chooseOptionContainingText('#originalSender', 'DWP');
+    await anyCcdPage.chooseOptionContainingText('#originalSender', 'Appellant (or Appointee)');
     await anyCcdPage.click('Add new');
     await browser.sleep(1000);
 
@@ -98,7 +98,7 @@ Then('I see {string} and {string} event being processed successfully', async fun
 
 Then('I should still see previous uploaded file collection within documents tab', async function () {
     await anyCcdPage.clickTab('Documents');
-    expect(await anyCcdPage.isFieldValueDisplayed('Type', 'DWP evidence')).to.equal(true);
+    expect(await anyCcdPage.isFieldValueDisplayed('Type', 'Appellant evidence')).to.equal(true);
     expect(await anyCcdPage.isFieldValueDisplayed('Evidence issued', 'Yes')).to.equal(true);
     expect(await anyCcdPage.isFieldValueDisplayed('Original document URL', 'issue1.pdf')).to.equal(true);
 });

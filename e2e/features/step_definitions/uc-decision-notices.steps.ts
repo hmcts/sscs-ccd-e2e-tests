@@ -117,8 +117,8 @@ When(/^I update the scanned document for "(.+)"$/, async function (originator) {
  await anyCcdPage.click('Continue');
  await browser.sleep(10);
  await anyCcdPage.click('Submit');
- await browser.driver.sleep(300);
- await anyCcdPage.click('History');
+ await browser.driver.sleep(2000);
+ await anyCcdPage.clickTab('History');
  expect(await anyCcdPage.contentContains('Review by Judge')).to.equal(true);
 });
 
