@@ -2,13 +2,12 @@ Feature: UC Final Decision Notices
 
   @uc-confidentiality-request @nightly-test
   Scenario: confidentiality request for appellant
-    Given I am signed in as a Case Officer
-    And I have a UC bulk-scanned document with SSCSPE fields
-    When I choose the next step "Create new case from exception"
-    Then the case should be in "With DWP" state
-
-    When I choose "Update to case data"
-    And I update joint party to "YES" for UC
+    Given I presetup an "UC" SYA case
+    And I am signed in as a Case Officer
+    And I navigate to an existing case
+    Given I choose "Upload response"
+    And I upload UC further information with disputed General disputed by others No and further info No
+    And I wait "8" seconds
     And I choose "Action further evidence"
     Then I update the scanned document for "Appellant"
     And I choose "Action further evidence"
