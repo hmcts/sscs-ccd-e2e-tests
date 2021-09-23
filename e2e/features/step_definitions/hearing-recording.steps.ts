@@ -55,8 +55,12 @@ When(/^I grant request for Hearing recording$/, async function () {
   await hearingRecordingPage.grantRequestDwpHearingRecording();
   console.log('--------- option');
   await anyCcdPage.click('Continue');
+  console.log('--------- continue');
+  expect(await anyCcdPage.contentContains('Are you sure you want to change the request status')).to.equal(true);
   await browser.sleep(500);
   await anyCcdPage.click('Ignore Warning and Continue');
+  console.log('--------- warning ignored');
   await anyCcdPage.click('Submit');
+  console.log('--------- submit');
   await browser.sleep(500);
 });

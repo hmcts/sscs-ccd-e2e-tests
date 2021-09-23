@@ -238,8 +238,8 @@ Given(/^I presetup an "(.+)" SYA case$/, async function (caseType) {
 });
 
 Given(/^I navigate to an existing case$/, async function () {
-    console.log(`the saved case id is ################## ${caseReference}`);
-    await anyCcdPage.get(`/v2/case/${caseReference}`);
+    console.log(`the saved case id is ################## ${caseReference} but goes to 1632399587753906`);
+    await anyCcdPage.get(`/v2/case/1632399587753906`);
     await delay(10000);
 });
 
