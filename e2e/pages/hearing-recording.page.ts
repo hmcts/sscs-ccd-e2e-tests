@@ -19,7 +19,7 @@ export class HearingRecordingPage extends AnyPage {
         console.log('------------- upload hearing before 3');
         await this.uploadFile('hearingRecording_recordings_value', 'test_av.mp3');
         console.log('------------- upload hearing after');
-        await browser.sleep(3000);
+        await browser.sleep(5000);
     }
 
     async uploadFile(inputElement: string, fileName: string) {
@@ -31,6 +31,7 @@ export class HearingRecordingPage extends AnyPage {
     async uploadHearingRecording() {
         await anyCcdPage.clickElementById('hearingRecording_hearingType-final');
         this.addHearingRecording();
+        await browser.sleep(500);
         await anyCcdPage.click('Continue');
         await browser.sleep(500);
         await anyCcdPage.click('Submit');
