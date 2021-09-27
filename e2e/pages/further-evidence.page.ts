@@ -23,6 +23,7 @@ export class FurtherEvidencePage extends AnyPage {
     async enterScannedDate(date: string, month: string, year: string) {
         await element(by.id('scannedDate-day')).sendKeys(date);
         await element(by.id('scannedDate-month')).sendKeys(month);
+        await browser.driver.sleep(1000);
         await element(by.id('scannedDate-year')).sendKeys(year);
     }
 }

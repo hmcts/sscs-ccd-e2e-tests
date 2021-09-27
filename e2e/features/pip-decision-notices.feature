@@ -1,5 +1,5 @@
 @migrated-to-exui
-Feature: Issue decision
+Feature: PIP Final decision notice
 
   Background:
     Given I presetup an "PIP" SYA case

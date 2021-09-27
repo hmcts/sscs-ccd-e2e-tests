@@ -18,8 +18,11 @@ Feature: Issue direction
     And I submit the interloc reason
     Then the case should be in "Interlocutory Review - Pre-Valid" state
 
+    When I choose "Update to case data"
+    Then I should update case with a valid nino
+
     When I switch to be a Judge
     And I navigate to an existing case
     And I choose "Issue directions notice"
     And I allow the appeal to proceed
-    Then I  should see "Directions Notice" in documents tab
+    Then I should see Addition details in documents tab

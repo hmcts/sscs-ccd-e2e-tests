@@ -15,7 +15,3 @@ Feature: The withdrawal
     And I click submit withdrawal "Admin Appeal Withdrawn"
     And I submit "Admin Appeal Withdrawn"
     Then the case should be in "Dormant" state
-
-    When I choose "Dwp Action Withdrawal"
-    And I submit "Dwp Action Withdrawal"
-    Then the case should be in "Dormant" state

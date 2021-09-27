@@ -151,7 +151,7 @@ export class AnyCcdPage extends AnyPage {
             await browser.wait(
                 async () => {
                     return await element
-                        .all(by.xpath('//*[self::h1 or self::h2 or self::h3][contains(text(), "' + match + '")]'))
+                        .all(by.xpath('//*[self::h1 or self::h2 or self::h3 or self::span][contains(text(), "' + match + '")]'))
                         .isPresent();
                 },
                 Wait.normal,

@@ -1,4 +1,4 @@
-import { When } from 'cucumber';
+import { When, Then } from 'cucumber';
 import { browser } from 'protractor';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { JointPartyPage } from '../../pages/joint-party.page';
@@ -114,8 +114,9 @@ When(/^I update the scanned document for "(.+)"$/, async function (originator) {
 
  await anyCcdFormPage.setValueByElementId('scannedDocuments_0_fileName', 'test-confidentiality-file');
  await furtherEvidencePage.enterScannedDate('20', '1', '2021');
+ await browser.sleep(2000);
  await anyCcdPage.click('Continue');
- await browser.sleep(10);
+ await browser.sleep(2000);
  await anyCcdPage.click('Submit');
  await browser.driver.sleep(2000);
  await anyCcdPage.clickTab('History');
@@ -128,8 +129,16 @@ When(/^I select Granted for Appellant and Refused for Joint Party as a confident
     await anyCcdPage.clickElementById('confidentialityRequestJointPartyGrantedOrRefused-refuseConfidentialityRequest');
     await anyCcdPage.click('Continue');
     await anyCcdPage.click('Submit');
-    await anyCcdPage.click('History');
-    expect(await anyCcdPage.contentContains('Awaiting Admin Action')).to.equal(true);
+    await browser.driver.sleep(2000);
+    await anyCcdPage.clickTab('History');
+    await browser.driver.sleep(2000);
     expect(await caseDetailsPage.eventsPresentInHistory('Action further evidence')).to.equal(true);
     expect(await caseDetailsPage.eventsPresentInHistory('Review confidentiality request')).to.equal(true);
 });
+
+Then('I should see the Request outcome status for {string} to be {string}', async function (partyType, status) {
+    await anyCcdPage.clickTab('Summary');
+    await browser.driver.sleep(2000);
+    await anyCcdPage.pageHeadingContains('Confidentiality request outcome ' + partyType);
+    await anyCcdPage.isFieldValueDisplayed('Request outcome', status);
+  });

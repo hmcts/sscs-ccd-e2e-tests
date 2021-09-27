@@ -44,7 +44,6 @@ Then(/^Reasonable adjustment tab is seen with "(.+)" as "(.+)"$/, async function
     await browser.sleep(8000);
     await anyCcdPage.reloadPage();
     await browser.manage().window().maximize();
-    await anyCcdPage.clickElementByCss('div .mat-tab-header-pagination-after');
     await browser.sleep(5000);
     await anyCcdPage.clickTab('Reasonable Adjustments Letters');
     await browser.sleep(1000);
