@@ -24,3 +24,8 @@ Then('I should see Addition details in documents tab', async function () {
     expect(await anyCcdPage.contentContains('Addition A - Directions Notice issued on')).to.equal(true);
     expect(await anyCcdPage.contentContains('A')).to.equal(true);
 });
+
+Then('I should see {string} in documents tab', async function (notice) {
+    await anyCcdPage.clickTab('Documents');
+    expect(await anyCcdPage.contentContains(notice)).to.equal(true);
+});

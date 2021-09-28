@@ -23,7 +23,7 @@ Feature: PIP Final decision notice
     When I choose "Issue final decision"
     And I issue a final decision generate decision no
     Then the case should end in "Dormant" state
-    Then I  should see "Final Decision Notice" in documents tab
+    Then I should see "Final Decision Notice" in documents tab
 
   @issue-decision @nightly-test @PIP-DN-2
   Scenario: Yes to generate decision and award is about daily living or mobility
@@ -32,7 +32,7 @@ Feature: PIP Final decision notice
     When I choose "Issue final decision"
     And I issue a final decision generate decision no
     Then the case should be in "Dormant" appeal status
-    Then I  should see "Final Decision Notice" in documents tab
+    Then I should see "Final Decision Notice" in documents tab
 
     @issue-decision @nightly-test @PIP-DN-3
     Scenario: Yes to generate decision and award is about daily living or mobility
@@ -42,4 +42,4 @@ Feature: PIP Final decision notice
       When I choose "Issue final decision"
       And I issue a final decision generate decision no
       Then the case should be in "Dormant" appeal status
-      Then I  should see "Final Decision Notice" in documents tab
+      Then I should see "Final Decision Notice" in documents tab
