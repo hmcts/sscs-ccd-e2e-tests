@@ -20,5 +20,3 @@ Feature: Common accessibility checks
         Then the page is accessible
         Given I go to "DWP Documents" tab
         Then the page is accessible
-        Given I go to "Related Cases" tab
-        Then the page is accessible

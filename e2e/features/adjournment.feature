@@ -1,5 +1,5 @@
 @migrated-to-exui @adjournment
-Feature: Issue decision
+Feature: Adjournment decision
 
   Background:
     Given I presetup an "PIP" SYA case

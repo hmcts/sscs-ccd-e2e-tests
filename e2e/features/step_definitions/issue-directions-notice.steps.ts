@@ -18,7 +18,9 @@ When(/^I allow the appeal to proceed$/, async function () {
     await anyCcdPage.clickAction('//button[contains(text(),\'Submit\')]');
 });
 
-Then('I  should see {string} in documents tab', async function (notice) {
+Then('I should see Addition details in documents tab', async function () {
     await anyCcdPage.clickTab('Documents');
-    expect(await anyCcdPage.contentContains(notice)).to.equal(true);
+    expect(await anyCcdPage.contentContains('Directions Notice')).to.equal(true);
+    expect(await anyCcdPage.contentContains('Addition A - Directions Notice issued on')).to.equal(true);
+    expect(await anyCcdPage.contentContains('A')).to.equal(true);
 });
