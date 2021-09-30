@@ -27,9 +27,11 @@ Then(/^the hearing recording should (be|not be) in "(.+)" tab$/, async function 
   await browser.sleep(500);
   await anyCcdPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
-  expect(await anyCcdPage.contentContains('Hearing recordings')).to.equal(isDisplayed);
-  expect(await anyCcdPage.contentContains('Hearing recordings 1')).to.equal(isDisplayed);
+  expect(await anyCcdPage.contentContains('recordings 1')).to.equal(isDisplayed);
   expect(await anyCcdPage.contentContains('Recordings')).to.equal(isDisplayed);
+  expect(await anyCcdPage.contentContains('Final Hearing')).to.equal(isDisplayed);
+  expect(await anyCcdPage.contentContains('12345')).to.equal(isDisplayed);
+  expect(await anyCcdPage.contentContains('Fox Court')).to.equal(isDisplayed);
   await browser.sleep(5000);
 });
 
@@ -56,10 +58,6 @@ When(/^I grant request for Hearing recording$/, async function () {
   console.log('--------- option');
   await anyCcdPage.click('Continue');
   console.log('--------- continue');
-  expect(await anyCcdPage.contentContains('Are you sure you want to change the request status')).to.equal(true);
-  await browser.sleep(500);
-  await anyCcdPage.click('Ignore Warning and Continue');
-  console.log('--------- warning ignored');
   await anyCcdPage.click('Submit');
   console.log('--------- submit');
   await browser.sleep(500);

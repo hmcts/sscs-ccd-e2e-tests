@@ -26,10 +26,10 @@ Feature: Upload hearing recording
 
     When I switch to be a Case Officer
     And I navigate to an existing case
-    And I choose "Process hearing recording"
+    And I choose "Action hearing recording req"
     And I grant request for Hearing recording
     Then the "DWP Request hearing recording" should be successfully listed in "History" tab
-    Then the "Process hearing recording" should be successfully listed in "History" tab
+    Then the "Action hearing recording req" should be successfully listed in "History" tab
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
