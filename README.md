@@ -42,6 +42,11 @@ $ TEST_CASEOFFICER_USERNAME=? TEST_CASEOFFICER_PASSWORD=? yarn e2e
 $ ./bin/local-prod-test.sh
  ```
 
+#### Running the nightly tests locally against AAT
+ ```bash
+$ yarn test:aat
+ ```
+
 If you wish to see the browser running the tests simply set the `TEST_E2E_HEADLESS` environment variable to *false*
 ### Updating the project for your service
 
