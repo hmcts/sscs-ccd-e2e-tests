@@ -10,7 +10,6 @@ Feature: UC Final Decision Notices
     When I switch to be a DWPResponse Writer
     When I choose "Upload response"
     And I upload contains further information "NO" for "UC"
-    Then the case should be in "Ready to list" state
 
     When I switch to be a Judge
     When I choose "Write final decision"
