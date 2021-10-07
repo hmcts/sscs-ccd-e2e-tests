@@ -4,7 +4,6 @@ import { AnyCcdPage } from './any-ccd.page';
 import * as path from 'path';
 
 const anyCcdPage = new AnyCcdPage();
-
 export class AdjournmentPage extends AnyPage {
 
     async uploadAdjournmentNotice() {
@@ -20,7 +19,7 @@ export class AdjournmentPage extends AnyPage {
         await element(by.id(inputElement)).sendKeys(absolutePath);
     }
 
-    async addVenue() {
+    async addVenue(day: string, month: string, year: string) {
         await element(by.id('hearings_0_venue_name')).sendKeys('Fox Court');
         await element(by.id('hearings_0_venue_address_line1')).sendKeys('Fox Court');
         await element(by.id('hearings_0_venue_address_line2')).sendKeys('4th Floor');
@@ -33,9 +32,9 @@ export class AdjournmentPage extends AnyPage {
         await element(by.id('hearings_0_venue_googleMapLink'))
                 .sendKeys('https://www.google.com/maps/place/4th+Floor+30+Brooke+Street+EC1N+7RS/@51.518706,-0.110348');
         await element(by.id('hearings_0_judge')).sendKeys('Judge');
-        await element(by.id('hearingDate-day')).sendKeys('20');
-        await element(by.id('hearingDate-month')).sendKeys('10');
-        await element(by.id('hearingDate-year')).sendKeys('2020');
+        await element(by.id('hearingDate-day')).sendKeys(day);
+        await element(by.id('hearingDate-month')).sendKeys(month);
+        await element(by.id('hearingDate-year')).sendKeys(year);
         await element(by.id('hearings_0_time')).sendKeys('13:00');
 
         await element(by.id('postponedDate-day')).sendKeys('20');
