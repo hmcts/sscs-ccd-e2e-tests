@@ -107,7 +107,8 @@ When(/^I update the scanned document for "(.+)"$/, async function (originator) {
  } else if (originator === 'JointParty') {
     await anyCcdPage.chooseOptionByElementId('originalSender', 'Joint party');
  }
- await anyCcdPage.clickElementByIdXPath('//button[@type="button"]');
+ await anyCcdPage.click('Add new');
+ await browser.sleep(2000);
  await anyCcdPage.chooseOptionByElementId('scannedDocuments_0_type', 'Confidentiality request');
  await dwpResponse.uploadDoc('scannedDocuments_0_url');
  await browser.driver.sleep(300);
