@@ -59,8 +59,8 @@ Then(/^the bundle should include the AV evidence$/, async function () {
     await anyCcdPage.clickTab('Bundles');
     await browser.sleep(1000);
     expect(await caseDetailsPage.isFieldValueDisplayed('Folder Name', 'Further additions')).to.equal(true);
-    expect(await anyCcdPage.contentContains('Audio/video document')).to.equal(true);
-    expect(await anyCcdPage.contentContains('RIP 1 document for A/V file: test_av.mp3')).to.equal(true);
+    expect(await anyCcdPage.contentContains('Audio/video evidence document')).to.equal(true);
+    expect(await anyCcdPage.contentContains('Addition B - DWP - RIP 1 document for A/V file: test_av.mp3')).to.equal(true);
 });
 
 Given(/^I submit "(.+)" as "(.+)" in the Upload document FE event$/, async function (filename, type) {
