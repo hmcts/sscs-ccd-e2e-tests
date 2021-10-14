@@ -45,7 +45,7 @@ When(/^I process the AV evidence using the "(.+)" action$/, async function (acti
     await anyCcdPage.click('Continue');
     expect(await anyCcdPage.contentContains('Event summary (optional)')).to.equal(true);
     await anyCcdPage.click('Submit');
-    await browser.sleep(2000);
+    await browser.sleep(50000);
 })
 
 Then(/^I "(.+)" see the AV evidence in the DWP Documents tab$/, async function (assertion) {
