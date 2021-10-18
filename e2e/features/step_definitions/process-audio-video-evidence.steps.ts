@@ -37,7 +37,7 @@ When(/^I process the AV evidence using the "(.+)" action$/, async function (acti
     await anyCcdPage.click('Continue');
     expect(await anyCcdPage.contentContains('Selected Audio/Video Evidence Details')).to.equal(true);
     await anyCcdPage.chooseOptionContainingText('#processAudioVideoAction', action);
-    await element(by.id('bodyContent')).sendKeys('Body test content');
+    await element(by.id('directionNoticeContent')).sendKeys('Body test content');
     await element(by.id('signedBy')).sendKeys('Signed by test content');
     await element(by.id('signedRole')).sendKeys('Signed role test content');
     await anyCcdPage.click('Continue');
