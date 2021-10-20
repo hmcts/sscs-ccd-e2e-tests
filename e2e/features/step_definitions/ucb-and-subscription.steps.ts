@@ -138,7 +138,7 @@ Then(/^I see field "(.+)" with value "(.+)" in "(.+)" tab$/, async function (key
 Then(/^I should see UCB flag$/, async function () {
    await anyCcdPage.clickTab('Listing Requirements');
    await browser.sleep(50);
-   expect(await anyCcdPage.contentContains('Unacceptable Customer Behaviour (UCB)')).to.equal(true);
+   expect(await anyCcdPage.contentContains('Appellant - Unacceptable Customer Behaviour (UCB)')).to.equal(true);
 });
 
 Then(/^I should see PHME flag as "(.+)"$/, async function (state) {
