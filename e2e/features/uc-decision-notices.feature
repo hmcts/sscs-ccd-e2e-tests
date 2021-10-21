@@ -12,6 +12,7 @@ Feature: UC Final Decision Notices
     And I upload contains further information "NO" for "UC"
 
     When I switch to be a Judge
+    And I navigate to an existing case
     When I choose "Write final decision"
 
   @uc-decision @nightly-test @UC-DN-1
