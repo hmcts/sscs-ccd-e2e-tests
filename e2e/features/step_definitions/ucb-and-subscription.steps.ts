@@ -14,7 +14,6 @@ const dwpresponse = new DwpResponsePage();
 When(/^I populate fields and continue$/, async function () {
     await caseDetailsPage.addReasonAndDate('notListableDueDate');
     await anyCcdPage.click('Submit');
-    await anyCcdPage.reloadPage();
     await anyCcdPage.clickTab('Summary');
 });
 
