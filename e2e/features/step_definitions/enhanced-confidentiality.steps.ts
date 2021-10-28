@@ -18,7 +18,7 @@ Given(/^I "(.+)" confidentiality request$/, async function (verdict) {
 
 Given(/^I upload supplementary response$/, async function () {
     await dwpresponse.uploadFile('dwpSupplementaryResponseDoc_documentLink', 'issue1.pdf')
-    await browser.sleep(1500);
+    await browser.sleep(4000);
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
     await anyCcdPage.click('Submit');
