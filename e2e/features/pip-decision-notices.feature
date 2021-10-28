@@ -1,4 +1,4 @@
-@migrated-to-exui
+@migrated-to-exui @preview-test
 Feature: PIP Final decision notice
 
   Background:

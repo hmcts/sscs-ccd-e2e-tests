@@ -1,4 +1,4 @@
-@migrated-to-exui
+@migrated-to-exui @preview-test
 Feature: Create a bulk-scanned appeal
 
   Background:

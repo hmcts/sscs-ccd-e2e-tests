@@ -1,4 +1,4 @@
-@migrated-to-exui-1 
+@migrated-to-exui-1 @preview-test
 Feature: Upload evidences to a case
 
   @nightly-test-wip

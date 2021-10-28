@@ -1,4 +1,4 @@
-@migrated-to-exui
+@migrated-to-exui @preview-test
 Feature: The happy path
 
   @happy-path @nightly-test @dwp-upload-response
