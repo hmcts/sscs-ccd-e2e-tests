@@ -1,4 +1,4 @@
-@migrated-to-exui-1 @preview-test
+@migrated-to-exui-1
 Feature: Upload evidences to a case
 
   @nightly-test-wip
@@ -12,7 +12,7 @@ Feature: Upload evidences to a case
     And I upload a new document
     Then I should see uploaded file within documents tab
 
-  @nightly-test-wip
+  @nightly-test-wip @preview-test
   Scenario: Upload an evidence using Upload document FE event
     Given I am signed in as a Case Officer
     And I navigate to an existing case
@@ -20,7 +20,7 @@ Feature: Upload evidences to a case
     And I choose "Upload document FE"
     When I submit "issue1.pdf" as "Appellant evidence" in the Upload document FE event
     Then I should see uploaded file within Unprocessed correspondence tab
-  
+
   @nightly-test
   Scenario: Upload an evidence using Upload further evidence event
     Given I presetup an "PIP" SYA case
@@ -34,6 +34,3 @@ Feature: Upload evidences to a case
     And I choose "Upload further evidence"
     When I upload further evidence documents for Incomplete Application
     Then I should see uploaded file for incomplete case within documents tab
-
-
-
