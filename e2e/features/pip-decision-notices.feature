@@ -34,7 +34,7 @@ Feature: PIP Final decision notice
     Then the case should be in "Dormant" appeal status
     Then I should see "Final Decision Notice" in documents tab
 
-    @issue-decision @nightly-test @PIP-DN-3
+    @issue-decision @nightly-test @PIP-DN-3 @preview-test
     Scenario: Yes to generate decision and award is about daily living or mobility
       And I write a final decision generate notice yes daily living mobility is yes face to face
       And I see "Draft Decision Notice"

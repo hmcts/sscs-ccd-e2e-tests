@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test @update-subscriptions
+@migrated-to-exui @nightly-test @update-subscriptions @preview-test
 Feature: The Update subscriptions
 
   Background:
