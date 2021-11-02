@@ -12,7 +12,7 @@ Feature: Upload evidences to a case
     And I upload a new document
     Then I should see uploaded file within documents tab
 
-  @nightly-test-wip @preview-test
+  @nightly-test-wip
   Scenario: Upload an evidence using Upload document FE event
     Given I am signed in as a Case Officer
     And I navigate to an existing case
@@ -21,7 +21,7 @@ Feature: Upload evidences to a case
     When I submit "issue1.pdf" as "Appellant evidence" in the Upload document FE event
     Then I should see uploaded file within Unprocessed correspondence tab
 
-  @nightly-test
+  @nightly-test @preview-test
   Scenario: Upload an evidence using Upload further evidence event
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
