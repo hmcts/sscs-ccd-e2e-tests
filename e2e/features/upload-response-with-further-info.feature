@@ -1,7 +1,7 @@
 @migrated-to-exui
 Feature: The alternate happy path
 
-  @alt-happy-path @nightly-test @bug-ticket-EUI-3535
+  @alt-happy-path @nightly-test @preview-test
   Scenario: Should end up in "With DWP" state when ALL fields are present
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
