@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test-bug @EUI-4346-bug-ticket
+@migrated-to-exui @nightly-test-bug
 Feature: Link a case
 
   Background:
