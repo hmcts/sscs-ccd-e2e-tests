@@ -52,6 +52,8 @@ export class AdjournmentPage extends AnyPage {
         await element(by.id('eventDate-month')).sendKeys('10');
         await element(by.id('eventDate-year')).sendKeys('2020');
 
+        await element(by.id('hearings_0_venueId')).sendKeys('142');
+
         await anyCcdPage.click('Continue');
         await anyCcdPage.click('Submit');
     }
