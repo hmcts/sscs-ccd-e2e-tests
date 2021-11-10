@@ -8,6 +8,7 @@ const anyCcdPage = new AnyCcdPage();
 const adjournmentPage = new AdjournmentPage();
 
 When(/^I book a hearing$/, async function () {
+  await browser.sleep(2000);
   await anyCcdPage.click('Add new');
   await adjournmentPage.addVenue('20', '10', '2020');
   await browser.sleep(500);
@@ -38,6 +39,7 @@ When(/^I generate an adjournment notice$/, async function () {
   await adjournmentPage.setAdjournCaseReasonsText();
 
   await anyCcdPage.click('Continue');
+  await browser.sleep(4000);
   await anyCcdPage.click('Continue');
   await browser.sleep(2000);
   await anyCcdPage.click('Continue');
