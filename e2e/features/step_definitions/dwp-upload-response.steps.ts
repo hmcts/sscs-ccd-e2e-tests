@@ -10,6 +10,12 @@ const anyCcdPage = new AnyCcdFormPage();
 const caseDetailsPage = new CaseDetailsPage();
 const dwpresponse = new DwpResponsePage();
 
+let date = new Date();
+let month = date.getMonth() + 1; // months (0-11)
+let day = date.getDate(); // day (1-31)
+let year = date.getFullYear();
+let formattedDate =  day + '-' + month + '-' + year;
+
 When(/^I choose "(.+)"$/, async function (action) {
     await browser.sleep(4000)
     if (action === 'Write adjournment notice'
@@ -70,5 +76,30 @@ Then(/^the case should end in "(.+)" state$/, async function (state) {
     await anyCcdPage.clickTab('History');
     await browser.sleep(10000);
     expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
+    await browser.sleep(500);
+});
+
+Then(/^DWP documents should be seen against the case$/, async function () {
+    await anyCcdPage.clickTab('DWP Documents');
+    await browser.sleep(5000);
+    await anyCcdPage.isFieldValueDisplayed('Document type', 'DWP evidence bundle');
+    await anyCcdPage.isFieldValueDisplayed('Original document Url', `DWP evidence received on ${formattedDate}.pdf`);
+
+    await anyCcdPage.isFieldValueDisplayed('Document type', 'DWP response');
+    await anyCcdPage.isFieldValueDisplayed('Original document Url', `DWP response received on ${formattedDate}.pdf`);
+
+    await anyCcdPage.isFieldValueDisplayed('Document type', 'AT38');
+    await anyCcdPage.isFieldValueDisplayed('Original document Url', `AT38 received on ${formattedDate}.pdf`);
+    await browser.sleep(500);
+});
+
+Then(/^DWP edited documents should be seen against the case$/, async function () {
+    await anyCcdPage.clickTab('DWP Documents');
+    await browser.sleep(5000);
+    await anyCcdPage.isFieldValueDisplayed('Document type', 'DWP evidence bundle');
+    await anyCcdPage.isFieldValueDisplayed('Edited document Url', `DWP edited evidence received on ${formattedDate}.pdf`);
+
+    await anyCcdPage.isFieldValueDisplayed('Document type', 'DWP response');
+    await anyCcdPage.isFieldValueDisplayed('Edited document Url', `DWP edited response received on ${formattedDate}.pdf`);
     await browser.sleep(500);
 });

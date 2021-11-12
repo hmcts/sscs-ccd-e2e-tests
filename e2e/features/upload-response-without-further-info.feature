@@ -18,6 +18,7 @@ Feature: The happy path
     When I switch to be a Case Officer
     And I navigate to an existing case
     Then the case should end in "Ready to list" state
+    And DWP documents should be seen against the case
 
 
  @happy-path @nightly-test-wip @dwp-upload-response @preview-test

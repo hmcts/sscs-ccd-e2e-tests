@@ -28,3 +28,5 @@ Feature: The Update UCB
     And the case bundle details should be listed in "Bundles" tab
     And the "SSCS Bundle Edited" bundle configuration should have been used
     And the "SSCS Bundle Original" bundle configuration should have been used
+    And DWP edited documents should be seen against the case
+
