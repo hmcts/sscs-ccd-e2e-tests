@@ -10,13 +10,9 @@ const anyCcdPage = new AnyCcdFormPage();
 const caseDetailsPage = new CaseDetailsPage();
 const dwpresponse = new DwpResponsePage();
 
-function pad2(n) {
-    return (n < 10 ? '0' : '') + n;
-}
-
 let date = new Date();
-let month = pad2(date.getMonth() + 1); // months (0-11)
-let day = pad2(date.getDate()); // day (1-31)
+let month = date.getMonth() + 1; // months (0-11)
+let day = date.getDate(); // day (1-31)
 let year = date.getFullYear();
 let formattedDate =  day + '-' + month + '-' + year;
 
