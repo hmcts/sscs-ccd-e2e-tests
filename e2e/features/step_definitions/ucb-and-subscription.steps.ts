@@ -111,6 +111,18 @@ When(/^I upload a "(.+)" doc contains further information "(.+)" for "(.+)"$/,
     await anyCcdPage.scrollBar('//button[contains(text(),\'Submit\')]');
 });
 
+When(/^I do not upload edited docs after selecting "(.+)" option$/,
+    async function (docType: string) {
+    const dwpState = 'YES';
+    const isContainsFurtherInfo = 'NO'
+    const isPHME = docType === 'PHME'
+    await dwpresponse.uploadResponseWithoutPhmeDocs(dwpState, isPHME, isContainsFurtherInfo);
+    await anyCcdPage.selectIssueCode();
+    await anyCcdPage.click('Continue');
+    await browser.sleep(2000);
+    await anyCcdPage.scrollBar('//button[contains(text(),\'Submit\')]');
+});
+
 When(/^I upload a doc$/, async function () {
    const docLink = 'tl1Form_documentLink';
     await dwpresponse.uploadDoc(docLink);

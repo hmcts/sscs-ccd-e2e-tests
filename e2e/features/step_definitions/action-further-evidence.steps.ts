@@ -29,6 +29,21 @@ When(/^I fill the further evidence form with "(.+)" and "(.+)"$/, async function
     await anyCcdPage.click('Submit');
 });
 
+When(/^I fill the further evidence form with "(.+)"$/, async function (testFile: string) {
+    await anyCcdPage.chooseOptionContainingText('#furtherEvidenceAction', 'Review by Judge');
+    await anyCcdPage.chooseOptionContainingText('#originalSender', 'Appellant (or Appointee)');
+    await anyCcdPage.click('Add new');
+    await browser.sleep(1000);
+
+    await anyCcdPage.chooseOptionContainingText('#scannedDocuments_0_type', 'Confidentiality request');
+    await furtherEvidencePage.uploadFile('scannedDocuments_0_url', `${testFile}.pdf`);
+    await furtherEvidencePage.enterFileName('scannedDocuments_0_fileName', 'testfile.pdf');
+    await furtherEvidencePage.enterScannedDate('20', '1', '2021');
+    await browser.sleep(3000);
+
+    await anyCcdPage.click('Continue');
+});
+
 Then(/^the case should have successfully processed "(.+)" event$/, async function (event) {
     await delay(5000);
     await anyCcdPage.clickTab('History');
