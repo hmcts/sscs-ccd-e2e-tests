@@ -62,6 +62,32 @@ When(/^I upload contains further information (.+) for "(.+)"$/, async function (
     await anyCcdPage.scrollBar('//button[@type=\'submit\']');
 });
 
+When(/^I upload only evidence and original documents$/, async function () {
+    let dwpState = 'YES';
+    let benefitType = 'PIP';
+    await dwpresponse.uploadOnlyResponseAndEvidence('No', dwpState, benefitType);
+    if (benefitType !== 'UC') {
+        await anyCcdPage.selectIssueCode();
+        await browser.sleep(2000);
+    }
+    await browser.sleep(500);
+    await anyCcdPage.scrollBar('//div/form/div/button[2]');
+});
+
+When(/^I upload with default issue code$/, async function () {
+    const dwpState = 'YES';
+    await dwpresponse.uploadResponse('No', dwpState, 'PIP');
+    await browser.sleep(500);
+    await anyCcdPage.scrollBar('//div/form/div/button[2]');
+    await browser.sleep(500);
+    await anyCcdPage.scrollBar('//button[@type=\'submit\']');
+});
+
+Then(/^I should see "(.+)" error message$/, async function (errMsg: string) {
+    await browser.sleep(5000);
+    expect(await anyCcdPage.contentContains(errMsg)).to.equal(true);
+});
+
 When(/^I upload (.+) further information with disputed (.+) disputed by others (.+) and further info (.+)$/,
     async function (benefitType, disputed, disputedByOthersYesOrNo, dwpFurtherInfoYesOrNo) {
     await dwpresponse.uploadResponseWithJointParty(benefitType, disputed, disputedByOthersYesOrNo, dwpFurtherInfoYesOrNo);

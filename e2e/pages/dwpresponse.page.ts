@@ -32,6 +32,29 @@ export class DwpResponsePage extends AnyPage {
         }
     }
 
+    async uploadOnlyResponseAndEvidence(action: string, dwpState: string, benefitType: string) {
+        await browser.waitForAngular();
+        let remote = require('selenium-webdriver/remote');
+        browser.setFileDetector(new remote.FileDetector());
+        await this.uploadFile('dwpResponseDocument_documentLink', 'issue1.pdf');
+        await this.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
+        if (action === 'YES') {
+            await browser.sleep(10000);
+            await anyCcdFormPage.clickElementById('dwpFurtherInfo_Yes');
+        } else {
+            await browser.sleep(5000);
+            await anyCcdFormPage.clickElementById('dwpFurtherInfo_No');
+            await anyCcdFormPage.clickElementById('dwpUCB_No');
+            await browser.sleep(3000);
+        }
+        if (dwpState === 'YES' && benefitType !== 'UC') {
+            await anyCcdFormPage.chooseOptionByElementId('benefitCode', '001');
+            await anyCcdFormPage.clickElementById('dwpUCB_No');
+            await anyCcdFormPage.chooseOptionByElementId('dwpFurtherEvidenceStates', 'No action');
+            await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (DWP)');
+        }
+    }
+
    async uploadResponseWithUcbAndPhme(dwpState: string, docLink: string, isUCB: boolean, isPHME: boolean, containsFurtherInfo) {
             await browser.waitForAngular();
             let remote = require('selenium-webdriver/remote');
@@ -66,7 +89,32 @@ export class DwpResponsePage extends AnyPage {
             if (dwpState === 'YES') {
                 anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (DWP)');
             }
+    }
+
+    async uploadResponseWithoutPhmeDocs(dwpState: string, isPHME: boolean, containsFurtherInfo) {
+        await browser.waitForAngular();
+        let remote = require('selenium-webdriver/remote');
+        browser.setFileDetector(new remote.FileDetector());
+        await this.uploadFile('dwpResponseDocument_documentLink', 'issue1.pdf');
+        await this.uploadFile('dwpAT38Document_documentLink', 'issue2.pdf');
+        await this.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
+
+        if (isPHME) {
+            await browser.sleep(1000);
+            anyCcdFormPage.chooseOptionByElementId('dwpEditedEvidenceReason', 'Potentially harmful medical evidence');
         }
+
+        if (containsFurtherInfo) {
+            await anyCcdFormPage.clickElementById('dwpFurtherInfo_Yes');
+            await browser.sleep(1000);
+        } else {
+            await browser.sleep(1000);
+            await anyCcdFormPage.clickElementById('dwpFurtherInfo_No');
+        }
+        if (dwpState === 'YES') {
+            anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (DWP)');
+        }
+}
 
     async uploadDoc(docLink: string) {
       console.log('uploading a single doc...')
