@@ -29,7 +29,7 @@ When(/^I fill the further evidence form with "(.+)" and "(.+)"$/, async function
     await anyCcdPage.click('Submit');
 });
 
-When(/^I fill the further evidence form with "(.+)"$/, async function (testFile: string) {
+When(/^I fill the further evidence form with "(.+)" invalid file$/, async function (testFile: string) {
     await anyCcdPage.chooseOptionContainingText('#furtherEvidenceAction', 'Review by Judge');
     await anyCcdPage.chooseOptionContainingText('#originalSender', 'Appellant (or Appointee)');
     await anyCcdPage.click('Add new');
