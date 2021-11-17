@@ -10,14 +10,14 @@ Feature: Create bundle for a case
     When I choose "Upload response"
     And I upload contains further information NO for "PIP"
 
-  @bundle
+  @bundle @preview-test
   Scenario: Verify create bundle event for cases
     And I choose "Create a bundle"
     And I submit "Create a bundle"
     Then the bundles should be successfully listed in "History" tab
     And the case bundle details should be listed in "Bundles" tab
 
-  @stitch-bundle @preview-test
+  @stitch-bundle
   Scenario: Verify stitch bundle event for cases
     And I choose "Stitching bundle complete"
     And I submit "Stitching bundle complete"
