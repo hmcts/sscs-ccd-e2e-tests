@@ -1,7 +1,7 @@
 @migrated-to-exui
 Feature: The happy path
 
-  @happy-path @nightly-test @dwp-upload-response
+  @happy-path @nightly-test @dwp-upload-response @preview-test
   Scenario: Should end up in "Ready to list" state when ALL fields are present
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
@@ -21,7 +21,7 @@ Feature: The happy path
     And DWP documents should be seen against the case
 
 
- @happy-path @nightly-test-wip @dwp-upload-response @preview-test
+ @happy-path @nightly-test-wip @dwp-upload-response
   Scenario: Should end up in "Ready to List" state when a UC is not disputed by others
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
@@ -31,6 +31,7 @@ Feature: The happy path
     When I switch to be a DWPResponse Writer
     And I choose "Upload response"
     And I upload UC further information with disputed General disputed by others No and further info No
+    Given I navigate to an existing case
     Then the case should be in "Ready to list" state
 
     When I switch to be a Case Officer
