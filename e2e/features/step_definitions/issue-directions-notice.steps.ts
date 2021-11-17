@@ -14,7 +14,7 @@ When(/^I allow the appeal to proceed$/, async function () {
     await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
     await browser.sleep(2000);
     await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
-    await browser.sleep(2000);
+    await browser.sleep(8000);
     await anyCcdPage.clickAction('//button[contains(text(),\'Submit\')]');
 });
 
