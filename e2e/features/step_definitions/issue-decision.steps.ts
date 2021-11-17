@@ -68,7 +68,7 @@ When(/^I write a final decision generate notice yes daily living mobility is yes
   await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('writeFinalDecisionTypeOfHearing-faceToFace');
-  await browser.sleep(500);
+  await browser.sleep(1000);
   await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion_Yes');
   await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion_Yes');
   await anyCcdPage.click('Continue');
@@ -79,10 +79,11 @@ When(/^I write a final decision generate notice yes daily living mobility is yes
   await anyCcdPage.click('Continue');
   await caseDetailsPage.addDayItems('writeFinalDecisionStartDate');
   await anyCcdPage.clickElementById('writeFinalDecisionEndDateType-setEndDate');
-  await browser.sleep(500);
+  await browser.sleep(2000);
   await caseDetailsPage.addDayItems('writeFinalDecisionEndDate');
   await browser.sleep(3000);
   await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
+   await browser.sleep(3000);
   await issueDecisionPage.addPanelMembers();
   await anyCcdPage.click('Continue');
   await browser.sleep(2000)
