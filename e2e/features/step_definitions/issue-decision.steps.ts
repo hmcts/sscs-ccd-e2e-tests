@@ -83,7 +83,7 @@ When(/^I write a final decision generate notice yes daily living mobility is yes
   await caseDetailsPage.addDayItems('writeFinalDecisionEndDate');
   await browser.sleep(3000);
   await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
-   await browser.sleep(3000);
+  await browser.sleep(3000);
   await issueDecisionPage.addPanelMembers();
   await anyCcdPage.click('Continue');
   await browser.sleep(2000)
