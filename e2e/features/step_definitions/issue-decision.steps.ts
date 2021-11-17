@@ -77,6 +77,7 @@ When(/^I write a final decision generate notice yes daily living mobility is yes
   await anyCcdPage.clickElementById('pipWriteFinalDecisionMobilityQuestion-standardRate');
   await anyCcdPage.clickElementById('pipWriteFinalDecisionComparedToDWPMobilityQuestion-same');
   await anyCcdPage.click('Continue');
+  await browser.sleep(3000);
   await caseDetailsPage.addDayItems('writeFinalDecisionStartDate');
   await anyCcdPage.clickElementById('writeFinalDecisionEndDateType-setEndDate');
   await browser.sleep(2000);

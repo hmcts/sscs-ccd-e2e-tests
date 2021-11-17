@@ -60,6 +60,7 @@ When(/^I upload contains further information (.+) for "(.+)"$/, async function (
       await browser.sleep(500);
     }
     await anyCcdPage.scrollBar('//button[@type=\'submit\']');
+    await browser.sleep(2000);
 });
 
 When(/^I upload only evidence and original documents$/, async function () {
