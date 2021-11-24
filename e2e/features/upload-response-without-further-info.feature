@@ -46,5 +46,5 @@ Feature: The happy path
     When I choose "Upload response"
     And I respond to the appeal with upload contains further information "No" option
     Then The case should end in "Not listable" state and interloc state should be in "Review by Judge"
-    And the "Other Party Details" tab is seen
+    And the "Other Party Details" tab is seen with "Other parties 1" content
 
