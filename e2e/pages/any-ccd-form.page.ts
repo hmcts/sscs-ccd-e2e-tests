@@ -9,7 +9,6 @@ const anyCcdPage = new AnyCcdPage();
 export class AnyCcdFormPage extends AnyCcdPage {
 
     private formFiller = new FormFiller();
-
     private cancelLink = 'p.cancel';
 
     async addNewCollectionItem(collectionLabel: string) {

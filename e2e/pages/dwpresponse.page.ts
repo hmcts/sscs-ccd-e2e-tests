@@ -155,6 +155,29 @@ export class DwpResponsePage extends AnyPage {
         await anyCcdFormPage.click('Submit');
     }
 
+    async uploadResponseForChildSupport(action: string) {
+        await browser.waitForAngular();
+        let remote = require('selenium-webdriver/remote');
+        browser.setFileDetector(new remote.FileDetector());
+        await this.uploadFile('dwpResponseDocument_documentLink', 'issue1.pdf');
+        await this.uploadFile('dwpAT38Document_documentLink', 'issue2.pdf');
+        await this.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
+
+        await browser.sleep(2000);
+        await anyCcdFormPage.chooseOptionByElementId('dwpEditedEvidenceReason', 'Child support - Confidentiality');
+        console.log('uploading edited doc....');
+        await this.uploadFile('dwpEditedResponseDocument_documentLink', 'issue1.pdf');
+        await this.uploadFile('dwpEditedEvidenceBundleDocument_documentLink', 'issue2.pdf');
+
+        await browser.sleep(2000);
+        await anyCcdFormPage.chooseOptionByElementId('benefitCode', '022');
+        await anyCcdFormPage.chooseOptionByElementId('issueCode', 'AA');
+        await anyCcdFormPage.clickElementById(`dwpFurtherInfo_${action}`);
+        await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Appeal to-be registered');
+        await anyCcdFormPage.click('Continue');
+        await browser.sleep(2000);
+    }
+
     async elementsDisputedPage(disputed: string) {
         await anyCcdFormPage.clickElementById('elementsDisputedList-' + disputed.toLowerCase());
     }
@@ -216,5 +239,23 @@ export class DwpResponsePage extends AnyPage {
         await anyCcdFormPage.chooseOptionByElementId('benefitCode', '001');
         await anyCcdFormPage.chooseOptionByElementId('dwpFurtherEvidenceStates', 'No action');
         await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (DWP)');
-        }
     }
+
+    async addOtherParties() {
+
+        await anyCcdFormPage.click('Add new');
+        await browser.sleep(2000);
+        await anyCcdFormPage.fillValues('otherParties_0_name_firstName', 'Other');
+        await anyCcdFormPage.fillValues('otherParties_0_name_lastName', 'Tester');
+        await anyCcdFormPage.fillValues('otherParties_0_address_line1', '101, test');
+        await anyCcdFormPage.fillValues('otherParties_0_address_town', 'test');
+        await anyCcdFormPage.fillValues('otherParties_0_address_postcode', 'TS2 2ST');
+        await anyCcdFormPage.clickElementById('otherParties_0_confidentialityRequired_No');
+        await anyCcdFormPage.clickElementById('otherParties_0_unacceptableCustomerBehaviour_No');
+        await anyCcdFormPage.chooseOptionByElementId('otherParties_0_role_name', 'Paying parent');
+        await anyCcdFormPage.click('Continue');
+        await browser.sleep(2000);
+        await anyCcdFormPage.scrollBar('//button[@type=\'submit\']');
+        await browser.sleep(10000);
+    }
+}

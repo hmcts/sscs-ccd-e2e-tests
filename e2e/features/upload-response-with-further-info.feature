@@ -39,3 +39,13 @@ Feature: The alternate happy path
     And I choose "Response reviewed"
     When I review the UC received Response
     Then the case should be in "Ready to list" state
+
+  @nightly-test
+  Scenario: Child support case should end up in "Not listable" state
+    Given I am signed in as a Case Officer
+    And I create an child support case
+    And the case should be in "With DWP" state
+
+    When I choose "Upload response"
+    And I respond to the appeal with upload contains further information "Yes" option
+    Then The case should end in "Response received" state and interloc state should be in "Awaiting Admin Action"

@@ -1116,6 +1116,11 @@ eyes@0.1.x:
   resolved "https://registry.yarnpkg.com/eyes/-/eyes-0.1.8.tgz#62cf120234c683785d902348a800ef3e0cc20bc0"
   integrity sha1-Ys8SAjTGg3hdkCNIqADvPgzCC8A=
 
+fake-nino@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/fake-nino/-/fake-nino-0.0.1.tgz#81446afc33471048e96c610bdb559d77ac2d6c02"
+  integrity sha1-gURq/DNHEEjpbGEL21Wdd6wtbAI=
+
 faker@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/faker/-/faker-5.1.0.tgz#e10fa1dec4502551aee0eb771617a7e7b94692e8"
