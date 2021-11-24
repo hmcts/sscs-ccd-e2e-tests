@@ -89,6 +89,11 @@ Then(/^I should see "(.+)" error message$/, async function (errMsg: string) {
     expect(await anyCcdPage.contentContains(errMsg)).to.equal(true);
 });
 
+When(/^I respond to the appeal with upload contains further information "(.+)" option$/, async function (action: string) {
+    await dwpresponse.uploadResponseForChildSupport(action);
+    await dwpresponse.addOtherParties();
+});
+
 When(/^I upload (.+) further information with disputed (.+) disputed by others (.+) and further info (.+)$/,
     async function (benefitType, disputed, disputedByOthersYesOrNo, dwpFurtherInfoYesOrNo) {
     await dwpresponse.uploadResponseWithJointParty(benefitType, disputed, disputedByOthersYesOrNo, dwpFurtherInfoYesOrNo);

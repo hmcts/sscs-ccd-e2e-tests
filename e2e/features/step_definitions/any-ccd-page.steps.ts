@@ -20,3 +20,11 @@ Then(/^I should see "(.+)"$/, async function (text) {
 When(/^I click "(.+)"$/, async function (toClick) {
     await anyCcdPage.click(toClick);
 })
+
+Then(/^the "(.+)" tab is seen$/, async function (tabName: string) {
+
+    await browser.manage().window().maximize();
+    await browser.sleep(2000);
+    await anyCcdPage.clickTab(tabName);
+    expect(await anyCcdPage.contentContains('Other parties 1')).to.equal(true);
+});

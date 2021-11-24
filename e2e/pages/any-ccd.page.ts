@@ -96,6 +96,18 @@ export class AnyCcdPage extends AnyPage {
         await element(by.css(elementId)).element(by.cssContainingText('option', option)).click()
     }
 
+    async chooseOptionByValue(elementId: string, value: string) {
+        await browser.wait(
+            async () => {
+                return await element(by.css(elementId))
+                    .isPresent();
+            },
+            Wait.normal,
+            'Button did not show in time'
+        );
+        await element(by.css(elementId)).element(by.css('option[value="' + value + '"]')).click()
+    }
+
     async fillValues(elementId: string, actText: string) {
         await element(by.id(elementId)).sendKeys(actText);
     }
