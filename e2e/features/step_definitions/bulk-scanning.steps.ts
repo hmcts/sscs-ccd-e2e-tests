@@ -102,6 +102,7 @@ async function createSSCSCase() {
 
 async function enterMrnDate() {
 
+    await browser.sleep(2000);
     await caseDetailsPage.addDayItems('caseCreated');
     await anyCcdPage.chooseOptionByValue('#appeal_receivedVia', '1: Paper');
     await caseDetailsPage.addDayItems('mrnDate');
@@ -109,10 +110,12 @@ async function enterMrnDate() {
 
 async function enterAppellantDetails() {
 
+    await browser.sleep(2000);
     await anyCcdPage.fillValues('appeal_appellant_name_title', 'Mr');
     await anyCcdPage.fillValues('appeal_appellant_name_firstName', faker.name.firstName());
     await anyCcdPage.fillValues('appeal_appellant_name_lastName', faker.name.lastName());
 
+    await browser.sleep(2000);
     await anyCcdPage.fillValues('dob-day', '10');
     await anyCcdPage.fillValues('dob-month', '3');
     await anyCcdPage.fillValues('dob-year', '1988');
@@ -121,6 +124,7 @@ async function enterAppellantDetails() {
 
 async function enterAddressDetails() {
 
+    await browser.sleep(2000);
     await anyCcdPage.fillValues('appeal_appellant_address_line1', '1000, test');
     await anyCcdPage.fillValues('appeal_appellant_address_line2', faker.address.streetAddress());
     await anyCcdPage.fillValues('appeal_appellant_address_line3', 'test');
@@ -130,6 +134,7 @@ async function enterAddressDetails() {
 
 async function enterBenefitDetails() {
 
+    await browser.sleep(4000);
     await anyCcdPage.chooseOptionByValue('#appeal_appellant_role_name', '1: payingParent');
     await anyCcdPage.fillValues('appeal_benefitType_code', 'childSupport');
     await anyCcdPage.fillValues('appeal_benefitType_description', 'Child Support');
