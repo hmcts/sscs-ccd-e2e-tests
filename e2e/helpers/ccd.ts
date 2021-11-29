@@ -7,6 +7,7 @@ const timeout = serviceConfig.ApiCallTimeout;
 const ucPayload = require('../features/json/uc_sya.json');
 const pipPayload = require('../features/json/pip_sya.json');
 const esaPayload = require('../features/json/esa_sya.json');
+const childSupportPayload = require('../features/json/child_support_sya.json');
 
 async function createCase(hearingType) {
     const randomNumber = parseInt(Math.random() * 10000000 + '', 10);
@@ -55,6 +56,14 @@ async function createSYACase(caseType: string) {
             method: 'POST',
             uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
             body: esaPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
+    } else if (caseType === 'Child Support') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: childSupportPayload,
             json: true,
             resolveWithFullResponse: true
         };
