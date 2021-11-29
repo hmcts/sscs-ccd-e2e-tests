@@ -1,26 +1,11 @@
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
-import { CaseDetailsPage } from '../../pages/case-details.page';
-import { NIGenerator } from '../../helpers/ni-generator';
-import { DwpOffice } from '../../helpers/dwp-office';
-import { Given, Then, When } from 'cucumber';
-import { expect } from 'chai';
-import { browser } from 'protractor';
-import * as ccd  from '../../helpers/ccd';
-import nino = require('fake-nino');
-import * as faker from 'faker';
+import { Given } from 'cucumber';
 
 const anyCcdPage = new AnyCcdPage();
 const anyCcdFormPage = new AnyCcdFormPage();
-const caseDetailsPage = new CaseDetailsPage();
-const {formData} = require('../data/scanned-case');
-const {incompFormData} = require('../data/incomplete-scanned-case');
-const {sscsPeuFormData} = require('../data/sscs1peu-case');
-const niGenerator = new NIGenerator();
-const dwpOffice = new DwpOffice();
-let caseReference: string;
 
-Given(/^I add other party data$/, async function (caseType) {
+Given(/^I add other party data$/, async function () {
     await anyCcdPage.click('Add new');
     await anyCcdFormPage.fillValues('otherParties_0_name_title' ,'Mr');
     await anyCcdFormPage.fillValues('otherParties_0_name_firstName', 'Other');
