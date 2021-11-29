@@ -7,7 +7,7 @@ const anyCcdFormPage = new AnyCcdFormPage();
 
 Given(/^I add other party data$/, async function () {
     await anyCcdPage.click('Add new');
-    await anyCcdFormPage.fillValues('otherParties_0_name_title' ,'Mr');
+    await anyCcdFormPage.fillValues('otherParties_0_name_title' , 'Mr');
     await anyCcdFormPage.fillValues('otherParties_0_name_firstName', 'Other');
     await anyCcdFormPage.fillValues('otherParties_0_name_lastName', 'Tester');
     await anyCcdFormPage.fillValues('otherParties_0_address_line1', '101, test');
@@ -22,4 +22,3 @@ Given(/^I add other party data$/, async function () {
     await anyCcdPage.click('Continue');
     await anyCcdPage.click('Submit');
 });
-
