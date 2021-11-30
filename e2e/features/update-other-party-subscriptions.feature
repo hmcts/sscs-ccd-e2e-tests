@@ -17,3 +17,6 @@ Feature: The Update subscriptions
 
   Scenario: Update Subscription - Yes
     And I subscribed to all parties including other party to "Yes"
+
+  Scenario: Update Subscription - No
+    And I subscribed to all parties including other party to "No"
