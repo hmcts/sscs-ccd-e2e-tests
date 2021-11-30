@@ -37,22 +37,22 @@ Then(/^I subscribed to all parties including other party to "(.+)"$/, async func
     await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_email', 'supportparty-test@mailinator.com')
     await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_mobile', '01234567890')
 
-     await anyCcdPage.clickElementById('otherParties_0_otherPartySubscription_wantSmsNotifications_' + action);
-     await anyCcdPage.setValueByElementId('otherParties_0_otherPartySubscription_tya', 'otherParty123')
-     await anyCcdPage.setValueByElementId('otherParties_0_otherPartySubscription_email', 'otherparty-test@mailinator.com')
-     await anyCcdPage.setValueByElementId('otherParties_0_otherPartySubscription_mobile', '01234567890')
-     await anyCcdPage.clickElementById('otherParties_0_otherPartySubscription_subscribeEmail_' + action);
-     await anyCcdPage.clickElementById('otherParties_0_otherPartySubscription_subscribeSms_' + action);
+    await anyCcdPage.clickElementById('otherParties_0_otherPartySubscription_wantSmsNotifications_' + action);
+    await anyCcdPage.setValueByElementId('otherParties_0_otherPartySubscription_tya', 'otherParty123')
+    await anyCcdPage.setValueByElementId('otherParties_0_otherPartySubscription_email', 'otherparty-test@mailinator.com')
+    await anyCcdPage.setValueByElementId('otherParties_0_otherPartySubscription_mobile', '01234567890')
+    await anyCcdPage.clickElementById('otherParties_0_otherPartySubscription_subscribeEmail_' + action);
+    await anyCcdPage.clickElementById('otherParties_0_otherPartySubscription_subscribeSms_' + action);
 
-     await anyCcdPage.clickElementById('otherParties_0_otherPartyAppointeeSubscription_wantSmsNotifications_' + action);
-     await anyCcdPage.setValueByElementId('otherParties_0_otherPartyAppointeeSubscription_tya', 'otherPartyAppointee123')
-     await anyCcdPage.setValueByElementId('otherParties_0_otherPartyAppointeeSubscription_email', 'otherpartyAppontee-test@mailinator.com')
-     await anyCcdPage.setValueByElementId('otherParties_0_otherPartyAppointeeSubscription_mobile', '01234567890')
+    await anyCcdPage.clickElementById('otherParties_0_otherPartyAppointeeSubscription_wantSmsNotifications_' + action);
+    await anyCcdPage.setValueByElementId('otherParties_0_otherPartyAppointeeSubscription_tya', 'otherPartyAppointee123')
+    await anyCcdPage.setValueByElementId('otherParties_0_otherPartyAppointeeSubscription_email', 'otherpartyAppontee-test@mailinator.com')
+    await anyCcdPage.setValueByElementId('otherParties_0_otherPartyAppointeeSubscription_mobile', '01234567890')
 
-     await anyCcdPage.clickElementById('otherParties_0_otherPartyRepresentativeSubscription_wantSmsNotifications_' + action);
-     await anyCcdPage.setValueByElementId('otherParties_0_otherPartyRepresentativeSubscription_tya', 'otherParty123')
-     await anyCcdPage.setValueByElementId('otherParties_0_otherPartyRepresentativeSubscription_email', 'otherparty-test@mailinator.com')
-     await anyCcdPage.setValueByElementId('otherParties_0_otherPartyRepresentativeSubscription_mobile', '01234567890')
+    await anyCcdPage.clickElementById('otherParties_0_otherPartyRepresentativeSubscription_wantSmsNotifications_' + action);
+    await anyCcdPage.setValueByElementId('otherParties_0_otherPartyRepresentativeSubscription_tya', 'otherParty123')
+    await anyCcdPage.setValueByElementId('otherParties_0_otherPartyRepresentativeSubscription_email', 'otherparty-test@mailinator.com')
+    await anyCcdPage.setValueByElementId('otherParties_0_otherPartyRepresentativeSubscription_mobile', '01234567890')
  } else {
     await anyCcdPage.clickElementById('subscriptions_appellantSubscription_wantSmsNotifications_' + action);
     await anyCcdPage.clickElementById('subscriptions_appellantSubscription_subscribeEmail_' + action);
@@ -69,14 +69,14 @@ Then(/^I subscribed to all parties including other party to "(.+)"$/, async func
     await anyCcdPage.clickElementById('subscriptions_supporterSubscription_wantSmsNotifications_' + action);
     await anyCcdPage.clickElementById('subscriptions_supporterSubscription_subscribeEmail_' + action);
 
-     await anyCcdPage.clickElementById('otherParties_0_otherPartySubscription_wantSmsNotifications_' + action);
-     await anyCcdPage.clickElementById('otherParties_0_otherPartySubscription_subscribeEmail_' + action);
+    await anyCcdPage.clickElementById('otherParties_0_otherPartySubscription_wantSmsNotifications_' + action);
+    await anyCcdPage.clickElementById('otherParties_0_otherPartySubscription_subscribeEmail_' + action);
 
-     await anyCcdPage.clickElementById('otherParties_0_otherPartyAppointeeSubscription_wantSmsNotifications_' + action);
-     await anyCcdPage.clickElementById('otherParties_0_otherPartyAppointeeSubscription_subscribeEmail_' + action);
+    await anyCcdPage.clickElementById('otherParties_0_otherPartyAppointeeSubscription_wantSmsNotifications_' + action);
+    await anyCcdPage.clickElementById('otherParties_0_otherPartyAppointeeSubscription_subscribeEmail_' + action);
 
-     await anyCcdPage.clickElementById('otherParties_0_otherPartyRepresentativeSubscription_wantSmsNotifications_' + action);
-     await anyCcdPage.clickElementById('otherParties_0_otherPartyRepresentativeSubscription_subscribeEmail_' + action);
+    await anyCcdPage.clickElementById('otherParties_0_otherPartyRepresentativeSubscription_wantSmsNotifications_' + action);
+    await anyCcdPage.clickElementById('otherParties_0_otherPartyRepresentativeSubscription_subscribeEmail_' + action);
 
  }
 
