@@ -5,7 +5,6 @@ import { browser } from 'protractor';
 
 const anyCcdPage = new AnyCcdFormPage();
 
-
 Then(/^I subscribed to all parties including other party to "(.+)"$/, async function (isSubscribed) {
     const action = isSubscribed;
     if (action === 'Yes') {
@@ -45,7 +44,7 @@ Then(/^I subscribed to all parties including other party to "(.+)"$/, async func
 
         await anyCcdPage.clickElementById('otherParties_0_otherPartyAppointeeSubscription_wantSmsNotifications_' + action);
         await anyCcdPage.setValueByElementId('otherParties_0_otherPartyAppointeeSubscription_tya', 'otherPartyAppointee123')
-        await anyCcdPage.setValueByElementId('otherParties_0_otherPartyAppointeeSubscription_email', 'otherpartyAppontee-test@mailinator.com')
+        await anyCcdPage.setValueByElementId('otherParties_0_otherPartyAppointeeSubscription_email', 'opAppontee-test@mailinator.com')
         await anyCcdPage.setValueByElementId('otherParties_0_otherPartyAppointeeSubscription_mobile', '01234567890')
 
         await anyCcdPage.clickElementById('otherParties_0_otherPartyRepresentativeSubscription_wantSmsNotifications_' + action);
