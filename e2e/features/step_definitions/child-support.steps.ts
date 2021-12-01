@@ -1,9 +1,12 @@
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
+import { CaseDetailsPage } from '../../pages/case-details.page';
 import { Given } from 'cucumber';
+import { browser } from 'protractor';
 
 const anyCcdPage = new AnyCcdPage();
 const anyCcdFormPage = new AnyCcdFormPage();
+const caseDetailsPage = new CaseDetailsPage();
 
 Given(/^I add other party data$/, async function () {
     await anyCcdPage.click('Add new');
@@ -21,4 +24,8 @@ Given(/^I add other party data$/, async function () {
     await anyCcdFormPage.clickElementById('otherParties_0_rep_hasRepresentative_No');
     await anyCcdPage.click('Continue');
     await anyCcdPage.click('Submit');
+
+    await browser.sleep(5000);
+    await caseDetailsPage.reloadPage();
+
 });
