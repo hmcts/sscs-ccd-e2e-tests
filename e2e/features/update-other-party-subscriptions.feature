@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test @update-other-party-subscriptions @preview-test
+@migrated-to-exui @nightly-test @update-other-party-subscriptions
 Feature: The Update subscriptions
 
   Background:
@@ -15,6 +15,7 @@ Feature: The Update subscriptions
     And I navigate to an existing case
     And I choose "Update subscription"
 
+  @preview-test
   Scenario: Update Subscription - Yes
     And I subscribed to all parties including other party to "Yes"
 
