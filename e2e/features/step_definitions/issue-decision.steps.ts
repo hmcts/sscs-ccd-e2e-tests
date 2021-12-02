@@ -34,22 +34,21 @@ When(/^I write a final decision generate notice yes daily living mobility is no 
   await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion_Yes');
   await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion_Yes');
   await anyCcdPage.click('Continue');
-  await browser.sleep(10000);
+  expect(await anyCcdPage.pageHeadingContains('Panel members')).to.equal(true);
   await issueDecisionPage.addPanelMembers();
   await browser.sleep(3000);
   await anyCcdPage.click('Continue');
-  await browser.sleep(10000);
+  expect(await anyCcdPage.pageHeadingContains('Decision date')).to.equal(true);
   await caseDetailsPage.addDayItems('writeFinalDecisionDateOfDecision');
   await browser.sleep(3000);
   await anyCcdPage.click('Continue');
-  await browser.sleep(2000);
+  expect(await anyCcdPage.pageHeadingContains('Bundle page')).to.equal(true);
   await issueDecisionPage.pageReference();
-  await browser.sleep(2000);
   await anyCcdPage.click('Continue');
-  await browser.sleep(2000);
+  expect(await anyCcdPage.pageHeadingContains('Summary of outcome decision')).to.equal(true);
   await issueDecisionPage.fillSummary();
   await anyCcdPage.click('Continue');
-  await browser.sleep(2000);
+  expect(await anyCcdPage.pageHeadingContains('Reasons for decision')).to.equal(true);
   await anyCcdFormPage.addNewCollectionItem('Reasons for decision');
   await anyCcdFormPage.setCollectionItemFieldValue(
       'Reasons for decision',
@@ -58,10 +57,11 @@ When(/^I write a final decision generate notice yes daily living mobility is no 
       'Some text'
   );
   await anyCcdPage.click('Continue');
-  await browser.sleep(1000);
+  expect(await anyCcdPage.pageHeadingContains('Anything else?')).to.equal(true);
   await anyCcdPage.click('Continue');
   // decision generated
   await browser.sleep(5000);
+  expect(await anyCcdPage.pageHeadingContains('Preview Decision Notice')).to.equal(true);
   await anyCcdPage.click('Continue');
   await browser.sleep(1000);
   await anyCcdPage.click('Submit');
