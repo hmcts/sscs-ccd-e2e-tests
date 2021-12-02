@@ -12,6 +12,7 @@ Feature: Create bundle for a case
 
   @bundle @preview-test
   Scenario: Verify create bundle event for cases
+    Given I navigate to an existing case
     And I choose "Create a bundle"
     And I submit "Create a bundle"
     Then the bundles should be successfully listed in "History" tab
