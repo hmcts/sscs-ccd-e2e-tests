@@ -58,12 +58,12 @@ When(/^I write a final decision generate notice yes daily living mobility is no 
       'Some text'
   );
   await anyCcdPage.click('Continue');
-  await browser.sleep(500);
+  await browser.sleep(1000);
   await anyCcdPage.click('Continue');
   // decision generated
-  await browser.sleep(3000);
+  await browser.sleep(5000);
   await anyCcdPage.click('Continue');
-  await browser.sleep(500);
+  await browser.sleep(1000);
   await anyCcdPage.click('Submit');
   await browser.sleep(5000);
 });
