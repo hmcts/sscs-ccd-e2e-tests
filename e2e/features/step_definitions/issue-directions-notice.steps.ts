@@ -12,7 +12,7 @@ When(/^I allow the appeal to proceed$/, async function () {
     await anyCcdPage.fillValues('signedBy', 'This is a test signed content');
     await anyCcdPage.fillValues('signedRole', 'This is a test signed role content');
     await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
-    await browser.sleep(2000);
+    await browser.sleep(5000);
     await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
     await browser.sleep(8000);
     await anyCcdPage.clickAction('//button[contains(text(),\'Submit\')]');

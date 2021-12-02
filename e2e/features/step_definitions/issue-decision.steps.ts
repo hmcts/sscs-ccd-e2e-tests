@@ -30,21 +30,26 @@ When(/^I write a final decision generate notice yes daily living mobility is no 
   await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-allowed');
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('writeFinalDecisionTypeOfHearing-faceToFace');
-  await browser.sleep(500);
+  await browser.sleep(4000);
   await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion_Yes');
   await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion_Yes');
   await anyCcdPage.click('Continue');
+  await browser.sleep(10000);
   await issueDecisionPage.addPanelMembers();
+  await browser.sleep(3000);
   await anyCcdPage.click('Continue');
-  await browser.sleep(1000);
+  await browser.sleep(5000);
   await caseDetailsPage.addDayItems('writeFinalDecisionDateOfDecision');
   await browser.sleep(3000);
   await anyCcdPage.click('Continue');
   await browser.sleep(2000);
   await issueDecisionPage.pageReference();
+  await browser.sleep(2000);
   await anyCcdPage.click('Continue');
+  await browser.sleep(2000);
   await issueDecisionPage.fillSummary();
   await anyCcdPage.click('Continue');
+  await browser.sleep(2000);
   await anyCcdFormPage.addNewCollectionItem('Reasons for decision');
   await anyCcdFormPage.setCollectionItemFieldValue(
       'Reasons for decision',
@@ -87,7 +92,7 @@ When(/^I write a final decision generate notice yes daily living mobility is yes
   await browser.sleep(3000);
   await issueDecisionPage.addPanelMembers();
   await anyCcdPage.click('Continue');
-  await browser.sleep(2000)
+  await browser.sleep(4000)
   await caseDetailsPage.addDayItems('writeFinalDecisionDateOfDecision');
   await anyCcdPage.click('Continue');
   await browser.sleep(3000);
