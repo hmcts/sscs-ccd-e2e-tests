@@ -282,12 +282,6 @@ export class AnyCcdPage extends AnyPage {
         await this.setText('//textarea[@rows=\'3\']', 'I am very busy');
 
         await this.click('Continue');
-        await browser.sleep(waitTime);
-        await this.click('Continue');
-        await browser.sleep(waitTime);
-        await this.click('Continue');
-        await this.click('Submit');
-        await browser.sleep(5000);
     }
 
     async setText(key: string, value: string) {

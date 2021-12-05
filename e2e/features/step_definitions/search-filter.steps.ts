@@ -1,4 +1,4 @@
-import { browser, element, by } from 'protractor';
+import { element, by } from 'protractor';
 import { When, Then } from 'cucumber';
 import { expect } from 'chai';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
@@ -9,8 +9,8 @@ let tot: number;
 When('I choose to filter with benefit and issue code in workbasket filter', async function () {
     await anyCcdPage.chooseOptionContainingText('#benefitCode', '011');
     await anyCcdPage.chooseOptionContainingText('#issueCode', 'AA');
-    await anyCcdPage.click('Apply');
-    await browser.sleep(4000);
+    await anyCcdPage.scrollBar('//form/button[1]');
+    expect(await anyCcdPage.pageHeadingContains('Response received')).to.equal(true);
 });
 
 Then('I should see only {int} case returned in search results', async function (caseId: number) {
