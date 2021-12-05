@@ -26,8 +26,8 @@ When(/^I select schedule 6 activities with <15 points and schedule 8 para 4 "(.+
     await browser.sleep(500);
     await anyCcdPage.clickElementById('ucWriteFinalDecisionMobilisingUnaidedQuestion-mobilisingUnaided1d');
     await anyCcdPage.click('Continue');
-    await browser.sleep(500);
-    await anyCcdPage.click('Continue');
+    // await browser.sleep(500);
+    // await anyCcdPage.click('Continue');
     await browser.sleep(500);
     if (para4Apply === 'YES') {
         await anyCcdPage.clickElementById('doesSchedule8Paragraph4Apply_Yes');
@@ -69,7 +69,7 @@ When(/^I opt out schedule 7 activities and schedule 9 para 4 "(.+)"$/, async fun
 });
 
 When(/^I continue writing final decision LCWA appeal$/, async function () {
-    await browser.sleep(1000)
+    expect(await anyCcdPage.pageHeadingContains('Bundle page')).to.equal(true);
     await issueDecisionPage.pageReference();
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
