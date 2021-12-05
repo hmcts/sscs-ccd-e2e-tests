@@ -1,12 +1,14 @@
 import { browser, by, element } from 'protractor';
 import { AnyPage } from './any.page';
 import { AnyCcdPage } from './any-ccd.page';
+import { expect } from 'chai';
 import * as path from 'path';
 
 const anyCcdPage = new AnyCcdPage();
 export class LapseCasePage extends AnyPage {
 
     async uploadResponse(action: string) {
+        expect(await anyCcdPage.pageHeadingContains('Lapse appeal')).to.equal(true);
         await browser.waitForAngular();
         let remote = require('selenium-webdriver/remote');
         browser.setFileDetector(new remote.FileDetector());

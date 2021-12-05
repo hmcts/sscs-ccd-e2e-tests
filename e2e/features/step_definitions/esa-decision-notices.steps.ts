@@ -4,6 +4,7 @@ import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { IssueDecisionPage } from '../../pages/issue-decision.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
+import { expect } from 'chai';
 
 const anyCcdPage = new AnyCcdPage();
 const issueDecisionPage = new IssueDecisionPage();
@@ -30,7 +31,7 @@ When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)"
     await browser.sleep(1000);
     await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
     await anyCcdPage.click('Continue');
-    await browser.sleep(750);
+    expect(await anyCcdPage.pageHeadingContains('Decision date')).to.equal(true);
     await caseDetailsPage.addPastDate('writeFinalDecisionDateOfDecision');
     await browser.sleep(3000);
     await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
@@ -116,6 +117,7 @@ When(/^I continue writing final decision non WCA appeal$/, async function () {
 });
 
 When(/^I continue writing final decision WCA appeal$/, async function () {
+    expect(await anyCcdPage.pageHeadingContains('Bundle page')).to.equal(true);
     await issueDecisionPage.pageReference();
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
@@ -127,6 +129,7 @@ When(/^I provide reasons and check answers To Allowed "(.+)"$/, async function (
       await anyCcdPage.click('Continue');
       await browser.sleep(500);
     }
+    expect(await anyCcdPage.pageHeadingContains('Reasons for decision')).to.equal(true);
     await anyCcdFormPage.addNewCollectionItem('Reasons for decision');
     await browser.sleep(500);
     await anyCcdFormPage.setCollectionItemFieldValue(
@@ -136,9 +139,9 @@ When(/^I provide reasons and check answers To Allowed "(.+)"$/, async function (
         'Some Reason'
     );
     await anyCcdPage.click('Continue');
-    await browser.sleep(2000);
+    expect(await anyCcdPage.pageHeadingContains('Anything else?')).to.equal(true);
     await anyCcdPage.click('Continue');
-    await browser.sleep(4000);
+    expect(await anyCcdPage.pageHeadingContains('Preview Decision Notice')).to.equal(true);
     await anyCcdPage.scrollBar('//div/form/div/button[2]');
     await browser.sleep(750);
     await anyCcdPage.scrollBar('//form/div/button[2]');

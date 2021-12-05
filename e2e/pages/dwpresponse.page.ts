@@ -3,6 +3,7 @@ import { AnyPage } from './any.page';
 import * as path from 'path';
 import { AnyCcdFormPage } from './any-ccd-form.page';
 import { NIGenerator } from '../helpers/ni-generator';
+import { expect } from 'chai';
 
 const anyCcdFormPage = new AnyCcdFormPage();
 const niGenerator = new NIGenerator();
@@ -151,7 +152,7 @@ export class DwpResponsePage extends AnyPage {
         await anyCcdFormPage.click('Continue');
         await this.jointPartyAddress('Yes');
         await anyCcdFormPage.click('Continue');
-        // Check your Answers
+        expect(await anyCcdFormPage.pageHeadingContains('Check your answers')).to.equal(true);
         await anyCcdFormPage.click('Submit');
     }
 
@@ -183,6 +184,7 @@ export class DwpResponsePage extends AnyPage {
     }
 
     async issueCodePage(disputed: string) {
+        expect(await anyCcdFormPage.pageHeadingContains('Issue codes')).to.equal(true);
         await anyCcdFormPage.addNewCollectionItem(disputed);
         await browser.sleep(1000);
         await anyCcdFormPage.chooseOptionContainingText('#elementsDisputed' + disputed + '_0_issueCode', 'AD');
@@ -200,6 +202,7 @@ export class DwpResponsePage extends AnyPage {
     }
 
     async jointPartyName() {
+        expect(await anyCcdFormPage.pageHeadingContains('Joint party name')).to.equal(true);
         await anyCcdFormPage.chooseOptionContainingText('#jointPartyName_title', 'Mr');
         await element(by.id('jointPartyName_firstName')).sendKeys('Jp')
         await element(by.id('jointPartyName_lastName')).sendKeys('Party')
@@ -207,6 +210,7 @@ export class DwpResponsePage extends AnyPage {
 
     async jointPartyIdentityDetails() {
         await browser.sleep(2000);
+        expect(await anyCcdFormPage.pageHeadingContains('Joint party identity details')).to.equal(true);
         await element(by.id('dob-day')).sendKeys('20')
         await element(by.id('dob-month')).sendKeys('12')
         await element(by.id('dob-year')).sendKeys('1980')

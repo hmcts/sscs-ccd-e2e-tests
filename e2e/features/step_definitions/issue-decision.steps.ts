@@ -83,20 +83,21 @@ When(/^I write a final decision generate notice yes daily living mobility is yes
   await anyCcdPage.clickElementById('pipWriteFinalDecisionComparedToDWPMobilityQuestion-same');
   await anyCcdPage.click('Continue');
   await browser.sleep(3000);
+  expect(await anyCcdPage.pageHeadingContains('Award dates')).to.equal(true);
   await caseDetailsPage.addDayItems('writeFinalDecisionStartDate');
   await anyCcdPage.clickElementById('writeFinalDecisionEndDateType-setEndDate');
   await browser.sleep(2000);
   await caseDetailsPage.addDayItems('writeFinalDecisionEndDate');
   await browser.sleep(3000);
   await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
-  await browser.sleep(3000);
+  expect(await anyCcdPage.pageHeadingContains('Panel members')).to.equal(true);
   await issueDecisionPage.addPanelMembers();
   await anyCcdPage.click('Continue');
-  await browser.sleep(4000)
+  expect(await anyCcdPage.pageHeadingContains('Decision date')).to.equal(true);
   await caseDetailsPage.addDayItems('writeFinalDecisionDateOfDecision');
   await anyCcdPage.click('Continue');
-  await browser.sleep(3000);
-  await anyCcdPage.click('Continue');
+  // await browser.sleep(3000);
+  // await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('pipWriteFinalDecisionDailyLivingActivitiesQuestion-preparingFood');
   await anyCcdPage.clickElementById('pipWriteFinalDecisionMobilityActivitiesQuestion-planningAndFollowing');
   await anyCcdPage.click('Continue');
@@ -104,9 +105,20 @@ When(/^I write a final decision generate notice yes daily living mobility is yes
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('pipWriteFinalDecisionPlanningAndFollowingQuestion-planningAndFollowing11d');
   await anyCcdPage.click('Continue');
+  expect(await anyCcdPage.pageHeadingContains('Bundle page')).to.equal(true);
   await issueDecisionPage.pageReference();
   await anyCcdPage.click('Continue');
+  expect(await anyCcdPage.pageHeadingContains('Reasons for decision')).to.equal(true);
   await anyCcdPage.setFinalDecisionsReasons('//button[contains(text(), \'Add new\')]', 500);
+  expect(await anyCcdPage.pageHeadingContains('Anything else?')).to.equal(true);
+  await anyCcdPage.click('Continue');
+  // decision generated
+  await browser.sleep(5000);
+  expect(await anyCcdPage.pageHeadingContains('Preview Decision Notice')).to.equal(true);
+  await anyCcdPage.click('Continue');
+  expect(await anyCcdPage.pageHeadingContains('Check your answers')).to.equal(true);
+  await anyCcdPage.click('Submit');
+  await browser.sleep(5000);
 });
 
 When(/^I see "(.+)"$/, async function (notice) {
