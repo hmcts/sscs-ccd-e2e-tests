@@ -1,4 +1,4 @@
-import { element, by } from 'protractor';
+import { browser, element, by } from 'protractor';
 import { When, Then } from 'cucumber';
 import { expect } from 'chai';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
@@ -7,6 +7,7 @@ const anyCcdPage = new AnyCcdPage();
 let tot: number;
 
 When('I choose to filter with benefit and issue code in workbasket filter', async function () {
+    await browser.sleep(10000);
     await anyCcdPage.chooseOptionContainingText('#benefitCode', '011');
     await anyCcdPage.chooseOptionContainingText('#issueCode', 'AA');
     await anyCcdPage.scrollBar('//form/button[1]');
