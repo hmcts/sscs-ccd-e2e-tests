@@ -48,6 +48,7 @@ When(/^I upload contains further information (.+) for "(.+)"$/, async function (
       await anyCcdPage.clickElementById('elementsDisputedList-general');
       await anyCcdPage.click('Continue');
       await browser.sleep(500);
+      expect(await anyCcdPage.pageHeadingContains('Issue codes')).to.equal(true);
       await anyCcdPage.addNewCollectionItem('General');
       await anyCcdPage.selectGeneralIssueCode();
       await anyCcdPage.click('Continue');
