@@ -40,8 +40,11 @@ export class HearingRecordingPage extends AnyPage {
         await element(by.id('requestableHearingDetails')).element(by.xpath('//*[@id="requestableHearingDetails"]/option[2]')).click();
     }
 
-    async grantRequestDwpHearingRecording() {
-        await element(by.id('processHearingRecordingRequests_0_dwp'))
-            .element(by.xpath('//*[@id="processHearingRecordingRequests_0_dwp"]/option[2]')).click();
+    async refuseAppellantHearingRecording(permissionType: string) {
+        await anyCcdPage.chooseOptionContainingText('#processHearingRecordingRequest_appellant', permissionType);
+    }
+
+    async grantRequestDwpHearingRecording(permissionType: string) {
+        await anyCcdPage.chooseOptionContainingText('#processHearingRecordingRequest_dwp', permissionType);
     }
 }

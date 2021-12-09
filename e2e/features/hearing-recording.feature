@@ -1,4 +1,4 @@
-@migrated-to-exui @hearing-recording
+@migrated-to-exui @hearing-recording @nightly-test
 Feature: Hearing recording
 
   Background:
@@ -11,8 +11,7 @@ Feature: Hearing recording
     And I submit "Hearing booked"
     Then the case should end in "Hearing" state
 
-  @hearing-recording
-  Scenario: Upload and Action hearing recordings
+  Scenario: Grant Hearing recording - Upload and Action hearing recordings
     When I choose "Upload hearing recording"
     And I select a hearing
     And I upload a hearing recording
@@ -27,7 +26,7 @@ Feature: Hearing recording
     When I switch to be a Case Officer
     And I navigate to an existing case
     And I choose "Action hearing recording req"
-    And I grant request for Hearing recording
+    And request for Hearing recording is "Granted"
     Then the "DWP Request hearing recording" should be successfully listed in "History" tab
     Then the "Action hearing recording req" should be successfully listed in "History" tab
 
@@ -35,3 +34,18 @@ Feature: Hearing recording
     And I navigate to an existing case
     Then the hearing recording should be in "Documents" tab
 
+ Scenario: Refuse Hearing recording  - an offline hearing recording request
+    When I choose "Upload hearing recording"
+    And I select a hearing
+    And I upload a hearing recording
+    Then the hearing recording should be in "Hearing Recordings" tab
+    And the "Upload hearing recording" should be successfully listed in "History" tab
+
+    And I choose "Upload document FE"
+    When I submit "issue1.pdf" as Request for Hearing Recording in the Upload document FE event
+    Then the hearing recording should be in "Unprocessed Correspondence" tab
+
+    And I choose "Action hearing recording req"
+    And request for Hearing recording is "Refused"
+    Then the "Action hearing recording req" should be successfully listed in "History" tab
+    And the recording collection is cleared from Unprocessed correspondence tab

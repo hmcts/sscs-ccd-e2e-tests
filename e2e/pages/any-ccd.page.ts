@@ -1,6 +1,7 @@
 import { $, $$, browser, by, element, ExpectedConditions } from 'protractor';
 import { AnyPage } from './any.page';
 import { Wait } from '../enums/wait';
+import { expect } from 'chai';
 
 const AxeRunner = require('../helpers/axe-runner');
 
@@ -215,6 +216,14 @@ export class AnyCcdPage extends AnyPage {
     async eventsPresentInHistory(linkText: string) {
         const linkPath = '//*[self::button or self::a][normalize-space()="' + linkText + '"]';
         return await element(by.xpath(linkPath)).isPresent();
+    }
+
+    async elementNotPresent(linkText: string) {
+        const linkPath = '//*[self::button or self::a or self::span][normalize-space()="' + linkText + '"]';
+        await element.all(by.xpath(linkPath)).then(
+            async (items) => {
+               await expect(items.length).to.equal(0);
+        });
     }
 
     async fillNote() {
