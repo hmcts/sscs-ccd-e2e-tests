@@ -39,18 +39,18 @@ export class AdjournmentPage extends AnyPage {
 
         await element(by.id('postponedDate-day')).sendKeys('20');
         await element(by.id('postponedDate-month')).sendKeys('10');
-        await element(by.id('postponedDate-year')).sendKeys('2020');
+        await element(by.id('postponedDate-year')).sendKeys('2021');
         await anyCcdPage.clickElementById('hearings_0_adjourned_Yes');
 
         await element(by.id('adjournedDate-day')).sendKeys('20');
         await element(by.id('adjournedDate-month')).sendKeys('10');
-        await element(by.id('adjournedDate-year')).sendKeys('2020');
+        await element(by.id('adjournedDate-year')).sendKeys('2021');
 
         await element(by.id('hearings_0_hearingId')).sendKeys('12345');
 
         await element(by.id('eventDate-day')).sendKeys('20');
-        await element(by.id('eventDate-month')).sendKeys('10');
-        await element(by.id('eventDate-year')).sendKeys('2020');
+        await element(by.id('eventDate-month')).sendKeys('02');
+        await element(by.id('eventDate-year')).sendKeys('2022');
 
         await element(by.id('hearings_0_venueId')).sendKeys('142');
 

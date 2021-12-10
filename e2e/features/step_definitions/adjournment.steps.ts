@@ -10,7 +10,7 @@ const adjournmentPage = new AdjournmentPage();
 When(/^I book a hearing$/, async function () {
   await browser.sleep(2000);
   await anyCcdPage.click('Add new');
-  await adjournmentPage.addVenue('20', '10', '2020');
+  await adjournmentPage.addVenue('20', '10', '2021');
   await browser.sleep(500);
 });
 
