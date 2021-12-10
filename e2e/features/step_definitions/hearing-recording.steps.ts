@@ -6,7 +6,7 @@ import { CaseDetailsPage } from '../../pages/case-details.page';
 import { DwpResponsePage } from '../../pages/dwpresponse.page';
 import { Then, When, Given } from 'cucumber';
 import { expect } from 'chai';
-import { delay } from 'rxjs/operators';
+// import { delay } from 'rxjs/operators';
 import { exception } from 'console';
 
 const anyCcdPage = new AnyCcdPage();
@@ -15,6 +15,7 @@ const caseDetailsPage = new CaseDetailsPage();
 const dwpresponse = new DwpResponsePage();
 
 When(/^I upload a hearing recording$/, async function () {
+  expect(await anyCcdPage.pageHeadingContains('Hearing recording')).to.equal(true);
   await hearingRecordingPage.uploadHearingRecording();
 });
 
@@ -39,7 +40,7 @@ Then(/^the hearing recording should (be|not be) in "(.+)" tab$/, async function 
 });
 
 Then(/^the "(.+)" should be successfully listed in "(.+)" tab$/, async function (action, tabName) {
-  await delay(10000);
+  // await delay(10000);
   await anyCcdPage.clickTab(tabName);
   expect(await caseDetailsPage.eventsPresentInHistory(action)).to.equal(true);
   await browser.sleep(500);
@@ -55,7 +56,7 @@ When(/^I request for Hearing recording$/, async function () {
 
 When(/^request for Hearing recording is "(.+)"$/, async function (hearingPermission: string) {
   expect(await anyCcdPage.pageHeadingContains('Action hearing recording request')).to.equal(true);
-  await anyCcdPage.chooseOptionContainingText('#selectHearingDetails', 'Fox Court 13:00:00 20 Oct 2020');
+  await anyCcdPage.chooseOptionContainingText('#selectHearingDetails', 'Fox Court 13:00:00 20 Oct 2021');
   await anyCcdPage.click('Continue');
   expect(await anyCcdPage.pageHeadingContains('Please review the hearing recordings')).to.equal(true);
   if (hearingPermission === 'Granted') {
@@ -71,6 +72,7 @@ When(/^request for Hearing recording is "(.+)"$/, async function (hearingPermiss
 });
 
 Given(/^I submit "(.+)" as Request for Hearing Recording in the Upload document FE event$/, async function (filename) {
+  expect(await anyCcdPage.pageHeadingContains('Upload document FE')).to.equal(true);
   await anyCcdPage.click('Add new');
   await anyCcdPage.chooseOptionContainingText('#draftSscsFurtherEvidenceDocument_0_documentType', 'Request for Hearing Recording');
   await dwpresponse.uploadFile('draftSscsFurtherEvidenceDocument_0_documentLink', filename);
@@ -79,7 +81,7 @@ Given(/^I submit "(.+)" as Request for Hearing Recording in the Upload document 
   expect(await anyCcdPage.pageHeadingContains('Hearing request party')).to.equal(true);
   await anyCcdPage.click('Continue');
   expect(await anyCcdPage.pageHeadingContains('Request for hearing recording')).to.equal(true);
-  await anyCcdPage.chooseOptionContainingText('#requestableHearingDetails', 'Fox Court 13:00 20 Oct 2020');
+  await anyCcdPage.chooseOptionContainingText('#requestableHearingDetails', 'Fox Court 13:00 20 Oct 2021');
   await anyCcdPage.click('Continue');
   await anyCcdPage.click('Submit');
   await browser.sleep(2000);

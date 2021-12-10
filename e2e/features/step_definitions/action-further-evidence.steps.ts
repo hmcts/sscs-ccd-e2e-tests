@@ -14,11 +14,13 @@ function delay(ms: number) {
 }
 
 When(/^I fill the further evidence form with "(.+)" and "(.+)"$/, async function (actionType, requestType) {
+    expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
     await anyCcdPage.chooseOptionContainingText('#furtherEvidenceAction', actionType);
     await anyCcdPage.chooseOptionContainingText('#originalSender', 'Appellant (or Appointee)');
     await anyCcdPage.click('Add new');
     await browser.sleep(1000);
 
+    expect(await anyCcdPage.pageHeadingContains('Document Type')).to.equal(true);
     await anyCcdPage.chooseOptionContainingText('#scannedDocuments_0_type', requestType);
     await furtherEvidencePage.uploadFile('scannedDocuments_0_url', 'issue1.pdf');
     await furtherEvidencePage.enterFileName('scannedDocuments_0_fileName', 'testfile.pdf');
@@ -26,10 +28,12 @@ When(/^I fill the further evidence form with "(.+)" and "(.+)"$/, async function
     await browser.sleep(3000);
 
     await anyCcdPage.click('Continue');
+    await browser.sleep(1000);
     await anyCcdPage.click('Submit');
 });
 
 When(/^I fill the further evidence form with "(.+)" invalid file$/, async function (testFile: string) {
+    expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
     await anyCcdPage.chooseOptionContainingText('#furtherEvidenceAction', 'Review by Judge');
     await anyCcdPage.chooseOptionContainingText('#originalSender', 'Appellant (or Appointee)');
     await anyCcdPage.click('Add new');

@@ -11,8 +11,11 @@ Feature: Hearing recording
     And I submit "Hearing booked"
     Then the case should end in "Hearing" state
 
-  Scenario: Grant Hearing recording - Upload and Action hearing recordings
+    When I switch to be a Case Officer
+    And I navigate to an existing case
     When I choose "Upload hearing recording"
+
+  Scenario: Grant Hearing recording - Upload and Action hearing recordings
     And I select a hearing
     And I upload a hearing recording
     Then the hearing recording should be in "Hearing Recordings" tab
@@ -35,7 +38,6 @@ Feature: Hearing recording
     Then the hearing recording should be in "Documents" tab
 
  Scenario: Refuse Hearing recording  - an offline hearing recording request
-    When I choose "Upload hearing recording"
     And I select a hearing
     And I upload a hearing recording
     Then the hearing recording should be in "Hearing Recordings" tab
