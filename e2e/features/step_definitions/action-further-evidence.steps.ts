@@ -25,6 +25,7 @@ When(/^I fill the further evidence form with "(.+)" and "(.+)"$/, async function
     await furtherEvidencePage.uploadFile('scannedDocuments_0_url', 'issue1.pdf');
     await furtherEvidencePage.enterFileName('scannedDocuments_0_fileName', 'testfile.pdf');
     await furtherEvidencePage.enterScannedDate('20', '1', '2021');
+    await anyCcdPage.clickElementById('scannedDocuments_0_includeInBundle_Yes');
     await browser.sleep(3000);
 
     await anyCcdPage.click('Continue');
@@ -43,6 +44,7 @@ When(/^I fill the further evidence form with "(.+)" invalid file$/, async functi
     await furtherEvidencePage.uploadFile('scannedDocuments_0_url', `${testFile}.pdf`);
     await furtherEvidencePage.enterFileName('scannedDocuments_0_fileName', 'testfile.pdf');
     await furtherEvidencePage.enterScannedDate('20', '1', '2021');
+    await anyCcdPage.clickElementById('scannedDocuments_0_includeInBundle_Yes');
     await browser.sleep(3000);
 
     await anyCcdPage.click('Continue');
