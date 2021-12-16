@@ -116,6 +116,8 @@ When(/^I update the scanned document for "(.+)"$/, async function (originator) {
  await anyCcdFormPage.setValueByElementId('scannedDocuments_0_fileName', 'test-confidentiality-file');
  await furtherEvidencePage.enterScannedDate('20', '1', '2021');
  await browser.sleep(2000);
+ await anyCcdPage.clickElementById('scannedDocuments_0_includeInBundle_Yes');
+ await browser.sleep(2000);
  await anyCcdPage.click('Continue');
  await browser.sleep(2000);
  await anyCcdPage.click('Submit');
