@@ -5,7 +5,6 @@ Feature: The lapse
   Given I presetup an "PIP" SYA case
   And I am signed in as a Case Officer
   And I navigate to an existing case
-  Then the case should be in "With DWP" state
 
   @lapse @crossbrowser
   Scenario: Should end up in "With DWP" state when ALL fields are present
