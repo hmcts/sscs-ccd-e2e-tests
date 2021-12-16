@@ -1,5 +1,5 @@
 @migrated-to-exui @nightly-test
-Feature: The Update UCB
+Feature: The Update Phme
 
   Background:
     Given I presetup an "PIP" SYA case
@@ -8,6 +8,7 @@ Feature: The Update UCB
     Then the case should be in "With DWP" state
 
     When I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     And I choose "Upload response"
     And I upload a "PHME" doc contains further information "YES" for "PIP"
     Then the case should end in "Response received" state
