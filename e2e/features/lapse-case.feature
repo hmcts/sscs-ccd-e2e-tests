@@ -6,7 +6,7 @@ Feature: The lapse
   And I am signed in as a Case Officer
   And I navigate to an existing case
 
-  @lapse @crossbrowser
+  @lapse
   Scenario: Should end up in "With DWP" state when ALL fields are present
     When I choose "Lapse appeal"
     And I set DWP State to Lapsed "Lapse appeal"
@@ -16,3 +16,9 @@ Feature: The lapse
     When I choose "Confirm lapsed"
     And I submit "Confirm lapsed"
     Then the case should end in "Dormant" state
+
+  @crossbrowser
+  Scenario: Should end up in "With DWP" state when ALL fields are present
+    When I choose "Lapse appeal"
+    And I set DWP State to Lapsed "Lapse appeal"
+    Then I submit "Lapse appeal"
