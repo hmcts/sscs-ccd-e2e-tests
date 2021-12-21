@@ -6,6 +6,7 @@
     "postinstall": "webdriver-manager update --gecko=false",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "e2e": "yarn test:fullfunctional",
+    "test:single-scenario": "yarn install && cross-env TRIBUNALS_API_URL=http://sscs-tribunals-api-aat.service.core-compute-aat.internal TEST_JUDGE_USERNAME='sscs.judge.user@mailinator.com' TEST_JUDGE_PASSWORD='Testing123' TEST_DWP_USERNAME='sscs.dwp.user@mailinator.com' TEST_DWP_PASSWORD='Testing123' TEST_CASEOFFICER_USERNAME='sscs.superuser@mailinator.com' TEST_CASEOFFICER_PASSWORD='Testing123' protractor ./e2e/features.conf.js --cucumberOpts.tags=@lapse",
     "test:aat": "yarn install && cross-env TRIBUNALS_API_URL=http://sscs-tribunals-api-aat.service.core-compute-aat.internal TEST_JUDGE_USERNAME='sscs.judge.user@mailinator.com' TEST_JUDGE_PASSWORD='Testing123' TEST_DWP_USERNAME='sscs.dwp.user@mailinator.com' TEST_DWP_PASSWORD='Testing123' TEST_CASEOFFICER_USERNAME='sscs.superuser@mailinator.com' TEST_CASEOFFICER_PASSWORD='Testing123' protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@nightly-test",
     "test:fullfunctional": "yarn install && protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@nightly-test",
     "test:previewfunctional": "yarn install && protractor ./e2e/features.parallel.conf.js --cucumberOpts.tags=@preview-test",
