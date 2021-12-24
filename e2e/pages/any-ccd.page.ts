@@ -213,6 +213,16 @@ export class AnyCcdPage extends AnyPage {
             .element(by.xpath('//*[@id="elementsDisputedGeneral_0_issueCode"]/option[2]')).click();
     }
 
+    async selectHousingIssueCode() {
+        await element(by.id('elementsDisputedHousing_0_issueCode'))
+            .element(by.xpath('//*[@id="elementsDisputedHousing_0_issueCode"]/option[2]')).click();
+    }
+
+    async selectChildcareIssueCode() {
+        await element(by.id('elementsDisputedChildCare_0_issueCode'))
+            .element(by.xpath('//*[@id="elementsDisputedChildCare_0_issueCode"]/option[2]')).click();
+    }
+
     async eventsPresentInHistory(linkText: string) {
         const linkPath = '//*[self::button or self::a][normalize-space()="' + linkText + '"]';
         return await element(by.xpath(linkPath)).isPresent();

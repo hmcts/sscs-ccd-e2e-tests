@@ -173,7 +173,7 @@ export class AnyCcdFormPage extends AnyCcdPage {
 
             await fieldContainer.$$('select.ccd-dropdown').click();
             await fieldContainer
-                .element(by.xpath('.//option[normalize-space()="' + fieldValue + '"]'))
+                .element(by.xpath('//*[contains(text(),"' + fieldValue + '")]'))
                 .click();
 
         } else {
