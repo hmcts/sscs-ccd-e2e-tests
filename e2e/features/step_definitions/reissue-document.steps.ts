@@ -11,12 +11,6 @@ When('resend only to appellant and not to representative', async function () {
     await anyCcdPage.click('Continue');
 });
 
-When('I submit “Reissue document”', async function () {
-    await browser.sleep(3000);
-    await anyCcdPage.click('Submit');
-    await browser.sleep(5000);
-});
-
 Then('the reissue document event should be seen in “History” tab', async function () {
     await browser.sleep(5000);
     await anyCcdPage.clickTab('History');

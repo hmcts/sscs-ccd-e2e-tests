@@ -17,6 +17,6 @@ Feature: Reissue document
         And I navigate to an existing case
         When I choose "Reissue document"
         And resend only to appellant and not to representative
-        And I submit “Reissue document”
+        And I submit "Reissue document"
         Then the reissue document event should be seen in “History” tab
         And I should see Addition details in documents tab
