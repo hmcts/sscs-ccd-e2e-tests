@@ -25,11 +25,6 @@ When('I add issue codes for respective elements', async function () {
     await anyCcdPage.click('Continue');
 });
 
-When('I submit the event', async function () {
-    await browser.sleep(3000);
-    await anyCcdPage.click('Submit');
-});
-
 Then('the Amend elements event should be seen in "History" tab', async function () {
     await browser.sleep(5000);
     await anyCcdPage.clickTab('History');
@@ -38,6 +33,7 @@ Then('the Amend elements event should be seen in "History" tab', async function 
 });
 
 Then('I should see the choose elements and issue code within "Elements and issues" tab', async function () {
+    await browser.sleep(500);
     await anyCcdPage.clickTab('Elements and issues');
     await browser.sleep(500);
     expect(await anyCcdPage.contentContains("Housing")).to.equal(true);
