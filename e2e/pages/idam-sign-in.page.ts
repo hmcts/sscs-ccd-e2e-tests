@@ -9,7 +9,7 @@ export class IdamSignInPage extends AnyPage {
 
     private username = 'form[name="loginForm"] input#username';
     private password = 'form[name="loginForm"] input#password';
-    private signInButton = 'form[name="loginForm"] input[type=submit]';
+    private signInButton = 'form[name="loginForm"] *[type=submit]';
 
     async signIn(
         emailAddress: string,
