@@ -24,3 +24,4 @@ Feature: Reasonable adjustments functionality
     When I choose "Update reasonable adjustment"
     And generate a letter in "Alternative Letter Format" with "otherPartyNo" option
     Then reasonable adjustment details are not seen in summary page
+    
