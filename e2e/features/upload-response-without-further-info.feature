@@ -37,10 +37,11 @@ Feature: The happy path
     When I switch to be a Case Officer
     Then the case should be in "Ready to list" state
 
- @nightly-test-wip
+ @nightly-test
  Scenario: Child support case should end up in "Not listable" state when dwp responds
-    Given I am signed in as a Case Officer
-    And I create an child support case
+    Given I presetup an "Child Support" SYA case
+    And I am signed in as a Case Officer
+    Given I navigate to an existing case
     And the case should be in "With DWP" state
 
     When I choose "Upload response"
