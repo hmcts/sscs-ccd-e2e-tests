@@ -17,7 +17,7 @@ Feature: Reasonable adjustments functionality
     And generate a letter in "Alternative Letter Format" with "otherPartyYes" option
     Then reasonable adjustment details are seen in summary page
   
-  Scenario: Remove reasonable flag from a case
+  Scenario: Remove reasonable adjustment flag from a case
     Given I am signed in as a Case Officer
     And I navigate to an existing case
 
