@@ -21,4 +21,4 @@ Then('the reissue document event should be seen in “History” tab', async fun
 When('I wait for Judge to sign out', async function () {
     await browser.sleep(5000);
     await browser.sleep(5000);
-})
+});

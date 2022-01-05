@@ -6,7 +6,6 @@ import { expect } from 'chai';
 
 const anyCcdPage = new AnyCcdFormPage();
 
-
 When('I select {string} and {string} Elements', async function (string, string2) {
     await anyCcdPage.clickElementById('elementsDisputedList-housing');
     await anyCcdPage.clickElementById('elementsDisputedList-childcare');
@@ -36,6 +35,6 @@ Then('I should see the choose elements and issue code within "Elements and issue
     await browser.sleep(500);
     await anyCcdPage.clickTab('Elements and issues');
     await browser.sleep(500);
-    expect(await anyCcdPage.contentContains("Housing")).to.equal(true);
-    expect(await anyCcdPage.contentContains("Childcare")).to.equal(true);
+    expect(await anyCcdPage.contentContains('Housing')).to.equal(true);
+    expect(await anyCcdPage.contentContains('Childcare')).to.equal(true);
 });
