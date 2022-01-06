@@ -10,8 +10,9 @@ Feature: Hearing recording
     And I choose "Hearing booked"
     And I submit "Hearing booked"
     Then the case should end in "Hearing" state
-
+    And I wait for Judge to sign out
     When I switch to be a Case Officer
+    
     And I navigate to an existing case
     When I choose "Upload hearing recording"
 
@@ -27,6 +28,7 @@ Feature: Hearing recording
     And I request for Hearing recording
 
     When I switch to be a Case Officer
+    And I wait for Judge to sign out
     And I navigate to an existing case
     And I choose "Action hearing recording req"
     And request for Hearing recording is "Granted"
@@ -47,6 +49,7 @@ Feature: Hearing recording
     When I submit "issue1.pdf" as Request for Hearing Recording in the Upload document FE event
     Then the hearing recording should be in "Unprocessed Correspondence" tab
 
+    And I wait for Judge to sign out
     And I choose "Action hearing recording req"
     And request for Hearing recording is "Refused"
     Then the "Action hearing recording req" should be successfully listed in "History" tab
