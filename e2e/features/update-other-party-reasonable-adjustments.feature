@@ -16,6 +16,10 @@ Feature: Reasonable adjustments functionality
     And I choose "Update reasonable adjustment"
     And generate a letter in "Alternative Letter Format" with "otherPartyYes" option
     Then reasonable adjustment details are seen in summary page
+
+    When I choose "Issue directions notice"
+    And I fill the direction notice form with "Provide information"
+    Then Reasonable adjustment tab is seen with "Reasonable adjustment status" as "Required"
   
   Scenario: Remove reasonable adjustment flag from a case
     Given I am signed in as a Case Officer
