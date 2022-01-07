@@ -4,22 +4,17 @@ Feature: The lapse
   Background:
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
-    And I navigate to an existing case
+    Given I navigate to an existing case
+    And I choose "Admin - send to Dormant"
+    Given I complete the event
+    Then the case should be in "Dormant" state
 
   @provide-appointee-details
-  Scenario: Should end up in "With DWP" state when ALL fields are present
-    When I choose "Lapse appeal"
-    And I set DWP State to Lapsed "Lapse appeal"
-    And I submit "Lapse appeal"
-    Then the case should end in "With DWP" state
-
-    When I choose "Confirm lapsed"
-    And I submit "Confirm lapsed"
-    Then the case should end in "Dormant" state
-
-    And I choose "Provide appointee details"
+  Scenario: Provide appointee details
+    When I choose "Provide appointee details"
     And I enter "Yes" to appointee and continue
     Then I see field "Event" with value "Provide appointee details" in "History" tab
+    And the case appointee details should be listed in "Appeal Details" tab
 
 
 
