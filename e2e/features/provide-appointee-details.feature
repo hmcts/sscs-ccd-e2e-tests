@@ -1,5 +1,5 @@
 @migrated-to-exui @nightly-test
-Feature: The lapse
+Feature: Provide appointee details
 
   Background:
     Given I presetup an "PIP" SYA case
