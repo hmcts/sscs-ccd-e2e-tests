@@ -1,10 +1,9 @@
-import {Then} from 'cucumber';
-import {browser} from "protractor";
-import {expect} from "chai";
-import {AnyCcdPage} from "../../pages/any-ccd.page";
+import { Then } from 'cucumber';
+import { browser } from 'protractor';
+import { expect } from 'chai';
+import { AnyCcdPage } from '../../pages/any-ccd.page';
 
 const anyCcdPage = new AnyCcdPage();
-
 
 Then(/^the case appointee details should be listed in "(.+)" tab$/, async function (tabName) {
         await anyCcdPage.clickTab(tabName);
