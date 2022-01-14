@@ -9,7 +9,7 @@ let tot: number;
 When('I choose to filter with benefit and issue code in workbasket filter', async function () {
     await browser.sleep(10000);
     await anyCcdPage.chooseOptionContainingText('#benefitCode', '002');
-    await anyCcdPage.chooseOptionContainingText('#issueCode', 'AA');
+    await anyCcdPage.chooseOptionContainingText('#issueCode', 'DD');
     await anyCcdPage.scrollBar('//form/button[1]');
     expect(await anyCcdPage.pageHeadingContains('Response received')).to.equal(true);
 });
