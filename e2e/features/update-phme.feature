@@ -15,7 +15,7 @@ Feature: The Update Phme
     Then I should see PHME flag as "Under Review"
 
     When I switch to be a Judge
-    And I choose "Review PHME request"
+    And I choose "Review PHE request"
 
   @update-phme @bug-EUI-4125
   Scenario: Update UCB flag with upload response Granted and Refused

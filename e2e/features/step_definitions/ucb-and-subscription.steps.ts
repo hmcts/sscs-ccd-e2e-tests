@@ -157,9 +157,9 @@ Then(/^I should see PHME flag as "(.+)"$/, async function (state) {
     await browser.sleep(50);
 
     if (state === 'Under Review') {
-        expect(await anyCcdPage.contentContains('PHME on this case: Under Review')).to.equal(true);
+        expect(await anyCcdPage.contentContains('PHE on this case: Under Review')).to.equal(true);
     } else if (state === 'Granted') {
-        expect(await anyCcdPage.contentContains('PHME on this case: Granted')).to.equal(true);
+        expect(await anyCcdPage.contentContains('PHE on this case: Granted')).to.equal(true);
     }
 
 });
