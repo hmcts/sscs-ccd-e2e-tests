@@ -7,11 +7,11 @@ const anyCcdPage = new AnyCcdPage();
 let tot: number;
 
 When('I choose to filter with benefit and issue code in workbasket filter', async function () {
-    await browser.sleep(10000);
+    await browser.sleep(30000);
     await anyCcdPage.chooseOptionContainingText('#benefitCode', '002');
     await anyCcdPage.chooseOptionContainingText('#issueCode', 'DD');
     await anyCcdPage.scrollBar('//form/button[1]');
-    expect(await anyCcdPage.pageHeadingContains('Response received')).to.equal(true);
+    expect(await anyCcdPage.pageHeadingContains('Appeal Created')).to.equal(true);
 });
 
 Then('I should see {int} cases returned in search results', async function (caseId: number) {
