@@ -5,7 +5,7 @@ Feature: The Update Not Listable
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
-    Then the case should end in "With DWP" state
+    Then the case should end in "With FTA" state
 
     And I switch to be a DWPResponse Writer
     And I navigate to an existing case
@@ -25,7 +25,7 @@ Feature: The Update Not Listable
   Scenario: Update not listable : No to direction full filled and interloc review to NO
     And I choose "Update not listable case"
     And I choose not listable direction full filled to "NO" and interloc review to "NO"
-    Then the case should be in "With DWP" appeal status
+    Then the case should be in "With FTA" appeal status
 
   @update-not-listable @nightly-test
   Scenario: Update not listable : No to direction full filled and interloc review to YES

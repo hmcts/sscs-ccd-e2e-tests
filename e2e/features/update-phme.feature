@@ -5,7 +5,7 @@ Feature: The Update Phme
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
-    Then the case should be in "With DWP" state
+    Then the case should be in "With FTA" state
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
@@ -29,5 +29,5 @@ Feature: The Update Phme
     And the case bundle details should be listed in "Bundles" tab
     And the "SSCS Bundle Edited" bundle configuration should have been used
     And the "SSCS Bundle Original" bundle configuration should have been used
-    And DWP edited documents should be seen against the case
+    And FTA edited documents should be seen against the case
 

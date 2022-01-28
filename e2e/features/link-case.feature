@@ -5,7 +5,7 @@ Feature: Link a case
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
-    Then the case should be in "With DWP" state
+    Then the case should be in "With FTA" state
 
   Scenario: Link with another sscs case
     When I choose "Link a case"

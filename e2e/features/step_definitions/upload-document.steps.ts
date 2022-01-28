@@ -9,7 +9,7 @@ const furtherEvidencePage = new FurtherEvidencePage();
 
 When('I upload a new document', async function () {
     await anyCcdPage.click('Add new');
-    await anyCcdPage.chooseOptionContainingText('#sscsDocument_1_documentType', 'DWP evidence');
+    await anyCcdPage.chooseOptionContainingText('#sscsDocument_1_documentType', 'FTA evidence');
     await anyCcdPage.setText('//*[@id="sscsDocument_1_documentEmailContent"]', 'Test note for the the event');
     await furtherEvidencePage.uploadFile('sscsDocument_1_documentLink', 'issue1.pdf');
     await anyCcdPage.scrollPage('//*[@id="sscsDocument_1_shouldBundleIncludeDocLink_No"]');
@@ -22,7 +22,7 @@ When('I upload a new document', async function () {
 
 Then('I should see uploaded file within documents tab', async function () {
     await anyCcdPage.clickTab('Documents');
-    expect(await anyCcdPage.isFieldValueDisplayed('Type', 'DWP evidence')).to.equal(true);
+    expect(await anyCcdPage.isFieldValueDisplayed('Type', 'FTA evidence')).to.equal(true);
     expect(await anyCcdPage.isFieldValueDisplayed('Email content', 'Test note for the the event')).to.equal(true);
     expect(await anyCcdPage.isFieldValueDisplayed('Original document URL', 'issue1.pdf')).to.equal(true);
 });

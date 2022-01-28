@@ -5,7 +5,7 @@ Feature: UC Final Decision Notices
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
     When I navigate to an existing case
-    Then the case should be in "With DWP" state
+    Then the case should be in "With FTA" state
 
     When I switch to be a DWPResponse Writer
     When I choose "Upload response"

@@ -12,7 +12,7 @@ Feature: Hearing recording
     Then the case should end in "Hearing" state
     And I wait for Judge to sign out
     When I switch to be a Case Officer
-    
+
     And I navigate to an existing case
     When I choose "Upload hearing recording"
 
@@ -24,7 +24,7 @@ Feature: Hearing recording
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
-    And I choose "DWP Request hearing recording"
+    And I choose "Request hearing recording"
     And I request for Hearing recording
 
     When I switch to be a Case Officer
@@ -32,7 +32,7 @@ Feature: Hearing recording
     And I navigate to an existing case
     And I choose "Action hearing recording req"
     And request for Hearing recording is "Granted"
-    Then the "DWP Request hearing recording" should be successfully listed in "History" tab
+    Then the "Request hearing recording" should be successfully listed in "History" tab
     Then the "Action hearing recording req" should be successfully listed in "History" tab
 
     When I switch to be a DWPResponse Writer

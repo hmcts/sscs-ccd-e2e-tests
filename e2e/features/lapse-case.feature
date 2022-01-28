@@ -7,18 +7,18 @@ Feature: The lapse
   And I navigate to an existing case
 
   @lapse
-  Scenario: Should end up in "With DWP" state when ALL fields are present
+  Scenario: Should end up in "With FTA" state when ALL fields are present
     When I choose "Lapse appeal"
-    And I set DWP State to Lapsed "Lapse appeal"
+    And I set FTA State to Lapsed "Lapse appeal"
     And I submit "Lapse appeal"
-    Then the case should end in "With DWP" state
+    Then the case should end in "With FTA" state
 
     When I choose "Confirm lapsed"
     And I submit "Confirm lapsed"
     Then the case should end in "Dormant" state
 
   @crossbrowser
-  Scenario: Should end up in "With DWP" state when ALL fields are present
+  Scenario: Should end up in "With FTA" state when ALL fields are present
     When I choose "Lapse appeal"
-    And I set DWP State to Lapsed "Lapse appeal"
+    And I set FTA State to Lapsed "Lapse appeal"
     Then I submit "Lapse appeal"

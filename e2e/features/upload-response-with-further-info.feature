@@ -2,11 +2,11 @@
 Feature: The alternate happy path
 
   @alt-happy-path @nightly-test @preview-test
-  Scenario: Should end up in "With DWP" state when ALL fields are present
+  Scenario: Should end up in "With FTA" state when ALL fields are present
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
-    Then the case should be in "With DWP" state
+    Then the case should be in "With FTA" state
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
@@ -21,13 +21,13 @@ Feature: The alternate happy path
     And I submit "Response reviewed"
     Then the case should be in "Ready to list" state
 
-  
+
   @happy-path @dwp-upload-response @uc @nightly-test
   Scenario: Should end up in "Ready to List" state when a UC disputed case has been response reviewed
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
-    Then the case should be in "With DWP" state
+    Then the case should be in "With FTA" state
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
@@ -45,7 +45,7 @@ Feature: The alternate happy path
     Given I presetup an "Child Support" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
-    And the case should be in "With DWP" state
+    And the case should be in "With FTA" state
 
     When I choose "Upload response"
     And I respond to the appeal with upload contains further information "Yes" option

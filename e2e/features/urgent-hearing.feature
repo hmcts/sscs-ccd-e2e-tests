@@ -5,9 +5,9 @@ Feature: Urgent hearing functionality
     Given I preset up a test case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
-    And I choose "Admin - send to With DWP"
+    And I choose "Admin - send to With FTA"
     Given I complete the event
-    Then the case should be in "With DWP" state
+    Then the case should be in "With FTA" state
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
