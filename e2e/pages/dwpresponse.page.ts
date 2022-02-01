@@ -73,7 +73,7 @@ export class DwpResponsePage extends AnyPage {
 
             if (isPHME) {
                 await browser.sleep(1000);
-                anyCcdFormPage.chooseOptionByElementId('dwpEditedEvidenceReason', 'Potentially harmful medical evidence');
+                anyCcdFormPage.chooseOptionByElementId('dwpEditedEvidenceReason', 'Potentially harmful evidence');
                 console.log('uploading edited doc....');
                 await this.uploadFile('dwpEditedResponseDocument_documentLink', 'issue1.pdf');
                 await this.uploadFile('dwpEditedEvidenceBundleDocument_documentLink', 'issue2.pdf');
@@ -102,7 +102,7 @@ export class DwpResponsePage extends AnyPage {
 
         if (isPHME) {
             await browser.sleep(1000);
-            anyCcdFormPage.chooseOptionByElementId('dwpEditedEvidenceReason', 'Potentially harmful medical evidence');
+            anyCcdFormPage.chooseOptionByElementId('dwpEditedEvidenceReason', 'Potentially harmful evidence');
         }
 
         if (containsFurtherInfo) {
@@ -165,7 +165,7 @@ export class DwpResponsePage extends AnyPage {
         await this.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
 
         await browser.sleep(2000);
-        await anyCcdFormPage.chooseOptionByElementId('dwpEditedEvidenceReason', 'Child support - Confidentiality');
+        await anyCcdFormPage.chooseOptionByElementId('dwpEditedEvidenceReason', 'Confidentiality');
         console.log('uploading edited doc....');
         await this.uploadFile('dwpEditedResponseDocument_documentLink', 'issue1.pdf');
         await this.uploadFile('dwpEditedEvidenceBundleDocument_documentLink', 'issue2.pdf');
