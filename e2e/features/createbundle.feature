@@ -10,7 +10,7 @@ Feature: Create bundle for a case
     When I choose "Upload response"
     And I upload contains further information NO for "PIP"
 
-  @bundle @preview-test
+  @bundle @preview-test-skip
   Scenario: Verify create bundle event for cases
     Given I navigate to an existing case
     And I choose "Create a bundle"

@@ -1,6 +1,6 @@
 Feature: Enhanced confidentiality
 
-    @nightly-test @preview-test
+    @nightly-test @preview-test-skip @ec-10106
     Scenario: Happy path
         Given I presetup an "UC" SYA case
         And I am signed in as a Case Officer
