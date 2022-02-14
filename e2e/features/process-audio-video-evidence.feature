@@ -11,10 +11,10 @@ Feature: Process audio video evidence event
         When I upload AV evidence and complete Upload response event for "PIP" case 
         Then I should see the AV evidence after clicking the AV tab
         And I should see the RIP1 document
-        And I should see that the AV evidence was uploaded by "DWP"
+        And I should see that the AV evidence was uploaded by "FTA"
         When I choose "Process audio/video evidence"
         And I process the AV evidence using the "Admit audio/video evidence" action
-        Then I "should" see the AV evidence in the DWP Documents tab
+        Then I "should" see the AV evidence in the FTA Documents tab
         When I choose "Create a bundle"
         And I submit "Create a bundle"
         Then the bundle should include the AV evidence
@@ -28,4 +28,4 @@ Feature: Process audio video evidence event
         And I should see that the AV evidence was uploaded by "CTSC clerk"
         When I choose "Process audio/video evidence"
         And I process the AV evidence using the "Exclude audio/video evidence" action
-        Then I "should not" see the AV evidence in the DWP Documents tab
+        Then I "should not" see the AV evidence in the FTA Documents tab

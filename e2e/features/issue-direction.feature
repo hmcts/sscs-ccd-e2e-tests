@@ -8,7 +8,7 @@ Feature: Issue direction
 
   @issue-direction
   Scenario: Judge should be able to proceed incomplete application without mrn-date
-    Then the case should end in "With DWP" state
+    Then the case should end in "With FTA" state
 
     And I choose "Admin - send to Incomplete App"
     And I complete the event

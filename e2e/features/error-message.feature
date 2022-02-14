@@ -6,7 +6,7 @@ Feature: Error messages
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
-    Then the case should be in "With DWP" state
+    Then the case should be in "With FTA" state
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
@@ -20,8 +20,8 @@ Feature: Error messages
 
     And I choose "Upload response"
     And I do not upload edited docs after selecting "PHME" option
-    Then I should see "You must upload an edited DWP response document" error message
-    And I should see "You must upload an edited DWP evidence bundle" error message
+    Then I should see "You must upload an edited FTA response document" error message
+    And I should see "You must upload an edited FTA evidence bundle" error message
 
   Scenario: Verify issue code error message for users
     Given I am signed in as a Case Officer

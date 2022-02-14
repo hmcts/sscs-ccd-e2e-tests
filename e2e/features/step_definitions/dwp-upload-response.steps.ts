@@ -113,27 +113,27 @@ Then(/^the case should end in "(.+)" state$/, async function (state) {
     await browser.sleep(500);
 });
 
-Then(/^DWP documents should be seen against the case$/, async function () {
-    await anyCcdPage.clickTab('DWP Documents');
+Then(/^FTA documents should be seen against the case$/, async function () {
+    await anyCcdPage.clickTab('FTA Documents');
     await browser.sleep(5000);
-    await anyCcdPage.isFieldValueDisplayed('Document type', 'DWP evidence bundle');
-    await anyCcdPage.isFieldValueDisplayed('Original document Url', `DWP evidence received on ${formattedDate}.pdf`);
+    await anyCcdPage.isFieldValueDisplayed('Document type', 'FTA evidence bundle');
+    await anyCcdPage.isFieldValueDisplayed('Original document Url', `FTA evidence received on ${formattedDate}.pdf`);
 
-    await anyCcdPage.isFieldValueDisplayed('Document type', 'DWP response');
-    await anyCcdPage.isFieldValueDisplayed('Original document Url', `DWP response received on ${formattedDate}.pdf`);
+    await anyCcdPage.isFieldValueDisplayed('Document type', 'FTA response');
+    await anyCcdPage.isFieldValueDisplayed('Original document Url', `FTA response received on ${formattedDate}.pdf`);
 
     await anyCcdPage.isFieldValueDisplayed('Document type', 'AT38');
     await anyCcdPage.isFieldValueDisplayed('Original document Url', `AT38 received on ${formattedDate}.pdf`);
     await browser.sleep(500);
 });
 
-Then(/^DWP edited documents should be seen against the case$/, async function () {
-    await anyCcdPage.clickTab('DWP Documents');
+Then(/^FTA edited documents should be seen against the case$/, async function () {
+    await anyCcdPage.clickTab('FTA Documents');
     await browser.sleep(5000);
-    await anyCcdPage.isFieldValueDisplayed('Document type', 'DWP evidence bundle');
-    await anyCcdPage.isFieldValueDisplayed('Edited document Url', `DWP edited evidence received on ${formattedDate}.pdf`);
+    await anyCcdPage.isFieldValueDisplayed('Document type', 'FTA evidence bundle');
+    await anyCcdPage.isFieldValueDisplayed('Edited document Url', `FTA edited evidence received on ${formattedDate}.pdf`);
 
-    await anyCcdPage.isFieldValueDisplayed('Document type', 'DWP response');
-    await anyCcdPage.isFieldValueDisplayed('Edited document Url', `DWP edited response received on ${formattedDate}.pdf`);
+    await anyCcdPage.isFieldValueDisplayed('Document type', 'FTA response');
+    await anyCcdPage.isFieldValueDisplayed('Edited document Url', `FTA edited response received on ${formattedDate}.pdf`);
     await browser.sleep(500);
 });

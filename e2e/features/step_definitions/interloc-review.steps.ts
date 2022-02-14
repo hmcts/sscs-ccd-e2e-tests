@@ -17,7 +17,7 @@ When(/^I choose Requires Interlocutory Review Yes "(.+)"$/, async function (acti
     await anyCcdPage.click('Continue');
 });
 
-When(/^I set DWP State to No action "(.+)"$/, async function (action) {
+When(/^I set FTA State to No action "(.+)"$/, async function (action) {
     await anyCcdPage.chooseOptionByElementId('dwpState', 'No action');
     await anyCcdPage.click('Continue');
 });

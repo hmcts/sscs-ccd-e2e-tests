@@ -94,7 +94,7 @@ Then(/^the case should be "(.+)" permissions for "(.+)"$/, async function (reins
     });
 });
 
-When('resend evidence to appellant and dwp user', async function () {
+When('resend evidence to appellant and FTA user', async function () {
 
     await browser.sleep(2000);
     await anyCcdPage.clickElementById('resendToAppellant_Yes');

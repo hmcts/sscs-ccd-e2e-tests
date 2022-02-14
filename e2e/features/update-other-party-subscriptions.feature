@@ -5,7 +5,7 @@ Feature: The Update subscriptions
     Given I presetup an "Child Support" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
-    Then the case should end in "With DWP" state
+    Then the case should end in "With FTA" state
 
     And I choose "Update other party data"
     And I add other party data

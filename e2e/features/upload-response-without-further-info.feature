@@ -6,7 +6,7 @@ Feature: The happy path
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
-    Then the case should be in "With DWP" state
+    Then the case should be in "With FTA" state
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
@@ -18,7 +18,7 @@ Feature: The happy path
     When I switch to be a Case Officer
     And I navigate to an existing case
     Then the case should end in "Ready to list" state
-    And DWP documents should be seen against the case
+    And FTA documents should be seen against the case
 
 
  @happy-path @nightly-test-wip @dwp-upload-response
@@ -26,7 +26,7 @@ Feature: The happy path
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
-    Then the case should be in "With DWP" state
+    Then the case should be in "With FTA" state
 
     When I switch to be a DWPResponse Writer
     And I choose "Upload response"
@@ -38,11 +38,11 @@ Feature: The happy path
     Then the case should be in "Ready to list" state
 
  @nightly-test
- Scenario: Child support case should end up in "Not listable" state when dwp responds
+ Scenario: Child support case should end up in "Not listable" state when FTA responds
     Given I presetup an "Child Support" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
-    And the case should be in "With DWP" state
+    And the case should be in "With FTA" state
 
     When I choose "Upload response"
     And I respond to the appeal with upload contains further information "No" option

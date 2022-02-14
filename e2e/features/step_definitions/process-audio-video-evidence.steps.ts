@@ -48,8 +48,8 @@ When(/^I process the AV evidence using the "(.+)" action$/, async function (acti
     await browser.sleep(50000);
 })
 
-Then(/^I "(.+)" see the AV evidence in the DWP Documents tab$/, async function (assertion) {
-    await anyCcdPage.clickTab('DWP Documents');
+Then(/^I "(.+)" see the AV evidence in the FTA Documents tab$/, async function (assertion) {
+    await anyCcdPage.clickTab('FTA Documents');
     const av_visibility = assertion === 'should';
     expect(await caseDetailsPage.isFieldValueDisplayed('Document type', 'Audio document')).to.equal(av_visibility);
     expect(await caseDetailsPage.isFieldValueDisplayed('Audio/video document', 'test_av.mp3')).to.equal(av_visibility);
@@ -60,7 +60,7 @@ Then(/^the bundle should include the AV evidence$/, async function () {
     await browser.sleep(1000);
     expect(await caseDetailsPage.isFieldValueDisplayed('Folder Name', 'Further additions')).to.equal(true);
     expect(await anyCcdPage.contentContains('Audio/video evidence document')).to.equal(true);
-    expect(await anyCcdPage.contentContains('Addition B - DWP - RIP 1 document for A/V file: test_av.mp3')).to.equal(true);
+    expect(await anyCcdPage.contentContains('Addition B - FTA - RIP 1 document for A/V file: test_av.mp3')).to.equal(true);
 });
 
 Given(/^I submit "(.+)" as "(.+)" in the Upload document FE event$/, async function (filename, type) {

@@ -29,7 +29,7 @@ export class DwpResponsePage extends AnyPage {
             await anyCcdFormPage.chooseOptionByElementId('benefitCode', '001');
             await anyCcdFormPage.clickElementById('dwpUCB_No');
             await anyCcdFormPage.chooseOptionByElementId('dwpFurtherEvidenceStates', 'No action');
-            await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (DWP)');
+            await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (FTA)');
         }
     }
 
@@ -52,7 +52,7 @@ export class DwpResponsePage extends AnyPage {
             await anyCcdFormPage.chooseOptionByElementId('benefitCode', '001');
             await anyCcdFormPage.clickElementById('dwpUCB_No');
             await anyCcdFormPage.chooseOptionByElementId('dwpFurtherEvidenceStates', 'No action');
-            await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (DWP)');
+            await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (FTA))');
         }
     }
 
@@ -88,7 +88,7 @@ export class DwpResponsePage extends AnyPage {
                 await anyCcdFormPage.clickElementById('dwpFurtherInfo_No');
             }
             if (dwpState === 'YES') {
-                anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (DWP)');
+                anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (FTA)');
             }
     }
 
@@ -113,7 +113,7 @@ export class DwpResponsePage extends AnyPage {
             await anyCcdFormPage.clickElementById('dwpFurtherInfo_No');
         }
         if (dwpState === 'YES') {
-            anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (DWP)');
+            anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (FTA)');
         }
 }
 
@@ -242,7 +242,7 @@ export class DwpResponsePage extends AnyPage {
         await browser.sleep(3000);
         await anyCcdFormPage.chooseOptionByElementId('benefitCode', '001');
         await anyCcdFormPage.chooseOptionByElementId('dwpFurtherEvidenceStates', 'No action');
-        await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (DWP)');
+        await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (FTA)');
     }
 
     async addOtherParties() {
