@@ -1,5 +1,5 @@
 @reasonable-adjustments-other-party @nightly-test
-Feature: Reasonable adjustments functionality
+Feature: Other party Reasonable adjustments functionality
 
   Scenario: Actioned reasonable adjustments
     Given I presetup an "Child Support" SYA case

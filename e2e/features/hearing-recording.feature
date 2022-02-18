@@ -32,7 +32,7 @@ Feature: Hearing recording
     And I navigate to an existing case
     And I choose "Action hearing recording req"
     And request for Hearing recording is "Granted"
-    Then the "Request hearing recording" should be successfully listed in "History" tab
+    Then the "FTA Request hearing recording" should be successfully listed in "History" tab
     Then the "Action hearing recording req" should be successfully listed in "History" tab
 
     When I switch to be a DWPResponse Writer

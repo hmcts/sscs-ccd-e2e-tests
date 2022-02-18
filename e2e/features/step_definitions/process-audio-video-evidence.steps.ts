@@ -57,7 +57,7 @@ Then(/^I "(.+)" see the AV evidence in the FTA Documents tab$/, async function (
 
 Then(/^the bundle should include the AV evidence$/, async function () {
     await anyCcdPage.clickTab('Bundles');
-    await browser.sleep(1000);
+    await browser.sleep(10000);
     expect(await caseDetailsPage.isFieldValueDisplayed('Folder Name', 'Further additions')).to.equal(true);
     expect(await anyCcdPage.contentContains('Audio/video evidence document')).to.equal(true);
     expect(await anyCcdPage.contentContains('Addition B - FTA - RIP 1 document for A/V file: test_av.mp3')).to.equal(true);
