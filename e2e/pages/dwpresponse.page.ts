@@ -179,6 +179,24 @@ export class DwpResponsePage extends AnyPage {
         await browser.sleep(2000);
     }
 
+    async uploadResponseForTaxCredit(action: string) {
+        await browser.waitForAngular();
+        let remote = require('selenium-webdriver/remote');
+        browser.setFileDetector(new remote.FileDetector());
+        await this.uploadFile('dwpResponseDocument_documentLink', 'issue1.pdf');
+        await this.uploadFile('dwpAT38Document_documentLink', 'issue2.pdf');
+        await this.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
+
+        await browser.sleep(2000);
+        await anyCcdFormPage.chooseOptionByElementId('issueCode', 'AA');
+        await anyCcdFormPage.clickElementById(`dwpFurtherInfo_${action}`);
+        await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Appeal to-be registered');
+        await anyCcdFormPage.click('Continue');
+        await browser.sleep(2000);
+        expect(await anyCcdFormPage.pageHeadingContains('Check your answers')).to.equal(true);
+        await anyCcdFormPage.click('Submit');
+    }
+
     async elementsDisputedPage(disputed: string) {
         await anyCcdFormPage.clickElementById('elementsDisputedList-' + disputed.toLowerCase());
     }

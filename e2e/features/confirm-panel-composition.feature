@@ -1,5 +1,5 @@
 @panel-composition @nightly-test
-Feature: Hearing recording
+Feature: Panel composition
 
   Background:
     Given I presetup an "Tax Credit" SYA case
@@ -9,7 +9,7 @@ Feature: Hearing recording
   Scenario: Judicial user accepts panel member
     Then the case should be in "With FTA" state
     When I choose "Upload response"
-    And I upload contains further information YES for "Tax Credit"
+    And dwp responds requesting "Yes" for the uploads contains further info option
     Then the case should be in "Response received" state
 
     When I choose "Confirm panel composition"
