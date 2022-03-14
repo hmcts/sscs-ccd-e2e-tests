@@ -51,6 +51,7 @@ withNightlyPipeline("nodejs", product, component) {
     env.TEST_E2E_FAIL_FAST = 'false'
     env.TEST_E2E_ANNOTATION = params.NIGHTLY_TAG
 
+    before('DependencyCheckNightly') {sh 'yarn test:audit'}
     enableCrossBrowserTest(60)
     enableFullFunctionalTest(120)
 
