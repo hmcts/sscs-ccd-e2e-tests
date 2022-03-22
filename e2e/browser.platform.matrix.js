@@ -46,7 +46,7 @@ module.exports = {
     // },
     {
       browserName: 'safari',
-      platform: 'macOS 10.13',
+      platform: 'macOS 12',
       version: 'latest-1',
       name: 'sscs-safari-mac-test',
       tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'reformtunnel',
