@@ -56,11 +56,7 @@ withNightlyPipeline("nodejs", product, component) {
     after('build') {
         stage('a11y xui') {
             yarnBuilder.yarn('test:a11y')
-        }
-    } 
-
-    after('a11y xui') {
-         publishHTML([
+            publishHTML([
                 allowMissing         : true,
                 alwaysLinkToLastBuild: true,
                 keepAll              : true,
@@ -68,7 +64,8 @@ withNightlyPipeline("nodejs", product, component) {
                 reportFiles          : 'a11y.html',
                 reportName           : 'SSCS ExUI - Manage Cases a11y Test Report'
         ])
-    }
+        }
+    } 
 
     enableCrossBrowserTest(60)
     enableFullFunctionalTest(120)
