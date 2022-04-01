@@ -52,6 +52,21 @@ withNightlyPipeline("nodejs", product, component) {
     env.TEST_E2E_ANNOTATION = params.NIGHTLY_TAG
 
     before('DependencyCheckNightly') {sh 'yarn test:audit'}
+
+    after('build') {
+        stage('a11y xui') {
+            yarnBuilder.yarn('test:a11y')
+            publishHTML([
+                allowMissing         : true,
+                alwaysLinkToLastBuild: true,
+                keepAll              : true,
+                reportDir            : "reports/tests/",
+                reportFiles          : 'a11y.html',
+                reportName           : 'SSCS ExUI - Manage Cases a11y Test Report'
+        ])
+        }
+    } 
+
     enableCrossBrowserTest(60)
     enableFullFunctionalTest(120)
 
@@ -74,17 +89,6 @@ withNightlyPipeline("nodejs", product, component) {
             reportDir            : "reports/tests/functional/",
             reportFiles          : 'index.html',
             reportName           : 'SSCS - EXUI Functional Test Report'
-        ])
-
-        yarnBuilder.yarn('test:a11y')
-
-        publishHTML([
-                allowMissing         : true,
-                alwaysLinkToLastBuild: true,
-                keepAll              : true,
-                reportDir            : "reports/tests/",
-                reportFiles          : 'a11y.html',
-                reportName           : 'SSCS ExUI - Manage Cases a11y Test Report'
         ])
     }
 //    enableSlackNotifications('#sscs-tech')    // can be turned back on once the overnight functionality is working fully
