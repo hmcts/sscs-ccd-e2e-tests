@@ -1,3 +1,5 @@
+import cucumber.api.java.en.Given;
+
 @migrated-to-exui
 Feature: The alternate happy path
 
@@ -40,13 +42,14 @@ Feature: The alternate happy path
     When I review the UC received Response
     Then the case should be in "Ready to list" state
 
-  @nightly-test
-  Scenario: Child support case should end up in "Not listable" state
-    Given I presetup an "Child Support" SYA case
+  @tc-decision @nightly-test
+  Scenario: Tax Credit case should end up in "Not listable" state
+    Given I presetup an "Tax Credit" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
     And the case should be in "With FTA" state
 
     When I choose "Upload response"
-    And I respond to the appeal with upload contains further information "Yes" option
+    And I respond to the taxCredit appeal with upload contains further information "Yes" option
     Then The case should end in "Response received" state and interloc state should be in "Awaiting Admin Action"
+

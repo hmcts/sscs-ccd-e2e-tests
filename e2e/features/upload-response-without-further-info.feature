@@ -49,3 +49,27 @@ Feature: The happy path
     Then The case should end in "Not listable" state and interloc state should be in "Review by Judge"
     And the "Other Party Details" tab is seen with "Other parties 1" content
 
+  @nightly-test
+  Scenario: Tax Credit case should end up in "Ready to list" state when FTA responds
+    Given I presetup an "Tax Credit" SYA case
+    And I am signed in as a Case Officer
+    Given I navigate to an existing case
+    And the case should be in "With FTA" state
+
+    When I choose "Upload response"
+    And I respond to the taxCredit appeal with upload contains further information "No" option
+    Then the case should be in "Ready to list" state
+
+  @tc-decision  @nightly-test
+  Scenario: Tax Credit case should end up in "Ready to list" state when FTA responds
+    Given I presetup an "Tax Credit" SYA case
+    And I am signed in as a Case Officer
+    Given I navigate to an existing case
+
+    When I choose "Update to case data"
+    And  I select Confidentiality Status as yes
+    Then I should see "Is case confidential? Yes"
+
+
+
+
