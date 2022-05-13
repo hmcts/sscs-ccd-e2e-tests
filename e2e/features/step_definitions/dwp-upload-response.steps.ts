@@ -20,7 +20,7 @@ When(/^I choose "(.+)"$/, async function (action) {
     await browser.sleep(4000)
     if (action === 'Write adjournment notice'
     || action === 'Not listable' || action === 'Update not listable'
-    || action === 'Update subscription' || action === 'Upload hearing recording') {
+    || action === 'Update subscription' || action === 'Upload hearing recording' || action === 'Update to case data') {
         await anyCcdPage.reloadPage();
     }
     await caseDetailsPage.doNextStep(action);
@@ -95,6 +95,10 @@ When(/^I respond to the appeal with upload contains further information "(.+)" o
     await dwpresponse.addOtherParties();
 });
 
+When(/^I respond to the taxCredit appeal with upload contains further information "(.+)" option$/, async function (action: string) {
+    await dwpresponse.uploadResponseForTaxCredit(action);
+});
+
 When(/^dwp responds requesting "(.+)" for the uploads contains further info option$/, async function (action: string) {
     await dwpresponse.uploadResponseForTaxCredit(action);
 });
@@ -141,3 +145,5 @@ Then(/^FTA edited documents should be seen against the case$/, async function ()
     await anyCcdPage.isFieldValueDisplayed('Edited document Url', `FTA edited response received on ${formattedDate}.pdf`);
     await browser.sleep(500);
 });
+
+

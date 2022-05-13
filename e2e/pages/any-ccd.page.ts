@@ -110,6 +110,7 @@ export class AnyCcdPage extends AnyPage {
     }
 
     async fillValues(elementId: string, actText: string) {
+        await element(by.id(elementId)).clear();
         await element(by.id(elementId)).sendKeys(actText);
     }
 

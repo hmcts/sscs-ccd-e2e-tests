@@ -1,13 +1,11 @@
 @migrated-to-exui @nightly-test @preview-test
 Feature: Issue direction
 
-  Background:
+  @issue-direction
+  Scenario: Judge should be able to proceed incomplete application without mrn-date
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
-
-  @issue-direction
-  Scenario: Judge should be able to proceed incomplete application without mrn-date
     Then the case should end in "With FTA" state
 
     And I choose "Admin - send to Incomplete App"
@@ -26,3 +24,23 @@ Feature: Issue direction
     And I choose "Issue directions notice"
     And I allow the appeal to proceed
     Then I should see Addition details in documents tab
+
+
+    Given I presetup an "Tax Credit" SYA case
+    And I am signed in as a Case Officer
+    And I navigate to an existing case
+
+  @tc-decision @issue-direction
+  Scenario: Judge should be able to proceed incomplete application without mrn-date
+
+    Given I presetup an "Tax Credit" SYA case
+    And I am signed in as a Case Officer
+    And I navigate to an existing case
+    Then the case should end in "With FTA" state
+
+    When I switch to be a Judge
+    And I navigate to an existing case
+    And I choose "Issue directions notice"
+    And I allow the appeal to proceed
+    Then I should see Addition details in documents tab
+
