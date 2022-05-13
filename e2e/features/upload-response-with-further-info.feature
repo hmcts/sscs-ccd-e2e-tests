@@ -1,5 +1,3 @@
-import cucumber.api.java.en.Given;
-
 @migrated-to-exui
 Feature: The alternate happy path
 
