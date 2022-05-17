@@ -40,7 +40,8 @@ Feature: The alternate happy path
     When I review the UC received Response
     Then the case should be in "Ready to list" state
 
-  @tc-decision @nightly-test
+
+  @tc-decision  @dwp-upload-response @nightly-test
   Scenario: Tax Credit case should end up in "Not listable" state
     Given I presetup an "Tax Credit" SYA case
     And I am signed in as a Case Officer
@@ -51,3 +52,14 @@ Feature: The alternate happy path
     And I respond to the taxCredit appeal with upload contains further information "Yes" option
     Then The case should end in "Response received" state and interloc state should be in "Awaiting Admin Action"
 
+
+  @nightly-test @dwp-upload-response
+  Scenario: Child support case should end up in "Not listable" state
+    Given I presetup an "Child Support" SYA case
+    And I am signed in as a Case Officer
+    Given I navigate to an existing case
+    And the case should be in "With FTA" state
+
+    When I choose "Upload response"
+    And I respond to the appeal with upload contains further information "Yes" option
+    Then The case should end in "Response received" state and interloc state should be in "Awaiting Admin Action"

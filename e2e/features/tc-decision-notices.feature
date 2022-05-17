@@ -1,3 +1,4 @@
+@tc-decision @nightly-test
 Feature: TC Final Decision Notices
 
   Background:
@@ -15,7 +16,6 @@ Feature: TC Final Decision Notices
     And I navigate to an existing case
     When I choose "Write final decision"
 
-  @tc-decision @nightly-test
   Scenario: Write TC final decision
     And I write a final decision of taxCredit appeal "YES" and Support group "NO" To Allowed "NO"
     And I see "Draft Decision Notice"

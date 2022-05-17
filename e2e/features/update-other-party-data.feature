@@ -1,7 +1,6 @@
-@update-other-party-data
+@update-other-party-data @migrated-to-exui @nightly-test
 Feature: The Update Other Party Data
 
- @migrated-to-exui @nightly-test
  Scenario: Update Other Party Data
     Given I presetup an "Child Support" SYA case
     And I am signed in as a Case Officer
@@ -12,7 +11,6 @@ Feature: The Update Other Party Data
     And I add other party data
     Then the case should end in "Not listable" state
 
-  @tc-decision1
   Scenario: Update Other Party Data
     Given I presetup an "Tax Credit" SYA case
     And I am signed in as a Case Officer
