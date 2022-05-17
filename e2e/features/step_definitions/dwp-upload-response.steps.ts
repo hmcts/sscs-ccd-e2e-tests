@@ -145,5 +145,3 @@ Then(/^FTA edited documents should be seen against the case$/, async function ()
     await anyCcdPage.isFieldValueDisplayed('Edited document Url', `FTA edited response received on ${formattedDate}.pdf`);
     await browser.sleep(500);
 });
-
-
