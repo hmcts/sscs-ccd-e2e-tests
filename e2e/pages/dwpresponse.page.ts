@@ -31,6 +31,7 @@ export class DwpResponsePage extends AnyPage {
             await anyCcdFormPage.chooseOptionByElementId('dwpFurtherEvidenceStates', 'No action');
             await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (FTA)');
         }
+        await anyCcdFormPage.clickElementById('dwpIsOfficerAttending_No');
     }
 
     async uploadOnlyResponseAndEvidence(action: string, dwpState: string, benefitType: string) {
@@ -54,6 +55,7 @@ export class DwpResponsePage extends AnyPage {
             await anyCcdFormPage.chooseOptionByElementId('dwpFurtherEvidenceStates', 'No action');
             await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (FTA)');
         }
+        await anyCcdFormPage.clickElementById('dwpIsOfficerAttending_No');
     }
 
    async uploadResponseWithUcbAndPhme(dwpState: string, docLink: string, isUCB: boolean, isPHME: boolean, containsFurtherInfo) {
@@ -90,6 +92,7 @@ export class DwpResponsePage extends AnyPage {
             if (dwpState === 'YES') {
                 anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (FTA)');
             }
+            await anyCcdFormPage.clickElementById('dwpIsOfficerAttending_No');
     }
 
     async uploadResponseWithoutPhmeDocs(dwpState: string, isPHME: boolean, containsFurtherInfo) {
@@ -115,6 +118,7 @@ export class DwpResponsePage extends AnyPage {
         if (dwpState === 'YES') {
             anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (FTA)');
         }
+        await anyCcdFormPage.clickElementById('dwpIsOfficerAttending_No');
 }
 
     async uploadDoc(docLink: string) {
@@ -175,6 +179,7 @@ export class DwpResponsePage extends AnyPage {
         await anyCcdFormPage.chooseOptionByElementId('issueCode', 'AA');
         await anyCcdFormPage.clickElementById(`dwpFurtherInfo_${action}`);
         await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Appeal to-be registered');
+        await anyCcdFormPage.clickElementById('dwpIsOfficerAttending_No');
         await anyCcdFormPage.click('Continue');
         await browser.sleep(2000);
     }
@@ -191,6 +196,7 @@ export class DwpResponsePage extends AnyPage {
         await anyCcdFormPage.chooseOptionByElementId('issueCode', 'AA');
         await anyCcdFormPage.clickElementById(`dwpFurtherInfo_${action}`);
         await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Appeal to-be registered');
+        await anyCcdFormPage.clickElementById('dwpIsOfficerAttending_No');
         await anyCcdFormPage.click('Continue');
         await browser.sleep(2000);
         expect(await anyCcdFormPage.pageHeadingContains('Check your answers')).to.equal(true);
@@ -261,6 +267,7 @@ export class DwpResponsePage extends AnyPage {
         await anyCcdFormPage.chooseOptionByElementId('benefitCode', '001');
         await anyCcdFormPage.chooseOptionByElementId('dwpFurtherEvidenceStates', 'No action');
         await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Response submitted (FTA)');
+        await anyCcdFormPage.clickElementById('dwpIsOfficerAttending_No');
     }
 
     async addOtherParties() {
