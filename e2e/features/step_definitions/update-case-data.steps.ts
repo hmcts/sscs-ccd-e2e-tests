@@ -16,3 +16,16 @@ Then(/^I should update case with a valid nino$/, async function () {
     await anyCcdPage.click('Continue');
     await anyCcdPage.click('Submit');
 });
+
+Then(/^I should update case with a valid nino and confidentiality option$/, async function () {
+
+    await anyCcdFormPage.setTextFiledValueNull('appeal_mrnDetails_dwpIssuingOffice');
+    await anyCcdFormPage.setValueByElementId('appeal_mrnDetails_dwpIssuingOffice', 'Tax Credit Office');
+    await anyCcdFormPage.setTextFiledValueNull('appeal_appellant_identity_nino');
+    await anyCcdFormPage.setValueByElementId('appeal_appellant_identity_nino', 'SK982165A');
+    await anyCcdFormPage.clickElementById('appeal_appellant_confidentialityRequired_No');
+    await browser.sleep(3000);
+
+    await anyCcdPage.click('Continue');
+    await anyCcdPage.click('Submit');
+});

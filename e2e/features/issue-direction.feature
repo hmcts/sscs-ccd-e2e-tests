@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test @preview-test
+@migrated-to-exui @nightly-test @preview-test @issue-direction 
 Feature: Issue direction
 
   @issue-direction
@@ -14,7 +14,6 @@ Feature: Issue direction
 
     And I choose "Send to interloc - pre-valid"
     And I submit the interloc reason
-    Then the case should be in "Interlocutory Review - Pre-Valid" state
 
     When I choose "Update to case data"
     Then I should update case with a valid nino
@@ -25,18 +24,23 @@ Feature: Issue direction
     And I allow the appeal to proceed
     Then I should see Addition details in documents tab
 
-
-    Given I presetup an "Tax Credit" SYA case
-    And I am signed in as a Case Officer
-    And I navigate to an existing case
-
-  @tc-decision @issue-direction
+  @tc-decision
   Scenario: Judge should be able to proceed incomplete application without mrn-date
 
     Given I presetup an "Tax Credit" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
     Then the case should end in "With FTA" state
+
+    And I choose "Admin - send to Incomplete App"
+    And I complete the event
+    Then the case should be in "Incomplete Application" state
+
+    And I choose "Send to interloc - pre-valid"
+    And I submit the interloc reason
+
+    When I choose "Update to case data"
+    Then I should update case with a valid nino and confidentiality option
 
     When I switch to be a Judge
     And I navigate to an existing case
