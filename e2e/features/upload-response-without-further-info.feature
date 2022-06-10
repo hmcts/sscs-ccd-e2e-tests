@@ -58,7 +58,8 @@ Feature: The happy path
 
     When I choose "Upload response"
     And I respond to the taxCredit appeal with upload contains further information "No" option
-    Then the case should be in "Ready to list" state
+    Given I navigate to an existing case
+    Then the case should end in "Ready to list" state
 
   @tc-decision  @nightly-test
   Scenario: Tax Credit case should end up in "Ready to list" state when FTA responds

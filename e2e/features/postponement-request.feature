@@ -1,4 +1,4 @@
-@nightly-test @migrated-to-exui
+@migrated-to-exui
 Feature: Postponement request event
 
     Background: Set up PIP case
