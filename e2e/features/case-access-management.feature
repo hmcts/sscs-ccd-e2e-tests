@@ -1,4 +1,4 @@
- @nightly-test
+ @nightly-test-friday
 Feature: Case Access Management
 
   Scenario: SSCS1 benefit - check RPC and case management location on the appearl details page
@@ -8,5 +8,5 @@ Feature: Case Access Management
     And the case should be in "With FTA" state
     And "Summary" tab should contain "Manchester" value for case management "Processing venue" field
     And "Appeal Details" tab should contain "LIVERPOOL" value for case management "Regional Processing Center Name" field
-    And "Appeal Details" tab should contain "5" value for case management "Region" field
+    And "Appeal Details" tab should contain "4" value for case management "Region" field
     And "Appeal Details" tab should contain "701411" value for case management "Base Location" field
