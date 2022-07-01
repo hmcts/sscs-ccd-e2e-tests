@@ -36,11 +36,13 @@ export class AdjournmentPage extends AnyPage {
         await element(by.id('hearingDate-month')).sendKeys(month);
         await element(by.id('hearingDate-year')).sendKeys(year);
         await element(by.id('hearings_0_time')).sendKeys('13:00');
+        await browser.sleep(2000);
 
         await element(by.id('postponedDate-day')).sendKeys('20');
         await element(by.id('postponedDate-month')).sendKeys('10');
         await element(by.id('postponedDate-year')).sendKeys('2021');
         await anyCcdPage.clickElementById('hearings_0_adjourned_Yes');
+        await browser.sleep(2000);
 
         await element(by.id('adjournedDate-day')).sendKeys('20');
         await element(by.id('adjournedDate-month')).sendKeys('10');
@@ -51,8 +53,29 @@ export class AdjournmentPage extends AnyPage {
         await element(by.id('eventDate-day')).sendKeys('20');
         await element(by.id('eventDate-month')).sendKeys('02');
         await element(by.id('eventDate-year')).sendKeys('2022');
+        await browser.sleep(2000);
 
         await element(by.id('hearings_0_venueId')).sendKeys('142');
+
+        await element(by.id('hearingRequested-day')).sendKeys('21');
+        await element(by.id('hearingRequested-month')).sendKeys('02');
+        await element(by.id('hearingRequested-year')).sendKeys('2022');
+
+        await element(by.id('hearings_0_versionNumber')).sendKeys('123');
+        await anyCcdPage.chooseOptionContainingText('#hearings_0_hearingStatus', 'Hearing has been Listed');
+
+        await element(by.id('start-day')).sendKeys('22');
+        await element(by.id('start-month')).sendKeys('02');
+        await element(by.id('start-year')).sendKeys('2022');
+
+        await element(by.id('end-day')).sendKeys('22');
+        await element(by.id('end-month')).sendKeys('02');
+        await element(by.id('end-year')).sendKeys('2022');
+        await browser.sleep(2000);
+
+        await element(by.id('hearings_0_epimsId')).sendKeys('372653');
+
+        await browser.sleep(2000);
 
         await anyCcdPage.click('Continue');
         await anyCcdPage.click('Submit');
