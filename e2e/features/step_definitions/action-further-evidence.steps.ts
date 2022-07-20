@@ -110,7 +110,7 @@ When('resend evidence to appellant and FTA user', async function () {
 Then('I see {string} and {string} event being processed successfully', async function (eventName, anotherEventName) {
 
     await delay(5000);
-    await caseDetailsPage.reloadPage();
+   // await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab('History');
     expect(await caseDetailsPage.eventsPresentInHistory(anotherEventName)).to.equal(true);
     expect(await caseDetailsPage.eventsPresentInHistory(eventName)).to.equal(true);

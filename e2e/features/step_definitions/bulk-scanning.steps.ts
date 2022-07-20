@@ -270,7 +270,8 @@ Then(/^the case should be in "(.+)" state$/, async function (state) {
 
 Then(/^the bundles should be successfully listed in "(.+)" tab$/, async function (tabName) {
     await delay(10000);
-    await caseDetailsPage.reloadPage();
+    //await caseDetailsPage.reloadPage();
+    await delay(10000);
     await anyCcdPage.clickTab(tabName);
     expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
     expect(await caseDetailsPage.eventsPresentInHistory('Create a bundle')).to.equal(true);
@@ -345,7 +346,7 @@ When(/^I choose execute CCD event "(.+)"$/, async function (action) {
 
 Then(/^The case should end in "(.+)" state and interloc state should be in "(.+)"$/, async function (state: string, interlocState: string) {
     await delay(10000);
-    await caseDetailsPage.reloadPage();
+    //await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab('History');
     expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
     expect(await anyCcdPage.contentContains(interlocState)).to.equal(true);

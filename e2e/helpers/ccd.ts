@@ -52,6 +52,14 @@ async function createSYACase(caseType: string) {
             json: true,
             resolveWithFullResponse: true
         };
+    } else if (caseType === 'CAMPIP') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: pipPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
     } else if (caseType === 'ESA') {
         options = {
             method: 'POST',
