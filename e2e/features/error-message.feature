@@ -1,8 +1,7 @@
 @migrated-to-exui @nightly-test
 Feature: Error messages
 
-  #@happy-path @dwp-upload-response
-  @test21
+  @happy-path @dwp-upload-response
   Scenario: Verify AT38 Exui error message for users
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
