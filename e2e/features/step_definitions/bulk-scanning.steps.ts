@@ -263,6 +263,7 @@ When(/^I choose the next step "(.+)"$/, async function (action) {
 Then(/^the case should be in "(.+)" state$/, async function (state) {
     await delay(15000);
     await anyCcdPage.reloadPage();
+    await delay(8000);
     await anyCcdPage.clickTab('History');
     await delay(20000);
     expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);

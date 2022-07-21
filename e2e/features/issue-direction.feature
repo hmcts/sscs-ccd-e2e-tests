@@ -1,7 +1,7 @@
-@migrated-to-exui @nightly-test @preview-test @issue-direction
+@migrated-to-exui @nightly-test @issue-direction
 Feature: Issue direction
 
-  @issue-direction
+  @issue-direction @preview-test
   Scenario: Judge should be able to proceed incomplete application without mrn-date
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
