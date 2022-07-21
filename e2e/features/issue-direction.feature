@@ -1,12 +1,11 @@
-@migrated-to-exui @nightly-test @preview-test @issue-direction 
+@migrated-to-exui @nightly-test @issue-direction
 Feature: Issue direction
 
-  @issue-direction
+  @issue-direction @preview-test
   Scenario: Judge should be able to proceed incomplete application without mrn-date
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
-    Then the case should end in "With FTA" state
 
     And I choose "Admin - send to Incomplete App"
     And I complete the event

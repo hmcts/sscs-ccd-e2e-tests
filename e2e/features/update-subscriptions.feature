@@ -6,9 +6,6 @@ Feature: The Update subscriptions
     And I am signed in as a Case Officer
     When I navigate to an existing case
     Then the case should be in "With FTA" state
-
-    When I switch to be a DWPResponse Writer
-    And I navigate to an existing case
     And I choose "Update subscription"
 
   Scenario: Update Subscription - Yes

@@ -1,7 +1,7 @@
 Feature: Enhanced confidentiality
 
     @nightly-test @preview-test-skip @ec-10106
-    Scenario: Happy path
+    Scenario: Enhanced confidentiality scenario
         Given I presetup an "UC" SYA case
         And I am signed in as a Case Officer
         And I navigate to an existing case

@@ -34,7 +34,7 @@ Feature: Error messages
   Scenario: Verify encrypted error message warning for users
     Given I am signed in as a Case Officer
     And I navigate to an existing case
- 
+
     And I choose "Action further evidence"
     And I fill the further evidence form with "test-encrypted-file" invalid file
     Then I should see "The below PDF document(s) cannot be password protected, please correct this" error message
@@ -42,7 +42,7 @@ Feature: Error messages
   Scenario: Verify encrypted error message warning for users
     Given I am signed in as a Case Officer
     And I navigate to an existing case
- 
+
     And I choose "Action further evidence"
     And I fill the further evidence form with "test-corrupted-file" invalid file
     Then I should see "The below PDF document(s) are not readable, please correct this" error message

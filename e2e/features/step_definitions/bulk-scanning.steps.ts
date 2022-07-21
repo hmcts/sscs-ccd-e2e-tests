@@ -261,28 +261,30 @@ When(/^I choose the next step "(.+)"$/, async function (action) {
 });
 
 Then(/^the case should be in "(.+)" state$/, async function (state) {
-    await browser.sleep(5000)
+    await delay(15000);
+    await anyCcdPage.reloadPage();
+    await delay(8000);
     await anyCcdPage.clickTab('History');
-    // await anyCcdPage.reloadPage();
-    await browser.sleep(5000)
+    await delay(20000);
     expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
 });
 
 Then(/^the bundles should be successfully listed in "(.+)" tab$/, async function (tabName) {
-    await delay(10000);
+    await delay(15000);
     await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab(tabName);
+    await delay(20000);
     expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
     expect(await caseDetailsPage.eventsPresentInHistory('Create a bundle')).to.equal(true);
-    await browser.sleep(500);
+    await browser.sleep(3000);
 });
 
 Then(/^The edited bundles should be successfully listed in "(.+)" tab$/, async function (tabName) {
-    await delay(10000);
+    await delay(15000);
     await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab(tabName);
     expect(await caseDetailsPage.eventsPresentInHistory('Create an edited bundle')).to.equal(true);
-    await browser.sleep(500);
+    await browser.sleep(3000);
 });
 
 Then(/^the Stitching bundle event should be successfully listed in "(.+)" tab$/, async function (tabName) {
@@ -345,7 +347,6 @@ When(/^I choose execute CCD event "(.+)"$/, async function (action) {
 
 Then(/^The case should end in "(.+)" state and interloc state should be in "(.+)"$/, async function (state: string, interlocState: string) {
     await delay(10000);
-    await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab('History');
     expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
     expect(await anyCcdPage.contentContains(interlocState)).to.equal(true);
