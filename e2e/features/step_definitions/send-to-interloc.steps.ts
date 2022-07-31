@@ -10,5 +10,5 @@ When(/^I submit the interloc reason$/, async function () {
     await anyCcdPage.fillNote();
     await anyCcdPage.click('Continue');
     await anyCcdPage.click('Submit');
-    await browser.sleep(1000);
+    await browser.sleep(8000);
 });

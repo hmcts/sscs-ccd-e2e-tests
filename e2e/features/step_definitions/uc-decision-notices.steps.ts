@@ -1,4 +1,4 @@
-import { When } from 'cucumber';
+import { When, Then } from 'cucumber';
 import { browser } from 'protractor';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { JointPartyPage } from '../../pages/joint-party.page';
@@ -26,8 +26,8 @@ When(/^I select schedule 6 activities with <15 points and schedule 8 para 4 "(.+
     await browser.sleep(500);
     await anyCcdPage.clickElementById('ucWriteFinalDecisionMobilisingUnaidedQuestion-mobilisingUnaided1d');
     await anyCcdPage.click('Continue');
-    await browser.sleep(500);
-    await anyCcdPage.click('Continue');
+    // await browser.sleep(500);
+    // await anyCcdPage.click('Continue');
     await browser.sleep(500);
     if (para4Apply === 'YES') {
         await anyCcdPage.clickElementById('doesSchedule8Paragraph4Apply_Yes');
@@ -69,7 +69,7 @@ When(/^I opt out schedule 7 activities and schedule 9 para 4 "(.+)"$/, async fun
 });
 
 When(/^I continue writing final decision LCWA appeal$/, async function () {
-    await browser.sleep(1000)
+    expect(await anyCcdPage.pageHeadingContains('Bundle page')).to.equal(true);
     await issueDecisionPage.pageReference();
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
@@ -107,18 +107,22 @@ When(/^I update the scanned document for "(.+)"$/, async function (originator) {
  } else if (originator === 'JointParty') {
     await anyCcdPage.chooseOptionByElementId('originalSender', 'Joint party');
  }
- await anyCcdPage.clickElementByIdXPath('//button[@type="button"]');
+ await anyCcdPage.click('Add new');
+ await browser.sleep(2000);
  await anyCcdPage.chooseOptionByElementId('scannedDocuments_0_type', 'Confidentiality request');
  await dwpResponse.uploadDoc('scannedDocuments_0_url');
  await browser.driver.sleep(300);
 
  await anyCcdFormPage.setValueByElementId('scannedDocuments_0_fileName', 'test-confidentiality-file');
  await furtherEvidencePage.enterScannedDate('20', '1', '2021');
+ await browser.sleep(2000);
+ await anyCcdPage.clickElementById('scannedDocuments_0_includeInBundle_Yes');
+ await browser.sleep(2000);
  await anyCcdPage.click('Continue');
- await browser.sleep(10);
+ await browser.sleep(2000);
  await anyCcdPage.click('Submit');
- await browser.driver.sleep(300);
- await anyCcdPage.click('History');
+ await browser.driver.sleep(2000);
+ await anyCcdPage.clickTab('History');
  expect(await anyCcdPage.contentContains('Review by Judge')).to.equal(true);
 });
 
@@ -128,8 +132,16 @@ When(/^I select Granted for Appellant and Refused for Joint Party as a confident
     await anyCcdPage.clickElementById('confidentialityRequestJointPartyGrantedOrRefused-refuseConfidentialityRequest');
     await anyCcdPage.click('Continue');
     await anyCcdPage.click('Submit');
-    await anyCcdPage.click('History');
-    expect(await anyCcdPage.contentContains('Awaiting Admin Action')).to.equal(true);
+    await browser.driver.sleep(2000);
+    await anyCcdPage.clickTab('History');
+    await browser.driver.sleep(2000);
     expect(await caseDetailsPage.eventsPresentInHistory('Action further evidence')).to.equal(true);
     expect(await caseDetailsPage.eventsPresentInHistory('Review confidentiality request')).to.equal(true);
 });
+
+Then('I should see the Request outcome status for {string} to be {string}', async function (partyType, status) {
+    await anyCcdPage.clickTab('Summary');
+    await browser.driver.sleep(2000);
+    await anyCcdPage.pageHeadingContains('Confidentiality request outcome ' + partyType);
+    await anyCcdPage.isFieldValueDisplayed('Request outcome', status);
+  });

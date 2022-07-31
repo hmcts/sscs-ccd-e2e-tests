@@ -1,6 +1,7 @@
 import { $, $$, browser, by, element, ExpectedConditions } from 'protractor';
 import { AnyPage } from './any.page';
 import { Wait } from '../enums/wait';
+import { expect } from 'chai';
 
 const AxeRunner = require('../helpers/axe-runner');
 
@@ -96,7 +97,20 @@ export class AnyCcdPage extends AnyPage {
         await element(by.css(elementId)).element(by.cssContainingText('option', option)).click()
     }
 
+    async chooseOptionByValue(elementId: string, value: string) {
+        await browser.wait(
+            async () => {
+                return await element(by.css(elementId))
+                    .isPresent();
+            },
+            Wait.normal,
+            'Button did not show in time'
+        );
+        await element(by.css(elementId)).element(by.css('option[value="' + value + '"]')).click()
+    }
+
     async fillValues(elementId: string, actText: string) {
+        await element(by.id(elementId)).clear();
         await element(by.id(elementId)).sendKeys(actText);
     }
 
@@ -151,7 +165,7 @@ export class AnyCcdPage extends AnyPage {
             await browser.wait(
                 async () => {
                     return await element
-                        .all(by.xpath('//*[self::h1 or self::h2 or self::h3][contains(text(), "' + match + '")]'))
+                        .all(by.xpath('//*[self::h1 or self::h2 or self::h3 or self::span][contains(text(), "' + match + '")]'))
                         .isPresent();
                 },
                 Wait.normal,
@@ -200,9 +214,27 @@ export class AnyCcdPage extends AnyPage {
             .element(by.xpath('//*[@id="elementsDisputedGeneral_0_issueCode"]/option[2]')).click();
     }
 
+    async selectHousingIssueCode() {
+        await element(by.id('elementsDisputedHousing_0_issueCode'))
+            .element(by.xpath('//*[@id="elementsDisputedHousing_0_issueCode"]/option[2]')).click();
+    }
+
+    async selectChildcareIssueCode() {
+        await element(by.id('elementsDisputedChildCare_0_issueCode'))
+            .element(by.xpath('//*[@id="elementsDisputedChildCare_0_issueCode"]/option[2]')).click();
+    }
+
     async eventsPresentInHistory(linkText: string) {
         const linkPath = '//*[self::button or self::a][normalize-space()="' + linkText + '"]';
         return await element(by.xpath(linkPath)).isPresent();
+    }
+
+    async elementNotPresent(linkText: string) {
+        const linkPath = '//*[self::button or self::a or self::span][normalize-space()="' + linkText + '"]';
+        await element.all(by.xpath(linkPath)).then(
+            async (items) => {
+               await expect(items.length).to.equal(0);
+        });
     }
 
     async fillNote() {
@@ -270,12 +302,6 @@ export class AnyCcdPage extends AnyPage {
         await this.setText('//textarea[@rows=\'3\']', 'I am very busy');
 
         await this.click('Continue');
-        await browser.sleep(waitTime);
-        await this.click('Continue');
-        await browser.sleep(waitTime);
-        await this.click('Continue');
-        await this.click('Submit');
-        await browser.sleep(5000);
     }
 
     async setText(key: string, value: string) {

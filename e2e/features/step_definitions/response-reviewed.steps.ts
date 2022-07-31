@@ -13,7 +13,7 @@ When(/^I choose Requires Interlocutory Review No "(.+)"$/, async function (actio
 
 When(/^I submit "(.+)"$/, async function (action) {
     // await anyCcdPage.click('Continue');
-    await browser.sleep(500);
+    await browser.sleep(4000);
     expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
     await anyCcdPage.click('Submit');
     await browser.sleep(1000);

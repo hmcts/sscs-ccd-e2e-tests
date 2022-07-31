@@ -14,7 +14,6 @@ const dwpresponse = new DwpResponsePage();
 When(/^I populate fields and continue$/, async function () {
     await caseDetailsPage.addReasonAndDate('notListableDueDate');
     await anyCcdPage.click('Submit');
-    await anyCcdPage.reloadPage();
     await anyCcdPage.clickTab('Summary');
 });
 
@@ -112,6 +111,18 @@ When(/^I upload a "(.+)" doc contains further information "(.+)" for "(.+)"$/,
     await anyCcdPage.scrollBar('//button[contains(text(),\'Submit\')]');
 });
 
+When(/^I do not upload edited docs after selecting "(.+)" option$/,
+    async function (docType: string) {
+    const dwpState = 'YES';
+    const isContainsFurtherInfo = 'NO'
+    const isPHME = docType === 'PHME'
+    await dwpresponse.uploadResponseWithoutPhmeDocs(dwpState, isPHME, isContainsFurtherInfo);
+    await anyCcdPage.selectIssueCode();
+    await anyCcdPage.click('Continue');
+    await browser.sleep(2000);
+    await anyCcdPage.scrollBar('//button[contains(text(),\'Submit\')]');
+});
+
 When(/^I upload a doc$/, async function () {
    const docLink = 'tl1Form_documentLink';
     await dwpresponse.uploadDoc(docLink);
@@ -138,7 +149,7 @@ Then(/^I see field "(.+)" with value "(.+)" in "(.+)" tab$/, async function (key
 Then(/^I should see UCB flag$/, async function () {
    await anyCcdPage.clickTab('Listing Requirements');
    await browser.sleep(50);
-   expect(await anyCcdPage.contentContains('Unacceptable Customer Behaviour (UCB)')).to.equal(true);
+   expect(await anyCcdPage.contentContains('Appellant - Unacceptable Customer Behaviour (UCB)')).to.equal(true);
 });
 
 Then(/^I should see PHME flag as "(.+)"$/, async function (state) {
@@ -146,9 +157,9 @@ Then(/^I should see PHME flag as "(.+)"$/, async function (state) {
     await browser.sleep(50);
 
     if (state === 'Under Review') {
-        expect(await anyCcdPage.contentContains('PHME on this case: Under Review')).to.equal(true);
+        expect(await anyCcdPage.contentContains('PHE on this case: Under Review')).to.equal(true);
     } else if (state === 'Granted') {
-        expect(await anyCcdPage.contentContains('PHME on this case: Granted')).to.equal(true);
+        expect(await anyCcdPage.contentContains('PHE on this case: Granted')).to.equal(true);
     }
 
 });

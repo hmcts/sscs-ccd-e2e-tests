@@ -7,6 +7,8 @@ const timeout = serviceConfig.ApiCallTimeout;
 const ucPayload = require('../features/json/uc_sya.json');
 const pipPayload = require('../features/json/pip_sya.json');
 const esaPayload = require('../features/json/esa_sya.json');
+const childSupportPayload = require('../features/json/child_support_sya.json');
+const taxCreditPayload = require('../features/json/tax_credit_sya.json');
 
 async function createCase(hearingType) {
     const randomNumber = parseInt(Math.random() * 10000000 + '', 10);
@@ -37,7 +39,7 @@ async function createSYACase(caseType: string) {
     if (caseType === 'UC') {
         options = {
             method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/appeals`,
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
             body: ucPayload,
             json: true,
             resolveWithFullResponse: true
@@ -45,7 +47,15 @@ async function createSYACase(caseType: string) {
     } else if (caseType === 'PIP') {
         options = {
             method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/appeals`,
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: pipPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
+    } else if (caseType === 'CAMPIP') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
             body: pipPayload,
             json: true,
             resolveWithFullResponse: true
@@ -53,8 +63,24 @@ async function createSYACase(caseType: string) {
     } else if (caseType === 'ESA') {
         options = {
             method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/appeals`,
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
             body: esaPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
+    } else if (caseType === 'Child Support') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: childSupportPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
+    } else if (caseType === 'Tax Credit') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: taxCreditPayload,
             json: true,
             resolveWithFullResponse: true
         };

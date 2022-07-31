@@ -12,13 +12,20 @@ When(/^I allow the appeal to proceed$/, async function () {
     await anyCcdPage.fillValues('signedBy', 'This is a test signed content');
     await anyCcdPage.fillValues('signedRole', 'This is a test signed role content');
     await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
-    await browser.sleep(2000);
+    await browser.sleep(5000);
     await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
-    await browser.sleep(2000);
+    await browser.sleep(8000);
     await anyCcdPage.clickAction('//button[contains(text(),\'Submit\')]');
 });
 
-Then('I  should see {string} in documents tab', async function (notice) {
+Then('I should see Addition details in documents tab', async function () {
+    await anyCcdPage.clickTab('Documents');
+    expect(await anyCcdPage.contentContains('Directions Notice')).to.equal(true);
+    expect(await anyCcdPage.contentContains('Addition A - Directions Notice issued on')).to.equal(true);
+    expect(await anyCcdPage.contentContains('A')).to.equal(true);
+});
+
+Then('I should see {string} in documents tab', async function (notice) {
     await anyCcdPage.clickTab('Documents');
     expect(await anyCcdPage.contentContains(notice)).to.equal(true);
 });

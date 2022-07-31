@@ -9,7 +9,6 @@ const anyCcdPage = new AnyCcdPage();
 export class AnyCcdFormPage extends AnyCcdPage {
 
     private formFiller = new FormFiller();
-
     private cancelLink = 'p.cancel';
 
     async addNewCollectionItem(collectionLabel: string) {
@@ -174,7 +173,7 @@ export class AnyCcdFormPage extends AnyCcdPage {
 
             await fieldContainer.$$('select.ccd-dropdown').click();
             await fieldContainer
-                .element(by.xpath('.//option[normalize-space()="' + fieldValue + '"]'))
+                .element(by.xpath('//*[contains(text(),"' + fieldValue + '")]'))
                 .click();
 
         } else {

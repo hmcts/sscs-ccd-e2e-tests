@@ -8,8 +8,9 @@ const anyCcdPage = new AnyCcdPage();
 const adjournmentPage = new AdjournmentPage();
 
 When(/^I book a hearing$/, async function () {
+  await browser.sleep(2000);
   await anyCcdPage.click('Add new');
-  await adjournmentPage.addVenue();
+  await adjournmentPage.addVenue('20', '10', '2021');
   await browser.sleep(500);
 });
 
@@ -18,6 +19,7 @@ When(/^I generate an adjournment notice$/, async function () {
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCasePanelMembersExcluded-No');
   await anyCcdPage.click('Continue');
+  expect(await anyCcdPage.pageHeadingContains('Panel members')).to.equal(true);
   await adjournmentPage.addPanelMembers();
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCaseTypeOfHearing-faceToFace');
@@ -35,12 +37,15 @@ When(/^I generate an adjournment notice$/, async function () {
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCaseNextHearingDateType-firstAvailableDate');
   await anyCcdPage.click('Continue');
+  expect(await anyCcdPage.pageHeadingContains('Reasons for adjournment')).to.equal(true);
   await adjournmentPage.setAdjournCaseReasonsText();
 
   await anyCcdPage.click('Continue');
+  expect(await anyCcdPage.pageHeadingContains('Additional directions (Optional)')).to.equal(true);
   await anyCcdPage.click('Continue');
-  await browser.sleep(2000);
+  expect(await anyCcdPage.pageHeadingContains('Preview Adjournment')).to.equal(true);
   await anyCcdPage.click('Continue');
+  expect(await anyCcdPage.pageHeadingContains('Check your answers')).to.equal(true);
   await anyCcdPage.click('Submit');
   await browser.sleep(5000);
 });
@@ -50,6 +55,7 @@ When(/^I upload an adjournment notice and issue direction "(.+)"$/, async functi
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCasePanelMembersExcluded-No');
   await anyCcdPage.click('Continue');
+  expect(await anyCcdPage.pageHeadingContains('Panel members')).to.equal(true);
   await adjournmentPage.addPanelMembers();
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCaseAreDirectionsBeingMadeToParties_' + issueDirection);
@@ -68,9 +74,11 @@ When(/^I upload an adjournment notice and issue direction "(.+)"$/, async functi
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCaseNextHearingDateType-firstAvailableDate');
   await anyCcdPage.click('Continue');
+  expect(await anyCcdPage.pageHeadingContains('Preview Adjournment')).to.equal(true);
   await adjournmentPage.uploadAdjournmentNotice();
   await browser.sleep(3000);
   await anyCcdPage.click('Continue');
+  expect(await anyCcdPage.pageHeadingContains('Check your answers')).to.equal(true);
   await anyCcdPage.click('Submit');
   await browser.sleep(5000);
 });

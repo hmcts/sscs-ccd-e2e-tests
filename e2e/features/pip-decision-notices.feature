@@ -1,11 +1,11 @@
 @migrated-to-exui
-Feature: Issue decision
+Feature: PIP Final decision notice
 
   Background:
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
-    Then the case should end in "With DWP" state
+    Then the case should end in "With FTA" state
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
@@ -23,16 +23,16 @@ Feature: Issue decision
     When I choose "Issue final decision"
     And I issue a final decision generate decision no
     Then the case should end in "Dormant" state
-    Then I  should see "Final Decision Notice" in documents tab
+    Then I should see "Final Decision Notice" in documents tab
 
-  @issue-decision @nightly-test @PIP-DN-2
+  @issue-decision @nightly-test @PIP-DN-2 @preview-test
   Scenario: Yes to generate decision and award is about daily living or mobility
     And I write a final decision generate notice yes daily living mobility is no face to face
 
     When I choose "Issue final decision"
     And I issue a final decision generate decision no
     Then the case should be in "Dormant" appeal status
-    Then I  should see "Final Decision Notice" in documents tab
+    Then I should see "Final Decision Notice" in documents tab
 
     @issue-decision @nightly-test @PIP-DN-3
     Scenario: Yes to generate decision and award is about daily living or mobility
@@ -42,4 +42,4 @@ Feature: Issue decision
       When I choose "Issue final decision"
       And I issue a final decision generate decision no
       Then the case should be in "Dormant" appeal status
-      Then I  should see "Final Decision Notice" in documents tab
+      Then I should see "Final Decision Notice" in documents tab

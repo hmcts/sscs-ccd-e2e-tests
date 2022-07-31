@@ -7,6 +7,8 @@ import { Given, Then, When } from 'cucumber';
 import { expect } from 'chai';
 import { browser } from 'protractor';
 import * as ccd  from '../../helpers/ccd';
+import nino = require('fake-nino');
+import * as faker from 'faker';
 
 const anyCcdPage = new AnyCcdPage();
 const anyCcdFormPage = new AnyCcdFormPage();
@@ -85,6 +87,81 @@ async function checkIncompDataItems() {
 function delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
 }
+
+async function createSSCSCase() {
+    await anyCcdPage.chooseOptionByValue('#cc-case-type', 'Benefit');
+    await anyCcdPage.chooseOptionByValue('#cc-event', 'validAppealCreated');
+    await anyCcdPage.click('Start');
+    await browser.sleep(2000);
+
+    await enterMrnDate();
+    await enterAppellantDetails();
+    await enterAddressDetails();
+    await enterBenefitDetails();
+}
+
+async function enterMrnDate() {
+
+    await browser.sleep(2000);
+    await caseDetailsPage.addDayItems('caseCreated');
+    await anyCcdPage.chooseOptionByValue('#appeal_receivedVia', '1: Paper');
+    await caseDetailsPage.addDayItems('mrnDate');
+}
+
+async function enterAppellantDetails() {
+
+    await browser.sleep(2000);
+    await anyCcdPage.fillValues('appeal_appellant_name_title', 'Mr');
+    await anyCcdPage.fillValues('appeal_appellant_name_firstName', faker.name.firstName());
+    await anyCcdPage.fillValues('appeal_appellant_name_lastName', faker.name.lastName());
+
+    await browser.sleep(2000);
+    await anyCcdPage.fillValues('dob-day', '10');
+    await anyCcdPage.fillValues('dob-month', '3');
+    await anyCcdPage.fillValues('dob-year', '1988');
+    await anyCcdPage.fillValues('appeal_appellant_identity_nino', nino.generate());
+}
+
+async function enterAddressDetails() {
+
+    await browser.sleep(2000);
+    await anyCcdPage.fillValues('appeal_appellant_address_line1', '1000, test');
+    await anyCcdPage.fillValues('appeal_appellant_address_line2', faker.address.streetAddress());
+    await anyCcdPage.fillValues('appeal_appellant_address_line3', 'test');
+    await anyCcdPage.fillValues('appeal_appellant_address_town', faker.address.city());
+    await anyCcdPage.fillValues('appeal_appellant_address_postcode', 'TS1 1ST');
+}
+
+async function enterBenefitDetails() {
+
+    await browser.sleep(4000);
+    await anyCcdPage.chooseOptionByValue('#appeal_appellant_role_name', '1: payingParent');
+    await anyCcdPage.fillValues('appeal_benefitType_code', 'childSupport');
+    await anyCcdPage.fillValues('appeal_benefitType_description', 'Child Support');
+    await anyCcdPage.chooseOptionByValue('#appeal_hearingType', '3: paper');
+    await anyCcdPage.click('Continue');
+    await browser.sleep(2000);
+    await anyCcdPage.scrollBar('//button[@type=\'submit\']');
+    await browser.sleep(2000);
+}
+
+Given(/^I create an child support case$/, async function() {
+    await anyCcdPage.click('Create case');
+    expect(await anyCcdPage.pageHeadingContains('Create Case')).to.equal(true);
+    await browser.sleep(3000);
+    await createSSCSCase();
+    await browser.sleep(5000);
+
+    await caseDetailsPage.doNextStep('Admin - update event');
+    await anyCcdPage.click('Go');
+    await browser.sleep(2000);
+    await anyCcdPage.chooseOptionByValue('#createdInGapsFrom', '1: readyToList');
+    await anyCcdPage.click('Continue');
+    await browser.sleep(2000);
+    await anyCcdPage.scrollBar('//button[@type=\'submit\']');
+    await browser.sleep(2000);
+
+});
 
 Given(/^I have a (.+) bulk-scanned document with (.+) fields$/, {timeout: 600 * 1000}, async function (benefit_code, formType) {
     await anyCcdPage.click('Create case');
@@ -184,28 +261,30 @@ When(/^I choose the next step "(.+)"$/, async function (action) {
 });
 
 Then(/^the case should be in "(.+)" state$/, async function (state) {
-    await browser.sleep(5000)
-    await anyCcdPage.clickTab('History');
+    await delay(15000);
     await anyCcdPage.reloadPage();
-    await browser.sleep(5000)
+    await delay(8000);
+    await anyCcdPage.clickTab('History');
+    await delay(20000);
     expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
 });
 
 Then(/^the bundles should be successfully listed in "(.+)" tab$/, async function (tabName) {
-    await delay(10000);
+    await delay(15000);
     await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab(tabName);
+    await delay(20000);
     expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
     expect(await caseDetailsPage.eventsPresentInHistory('Create a bundle')).to.equal(true);
-    await browser.sleep(500);
+    await browser.sleep(3000);
 });
 
 Then(/^The edited bundles should be successfully listed in "(.+)" tab$/, async function (tabName) {
-    await delay(10000);
+    await delay(15000);
     await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab(tabName);
     expect(await caseDetailsPage.eventsPresentInHistory('Create an edited bundle')).to.equal(true);
-    await browser.sleep(500);
+    await browser.sleep(3000);
 });
 
 Then(/^the Stitching bundle event should be successfully listed in "(.+)" tab$/, async function (tabName) {
@@ -248,11 +327,6 @@ Given(/^I complete the event$/, async function () {
     await delay(2000);
 });
 
-Then(/^I should see case should be in "(.+)" state$/, async function (state) {
-    await anyCcdPage.reloadPage();
-    await browser.sleep(2000)
-});
-
 When(/^I choose execute CCD event "(.+)"$/, async function (action) {
     switch (action) {
         case 'Create new case from exception':
@@ -269,4 +343,12 @@ When(/^I choose execute CCD event "(.+)"$/, async function (action) {
                 `Do not understand action "${action}"`
             );
     }
+});
+
+Then(/^The case should end in "(.+)" state and interloc state should be in "(.+)"$/, async function (state: string, interlocState: string) {
+    await delay(10000);
+    await anyCcdPage.clickTab('History');
+    expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
+    expect(await anyCcdPage.contentContains(interlocState)).to.equal(true);
+    await browser.sleep(500);
 });

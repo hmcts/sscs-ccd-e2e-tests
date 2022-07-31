@@ -14,19 +14,40 @@ function delay(ms: number) {
 }
 
 When(/^I fill the further evidence form with "(.+)" and "(.+)"$/, async function (actionType, requestType) {
+    expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
     await anyCcdPage.chooseOptionContainingText('#furtherEvidenceAction', actionType);
-    await anyCcdPage.chooseOptionContainingText('#originalSender', 'DWP');
+    await anyCcdPage.chooseOptionContainingText('#originalSender', 'Appellant (or Appointee)');
     await anyCcdPage.click('Add new');
     await browser.sleep(1000);
 
+    expect(await anyCcdPage.pageHeadingContains('Document Type')).to.equal(true);
     await anyCcdPage.chooseOptionContainingText('#scannedDocuments_0_type', requestType);
     await furtherEvidencePage.uploadFile('scannedDocuments_0_url', 'issue1.pdf');
     await furtherEvidencePage.enterFileName('scannedDocuments_0_fileName', 'testfile.pdf');
     await furtherEvidencePage.enterScannedDate('20', '1', '2021');
+    await anyCcdPage.clickElementById('scannedDocuments_0_includeInBundle_Yes');
     await browser.sleep(3000);
 
     await anyCcdPage.click('Continue');
+    await browser.sleep(1000);
     await anyCcdPage.click('Submit');
+});
+
+When(/^I fill the further evidence form with "(.+)" invalid file$/, async function (testFile: string) {
+    expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
+    await anyCcdPage.chooseOptionContainingText('#furtherEvidenceAction', 'Review by Judge');
+    await anyCcdPage.chooseOptionContainingText('#originalSender', 'Appellant (or Appointee)');
+    await anyCcdPage.click('Add new');
+    await browser.sleep(1000);
+
+    await anyCcdPage.chooseOptionContainingText('#scannedDocuments_0_type', 'Confidentiality request');
+    await furtherEvidencePage.uploadFile('scannedDocuments_0_url', `${testFile}.pdf`);
+    await furtherEvidencePage.enterFileName('scannedDocuments_0_fileName', 'testfile.pdf');
+    await furtherEvidencePage.enterScannedDate('20', '1', '2021');
+    await anyCcdPage.clickElementById('scannedDocuments_0_includeInBundle_Yes');
+    await browser.sleep(3000);
+
+    await anyCcdPage.click('Continue');
 });
 
 Then(/^the case should have successfully processed "(.+)" event$/, async function (event) {
@@ -56,8 +77,8 @@ When(/^I fill the direction notice form with "(.+)"$/, async function (reinstate
 Then(/^the case should be "(.+)" permissions for "(.+)"$/, async function (reinstatement, directionType) {
     let todayDate = new Date().toISOString().slice(0, 10);
     await delay(5000);
-    await anyCcdPage.clickTab('Appeal Details');
     await anyCcdPage.reloadPage();
+    await anyCcdPage.clickTab('Appeal Details');
     await delay(10000);
     let outcomeText = (directionType === 'Reinstatement') ? 'Outcome' : 'outcome';
     let regText = (directionType === 'Reinstatement') ? 'Registered' : 'registered';
@@ -73,7 +94,7 @@ Then(/^the case should be "(.+)" permissions for "(.+)"$/, async function (reins
     });
 });
 
-When('resend evidence to appellant and dwp user', async function () {
+When('resend evidence to appellant and FTA user', async function () {
 
     await browser.sleep(2000);
     await anyCcdPage.clickElementById('resendToAppellant_Yes');
@@ -89,7 +110,7 @@ When('resend evidence to appellant and dwp user', async function () {
 Then('I see {string} and {string} event being processed successfully', async function (eventName, anotherEventName) {
 
     await delay(5000);
-    await caseDetailsPage.reloadPage();
+   // await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab('History');
     expect(await caseDetailsPage.eventsPresentInHistory(anotherEventName)).to.equal(true);
     expect(await caseDetailsPage.eventsPresentInHistory(eventName)).to.equal(true);
@@ -98,7 +119,7 @@ Then('I see {string} and {string} event being processed successfully', async fun
 
 Then('I should still see previous uploaded file collection within documents tab', async function () {
     await anyCcdPage.clickTab('Documents');
-    expect(await anyCcdPage.isFieldValueDisplayed('Type', 'DWP evidence')).to.equal(true);
+    expect(await anyCcdPage.isFieldValueDisplayed('Type', 'Appellant evidence')).to.equal(true);
     expect(await anyCcdPage.isFieldValueDisplayed('Evidence issued', 'Yes')).to.equal(true);
     expect(await anyCcdPage.isFieldValueDisplayed('Original document URL', 'issue1.pdf')).to.equal(true);
 });

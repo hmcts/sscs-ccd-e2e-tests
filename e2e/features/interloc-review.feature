@@ -5,7 +5,7 @@ Feature: The interloc review
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
-    Then the case should be in "With DWP" state
+    Then the case should be in "With FTA" state
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
@@ -14,7 +14,7 @@ Feature: The interloc review
     Then the case should end in "Response received" state
 
   @interloc @TA-614
-  Scenario: Should end up in "With DWP" state when ALL fields are present
+  Scenario: Should end up in "With FTA" state when ALL fields are present
     When I switch to be a Case Officer
     And I navigate to an existing case
     When I choose "Response reviewed"
@@ -23,6 +23,6 @@ Feature: The interloc review
     Then the case should end in "Response received" state
 
     When I choose "Action direction"
-    And I set DWP State to No action "Action direction"
+    And I set FTA State to No action "Action direction"
     And I submit "Action direction"
     Then the case should end in "Response received" state

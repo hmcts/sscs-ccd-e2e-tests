@@ -5,7 +5,7 @@ Feature: Issue decision award
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
-    Then the case should be in "With DWP" state
+    Then the case should be in "With FTA" state
     When I switch to be a DWPResponse Writer
     When I choose "Upload response"
     And I upload contains further information "NO" for "PIP"
@@ -20,7 +20,7 @@ Feature: Issue decision award
       And I issue a final decision generate decision no
       Then the case should have successfully processed "Issue final decision" event
       Then the case should be in "Dormant" appeal status
-      Then I  should see "Final Decision Notice" in documents tab
+      Then I should see "Final Decision Notice" in documents tab
 
   @issue-decision-4 @nightly-test-1 @Deferred
     Scenario: Award is about daily living or mobility

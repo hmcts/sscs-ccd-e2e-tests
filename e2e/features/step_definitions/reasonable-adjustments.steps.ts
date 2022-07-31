@@ -21,6 +21,22 @@ When(/^generate a letter in "(.+)" with "(.+)" option$/, async function (letterF
         await anyCcdPage.clickElementById(`reasonableAdjustments_appellant_wantsReasonableAdjustment_${adjustmentOption}`);
         await browser.sleep(2000);
         await anyCcdPage.clickElementById('reasonableAdjustments_representative_wantsReasonableAdjustment_No');
+    } else if (adjustmentOption === 'otherPartyYes') {
+        await browser.sleep(2000);
+        await anyCcdPage.clickElementById(`reasonableAdjustments_appellant_wantsReasonableAdjustment_No`);
+        await anyCcdPage.clickElementById('reasonableAdjustments_representative_wantsReasonableAdjustment_No');
+        await browser.sleep(2000);
+        await anyCcdPage.clickElementById(`otherParties_0_reasonableAdjustment_wantsReasonableAdjustment_Yes`);
+        await anyCcdPage.fillValues('otherParties_0_reasonableAdjustment_reasonableAdjustmentRequirements', 'A2');
+        await browser.sleep(2000);
+    } else if (adjustmentOption === 'otherPartyNo') {
+        await browser.sleep(2000);
+        await anyCcdPage.clickElementById(`otherParties_0_reasonableAdjustment_wantsReasonableAdjustment_No`);
+        await browser.sleep(2000);
+        await anyCcdPage.clickElementById('reasonableAdjustments_representative_wantsReasonableAdjustment_No');
+        await anyCcdPage.clickElementById(`reasonableAdjustments_appellant_wantsReasonableAdjustment_No`);
+        await browser.sleep(2000);
+        await anyCcdPage.clickElementById(`otherParties_0_reasonableAdjustment_wantsReasonableAdjustment_No`);
     } else {
         throw new exception('No adjustment option passed in test');
     }
@@ -44,7 +60,6 @@ Then(/^Reasonable adjustment tab is seen with "(.+)" as "(.+)"$/, async function
     await browser.sleep(8000);
     await anyCcdPage.reloadPage();
     await browser.manage().window().maximize();
-    await anyCcdPage.clickElementByCss('div .mat-tab-header-pagination-after');
     await browser.sleep(5000);
     await anyCcdPage.clickTab('Reasonable Adjustments Letters');
     await browser.sleep(1000);
