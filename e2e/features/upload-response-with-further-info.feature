@@ -54,7 +54,7 @@ Feature: The alternate happy path
     Then the case should be in "Response received" state
 
 
-  @nightly-test @dwp-upload-response @today-test
+  @nightly-test @dwp-upload-response
   Scenario: Child support case should end up in "Not listable" state
     Given I presetup an "Child Support" SYA case
     And I am signed in as a Case Officer
