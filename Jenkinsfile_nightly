@@ -54,20 +54,20 @@ withNightlyPipeline("nodejs", product, component) {
     before('DependencyCheckNightly') {sh 'yarn test:audit'}
 
     after('build') {
-        // stage('a11y xui') {
-        //     yarnBuilder.yarn('test:a11y')
-        //     publishHTML([
-        //         allowMissing         : true,
-        //         alwaysLinkToLastBuild: true,
-        //         keepAll              : true,
-        //         reportDir            : "reports/tests/",
-        //         reportFiles          : 'a11y.html',
-        //         reportName           : 'SSCS ExUI - Manage Cases a11y Test Report'
-        // ])
-        // }
+        stage('a11y xui') {
+            yarnBuilder.yarn('test:a11y')
+            publishHTML([
+                allowMissing         : true,
+                alwaysLinkToLastBuild: true,
+                keepAll              : true,
+                reportDir            : "reports/tests/",
+                reportFiles          : 'a11y.html',
+                reportName           : 'SSCS ExUI - Manage Cases a11y Test Report'
+        ])
+        }
     } 
 
-    // enableCrossBrowserTest(60)
+    enableCrossBrowserTest(60)
     enableFullFunctionalTest(120)
 
     after('crossBrowserTest') {

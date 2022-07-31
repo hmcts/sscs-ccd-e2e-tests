@@ -319,8 +319,8 @@ Given(/^I presetup an "(.+)" SYA case$/, async function (caseType) {
 Given(/^I navigate to an existing case$/, async function () {
     console.log(`the saved case id is ################## ${caseReference}`);
     await anyCcdPage.get(`/v2/case/${caseReference}`);
-    // await delay(10000);
-    await anyCcdPage.waitForSpinnerToHide();
+    await delay(10000);
+    // await anyCcdPage.waitForSpinnerToHide();
 });
 
 Given(/^I complete the event$/, async function () {
