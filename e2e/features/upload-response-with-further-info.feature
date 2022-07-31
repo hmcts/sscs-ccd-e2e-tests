@@ -51,7 +51,7 @@ Feature: The alternate happy path
 
     When I choose "Upload response"
     And I respond to the taxCredit appeal with upload contains further information "Yes" option
-    Then The case should be in "Response received" state
+    Then the case should be in "Response received" state
 
 
   @nightly-test @dwp-upload-response @today-test
@@ -63,4 +63,4 @@ Feature: The alternate happy path
 
     When I choose "Upload response"
     And I respond to the appeal with upload contains further information "Yes" option
-    Then The case should end in "Response received" state and interloc state should be in "Review by Judge"
+    Then the case should end in "Response received" state and interloc state should be in "Review by Judge"

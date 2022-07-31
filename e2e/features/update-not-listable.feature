@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test @today-test
+@migrated-to-exui @nightly-test-skip
 Feature: The Update Not Listable
 
   Background:
