@@ -320,6 +320,7 @@ Given(/^I navigate to an existing case$/, async function () {
     console.log(`the saved case id is ################## ${caseReference}`);
     await anyCcdPage.get(`/v2/case/${caseReference}`);
     await delay(10000);
+    // await anyCcdPage.waitForSpinnerToHide();
 });
 
 Given(/^I complete the event$/, async function () {
@@ -348,6 +349,7 @@ When(/^I choose execute CCD event "(.+)"$/, async function (action) {
 Then(/^The case should end in "(.+)" state and interloc state should be in "(.+)"$/, async function (state: string, interlocState: string) {
     await delay(10000);
     await anyCcdPage.clickTab('History');
+    await delay(5000);
     expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
     expect(await anyCcdPage.contentContains(interlocState)).to.equal(true);
     await browser.sleep(500);

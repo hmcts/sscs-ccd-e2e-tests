@@ -36,6 +36,7 @@ Feature: The alternate happy path
     Then the case should be in "Response received" state
 
     When I switch to be a Case Officer
+    And I navigate to an existing case
     And I choose "Response reviewed"
     When I review the UC received Response
     Then the case should be in "Ready to list" state
@@ -50,7 +51,7 @@ Feature: The alternate happy path
 
     When I choose "Upload response"
     And I respond to the taxCredit appeal with upload contains further information "Yes" option
-    Then The case should end in "Response received" state and interloc state should be in "Awaiting Admin Action"
+    Then the case should be in "Response received" state
 
 
   @nightly-test @dwp-upload-response
@@ -62,4 +63,4 @@ Feature: The alternate happy path
 
     When I choose "Upload response"
     And I respond to the appeal with upload contains further information "Yes" option
-    Then The case should end in "Response received" state and interloc state should be in "Awaiting Admin Action"
+    Then The case should end in "Response received" state and interloc state should be in "Review by Judge"

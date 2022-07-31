@@ -379,4 +379,8 @@ export class AnyCcdPage extends AnyPage {
             return false;
         }
     }
+
+    async waitForSpinnerToHide() {
+       await browser.wait(ExpectedConditions.invisibilityOf(element(by.className('.spinner-container'))), 5000);
+    }
 }
