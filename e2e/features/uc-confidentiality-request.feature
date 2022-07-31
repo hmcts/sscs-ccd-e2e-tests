@@ -1,6 +1,6 @@
 Feature: UC Confidentiality Request
 
-  @uc-confidentiality-request @nightly-test
+  @uc-confidentiality-request @nightly-test-skip
   Scenario: confidentiality request for appellant
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
@@ -15,7 +15,7 @@ Feature: UC Confidentiality Request
     And I should see the Request outcome status for "appellant" to be "In progress"
     Then I should see "Confidentiality Request: Under Review"
 
-  @nightly-test
+  @nightly-test-skip
   Scenario: Review Confidentiality - Granted for Appellant and Refused for Joint Party
     When I switch to be a Judge
     And I navigate to an existing case
