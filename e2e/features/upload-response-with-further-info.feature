@@ -42,7 +42,7 @@ Feature: The alternate happy path
     Then the case should be in "Ready to list" state
 
 
-  @tc-decision  @dwp-upload-response @nightly-test @today-test
+  @tc-decision  @dwp-upload-response @nightly-test
   Scenario: Tax Credit case should end up in "Not listable" state
     Given I presetup an "Tax Credit" SYA case
     And I am signed in as a Case Officer
@@ -63,4 +63,4 @@ Feature: The alternate happy path
 
     When I choose "Upload response"
     And I respond to the appeal with upload contains further information "Yes" option
-    Then the case should end in "Response received" state and interloc state should be in "Review by Judge"
+    Then The case should end in "Response received" state and interloc state should be in "Review by Judge"

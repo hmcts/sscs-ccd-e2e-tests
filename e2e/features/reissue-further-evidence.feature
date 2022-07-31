@@ -1,4 +1,4 @@
-@migrated-to-exui-1 @nightly-test @today-test
+@migrated-to-exui-1 @nightly-test-skip
 Feature: Reissue evidence on a case
 
   Scenario: Reissue an evidence using Reissue further evidence event
