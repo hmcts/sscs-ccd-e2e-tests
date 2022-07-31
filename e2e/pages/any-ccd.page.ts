@@ -381,7 +381,9 @@ export class AnyCcdPage extends AnyPage {
     }
 
     async waitForSpinnerToHide() {
-        let loader = element(by.class('.spinner-container'));
-        browser.wait(ExpectedConditions.invisibilityOf(loader), 5000);
+        browser.wait(async () => {
+            const result = await $('.spinner-container').isDisplayed();
+            return !result;
+          }, 20000);
     }
 }
