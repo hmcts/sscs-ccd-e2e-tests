@@ -379,4 +379,17 @@ export class AnyCcdPage extends AnyPage {
             return false;
         }
     }
+
+
+    async waitForSpinnerToHide(){
+        // browser.wait(async () => {
+        //     const result = await $('.spinner-container').isDisplayed();
+        //     return !result;
+        //   }, 20000);
+
+
+        var loader = element(by.class(".spinner-container"));
+        browser.wait(ExpectedConditions.invisibilityOf(loader), 5000);
+    }
+    
 }

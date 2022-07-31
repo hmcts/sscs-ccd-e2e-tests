@@ -42,7 +42,7 @@ Feature: The alternate happy path
     Then the case should be in "Ready to list" state
 
 
-  @tc-decision  @dwp-upload-response @nightly-test
+  @tc-decision  @dwp-upload-response @nightly-test @today-test
   Scenario: Tax Credit case should end up in "Not listable" state
     Given I presetup an "Tax Credit" SYA case
     And I am signed in as a Case Officer
@@ -54,7 +54,7 @@ Feature: The alternate happy path
     Then The case should be in "Response received" state
 
 
-  @nightly-test @dwp-upload-response
+  @nightly-test @dwp-upload-response @today-test
   Scenario: Child support case should end up in "Not listable" state
     Given I presetup an "Child Support" SYA case
     And I am signed in as a Case Officer

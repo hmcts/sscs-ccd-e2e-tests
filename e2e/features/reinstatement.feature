@@ -1,4 +1,4 @@
-@migrated-to-exui @reinstatement @nightly-test @today-test
+@migrated-to-exui @reinstatement @nightly-test
 Feature: The Reinstatement functionality
 
   Background:
