@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-@hearing-recording
-Feature: Upload hearing recording
-=======
 @migrated-to-exui @hearing-recording @nightly-test-wip
 Feature: Hearing recording
->>>>>>> master
 
   Background:
     Given I presetup an "PIP" SYA case
@@ -15,12 +10,6 @@ Feature: Hearing recording
     And I choose "Hearing booked"
     And I submit "Hearing booked"
     Then the case should end in "Hearing" state
-<<<<<<< HEAD
-
-  @hearing-recording
-  Scenario: Upload and Action hearing recordings
-    When I choose "Upload hearing recording"
-=======
     And I wait for Judge to sign out
     When I switch to be a Case Officer
 
@@ -28,7 +17,6 @@ Feature: Hearing recording
     When I choose "Upload hearing recording"
 
   Scenario: Grant Hearing recording - Upload and Action hearing recordings
->>>>>>> master
     And I select a hearing
     And I upload a hearing recording
     Then the hearing recording should be in "Hearing Recordings" tab
@@ -36,16 +24,6 @@ Feature: Hearing recording
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
-<<<<<<< HEAD
-    And I choose "DWP Request hearing recording"
-    And I request for Hearing recording
-
-    When I switch to be a Case Officer
-    And I navigate to an existing case
-    And I choose "Action hearing recording req"
-    And I grant request for Hearing recording
-    Then the "DWP Request hearing recording" should be successfully listed in "History" tab
-=======
     And I choose "Request hearing recording"
     And I request for Hearing recording
 
@@ -55,14 +33,11 @@ Feature: Hearing recording
     And I choose "Action hearing recording req"
     And request for Hearing recording is "Granted"
     Then the "FTA Request hearing recording" should be successfully listed in "History" tab
->>>>>>> master
     Then the "Action hearing recording req" should be successfully listed in "History" tab
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
     Then the hearing recording should be in "Documents" tab
-<<<<<<< HEAD
-=======
 
  Scenario: Refuse Hearing recording  - an offline hearing recording request
     And I select a hearing
@@ -79,4 +54,3 @@ Feature: Hearing recording
     And request for Hearing recording is "Refused"
     Then the "Action hearing recording req" should be successfully listed in "History" tab
     And the recording collection is cleared from Unprocessed correspondence tab
->>>>>>> master
