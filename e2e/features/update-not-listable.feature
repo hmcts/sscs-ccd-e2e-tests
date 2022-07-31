@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test
+@migrated-to-exui @nightly-test @today-test
 Feature: The Update Not Listable
 
   Background:
@@ -7,8 +7,6 @@ Feature: The Update Not Listable
     And I navigate to an existing case
     Then the case should end in "With FTA" state
 
-    And I switch to be a DWPResponse Writer
-    And I navigate to an existing case
     And I choose "Not listable"
     And I populate fields and continue
     Then not listable reason is "Visible" on summary page

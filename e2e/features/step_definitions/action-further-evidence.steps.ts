@@ -77,7 +77,7 @@ When(/^I fill the direction notice form with "(.+)"$/, async function (reinstate
 Then(/^the case should be "(.+)" permissions for "(.+)"$/, async function (reinstatement, directionType) {
     let todayDate = new Date().toISOString().slice(0, 10);
     await delay(5000);
-    await anyCcdPage.reloadPage();
+    // await anyCcdPage.reloadPage();
     await anyCcdPage.clickTab('Appeal Details');
     await delay(10000);
     let outcomeText = (directionType === 'Reinstatement') ? 'Outcome' : 'outcome';
@@ -112,6 +112,7 @@ Then('I see {string} and {string} event being processed successfully', async fun
     await delay(5000);
    // await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab('History');
+    await delay(5000);
     expect(await caseDetailsPage.eventsPresentInHistory(anotherEventName)).to.equal(true);
     expect(await caseDetailsPage.eventsPresentInHistory(eventName)).to.equal(true);
     await browser.sleep(500);
