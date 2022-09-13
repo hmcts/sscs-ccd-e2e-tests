@@ -19,7 +19,7 @@ export class AnyCcdPage extends AnyPage {
                     .all(by.xpath(linkPath))
                     .isPresent();
             },
-            Wait.normal,
+            Wait.long,
             'Button did not show in time'
         );
 
@@ -70,7 +70,7 @@ export class AnyCcdPage extends AnyPage {
         await this.smartWait(2000)
     }
 
-    async clickTab(tabTitle: string, waitTime = 30000) {
+    async clickTab(tabTitle: string, waitTime = 50000) {
         await browser.wait(ExpectedConditions.visibilityOf(element(by.xpath('//div[text()="' + tabTitle + '"]'))), waitTime);
         await element(by.xpath('//div[text()="' + tabTitle + '"]')).click();
     }
