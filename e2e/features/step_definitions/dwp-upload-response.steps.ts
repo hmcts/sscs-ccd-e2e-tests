@@ -20,7 +20,7 @@ When(/^I choose "(.+)"$/, async function (action) {
     await browser.sleep(4000)
     if (action === 'Write adjournment notice'
     || action === 'Not listable' || action === 'Update not listable'
-    || action === 'Upload hearing recording' || action === 'Upload response') {
+    || action === 'Upload hearing recording') {
         await anyCcdPage.reloadPage();
     }
     await caseDetailsPage.doNextStep(action);

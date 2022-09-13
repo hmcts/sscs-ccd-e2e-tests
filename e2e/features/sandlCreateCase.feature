@@ -10,7 +10,14 @@ Feature: S and L
 
     When I choose "Upload response"
     And I respond to the taxCredit appeal with upload contains further information "No" option
-    Then the case should end in "Ready to list" state
+    Then the case should be in "Response received" state
+
+    When I switch to be a Case Officer
+    And I navigate to an existing case
+    When I choose "Response reviewed"
+    And I choose Requires Interlocutory Review No "Response reviewed"
+    And I submit "Response reviewed"
+    Then the case should be in "Ready to list" state
     Given I navigate to an existing case
     Then the case should end in "With FTA" state
 
