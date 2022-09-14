@@ -7,8 +7,8 @@ Feature: Case Access Management
   Given I navigate to an existing case
   And the case should be in "With FTA" state
   And "Summary" tab should contain "Manchester" value for case management "Processing venue" field
-  And "WA fields" tab should contain "DWP" value for case management "OGD type" field
-  And "WA fields" tab should contain "personalIndependencePayment" value for case management "Case access category" field
+  And "CAM Fields" tab should contain "DWP" value for case management "OGD type" field
+  And "CAM Fields" tab should contain "personalIndependencePayment" value for case management "Case access category" field
   And "Appeal Details" tab should contain "LIVERPOOL" value for case management "Regional Processing Center Name" field
   And "Appeal Details" tab should contain "4" value for case management "Region" field
   And "Appeal Details" tab should contain "196538" value for case management "Base Location" field
