@@ -52,4 +52,21 @@ export class HearingDetailsPage extends AnyPage {
     async doYouRequireAdditionalFacilities(yesOrNo: string) {
         await anyCcdPage.clickElementById('addition-security-confirmation' + yesOrNo);
     }
+
+    async amendHearing() {
+        await browser.sleep(500);
+        await anyCcdPage.clickTab('Hearings');
+        await browser.sleep(2000);
+        await browser.sleep(2000);
+        await anyCcdPage.click('View or edit');
+        await browser.sleep(2000);
+        await anyCcdPage.click('Change');
+        await browser.sleep(2000);
+        await anyCcdPage.click('Chambers Outcome');
+        await browser.sleep(1000);
+        await anyCcdPage.click('Continue');
+        await browser.sleep(500);
+        expect(await anyCcdPage.pageHeadingContains('Amended')).to.equal(true);
+    }
+
 }
