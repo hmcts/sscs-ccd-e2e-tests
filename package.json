@@ -37,7 +37,7 @@
     "fake-nino": "0.0.1",
     "jasmine-core": "^3.2.1",
     "jasmine-spec-reporter": "^4.2.1",
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "path": "^0.12.7",
     "protractor": "~5.4.0",
     "protractor-beautiful-reporter": "^1.2.5",
