@@ -32,3 +32,6 @@ Then(/^the earliest hearing date should be from "(.+)" days of hearing requested
      var result = await someDate.setDate(someDate.getDate() + parseInt(numberOfDaysToAdd));
      console.log(new Date(result))
 });
+Then('I click on Amend Hearing link', async function () {
+     await  hearingDetailsPage.amendHearing();
+});
