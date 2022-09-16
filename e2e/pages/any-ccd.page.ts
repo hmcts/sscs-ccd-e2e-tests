@@ -259,7 +259,9 @@ export class AnyCcdPage extends AnyPage {
             'self::ccd-read-fixed-list-field [contains(text(), "' + match + '")] or ' +  // ..
             'self::ng-component              [contains(text(), "' + match + '")] or ' +  // ..
             'self::span                      [contains(text(), "' + match + '")] or ' +  // ..
-            'self::td                        [contains(text(), "' + match + '")]' +      // ..
+            'self::td                        [contains(text(), "' + match + '")] or ' +      // ..
+            'self::strong                    [contains(text(), "' + match + '")] or ' +
+            'self::a                         [contains(text(), "' + match + '")]' +
             ']' +
             '[contains(normalize-space(), "' + match + '") and not(ancestor::*[@hidden])]';
 

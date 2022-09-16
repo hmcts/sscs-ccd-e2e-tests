@@ -50,7 +50,7 @@ Feature: The alternate happy path
     And the case should be in "With FTA" state
 
     When I choose "Upload response"
-    And I respond to the taxCredit appeal with upload contains further information "Yes" option
+    And I respond to the appeal with upload contains further information "Yes" option and "ML" issue code
     Then the case should be in "Response received" state
 
 

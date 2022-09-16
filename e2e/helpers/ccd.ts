@@ -10,6 +10,7 @@ const esaPayload = require('../features/json/esa_sya.json');
 const childSupportPayload = require('../features/json/child_support_sya.json');
 const taxCreditPayload = require('../features/json/tax_credit_sya.json');
 const pipSandLPayload = require('../features/json/pip_sandl_sya.json');
+const dlaSandLPayload = require('../features/json/dla_sandl_sya.json');
 
 async function createCase(hearingType) {
     const randomNumber = parseInt(Math.random() * 10000000 + '', 10);
@@ -90,6 +91,14 @@ async function createSYACase(caseType: string) {
             method: 'POST',
             uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
             body: pipSandLPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
+    } else if (caseType === 'SANDLDLA') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: dlaSandLPayload,
             json: true,
             resolveWithFullResponse: true
         };

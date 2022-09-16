@@ -6,8 +6,8 @@ import { browser } from 'protractor';
 const anyCcdPage = new AnyCcdPage();
 const responseReviewedPage = new ResponseReviewedPage();
 
-When(/^I choose Requires Interlocutory Review No "(.+)"$/, async function (action) {
-    await anyCcdPage.scrollBar('//input[@id="isInterlocRequired_No"]');
+When(/^I choose Requires Interlocutory Review to be "(.+)"$/, async function (action) {
+    await anyCcdPage.scrollBar(`//input[@id="isInterlocRequired_${action}"]`);
     await anyCcdPage.click('Continue');
 });
 
