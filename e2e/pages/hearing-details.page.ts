@@ -83,4 +83,9 @@ export class HearingDetailsPage extends AnyPage {
     async verifyHearingDuration(hearingDuration: string) {
         expect(await anyCcdPage.contentContains(hearingDuration)).to.equal(true);
     }
+
+    async verifyHearingDate(hearingStartDate: string) {
+        expect(await anyCcdPage.contentContains(hearingStartDate)).to.equal(true);
+    }
+
 }

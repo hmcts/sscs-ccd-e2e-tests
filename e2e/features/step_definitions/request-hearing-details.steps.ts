@@ -27,19 +27,15 @@ Then(/^the duration of the hearing should be "(.+)"$/, async function (hearingDu
 
 Then(/^the earliest hearing date should be from "(.+)" days of hearing requested$/, async function (noOfDays: string) {
 
-     // var someDate = new Date();
-     // var numberOfDaysToAdd = noOfDays;
-     // var result = await someDate.setDate(someDate.getDate() + parseInt(numberOfDaysToAdd));
-     // console.log(new Date(result));
+     var date = new Date();
+     var numberOfDaysToAdd = parseInt(noOfDays);
+     var result = date.setDate(date.getDate() + numberOfDaysToAdd);
 
-
-     const date = new Date();
-     const formattedDate = date.toLocaleDateString('en-GB', {
+     const additionalDate = new Date(result);
+     const formattedDate = additionalDate.toLocaleDateString('en-GB', {
      day: 'numeric', month: 'long', year: 'numeric'
      }).replace(/ /g, ' ');
-     console.log(formattedDate);
+
+     await hearingDetailsPage.verifyHearingDuration(formattedDate);
 });
 
-// Then('I click on Amend Hearing link', async function () {
-//      await  hearingDetailsPage.amendHearing();
-// });
