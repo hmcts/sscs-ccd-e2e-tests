@@ -11,6 +11,8 @@ const childSupportPayload = require('../features/json/child_support_sya.json');
 const taxCreditPayload = require('../features/json/tax_credit_sya.json');
 const pipSandLPayload = require('../features/json/pip_sandl_sya.json');
 const dlaSandLPayload = require('../features/json/dla_sandl_sya.json');
+const pipSandLVideoPayload = require('../features/json/pip_sandl_video_sya.json');
+const repSandLPayload = require('../features/json/pip_sandl_rep.json');
 
 async function createCase(hearingType) {
     const randomNumber = parseInt(Math.random() * 10000000 + '', 10);
@@ -94,6 +96,14 @@ async function createSYACase(caseType: string) {
             json: true,
             resolveWithFullResponse: true
         };
+    } else if (caseType === 'SANDLPIPVIDEO') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: pipSandLVideoPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
     } else if (caseType === 'SANDLDLA') {
         options = {
             method: 'POST',
@@ -102,7 +112,16 @@ async function createSYACase(caseType: string) {
             json: true,
             resolveWithFullResponse: true
         };
-    } else {
+    }
+     else if (caseType === 'SANDLREP') {
+             options = {
+                 method: 'POST',
+                 uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+                 body: repSandLPayload,
+                 json: true,
+                 resolveWithFullResponse: true
+             };
+         }else {
         throw 'Unsupported case type passed';
     }
 
