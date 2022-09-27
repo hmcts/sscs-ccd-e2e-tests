@@ -13,6 +13,7 @@ const pipSandLPayload = require('../features/json/pip_sandl_sya.json');
 const dlaSandLPayload = require('../features/json/dla_sandl_sya.json');
 const pipSandLVideoPayload = require('../features/json/pip_sandl_video_sya.json');
 const repSandLPayload = require('../features/json/pip_sandl_rep.json');
+const repFtoFSandLPayload = require('../features/json/pip_sandl_rep_ftof.json');
 
 async function createCase(hearingType) {
     const randomNumber = parseInt(Math.random() * 10000000 + '', 10);
@@ -113,7 +114,16 @@ async function createSYACase(caseType: string) {
             resolveWithFullResponse: true
         };
     }
-     else if (caseType === 'SANDLREP') {
+    else if (caseType === 'SANDLPIPREPF2F') {
+            options = {
+                method: 'POST',
+                uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+                body: repFtoFSandLPayload,
+                json: true,
+                resolveWithFullResponse: true
+            };
+        }
+     else if (caseType === 'SANDLPIPREP') {
              options = {
                  method: 'POST',
                  uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
