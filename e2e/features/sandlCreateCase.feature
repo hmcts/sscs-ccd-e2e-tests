@@ -1,4 +1,4 @@
-@test1
+@nightly-test
 Feature: Schedule and Listing
 
 

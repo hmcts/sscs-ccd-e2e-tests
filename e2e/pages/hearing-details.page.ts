@@ -88,4 +88,26 @@ export class HearingDetailsPage extends AnyPage {
         expect(await anyCcdPage.contentContains(hearingStartDate)).to.equal(true);
     }
 
+    async updateHearingDetails(hearingDuration: string) {
+         await anyCcdPage.clickElementById('hearingLength');
+         expect(await anyCcdPage.contentContains('Select length, date and priority level of hearing')).to.equal(true);
+         await element(by.id('durationhours')).clear().then(function() {
+              element(by.id('durationhours')).sendKeys(2);
+          })
+         await browser.sleep(500);
+         await anyCcdPage.click('Continue');
+         await browser.sleep(500);
+         await anyCcdPage.click('Submit updated request');
+         await browser.sleep(500);
+         await anyCcdPage.clickElementById('adminreq');
+         await browser.sleep(500);
+         await anyCcdPage.click('Submit change request');
+         await browser.sleep(500);
+         await anyCcdPage.click('view the status of this hearing in the hearings tab');
+   }
+
+    async verifyHearingStatus(hearingStatus: string) {
+           expect(await anyCcdPage.contentContains(hearingStatus.toUpperCase())).to.equal(true);
+       }
+
 }
