@@ -65,7 +65,7 @@
   },
   "hearingType":"paper",
   "hearing": {
-    "wantsToAttend": no,
+    "wantsToAttend": "No",
     "wantsSupport": true,
     "anythingElse": "Yes, this...",
     "interpreterLanguageType": "danish",

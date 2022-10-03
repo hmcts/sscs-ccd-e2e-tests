@@ -39,3 +39,14 @@ Then(/^the earliest hearing date should be from "(.+)" days of hearing requested
      await hearingDetailsPage.verifyHearingDuration(formattedDate);
 });
 
+Then(/^I update the length of hearing to "(.+)" hours$/, async function (hearingDuration: string) {
+     await hearingDetailsPage.updateHearingDetails(hearingDuration);
+});
+
+Then(/^the hearing status should be updated to "(.+)"$/, async function (hearingStatus: string) {
+     await hearingDetailsPage.verifyHearingStatus(hearingStatus);
+});
+
+Then(/^I click on Hearings tab$/, async function () {
+       await hearingDetailsPage.verifyHearingStatusSummary();
+});
