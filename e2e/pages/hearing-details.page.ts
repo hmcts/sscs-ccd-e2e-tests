@@ -12,7 +12,7 @@ export class HearingDetailsPage extends AnyPage {
 
         await browser.manage().window().maximize();
         await anyCcdPage.clickTab('Hearings');
-        await browser.sleep(5000);
+        await browser.sleep(1000);
         expect(await anyCcdPage.contentContains('Request a hearing')).to.equal(true);
         await anyCcdPage.click('Request a hearing');
         await browser.sleep(500);
@@ -67,12 +67,12 @@ export class HearingDetailsPage extends AnyPage {
     async requestAutoHearing() {
         await browser.manage().window().maximize();
         await anyCcdPage.clickTab('Hearings');
-        await browser.sleep(5000);
         expect(await anyCcdPage.contentContains('Request a hearing')).to.equal(true);
     }
 
     async viewHearingDetails() {
         await anyCcdPage.click('View or edit');
+        await browser.sleep(5000);
     }
 
     async verifyHearingVenue(venueName: string) {

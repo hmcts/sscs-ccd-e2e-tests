@@ -30,7 +30,22 @@
     "wantsSMSNotifications": true,
     "smsNumber": "07411333333"
   },
-  "hasRepresentative": false,
+  "hasRepresentative": true,
+  "representative": {
+    "title": "Mr",
+    "firstName": "Harry",
+    "lastName": "Potter",
+    "organisation": "HP Ltd",
+    "contactDetails": {
+      "addressLine1": "123 Hairy Lane",
+      "addressLine2": "Off Hairy Park",
+      "townCity": "Town",
+      "county": "County",
+      "postCode": "CM14 4LQ",
+      "phoneNumber": "07411999999",
+      "emailAddress": "harry.potter@wizards.com"
+    }
+  },
   "reasonsForAppealing": {
     "reasons": [
       {
@@ -48,7 +63,7 @@
     ],
     "otherReasons": "Another reason"
   },
-  "hearingType":"oral",
+  "hearingType":"paper",
   "hearing": {
     "wantsToAttend": true,
     "wantsSupport": true,
@@ -69,9 +84,9 @@
     "options": {
       "hearingTypeTelephone": false,
       "telephone": "0999733733",
-      "hearingTypeVideo": true,
+      "hearingTypeVideo": false,
       "email": "test@gmail.com",
-      "hearingTypeFaceToFace": false
+      "hearingTypeFaceToFace": true
     }
   },
   "signAndSubmit": {

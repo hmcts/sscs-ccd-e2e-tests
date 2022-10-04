@@ -27,6 +27,8 @@ Feature: The alternate happy path
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
+    And I choose "Admin - send to With FTA"
+    Given I complete the event
     Then the case should be in "With FTA" state
 
     When I switch to be a DWPResponse Writer
@@ -50,7 +52,7 @@ Feature: The alternate happy path
     And the case should be in "With FTA" state
 
     When I choose "Upload response"
-    And I respond to the appeal with upload contains further information "Yes" option and "ML" issue code
+    And I respond to the taxCredit appeal with upload contains further information "Yes" option
     Then the case should be in "Response received" state
 
 
