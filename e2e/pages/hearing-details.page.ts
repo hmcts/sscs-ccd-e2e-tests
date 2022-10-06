@@ -104,10 +104,33 @@ export class HearingDetailsPage extends AnyPage {
          await anyCcdPage.click('Submit change request');
          await browser.sleep(500);
          await anyCcdPage.click('view the status of this hearing in the hearings tab');
-   }
+    }
 
     async verifyHearingStatus(hearingStatus: string) {
            expect(await anyCcdPage.contentContains(hearingStatus.toUpperCase())).to.equal(true);
        }
 
+    async verifyHearingChannel(hearingChannel: string) {
+        await browser.sleep(500);
+        await anyCcdPage.chooseOptionByElementId('overrideFields_appellantHearingChannel', hearingChannel);
+        await browser.sleep(500);
+        }
+
+        async verifyAttendingOfficer(AttendingOfficer: string) {
+         await browser.sleep(500);
+          await anyCcdPage.clickElementById('overrideFields_poToAttend_Yes');
+        await browser.sleep(500);
+        }
+
+     async verifyAmendReasonForUpdate() {
+        await browser.sleep(500);
+         await anyCcdPage.click('Continue');
+         await browser.sleep(500);
+          await anyCcdPage.clickElementById('amendReasons-judgereq');
+          await browser.sleep(500);
+         await anyCcdPage.click('Continue');
+         await browser.sleep(500);
+         await anyCcdPage.click('Submit');
+         await browser.sleep(500);
+}
 }

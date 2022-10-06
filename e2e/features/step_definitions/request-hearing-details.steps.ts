@@ -50,3 +50,15 @@ Then(/^the hearing status should be updated to "(.+)"$/, async function (hearing
 Then(/^I click on Hearings tab$/, async function () {
        await hearingDetailsPage.verifyHearingStatusSummary();
 });
+
+Then(/^I choose "(.+)" option from appellant's hearing channel$/, async function (hearingChannel: string) {
+       await hearingDetailsPage.verifyHearingChannel(hearingChannel);
+});
+
+Then(/^I choose "(.+)" is po office attending$/, async function (attendingOfficer: string) {
+       await hearingDetailsPage.verifyAttendingOfficer(attendingOfficer);
+});
+
+Then(/^I amend the reason for update$/, async function () {
+       await hearingDetailsPage.verifyAmendReasonForUpdate();
+});
