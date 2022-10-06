@@ -122,7 +122,7 @@ export class HearingDetailsPage extends AnyPage {
         await browser.sleep(500);
         }
 
-     async verifyAmendReasonForUpdate() {
+    async verifyAmendReasonForUpdate() {
         await browser.sleep(500);
          await anyCcdPage.click('Continue');
          await browser.sleep(500);
