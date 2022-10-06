@@ -51,7 +51,6 @@ export class HearingDetailsPage extends AnyPage {
     }
 
     async verifyHearingStatusSummary() {
-        // let hearingStatus: string = "waiting to be listed";
         expect(await anyCcdPage.contentContains(hearingStatus.toUpperCase())).to.equal(true);
         expect(await anyCcdPage.contentContains('Substantive')).to.equal(true);
     }
@@ -86,6 +85,10 @@ export class HearingDetailsPage extends AnyPage {
 
     async verifyHearingDate(hearingStartDate: string) {
         expect(await anyCcdPage.contentContains(hearingStartDate)).to.equal(true);
+    }
+
+    async verifyCancelHearingStatus(hearingStats: string) {
+        expect(await anyCcdPage.contentContains(hearingStats.toUpperCase())).to.equal(true);
     }
 
 }
