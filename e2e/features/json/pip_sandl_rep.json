@@ -64,11 +64,8 @@
     "otherReasons": "Another reason"
   },
   "hearingType":"oral",
-  "hearing": 
-    "wantsToAttend": "No",
-
+  "hearing": {
     "wantsToAttend": true,
-
     "wantsSupport": true,
     "anythingElse": "Yes, this...",
     "interpreterLanguageType": "danish",

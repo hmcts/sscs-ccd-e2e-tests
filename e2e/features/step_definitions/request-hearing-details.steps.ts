@@ -42,7 +42,6 @@ Then(/^the earliest hearing date should be from "(.+)" days of hearing requested
      await hearingDetailsPage.verifyHearingDuration(formattedDate);
 });
 
-<<<<<<< HEAD
 Then(/^I update the length of hearing to "(.+)" hours$/, async function (hearingDuration: string) {
      await hearingDetailsPage.updateHearingDetails(hearingDuration);
 });
@@ -65,7 +64,8 @@ Then(/^I choose "(.+)" is po office attending$/, async function (attendingOffice
 
 Then(/^I amend the reason for update$/, async function () {
        await hearingDetailsPage.verifyAmendReasonForUpdate();
-=======
+     });
+
 When(/^I click on "(.+)" hearing link and select "(.+)" as cancellation reason$/, async function (cncl: string, reason: string) {
         await anyCcdPage.click(cncl);
         await browser.sleep(3000);
@@ -86,5 +86,5 @@ When(/^submit the event$/, async function () {
 Then(/^the hearing status should be "(.+)"$/, async function (hearingStats: string) {
      await hearingDetailsPage.requestAutoHearing();
      await hearingDetailsPage.verifyCancelHearingStatus(hearingStats);
->>>>>>> d91241b8dd1dc876ced7fb3d285c85a00bd37669
+
 });
