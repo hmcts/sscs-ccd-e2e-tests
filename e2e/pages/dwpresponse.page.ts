@@ -144,7 +144,9 @@ export class DwpResponsePage extends AnyPage {
         await anyCcdFormPage.click('Continue');
         await this.elementsDisputedPage(disputed)
         await anyCcdFormPage.click('Continue');
-        await this.issueCodePage(disputed);
+        await anyCcdFormPage.click('Add new');
+        await browser.sleep(3000);
+        await this.issueCodePage('WC');
         await anyCcdFormPage.click('Continue');
         await this.disputedPage(disputedByOthersYesOrNo, 'reference');
         await anyCcdFormPage.click('Continue');
@@ -158,6 +160,8 @@ export class DwpResponsePage extends AnyPage {
         await anyCcdFormPage.click('Continue');
         expect(await anyCcdFormPage.pageHeadingContains('Check your answers')).to.equal(true);
         await anyCcdFormPage.click('Submit');
+        await browser.sleep(2000);
+
     }
 
     async uploadResponseForChildSupport(action: string) {

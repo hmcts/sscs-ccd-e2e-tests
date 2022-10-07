@@ -1,29 +1,18 @@
+<<<<<<< HEAD
 @nightly-test
+=======
+>>>>>>> d91241b8dd1dc876ced7fb3d285c85a00bd37669
 Feature: Schedule and Listing
 
-
-#  Scenario: Manually request a Hearing for PIP case
-#
-#    Given I presetup an "SANDLPIP" SYA case
-#    And I am signed in as a Case Officer
-#    Given I navigate to an existing case
-#    And the case should be in "With FTA" state
-#
-#    When I choose "Upload response"
-#    And I respond to the appeal with upload contains further information "Yes" option and "ML" issue code
-#    Then the case should be in "Response received" state
-#
-#    And I click on Request Hearing link
-
-Scenario: Auto request a Hearing for PIP case
+  Scenario: Auto request a Hearing for PIP case
 
     Given I presetup an "SANDLDLA" SYA case
     And I am signed in as a Case Officer
-    Given I navigate to an existing case
+    And I navigate to an existing case
     And the case should be in "With FTA" state
 
     When I choose "Upload response"
-    And I respond to the appeal with upload contains further information "No" option and "EI" issue code
+    And  I respond to the appeal with upload contains further information "No" option and "EI" issue code
     Then the case should be in "Ready to list" state
 
     And I should see a hearing request generated for the appeal
@@ -32,15 +21,15 @@ Scenario: Auto request a Hearing for PIP case
     And the duration of the hearing should be "1 hour(s) and 30 minute(s)"
     And the earliest hearing date should be from "28" days of hearing requested
 
-  Scenario: Auto request a Hearing for PIP Video Hearing Case
+  @test1
+  Scenario: Auto request a Hearing for PIP case
+   Given I presetup an "SANDLUCVIDEO" SYA case
+   And  I am signed in as a Case Officer
+   And I navigate to an existing case
+   Then the case should be in "With FTA" state
 
-    Given I presetup an "SANDLPIPVIDEO" SYA case
-    And I am signed in as a Case Officer
-    Given I navigate to an existing case
-    And the case should be in "With FTA" state
-
-    When I choose "Upload response"
-    And I respond to the appeal with upload contains further information "No" option and "EI" issue code
+    And I choose "Upload response"
+    And I upload UC further information with disputed General disputed by others No and further info No
     Then the case should be in "Ready to list" state
 
     And I should see a hearing request generated for the appeal
@@ -54,7 +43,7 @@ Scenario: Auto request a Hearing for PIP case
 
     Given I presetup an "SANDLPIPREP" SYA case
     And I am signed in as a Case Officer
-    Given I navigate to an existing case
+    And I navigate to an existing case
     And the case should be in "With FTA" state
 
     When I choose "Upload response"
@@ -71,7 +60,7 @@ Scenario: Auto request a Hearing for PIP case
 
     Given I presetup an "SANDLPIPREPF2F" SYA case
     And I am signed in as a Case Officer
-    Given I navigate to an existing case
+    And I navigate to an existing case
     And the case should be in "With FTA" state
 
     When I choose "Upload response"

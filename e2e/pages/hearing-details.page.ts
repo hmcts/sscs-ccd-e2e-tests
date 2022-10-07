@@ -12,7 +12,7 @@ export class HearingDetailsPage extends AnyPage {
 
         await browser.manage().window().maximize();
         await anyCcdPage.clickTab('Hearings');
-        await browser.sleep(5000);
+        await browser.sleep(1000);
         expect(await anyCcdPage.contentContains('Request a hearing')).to.equal(true);
         await anyCcdPage.click('Request a hearing');
         await browser.sleep(500);
@@ -51,7 +51,6 @@ export class HearingDetailsPage extends AnyPage {
     }
 
     async verifyHearingStatusSummary() {
-        // let hearingStatus: string = "waiting to be listed";
         expect(await anyCcdPage.contentContains(hearingStatus.toUpperCase())).to.equal(true);
         expect(await anyCcdPage.contentContains('Substantive')).to.equal(true);
     }
@@ -67,12 +66,12 @@ export class HearingDetailsPage extends AnyPage {
     async requestAutoHearing() {
         await browser.manage().window().maximize();
         await anyCcdPage.clickTab('Hearings');
-        await browser.sleep(5000);
         expect(await anyCcdPage.contentContains('Request a hearing')).to.equal(true);
     }
 
     async viewHearingDetails() {
         await anyCcdPage.click('View or edit');
+        await browser.sleep(5000);
     }
 
     async verifyHearingVenue(venueName: string) {
@@ -88,6 +87,7 @@ export class HearingDetailsPage extends AnyPage {
         expect(await anyCcdPage.contentContains(hearingStartDate)).to.equal(true);
     }
 
+<<<<<<< HEAD
     async updateHearingDetails(hearingDuration: string) {
          await anyCcdPage.clickElementById('hearingLength');
          expect(await anyCcdPage.contentContains('Select length, date and priority level of hearing')).to.equal(true);
@@ -133,4 +133,10 @@ export class HearingDetailsPage extends AnyPage {
          await anyCcdPage.click('Submit');
          await browser.sleep(500);
 }
+=======
+    async verifyCancelHearingStatus(hearingStats: string) {
+        expect(await anyCcdPage.contentContains(hearingStats.toUpperCase())).to.equal(true);
+    }
+
+>>>>>>> d91241b8dd1dc876ced7fb3d285c85a00bd37669
 }

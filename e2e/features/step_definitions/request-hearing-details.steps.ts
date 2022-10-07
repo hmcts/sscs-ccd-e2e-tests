@@ -1,7 +1,10 @@
-import { Given, Then } from 'cucumber';
+import { Given, When, Then } from 'cucumber';
 import { HearingDetailsPage } from '../../pages/hearing-details.page';
+import { AnyCcdPage } from '../../pages/any-ccd.page';
+import { browser } from 'protractor';
 
 const hearingDetailsPage = new HearingDetailsPage();
+const anyCcdPage = new AnyCcdPage();
 
 Given('I click on Request Hearing link', async function () {
      await hearingDetailsPage.requestManualHearing();
@@ -39,6 +42,7 @@ Then(/^the earliest hearing date should be from "(.+)" days of hearing requested
      await hearingDetailsPage.verifyHearingDuration(formattedDate);
 });
 
+<<<<<<< HEAD
 Then(/^I update the length of hearing to "(.+)" hours$/, async function (hearingDuration: string) {
      await hearingDetailsPage.updateHearingDetails(hearingDuration);
 });
@@ -61,4 +65,26 @@ Then(/^I choose "(.+)" is po office attending$/, async function (attendingOffice
 
 Then(/^I amend the reason for update$/, async function () {
        await hearingDetailsPage.verifyAmendReasonForUpdate();
+=======
+When(/^I click on "(.+)" hearing link and select "(.+)" as cancellation reason$/, async function (cncl: string, reason: string) {
+        await anyCcdPage.click(cncl);
+        await browser.sleep(3000);
+
+        await anyCcdPage.clickElementById(reason);
+        await anyCcdPage.click('Continue');
+        await browser.sleep(5000);
+});
+
+Then(/^I should see "(.+)" hearing status in summary page$/, async function (hearingStats: string) {
+     await hearingDetailsPage.verifyCancelHearingStatus(hearingStats);
+});
+
+When(/^submit the event$/, async function () {
+     await anyCcdPage.click('Submit');
+});
+
+Then(/^the hearing status should be "(.+)"$/, async function (hearingStats: string) {
+     await hearingDetailsPage.requestAutoHearing();
+     await hearingDetailsPage.verifyCancelHearingStatus(hearingStats);
+>>>>>>> d91241b8dd1dc876ced7fb3d285c85a00bd37669
 });

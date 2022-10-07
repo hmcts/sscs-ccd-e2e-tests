@@ -63,7 +63,7 @@
     ],
     "otherReasons": "Another reason"
   },
-  "hearingType":"paper",
+  "hearingType":"oral",
   "hearing": {
     "wantsToAttend": true,
     "wantsSupport": true,

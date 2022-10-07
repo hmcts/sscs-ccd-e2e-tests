@@ -5,7 +5,7 @@
   },
   "mrn": {
     "dwpIssuingOffice": "DWP PIP (1)",
-    "date": "01-01-2021",
+    "date": "26-09-2022",
     "reasonForBeingLate": "Lost my paperwork"
   },
   "isAppointee": false,
@@ -63,9 +63,12 @@
     ],
     "otherReasons": "Another reason"
   },
-  "hearingType":"paper",
-  "hearing": {
+  "hearingType":"oral",
+  "hearing": 
     "wantsToAttend": "No",
+
+    "wantsToAttend": true,
+
     "wantsSupport": true,
     "anythingElse": "Yes, this...",
     "interpreterLanguageType": "danish",
