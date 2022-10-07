@@ -18,6 +18,7 @@ Feature: Create Schedule and Listing
     And the duration of the hearing should be "1 hour(s) and 30 minute(s)"
     And the earliest hearing date should be from "28" days of hearing requested
 
+@nightly-test-skip
   Scenario: Auto request a Hearing for PIP case
    Given I presetup an "SANDLUCVIDEO" SYA case
    And  I am signed in as a Case Officer
