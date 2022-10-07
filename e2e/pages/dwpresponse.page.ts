@@ -144,7 +144,9 @@ export class DwpResponsePage extends AnyPage {
         await anyCcdFormPage.click('Continue');
         await this.elementsDisputedPage(disputed)
         await anyCcdFormPage.click('Continue');
-        await this.issueCodePage(disputed);
+        await anyCcdFormPage.click('Add new');
+        await browser.sleep(3000);
+        await this.issueCodePage('WC');
         await anyCcdFormPage.click('Continue');
         await this.disputedPage(disputedByOthersYesOrNo, 'reference');
         await anyCcdFormPage.click('Continue');
@@ -158,6 +160,8 @@ export class DwpResponsePage extends AnyPage {
         await anyCcdFormPage.click('Continue');
         expect(await anyCcdFormPage.pageHeadingContains('Check your answers')).to.equal(true);
         await anyCcdFormPage.click('Submit');
+        await browser.sleep(2000);
+
     }
 
     async uploadResponseForChildSupport(action: string) {
@@ -184,7 +188,7 @@ export class DwpResponsePage extends AnyPage {
         await browser.sleep(2000);
     }
 
-    async uploadResponseForTaxCredit(action: string) {
+    async uploadResponseForTaxCredit(action: string, issueCode: string) {
         await browser.waitForAngular();
         let remote = require('selenium-webdriver/remote');
         browser.setFileDetector(new remote.FileDetector());
@@ -193,7 +197,7 @@ export class DwpResponsePage extends AnyPage {
         await this.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
 
         await browser.sleep(2000);
-        await anyCcdFormPage.chooseOptionByElementId('issueCode', 'AA');
+        await anyCcdFormPage.chooseOptionByElementId('issueCode', issueCode);
         await anyCcdFormPage.clickElementById(`dwpFurtherInfo_${action}`);
         await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Appeal to-be registered');
         await anyCcdFormPage.clickElementById('dwpIsOfficerAttending_No');
