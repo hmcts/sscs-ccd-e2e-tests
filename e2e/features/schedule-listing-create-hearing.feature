@@ -1,6 +1,6 @@
+ @nightly-test
 Feature: Create Schedule and Listing
 
-  @sandl-demo-only
   Scenario: Auto request a Hearing for DLA case
 
     Given I presetup an "SANDLDLA" SYA case

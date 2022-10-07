@@ -1,5 +1,5 @@
 
-@nightly-test
+@nightly-test-skip
 
 Feature: Schedule and Listing
 

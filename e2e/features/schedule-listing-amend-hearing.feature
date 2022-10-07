@@ -1,4 +1,5 @@
-@test11
+@nightly-test
+
 Feature: Auto Amend & Manual Amend Hearing - Schedule and Listing
 
   Scenario 1: Manual amend Hearing for PIP case
