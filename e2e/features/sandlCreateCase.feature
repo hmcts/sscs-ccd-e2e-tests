@@ -1,7 +1,6 @@
-<<<<<<< HEAD
+
 @nightly-test
-=======
->>>>>>> d91241b8dd1dc876ced7fb3d285c85a00bd37669
+
 Feature: Schedule and Listing
 
   Scenario: Auto request a Hearing for PIP case
