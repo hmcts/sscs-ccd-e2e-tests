@@ -57,7 +57,7 @@ Feature: The happy path
     And the case should be in "With FTA" state
 
     When I choose "Upload response"
-    And I respond to the appeal with upload contains further information "No" option and "ML" issue code
+    And I respond to the taxCredit appeal with upload contains further information "No" option
     Given I navigate to an existing case
     Then the case should end in "Ready to list" state
 

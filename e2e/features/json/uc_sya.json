@@ -63,31 +63,25 @@
       ],
       "otherReasons": "Another reason"
     },
-    "hearingType":"oral",
     "hearing": {
       "wantsToAttend": true,
       "wantsSupport": true,
       "anythingElse": "Yes, this...",
-      "interpreterLanguageType": "danish",
+      "interpreterLanguageType": "An interpreter language",
+      "signLanguageType": "A sign language",
       "arrangements": {
         "languageInterpreter": true,
+        "signLanguageInterpreter": true,
         "hearingLoop": true,
         "accessibleHearingRoom": false,
         "other": true
       },
       "scheduleHearing": true,
       "datesCantAttend": [
-        "10-12-2022",
-        "11-12-2022",
-        "12-12-2022"
-      ],
-      "options": {
-        "hearingTypeTelephone": true,
-        "telephone": "0999733733",
-        "hearingTypeVideo": true,
-        "email": "test@gmail.com",
-        "hearingTypeFaceToFace": false
-       }
+        "04-04-2020",
+        "05-04-2020",
+        "06-04-2020"
+      ]
     },
     "signAndSubmit": {
       "signer": "Joe Bloggs"

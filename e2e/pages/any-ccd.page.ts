@@ -252,17 +252,14 @@ export class AnyCcdPage extends AnyPage {
             'self::caption or ' +
             'self::label or ' +
             'self::p or ' +
-            'self::li                        [contains(text(), "' + match + '")] or '     +  // for bulleted text
-            'self::div                       [contains(text(), "' + match + '")] or '     +
-            'self::div                       [contains(text()[2], "' + match + '" )] or ' + 
+            'self::li                        [contains(text(), "' + match + '")] or ' +  // for bulleted text
+            'self::div                       [contains(text(), "' + match + '")] or ' +  // avoid text in child nodes
             'self::ccd-read-date-field       [contains(text(), "' + match + '")] or ' +  // for more generic containers
             'self::dt                        [contains(text(), "' + match + '")] or ' +  // added recently
             'self::ccd-read-fixed-list-field [contains(text(), "' + match + '")] or ' +  // ..
             'self::ng-component              [contains(text(), "' + match + '")] or ' +  // ..
             'self::span                      [contains(text(), "' + match + '")] or ' +  // ..
-            'self::td                        [contains(text(), "' + match + '")] or ' +      // ..
-            'self::strong                    [contains(text(), "' + match + '")] or ' +
-            'self::a                         [contains(text(), "' + match + '")]' +
+            'self::td                        [contains(text(), "' + match + '")]' +      // ..
             ']' +
             '[contains(normalize-space(), "' + match + '") and not(ancestor::*[@hidden])]';
 

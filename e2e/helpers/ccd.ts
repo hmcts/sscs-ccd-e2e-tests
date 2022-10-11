@@ -10,10 +10,6 @@ const esaPayload = require('../features/json/esa_sya.json');
 const childSupportPayload = require('../features/json/child_support_sya.json');
 const taxCreditPayload = require('../features/json/tax_credit_sya.json');
 const pipSandLPayload = require('../features/json/pip_sandl_sya.json');
-const dlaSandLPayload = require('../features/json/dla_sandl_sya.json');
-const ucSandLVideoPayload = require('../features/json/uc_sandl_video_sya.json');
-const repSandLPayload = require('../features/json/pip_sandl_rep.json');
-const repFtoFSandLPayload = require('../features/json/pip_sandl_rep_ftof.json');
 
 async function createCase(hearingType) {
     const randomNumber = parseInt(Math.random() * 10000000 + '', 10);
@@ -97,41 +93,7 @@ async function createSYACase(caseType: string) {
             json: true,
             resolveWithFullResponse: true
         };
-    } else if (caseType === 'SANDLUCVIDEO') {
-        options = {
-            method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
-            body: ucSandLVideoPayload,
-            json: true,
-            resolveWithFullResponse: true
-        };
-    } else if (caseType === 'SANDLDLA') {
-        options = {
-            method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
-            body: dlaSandLPayload,
-            json: true,
-            resolveWithFullResponse: true
-        };
-    }
-    else if (caseType === 'SANDLPIPREPF2F') {
-            options = {
-                method: 'POST',
-                uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
-                body: repFtoFSandLPayload,
-                json: true,
-                resolveWithFullResponse: true
-            };
-        }
-     else if (caseType === 'SANDLPIPREP') {
-             options = {
-                 method: 'POST',
-                 uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
-                 body: repSandLPayload,
-                 json: true,
-                 resolveWithFullResponse: true
-             };
-         }else {
+    } else {
         throw 'Unsupported case type passed';
     }
 
