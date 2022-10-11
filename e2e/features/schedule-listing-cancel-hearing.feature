@@ -1,4 +1,4 @@
-@sandl-demo-only
+@nightly-test
 Feature: Cancel Schedule and Listing
 
   Scenario: Manual Cancellation of a hearing request
