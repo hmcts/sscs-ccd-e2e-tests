@@ -31,7 +31,7 @@ Then(/^the duration of the hearing should be "(.+)"$/, async function (hearingDu
 Then(/^the earliest hearing date should be from "(.+)" days of hearing requested$/, async function (noOfDays: string) {
 
      let date = new Date();
-     let numberOfDaysToAdd = Number(noOfDay);
+     let numberOfDaysToAdd = Number(noOfDays);
      let result = date.setDate(date.getDate() + numberOfDaysToAdd);
 
      const additionalDate = new Date(result);
