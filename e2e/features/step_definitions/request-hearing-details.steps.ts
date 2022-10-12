@@ -54,18 +54,6 @@ Then(/^I click on Hearings tab$/, async function () {
        await hearingDetailsPage.verifyHearingStatusSummary();
 });
 
-Then(/^I choose "(.+)" option from appellant's hearing channel$/, async function (hearingChannel: string) {
-       await hearingDetailsPage.verifyHearingChannel(hearingChannel);
-});
-
-Then(/^I choose "(.+)" is po office attending$/, async function (attendingOfficer: string) {
-       await hearingDetailsPage.verifyAttendingOfficer(attendingOfficer);
-});
-
-Then(/^I amend the reason for update$/, async function () {
-       await hearingDetailsPage.verifyAmendReasonForUpdate();
-     });
-
 When(/^I click on "(.+)" hearing link and select "(.+)" as cancellation reason$/, async function (cncl: string, reason: string) {
         await anyCcdPage.click(cncl);
         await browser.sleep(3000);
