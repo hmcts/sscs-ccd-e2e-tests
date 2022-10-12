@@ -1,6 +1,5 @@
-@nightly-test
 Feature: Create Schedule and Listing
-
+  @nightly-test
   Scenario: Auto request a Hearing for DLA case
     Given I presetup an "SANDLDLA" SYA case
     And I am signed in as a Case Officer
