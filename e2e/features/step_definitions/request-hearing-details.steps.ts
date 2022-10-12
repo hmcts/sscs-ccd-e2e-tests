@@ -3,8 +3,8 @@ import { HearingDetailsPage } from '../../pages/hearing-details.page';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { browser } from 'protractor';
 
-const hearingDetailsPage = new HearingDetailsPage();
 const anyCcdPage = new AnyCcdPage();
+const hearingDetailsPage = new HearingDetailsPage();
 
 Given('I click on Request Hearing link', async function () {
      await hearingDetailsPage.requestManualHearing();
@@ -31,7 +31,7 @@ Then(/^the duration of the hearing should be "(.+)"$/, async function (hearingDu
 Then(/^the earliest hearing date should be from "(.+)" days of hearing requested$/, async function (noOfDays: string) {
 
      let date = new Date();
-     let numberOfDaysToAdd = parseInt(noOfDays);
+     let numberOfDaysToAdd = Number(noOfDay);
      let result = date.setDate(date.getDate() + numberOfDaysToAdd);
 
      const additionalDate = new Date(result);
