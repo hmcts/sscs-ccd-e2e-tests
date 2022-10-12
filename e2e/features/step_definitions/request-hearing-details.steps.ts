@@ -30,9 +30,9 @@ Then(/^the duration of the hearing should be "(.+)"$/, async function (hearingDu
 
 Then(/^the earliest hearing date should be from "(.+)" days of hearing requested$/, async function (noOfDays: string) {
 
-     var date = new Date();
-     var numberOfDaysToAdd = parseInt(noOfDays);
-     var result = date.setDate(date.getDate() + numberOfDaysToAdd);
+     let date = new Date();
+     let numberOfDaysToAdd = parseInt(noOfDays);
+     let result = date.setDate(date.getDate() + numberOfDaysToAdd);
 
      const additionalDate = new Date(result);
      const formattedDate = additionalDate.toLocaleDateString('en-GB', {
