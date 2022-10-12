@@ -1,4 +1,4 @@
-import { browser} from 'protractor';
+import { browser } from 'protractor';
 import { AnyPage } from './any.page';
 import { expect } from 'chai';
 import { AnyCcdPage } from './any-ccd.page';
@@ -19,7 +19,7 @@ export class UpdateListingRequirementsPage extends AnyPage {
     await anyCcdPage.click('Continue');
  }
 
- async amendReasonForUpdate(){
+ async amendReasonForUpdate() {
    expect(await anyCcdPage.pageHeadingContains('Amend Reason')).to.equal(true);
     await browser.sleep(500);
     await anyCcdPage.click('Judge requested change');
@@ -28,5 +28,4 @@ export class UpdateListingRequirementsPage extends AnyPage {
     await browser.sleep(500);
     await anyCcdPage.click('Submit');
  }
-
 }

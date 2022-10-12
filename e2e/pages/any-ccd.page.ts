@@ -254,7 +254,7 @@ export class AnyCcdPage extends AnyPage {
             'self::p or ' +
             'self::li                        [contains(text(), "' + match + '")] or '     +  // for bulleted text
             'self::div                       [contains(text(), "' + match + '")] or '     +
-            'self::div                       [contains(text()[2], "' + match + '" )] or ' + 
+            'self::div                       [contains(text()[2], "' + match + '")] or ' +
             'self::ccd-read-date-field       [contains(text(), "' + match + '")] or ' +  // for more generic containers
             'self::dt                        [contains(text(), "' + match + '")] or ' +  // added recently
             'self::ccd-read-fixed-list-field [contains(text(), "' + match + '")] or ' +  // ..

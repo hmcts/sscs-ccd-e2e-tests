@@ -95,7 +95,8 @@ When(/^I respond to the appeal with upload contains further information "(.+)" o
     await dwpresponse.addOtherParties();
 });
 
-When(/^I respond to the appeal with upload contains further information "(.+)" option and "(.+)" issue code$/, async function (action: string, issueCode: string) {
+When(/^I respond to the appeal with upload contains further information "(.+)" option and "(.+)" issue code$/,
+                                                                      async function (action: string, issueCode: string) {
     await dwpresponse.uploadResponseForTaxCredit(action, issueCode);
 });
 
@@ -103,7 +104,8 @@ When(/^dwp responds requesting "(.+)" for the uploads contains further info opti
     await dwpresponse.uploadResponseForTaxCredit(action, issueCode);
 });
 
-When(/^I upload (.+) further information with disputed (.+) disputed by others (.+) and further info (.+)$/, async function (benefitType, disputed, disputedByOthersYesOrNo, dwpFurtherInfoYesOrNo) {
+When(/^I upload (.+) further information with disputed (.+) disputed by others (.+) and further info (.+)$/,
+                                               async function (benefitType, disputed, disputedByOthersYesOrNo, dwpFurtherInfoYesOrNo) {
     await dwpresponse.uploadResponseWithJointParty(benefitType, disputed, disputedByOthersYesOrNo, dwpFurtherInfoYesOrNo);
 });
 

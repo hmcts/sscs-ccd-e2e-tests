@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { AnyCcdPage } from './any-ccd.page';
 
 const anyCcdPage = new AnyCcdPage();
-let hearingStatus: string = "waiting to be listed";
+const hearingStatus: string = 'waiting to be listed';
 
 export class HearingDetailsPage extends AnyPage {
 
@@ -87,7 +87,6 @@ export class HearingDetailsPage extends AnyPage {
         expect(await anyCcdPage.contentContains(hearingStartDate)).to.equal(true);
     }
 
-
     async updateHearingDetails(hearingDuration: string) {
          await anyCcdPage.clickElementById('hearingLength');
          expect(await anyCcdPage.contentContains('Select length, date and priority level of hearing')).to.equal(true);
@@ -106,8 +105,8 @@ export class HearingDetailsPage extends AnyPage {
          await anyCcdPage.click('view the status of this hearing in the hearings tab');
     }
 
-    async verifyHearingStatus(hearingStatus: string) {
-           expect(await anyCcdPage.contentContains(hearingStatus.toUpperCase())).to.equal(true);
+    async verifyHearingStatus(statusHearing: string) {
+           expect(await anyCcdPage.contentContains(statusHearing.toUpperCase())).to.equal(true);
        }
 
     async verifyHearingChannel(hearingChannel: string) {
@@ -137,6 +136,4 @@ export class HearingDetailsPage extends AnyPage {
     async verifyCancelHearingStatus(hearingStats: string) {
         expect(await anyCcdPage.contentContains(hearingStats.toUpperCase())).to.equal(true);
     }
-
-
 }

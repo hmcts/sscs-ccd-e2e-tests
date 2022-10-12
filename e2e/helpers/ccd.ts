@@ -113,8 +113,7 @@ async function createSYACase(caseType: string) {
             json: true,
             resolveWithFullResponse: true
         };
-    }
-    else if (caseType === 'SANDLPIPREPF2F') {
+    } else if (caseType === 'SANDLPIPREPF2F') {
             options = {
                 method: 'POST',
                 uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
@@ -122,8 +121,7 @@ async function createSYACase(caseType: string) {
                 json: true,
                 resolveWithFullResponse: true
             };
-        }
-     else if (caseType === 'SANDLPIPREP') {
+    } else if (caseType === 'SANDLPIPREP') {
              options = {
                  method: 'POST',
                  uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
@@ -131,7 +129,7 @@ async function createSYACase(caseType: string) {
                  json: true,
                  resolveWithFullResponse: true
              };
-         }else {
+    } else {
         throw 'Unsupported case type passed';
     }
 

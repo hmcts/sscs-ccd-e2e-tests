@@ -86,5 +86,4 @@ When(/^submit the event$/, async function () {
 Then(/^the hearing status should be "(.+)"$/, async function (hearingStats: string) {
      await hearingDetailsPage.requestAutoHearing();
      await hearingDetailsPage.verifyCancelHearingStatus(hearingStats);
-
 });
