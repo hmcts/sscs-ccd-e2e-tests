@@ -14,7 +14,7 @@ export class UpdateListingRequirementsPage extends AnyPage {
  }
 
  async updatePOOfficerAttending(yes: string) {
-    await anyCcdPage.chooseOptionByElementId('# overrideFields_poToAttend_Yes', yes);
+    await anyCcdPage.chooseOptionByElementId('#overrideFields_poToAttend_Yes', yes);
     await browser.sleep(500);
     await anyCcdPage.click('Continue');
  }
