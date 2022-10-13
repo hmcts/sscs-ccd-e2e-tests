@@ -3,12 +3,12 @@ import { UpdateListingRequirementsPage } from '../../pages/update-listing-requir
 
 const updateListingRequirementsPage = new UpdateListingRequirementsPage();
 
-Given(/^I choose "(.+)" option from appellant's hearing channel$/, async function () {
-     await updateListingRequirementsPage.updateHearingChannel();
+Given(/^I choose "(.+)" option from appellant's hearing channel$/, async function (video) {
+     await updateListingRequirementsPage.updateHearingChannel(video);
 });
 
-Then(/^I choose "(.+)" is po office attending$/, async function () {
-     await updateListingRequirementsPage.updatePOOfficerAttending();
+Then(/^I choose "(.+)" is po office attending$/, async function (yes) {
+     await updateListingRequirementsPage.updatePOOfficerAttending(yes);
 });
 
 Then(/^I amend the reason for update$/, async function () {
