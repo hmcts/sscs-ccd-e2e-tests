@@ -34,7 +34,6 @@ Feature: Auto Amend and Manual Amend Hearing - Schedule and Listing
 
     When I choose "Update Listing Requirements"
     And I choose "Video" option from appellant's hearing channel
-    And I choose "Yes" is po office attending
     And I amend the reason for update
     Then the case should be in "Ready to list" state
 

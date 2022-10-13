@@ -12,17 +12,19 @@ export class UpdateListingRequirementsPage extends AnyPage {
      expect(await anyCcdPage.pageHeadingContains('Update Listing Requirements')).to.equal(true);
      await browser.sleep(500);
     await anyCcdPage.chooseOptionContainingText('#overrideFields_appellantHearingChannel', video);
+    await browser.sleep(500);
+    await anyCcdPage.click('Continue');
   }
   async updatePOOfficerAttending(yes: string) {
     await browser.sleep(500);
-     await anyCcdPage.chooseOptionContainingText('#overrideFields_poToAttend_Yes', yes);
-     await browser.sleep(500);
-     await anyCcdPage.click('Continue');
+    await anyCcdPage.clickElementById('overrideFields_poToAttend_' + yes);
+    await browser.sleep(500);
+    await anyCcdPage.click('Continue');
   }
   async amendReasonForUpdate() {
     expect(await anyCcdPage.pageHeadingContains('Amend Reason')).to.equal(true);
      await browser.sleep(500);
-     await anyCcdPage.click('Judge requested change');
+     await anyCcdPage.clickElementById('amendReasons-judgereq');
      await browser.sleep(500);
      await anyCcdPage.click('Continue');
      await browser.sleep(500);
