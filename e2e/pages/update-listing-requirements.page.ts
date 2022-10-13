@@ -10,11 +10,11 @@ export class UpdateListingRequirementsPage extends AnyPage {
  async updateHearingChannel(video: string) {
     expect(await anyCcdPage.pageHeadingContains('Update Listing Requirements')).to.equal(true);
     await browser.sleep(500);
-    await anyCcdPage.chooseOptionContainingText('#overrideFields_appellantHearingChannel', video);
+    await anyCcdPage.chooseOptionByElementId('#overrideFields_appellantHearingChannel', video);
  }
 
  async updatePOOfficerAttending(yes: string) {
-    await anyCcdPage.chooseOptionContainingText('# overrideFields_poToAttend_Yes', yes);
+    await anyCcdPage.chooseOptionByElementId('# overrideFields_poToAttend_Yes', yes);
     await browser.sleep(500);
     await anyCcdPage.click('Continue');
  }
