@@ -7,13 +7,13 @@ const anyCcdPage = new AnyCcdPage();
 
 export class UpdateListingRequirementsPage extends AnyPage {
 
- async updateHearingChannel(hearingType) {
+ async updateHearingChannel(video: string) {
     await browser.sleep(500);
      expect(await anyCcdPage.pageHeadingContains('Update Listing Requirements')).to.equal(true);
      await browser.sleep(500);
     await anyCcdPage.chooseOptionContainingText('#overrideFields_appellantHearingChannel', video);
   }
-  async updatePOOfficerAttending(AttendingOfficer) {
+  async updatePOOfficerAttending(yes: string) {
     await browser.sleep(500);
      await anyCcdPage.chooseOptionContainingText('#overrideFields_poToAttend_Yes', yes);
      await browser.sleep(500);
