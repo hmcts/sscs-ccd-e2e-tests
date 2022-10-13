@@ -1,7 +1,7 @@
 @nightly-test
-Feature: Auto Amend & Manual Amend Hearing - Schedule and Listing
+Feature: Auto Amend and Manual Amend Hearing - Schedule and Listing
 
-  Scenario 1: Manual amend Hearing for PIP case
+  Scenario: Manual amend Hearing for PIP case
     Given I presetup an "SANDLDLA" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
@@ -20,7 +20,7 @@ Feature: Auto Amend & Manual Amend Hearing - Schedule and Listing
     When I update the length of hearing to "2" hours
     Then the hearing status should be updated to "UPDATE REQUESTED"
 
-  Scenario 2: Auto amend Hearing for PIP case
+  Scenario: Auto amend Hearing for PIP case
     Given I presetup an "SANDLDLA" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
