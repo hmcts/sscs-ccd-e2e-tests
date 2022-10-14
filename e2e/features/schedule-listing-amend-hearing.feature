@@ -35,5 +35,4 @@ Feature: Auto Amend and Manual Amend Hearing - Schedule and Listing
     When I choose "Update Listing Requirements"
     And I choose "Video" option from appellant's hearing channel
     And I amend the reason for update
-    When I click on Hearings tab
     Then the hearing status should be updated to "UPDATE REQUESTED"
