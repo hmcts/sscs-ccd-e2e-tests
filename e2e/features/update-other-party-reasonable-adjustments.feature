@@ -1,4 +1,4 @@
-@reasonable-adjustments-other-party @nightly-test
+@reasonable-adjustments-other-party @nightly-test-wip
 Feature: Other party Reasonable adjustments functionality
 
   Scenario: Actioned reasonable adjustments

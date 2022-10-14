@@ -1,4 +1,4 @@
-@reasonable-adjustments @nightly-test-bug-SSCS-10939
+@reasonable-adjustments @nightly-test
 Feature: Reasonable adjustments functionality
 
 
