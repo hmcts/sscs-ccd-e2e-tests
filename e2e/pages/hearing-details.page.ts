@@ -106,6 +106,9 @@ export class HearingDetailsPage extends AnyPage {
     }
 
     async verifyHearingStatus(statusHearing: string) {
+           await browser.sleep(500);
+           await anyCcdPage.clickTab('Hearings');
+           await browser.sleep(1000);
            expect(await anyCcdPage.contentContains(statusHearing.toUpperCase())).to.equal(true);
        }
 
