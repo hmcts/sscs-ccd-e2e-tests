@@ -70,7 +70,7 @@
     "set-value": "2.0.1",
     "js-yaml": "3.13.1",
     "hosted-git-info": "2.8.9",
-    "ajv": "6.12.3",
+    "ajv": "6.12.6",
     "moment": "2.29.2",
     "async": "2.6.4"
   }
