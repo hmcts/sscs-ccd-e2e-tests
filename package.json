@@ -1,6 +1,6 @@
 {
   "name": "sscs-ccd-e2e-tests",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "postinstall": "webdriver-manager update --gecko=false",
