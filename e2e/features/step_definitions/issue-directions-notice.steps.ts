@@ -16,6 +16,7 @@ When(/^I allow the appeal to proceed$/, async function () {
     await anyCcdPage.clickAction('//button[contains(text(),\'Continue\')]');
     await browser.sleep(8000);
     await anyCcdPage.clickAction('//button[contains(text(),\'Submit\')]');
+    await browser.sleep(8000);
 });
 
 Then('I should see Addition details in documents tab', async function () {
