@@ -65,7 +65,7 @@ withNightlyPipeline("nodejs", product, component) {
                 reportName           : 'SSCS ExUI - Manage Cases a11y Test Report'
         ])
         }
-    } 
+    }
 
     enableCrossBrowserTest(60)
     enableFullFunctionalTest(120)
