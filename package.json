@@ -21,7 +21,7 @@
     "@angular/core": "11.0.5",
     "@axe-core/webdriverjs": "^4.1.1",
     "@hmcts/eslint-config": "^1.4.0",
-    "@hmcts/nodejs-logging": "^3.0.0",
+    "@hmcts/nodejs-logging": "^4.0.0",
     "@types/chai": "^4.1.6",
     "@types/cucumber": "^4.0.4",
     "@types/jasmine": "^2.8.9",
