@@ -55,7 +55,7 @@
   "resolutions": {
     "ws": "5.2.3",
     "minimist": "^1.2.6",
-    "underscore": "1.12.1",
+    "underscore": "1.13.6",
     "yargs-parser": "13.1.2",
     "ansi-regex": "3.0.1",
     "json-schema": "0.4.0",
