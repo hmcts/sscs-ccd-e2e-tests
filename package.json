@@ -39,7 +39,7 @@
     "jasmine-spec-reporter": "^4.2.1",
     "moment": "^2.29.2",
     "path": "^0.12.7",
-    "protractor": "~5.4.0",
+    "protractor": "~7.0.0",
     "protractor-beautiful-reporter": "^1.2.5",
     "protractor-cucumber-framework": "^6.1.1",
     "protractor-multiple-cucumber-html-reporter-plugin": "^1.8.1",
