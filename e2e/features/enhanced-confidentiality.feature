@@ -9,7 +9,7 @@ Feature: Enhanced confidentiality
         And I upload UC further information with disputed General disputed by others No and further info No
         And I wait "8" seconds
         And I choose "Action further evidence"
-        And I fill the further evidence form with "Review by Judge" and "Confidentiality request"
+        And I fill the further evidence form with "sendToInterlocReviewByJudge" and "Confidentiality request"
         And I choose "Review confidentiality request"
         When I "grant" confidentiality request
         Then I should see "Is case confidential? Yes"

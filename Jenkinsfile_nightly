@@ -50,13 +50,23 @@ withNightlyPipeline("nodejs", product, component) {
     env.TEST_E2E_WAIT_FOR_ANGULAR = 'false'
     env.TEST_E2E_FAIL_FAST = 'false'
     env.TEST_E2E_ANNOTATION = params.NIGHTLY_TAG
-
-    before('DependencyCheckNightly') {sh 'yarn test:audit'}
+    env.LOGGING_DRIVER = 'INFO'
+    env.LOGGING_BROWSER = 'INFO'
 
     after('build') {
+        stage('Transpile') {
+            yarnBuilder.yarn('transpile')
+        }
+        stage('Webdriver Manager Update') {
+            yarnBuilder.yarn('webdriverUpdate')
+        }
         stage('a11y xui') {
             yarnBuilder.yarn('test:a11y')
-            publishHTML([
+        }
+    }
+
+    afterAlways('build') {
+        publishHTML([
                 allowMissing         : true,
                 alwaysLinkToLastBuild: true,
                 keepAll              : true,
@@ -64,7 +74,9 @@ withNightlyPipeline("nodejs", product, component) {
                 reportFiles          : 'a11y.html',
                 reportName           : 'SSCS ExUI - Manage Cases a11y Test Report'
         ])
-        }
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/*'
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/**/*'
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/**/**/*'
     }
 
     enableCrossBrowserTest(60)

@@ -1,112 +1,114 @@
-const rp = require('request-promise');
+import { Logger } from '@hmcts/nodejs-logging';
+import config from 'config';
+import rp from 'request-promise';
+import ucPayload from '../features/json/uc_sya.json';
+import pipPayload from '../features/json/pip_sya.json';
+import esaPayload from '../features/json/esa_sya.json';
+import childSupportPayload from '../features/json/child_support_sya.json';
+import taxCreditPayload from '../features/json/tax_credit_sya.json';
+import pipSandLPayload from '../features/json/pip_sandl_sya.json';
 
-const serviceConfig = require('../service.conf');
-const { Logger } = require('@hmcts/nodejs-logging');
 const logger = Logger.getLogger('ccd.ts');
-const timeout = serviceConfig.ApiCallTimeout;
-const ucPayload = require('../features/json/uc_sya.json');
-const pipPayload = require('../features/json/pip_sya.json');
-const esaPayload = require('../features/json/esa_sya.json');
-const childSupportPayload = require('../features/json/child_support_sya.json');
-const taxCreditPayload = require('../features/json/tax_credit_sya.json');
-const pipSandLPayload = require('../features/json/pip_sandl_sya.json');
 
-async function createCase(hearingType) {
-    const randomNumber = parseInt(Math.random() * 10000000 + '', 10);
-    const email = `test${randomNumber}@hmcts.net`;
-    const options = {
-      url: `${serviceConfig.TribunalApiUri}/api/case`,
-      qs: { email, hearingType },
-      json: true,
-      timeout
-    };
-    let body;
-    try {
-      body = await rp.post(options);
-    } catch (error) {
-      logger.error('Error at CCD createCase:', error.error);
-    }
-    const { id, case_reference, appellant_tya, joint_party_tya, representative_tya } = body;
-    // tslint:disable-next-line:max-line-length
-    console.log(`Created CCD case for ${email} with ID ${id} and reference ${case_reference} and appellant_tya ${appellant_tya} and jp_tya ${joint_party_tya} and representative_tya ${representative_tya}`);
-    return { email, id, case_reference, appellant_tya, joint_party_tya, representative_tya };
+const timeout = config.get('ApiCallTimeout');
+
+interface CaseDetails {
+  case_reference: string;
+  appellant_tya: string;
+  joint_party_tya: string;
+  representative_tya: string;
+  id: string;
+  email: string;
+}
+
+async function createCase(hearingType): Promise<CaseDetails> {
+  const randomNumber = parseInt(`${Math.random() * 10000000}`, 10);
+  const email = `test${randomNumber}@hmcts.net`;
+  const options = {
+    url: `${config.get('tribunals.uri')}/api/case`,
+    qs: { email, hearingType },
+    json: true,
+    timeout,
+  };
+  let caseDetails: CaseDetails = null;
+  try {
+    caseDetails = await rp.post(options);
+    logger.info(
+      `Created CCD case for ${caseDetails.email} with ID ${caseDetails.id} and reference ${caseDetails.case_reference} and appellant_tya ${caseDetails.appellant_tya} and jp_tya ${caseDetails.joint_party_tya} and representative_tya ${caseDetails.representative_tya}`
+    );
+  } catch (error) {
+    logger.error('Error at CCD createCase:', error.error);
+  }
+  return caseDetails;
 }
 
 async function createSYACase(caseType: string) {
+  let caseId: string = null;
+  let options = {};
 
-    let caseId;
-    let options;
+  if (caseType === 'UC') {
+    options = {
+      method: 'POST',
+      uri: `${config.get('tribunals.uri')}/api/appeals`,
+      body: ucPayload,
+      json: true,
+      resolveWithFullResponse: true,
+    };
+  } else if (caseType === 'PIP' || caseType === 'CAMPIP') {
+    options = {
+      method: 'POST',
+      uri: `${config.get('tribunals.uri')}/api/appeals`,
+      body: pipPayload,
+      json: true,
+      resolveWithFullResponse: true,
+    };
+  } else if (caseType === 'ESA') {
+    options = {
+      method: 'POST',
+      uri: `${config.get('tribunals.uri')}/api/appeals`,
+      body: esaPayload,
+      json: true,
+      resolveWithFullResponse: true,
+    };
+  } else if (caseType === 'Child Support') {
+    options = {
+      method: 'POST',
+      uri: `${config.get('tribunals.uri')}/api/appeals`,
+      body: childSupportPayload,
+      json: true,
+      resolveWithFullResponse: true,
+    };
+  } else if (caseType === 'Tax Credit') {
+    options = {
+      method: 'POST',
+      uri: `${config.get('tribunals.uri')}/api/appeals`,
+      body: taxCreditPayload,
+      json: true,
+      resolveWithFullResponse: true,
+    };
+  } else if (caseType === 'SANDLPIP') {
+    options = {
+      method: 'POST',
+      uri: `${config.get('tribunals.uri')}/api/appeals`,
+      body: pipSandLPayload,
+      json: true,
+      resolveWithFullResponse: true,
+    };
+  } else {
+    throw new Error('Unsupported case type passed');
+  }
 
-    if (caseType === 'UC') {
-        options = {
-            method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
-            body: ucPayload,
-            json: true,
-            resolveWithFullResponse: true
-        };
-    } else if (caseType === 'PIP') {
-        options = {
-            method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
-            body: pipPayload,
-            json: true,
-            resolveWithFullResponse: true
-        };
-    } else if (caseType === 'CAMPIP') {
-        options = {
-            method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
-            body: pipPayload,
-            json: true,
-            resolveWithFullResponse: true
-        };
-    } else if (caseType === 'ESA') {
-        options = {
-            method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
-            body: esaPayload,
-            json: true,
-            resolveWithFullResponse: true
-        };
-    } else if (caseType === 'Child Support') {
-        options = {
-            method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
-            body: childSupportPayload,
-            json: true,
-            resolveWithFullResponse: true
-        };
-    } else if (caseType === 'Tax Credit') {
-        options = {
-            method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
-            body: taxCreditPayload,
-            json: true,
-            resolveWithFullResponse: true
-        };
-    } else if (caseType === 'SANDLPIP') {
-        options = {
-            method: 'POST',
-            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
-            body: pipSandLPayload,
-            json: true,
-            resolveWithFullResponse: true
-        };
-    } else {
-        throw 'Unsupported case type passed';
-    }
+  await rp
+    .post(options)
+    .then(function (response) {
+      const locationUrl: string = response.headers.location;
+      caseId = locationUrl.substring(locationUrl.lastIndexOf('/') + 1);
+    })
+    .catch(function (error) {
+      logger.error(`Error at CCD createCase`, error);
+    });
 
-    await rp.post(options)
-            .then(function (response) {
-                let locationUrl = response.headers['location'];
-                caseId = locationUrl.substring(locationUrl.lastIndexOf('/') + 1)
-            })
-            .catch(function (err) {
-                console.log(`Error at CCD createCase: ${err}`);
-            });
-
-    return caseId;
+  return caseId;
 }
 
 export { createCase, createSYACase };
