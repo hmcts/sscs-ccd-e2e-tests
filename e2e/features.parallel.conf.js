@@ -218,4 +218,6 @@ class BaseConfig {
 
 }
 
+console.log(JSON.stringify(new BaseConfig(), null, 2))
+
 exports.config = new BaseConfig();
