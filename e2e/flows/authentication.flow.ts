@@ -1,58 +1,54 @@
 import { browser } from 'protractor';
 import { IdamSignInPage } from '../pages/idam-sign-in.page';
+import config from 'config';
+import { Logger } from '@hmcts/nodejs-logging';
 
-const serviceConfig = require('../service.conf');
+const logger = Logger.getLogger('authentication.flow');
+
+const ccdGatewayUrl: string = config.get('ccd.gatewayUrl');
+const ccdWebUrl: string = config.get('ccd.webUrl');
 
 export class AuthenticationFlow {
+  private userName: string;
+  private password: string;
+  private idamSignInPage = new IdamSignInPage();
 
-    private idamSignInPage = new IdamSignInPage();
+  async signOut(): Promise<void> {
+    logger.info(`Signed out of user ${this.userName}`);
+    await browser.waitForAngularEnabled(false);
+    await browser.driver.manage().deleteAllCookies();
+    await browser.get(`${ccdGatewayUrl}/logout`);
+    await browser.get(`${ccdWebUrl}/`);
+    await this.idamSignInPage.waitUntilLoaded();
+  }
 
-    async signInAsCaseOfficer() {
-        await this.signOut();
-        await this.idamSignInPage.waitUntilLoaded();
-        await this.idamSignInPage.signIn(
-            serviceConfig.TestCaseOfficerUserName,
-            serviceConfig.TestCaseOfficerPassword
-        );
-    }
+  async signInAsCaseOfficer(): Promise<void> {
+    await this.signIn('caseOfficer');
+  }
 
-    async signOut() {
-        await browser.waitForAngularEnabled(false);
-        await browser.driver.manage().deleteAllCookies();
-        await browser.get(serviceConfig.CcdGatewayUrl + '/logout');
-        await browser.get(serviceConfig.CcdWebUrl + '/');
-        await this.idamSignInPage.waitUntilLoaded();
-    }
+  async signInAsClerk(): Promise<void> {
+    await this.signIn('clerk');
+  }
 
-    async signInAsDWPResponseWriter() {
-        await this.signOut();
-        await this.idamSignInPage.waitUntilLoaded();
-        await this.idamSignInPage.signIn(
-            serviceConfig.TestDWPResponseWriterUserName,
-            serviceConfig.TestDWPResponseWriterPassword
-        );
-    }
+  async signInAsJudge(): Promise<void> {
+    await this.signIn('judge');
+  }
 
-    async signInAsClerk() {
-        await this.signOut();
-        await this.idamSignInPage.waitUntilLoaded();
-        await this.idamSignInPage.signIn(
-            serviceConfig.TestClerkUserName,
-            serviceConfig.TestClerkPassword
-        );
-    }
+  async signInAsDWPResponseWriter(): Promise<void> {
+    await this.signIn('DWPResponseWriter');
+  }
 
-    async signInAsJudge() {
-        await this.signOut();
-        await this.idamSignInPage.waitUntilLoaded();
-        await this.idamSignInPage.signIn(
-            serviceConfig.TestJudgeUserName,
-            serviceConfig.TestJudgePassword
-        );
-    }
+  async signIn(user: string): Promise<void> {
+    await this.goToSignInPage();
+    this.userName = config.get(`users.${user}.user`);
+    this.password = config.get(`users.${user}.password`);
+    logger.info(`Signing in to user ${this.userName} with password ${this.password}`);
+    await this.idamSignInPage.signIn(this.userName, this.password);
+    logger.info(`Signed in to user ${this.userName}`);
+  }
 
-    async goToSignInPage() {
-        await this.signOut();
-        await this.idamSignInPage.waitUntilLoaded();
-    }
+  async goToSignInPage(): Promise<void> {
+    await this.signOut();
+    await this.idamSignInPage.waitUntilLoaded();
+  }
 }

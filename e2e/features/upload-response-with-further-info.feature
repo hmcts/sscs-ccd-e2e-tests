@@ -11,7 +11,7 @@ Feature: The alternate happy path
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
     When I choose "Upload response"
-    And I upload contains further information YES for "PIP"
+    And I upload contains further information "YES" for "PIP"
     Then the case should be in "Response received" state
 
     When I switch to be a Case Officer

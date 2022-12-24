@@ -8,7 +8,7 @@ Feature: Create bundle for a case
     Then the case should end in "With FTA" state
 
     When I choose "Upload response"
-    And I upload contains further information NO for "PIP"
+    And I upload contains further information "NO" for "PIP"
 
   @bundle @preview-test-skip
   Scenario: Verify create bundle event for cases

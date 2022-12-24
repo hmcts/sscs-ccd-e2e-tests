@@ -1,7 +1,7 @@
 @urgent-hearing @nightly-test @migrated-to-exui
 Feature: Urgent hearing functionality
- 
-  Scenario: Grant urgent hearing for a case 
+
+  Scenario: Grant urgent hearing for a case
     Given I preset up a test case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
@@ -12,7 +12,7 @@ Feature: Urgent hearing functionality
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
     When I choose "Action further evidence"
-    And I fill the further evidence form with "Other document type" and "Urgent hearing request"
+    And I fill the further evidence form with "otherDocumentManual" and "Urgent hearing request"
     Then the case should have successfully processed "Action further evidence" event
 
     When I switch to be a Judge
@@ -26,7 +26,7 @@ Feature: Urgent hearing functionality
     And I am signed in as a Case Officer
     Given I navigate to an existing case
     When I choose "Action further evidence"
-    And I fill the further evidence form with "Other document type" and "Urgent hearing request"
+    And I fill the further evidence form with "otherDocumentManual" and "Urgent hearing request"
     Then the case should have successfully processed "Action further evidence" event
 
     When I switch to be a Judge
