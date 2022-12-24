@@ -3,6 +3,7 @@ import { multiCapabilities } from './browser.platform.matrix';
 import serviceConfig from 'config';
 import path from 'path';
 import { Logger } from '@hmcts/nodejs-logging';
+import { retry } from 'protractor-retry';
 
 const logger = Logger.getLogger('features.crossbrowser.conf');
 
@@ -11,17 +12,27 @@ const failFast = Boolean(JSON.parse(serviceConfig.get('protractor.FailFast')));
 const testAnnotation: string = serviceConfig.get('protractor.testAnnotation');
 const sauceUser: string = serviceConfig.get('sauce.user');
 const sauceKey: string = serviceConfig.get('sauce.key');
+const retries: number = Math.max(serviceConfig.get('protractor.testRetries'), 0);
+
+function onCleanUp(results): void {
+  retry.onCleanUp(results);
+}
 
 async function onPrepare(): Promise<void> {
   await browser.getCapabilities();
   await browser.manage().window().maximize();
   await browser.waitForAngularEnabled(false);
+  retry.onPrepare();
 }
 
 async function onComplete(): Promise<void> {
   await browser.getProcessedConfig();
   const session = await browser.getSession();
   logger.info(`SauceOnDemandSessionID=${session.getId()} job-name=sscs-ccd-e2e-tests`);
+}
+
+function afterLaunch(): any {
+  return retry.afterLaunch(retries);
 }
 
 const featuresPath = path.resolve(process.cwd(), 'e2e/features/*.feature');
@@ -70,8 +81,10 @@ export const config: Config = {
       },
     },
   ],
+  onCleanUp,
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   onPrepare,
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   onComplete,
+  afterLaunch,
 };

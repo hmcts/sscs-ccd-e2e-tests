@@ -20,7 +20,8 @@
     "RunWithNumberOfBrowsers": "TEST_E2E_NUM_BROWSERS",
     "WaitForAngular": "TEST_E2E_WAIT_FOR_ANGULAR",
     "FailFast": "TEST_E2E_FAIL_FAST",
-    "testAnnotation": "TEST_E2E_ANNOTATION"
+    "testAnnotation": "TEST_E2E_ANNOTATION",
+    "testRetries": "TEST_E2E_RETRIES"
   },
   "users": {
     "caseOfficer": {
