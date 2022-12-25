@@ -5,7 +5,6 @@ import { expect } from 'chai';
 import { DwpResponsePage } from '../../pages/dwpresponse.page';
 import { browser } from 'protractor';
 import config from 'config';
-import {Wait} from "../../enums/wait";
 
 const anyCcdPage = new AnyCcdFormPage();
 const caseDetailsPage = new CaseDetailsPage();
