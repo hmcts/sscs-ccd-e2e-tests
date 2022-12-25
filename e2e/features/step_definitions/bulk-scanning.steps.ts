@@ -252,14 +252,7 @@ When('I choose the next step {string}', async function (action) {
 });
 
 Then('the case should be in {string} state', async function (state: string): Promise<void> {
-  await delay(15000);
-  await anyCcdPage.reloadPage();
-  await delay(8000);
-  await anyCcdPage.clickTab('History');
-  const fieldLabel = 'End state';
-  await anyCcdPage.waitForElement(await anyCcdPage.getFieldValueLocator(fieldLabel, state));
-  const isEndStateDisplayed = await caseDetailsPage.isFieldValueDisplayed(fieldLabel, state);
-  expect(isEndStateDisplayed).to.equal(true);
+  await anyCcdPage.waitForEndState(state);
 });
 
 Then('the bundles should be successfully listed in {string} tab', async function (tabName) {

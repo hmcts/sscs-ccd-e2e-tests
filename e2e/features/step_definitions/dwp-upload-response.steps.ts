@@ -5,6 +5,7 @@ import { expect } from 'chai';
 import { DwpResponsePage } from '../../pages/dwpresponse.page';
 import { browser } from 'protractor';
 import config from 'config';
+import {Wait} from "../../enums/wait";
 
 const anyCcdPage = new AnyCcdFormPage();
 const caseDetailsPage = new CaseDetailsPage();
@@ -129,9 +130,7 @@ Then('the case should be in {string} appeal status', async function (state: stri
 });
 
 Then('the case should end in {string} state', async function (state: string) {
-  await anyCcdPage.clickTab('History');
-  await anyCcdPage.waitForElement(await anyCcdPage.getFieldValueLocator('End state', state));
-  expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
+  await anyCcdPage.waitForEndState(state);
 });
 
 Then('FTA documents should be seen against the case', async function () {
