@@ -72,7 +72,8 @@ export class AnyCcdPage extends AnyPage {
     await this.waitForElement(locator);
     const elementFinder = element(locator);
     await elementFinder.click();
-    await this.smartWait(2000);
+    await this.smartWait(Wait.quick);
+    await this.waitForSpinner();
     return elementFinder;
   }
 
@@ -80,7 +81,8 @@ export class AnyCcdPage extends AnyPage {
     const elementFinder = element.all(locator).last();
     await this.waitForElement(locator);
     await elementFinder.click();
-    await this.smartWait(2000);
+    await this.smartWait(Wait.quick);
+    await this.waitForSpinner();
     return elementFinder;
   }
 

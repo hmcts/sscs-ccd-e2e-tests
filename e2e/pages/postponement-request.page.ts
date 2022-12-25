@@ -33,11 +33,10 @@ export class PostponementRequestPage extends AnyPage {
         await anyCcdPage.chooseOptionContainingText('listingOption', 'Ready to List');
       }
       await anyCcdPage.clickContinue();
-      await browser.driver.sleep(2000);
+      await anyCcdPage.waitForElement(by.xpath('//span[contains(text(),"Preview Document")]'));
     }
     await anyCcdPage.clickContinue();
     await anyCcdPage.clickSubmit();
-    await browser.driver.sleep(2000);
   }
 
   async verifyInterlocStatus(action: string) {
