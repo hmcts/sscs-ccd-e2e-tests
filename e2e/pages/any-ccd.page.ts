@@ -157,6 +157,12 @@ export class AnyCcdPage extends AnyPage {
     return element(locator).getText();
   }
 
+  async getCcdErrorMessages(): Promise<Array<string>> {
+    const locator = by.id(`errors`);
+    await this.waitForElements(locator);
+    return element.all(locator).map(async (x) => x.getText());
+  }
+
   async waitUntilLoaded(): Promise<void> {
     await browser.waitForAngularEnabled(false);
     await browser.waitForAngular();
