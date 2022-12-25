@@ -5,10 +5,13 @@ import { expect } from 'chai';
 import { DwpResponsePage } from '../../pages/dwpresponse.page';
 import { browser } from 'protractor';
 import config from 'config';
+import { Logger } from '@hmcts/nodejs-logging';
 
 const anyCcdPage = new AnyCcdFormPage();
 const caseDetailsPage = new CaseDetailsPage();
 const dwpresponse = new DwpResponsePage();
+
+const logger = Logger.getLogger('bulk-scanning-steps.ts');
 
 const date = new Date();
 const month = date.getMonth() + 1; // months (0-11)
@@ -88,8 +91,9 @@ When('I upload with default issue code', async function () {
 });
 
 Then('I should see {string} error message', async function (errMsg: string) {
-  await browser.sleep(5000);
-  expect(await anyCcdPage.contentContains(errMsg)).to.equal(true);
+  const errorMessages = await anyCcdPage.getCcdErrorMessages();
+  logger.info(errorMessages);
+  expect(errorMessages).to.contain(errMsg);
 });
 
 When(
