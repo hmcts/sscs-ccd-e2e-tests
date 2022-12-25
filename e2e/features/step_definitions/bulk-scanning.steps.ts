@@ -15,6 +15,7 @@ import { formData } from '../data/scannedCase';
 import { incompleteFormData } from '../data/incompleteScannedCase';
 
 import { sscsPeuFormData } from '../data/sscs1PeuCase';
+import { Wait } from '../../enums/wait';
 
 const anyCcdPage = new AnyCcdPage();
 const anyCcdFormPage = new AnyCcdFormPage();
@@ -256,26 +257,37 @@ Then('the case should be in {string} state', async function (state: string): Pro
 });
 
 Then('the bundles should be successfully listed in {string} tab', async function (tabName) {
-  await delay(15000);
   await caseDetailsPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
+  if (await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')) {
+    await delay(Wait.short);
+    await caseDetailsPage.reloadPage();
+    await anyCcdPage.clickTab(tabName);
+  }
   expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
   expect(await caseDetailsPage.eventsPresentInHistory('Create a bundle')).to.equal(true);
   await browser.sleep(3000);
 });
 
 Then('The edited bundles should be successfully listed in {string} tab', async function (tabName) {
-  await delay(15000);
   await caseDetailsPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
+  if (await caseDetailsPage.eventsPresentInHistory('Create an edited bundle')) {
+    await delay(Wait.short);
+    await caseDetailsPage.reloadPage();
+    await anyCcdPage.clickTab(tabName);
+  }
   expect(await caseDetailsPage.eventsPresentInHistory('Create an edited bundle')).to.equal(true);
-  await browser.sleep(3000);
 });
 
 Then('the Stitching bundle event should be successfully listed in {string} tab', async function (tabName) {
-  await delay(5000);
   await caseDetailsPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
+  if (await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')) {
+    await delay(Wait.veryShort);
+    await caseDetailsPage.reloadPage();
+    await anyCcdPage.clickTab(tabName);
+  }
   expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
   await browser.sleep(500);
 });
@@ -330,10 +342,7 @@ When('I choose execute CCD event {string}', async function (action) {
 Then(
   'The case should end in {string} state and interloc state should be in {string}',
   async function (state: string, interlocState: string) {
-    await delay(10000);
-    await anyCcdPage.clickTab('History');
-    expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
+    await anyCcdPage.waitForEndState(state);
     expect(await anyCcdPage.contentContains(interlocState)).to.equal(true);
-    await browser.sleep(500);
   }
 );
