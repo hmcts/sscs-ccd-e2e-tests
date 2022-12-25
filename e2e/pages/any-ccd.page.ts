@@ -84,12 +84,12 @@ export class AnyCcdPage extends AnyPage {
     return elementFinder;
   }
 
-  async waitForElement(locator: Locator): Promise<void> {
-    await browser.wait(until.elementLocated(locator), Wait.normal, 'Element Locator Timeout');
+  async waitForElement(locator: Locator, wait: number = Wait.normal): Promise<void> {
+    await browser.wait(until.elementLocated(locator), wait, 'Element Locator Timeout');
   }
 
-  async waitForElements(locator: Locator): Promise<void> {
-    await browser.wait(until.elementsLocated(locator), Wait.normal, 'Elements Locator Timeout');
+  async waitForElements(locator: Locator, wait: number = Wait.normal): Promise<void> {
+    await browser.wait(until.elementsLocated(locator), wait, 'Elements Locator Timeout');
   }
 
   async chooseOption(elementId: string, locator: Locator): Promise<void> {
@@ -361,5 +361,18 @@ export class AnyCcdPage extends AnyPage {
     const uploadingLocator = by.cssContainingText('.error-message', 'Uploading');
     logger.info(`Uploading: ${await element(uploadingLocator).isPresent()}`);
     await browser.wait(ExpectedConditions.not(ExpectedConditions.presenceOf(element(uploadingLocator))), Wait.long);
+  }
+
+  async waitForEndState(state: string): Promise<void> {
+    const endStateLabel = 'End state';
+    await this.reloadPage();
+    await this.clickTab('History');
+    if (!(await this.isFieldValueDisplayed(endStateLabel, state))) {
+      await browser.sleep(Wait.short);
+      await this.reloadPage();
+      await this.clickTab('History');
+    }
+    const locator = await this.getFieldValueLocator(endStateLabel, state);
+    await this.waitForElement(locator, Wait.long);
   }
 }
