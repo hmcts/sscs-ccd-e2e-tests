@@ -39,11 +39,11 @@ withNightlyPipeline("nodejs", product, component) {
     env.TEST_E2E_API_URI = 'http://sscs-tribunals-api-aat.service.core-compute-aat.internal'
     env.TEST_E2E_WAIT_FOR_ANGULAR = 'false'
     env.TEST_E2E_FAIL_FAST = 'false'
-    env.TEST_E2E_NUM_BROWSERS = '16'
+    env.TEST_E2E_NUM_BROWSERS = '24'
     env.TEST_E2E_ANNOTATION = '--cucumberOpts.tags=@nightly-test'
     env.TEST_E2E_RETRIES = 1
 
-    after('build') {
+    afterSuccess('build') {
         stage('Transpile') {
             yarnBuilder.yarn('transpile')
         }
@@ -62,45 +62,43 @@ withNightlyPipeline("nodejs", product, component) {
                 keepAll              : true,
                 reportDir            : "reports/tests/",
                 reportFiles          : 'a11y.html',
-                reportName           : 'SSCS ExUI - Manage Cases a11y Test Report'
+                reportName           : 'ExUi Manage Cases a11y Accessibility Report'
         ])
-        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/*'
-        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/**/*'
-        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/**/**/*'
+        publishHTML([
+                allowMissing         : true,
+                alwaysLinkToLastBuild: true,
+                keepAll              : true,
+                reportDir            : "reports/tests/a11y/",
+                reportFiles          : 'index.html',
+                reportName           : 'ExUi Manage Cases a11y Test Report'
+        ])
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/a11y/*'
     }
 
     enableCrossBrowserTest(60)
     enableFullFunctionalTest(120)
 
-    after('crossBrowserTest') {
+    afterAlways('crossBrowserTest') {
         publishHTML([
                 allowMissing         : true,
                 alwaysLinkToLastBuild: true,
                 keepAll              : true,
                 reportDir            : "reports/tests/crossbrowser/",
                 reportFiles          : 'index.html',
-                reportName           : 'SSCS - EXUI Cross Browser Report'
+                reportName           : 'ExUi Cross Browser Report'
         ])
-    }
-
-    afterAlways('crossBrowserTest') {
         steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/crossbrowser/*'
-        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/crossbrowser/**/*'
     }
 
-    after('fullFunctionalTest') {
+    afterAlways('fullFunctionalTest') {
         publishHTML([
                 allowMissing         : true,
                 alwaysLinkToLastBuild: true,
                 keepAll              : true,
                 reportDir            : "reports/tests/functional/",
                 reportFiles          : 'index.html',
-                reportName           : 'SSCS - EXUI Functional Test Report'
+                reportName           : 'ExUi Functional Test Report'
         ])
-    }
-
-    afterAlways('fullFunctionalTest') {
         steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/functional/*'
-        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/functional/**/*'
     }
 }
