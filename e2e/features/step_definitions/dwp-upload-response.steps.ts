@@ -92,8 +92,9 @@ When('I upload with default issue code', async function () {
 
 Then('I should see {string} error message', async function (errMsg: string) {
   const errorMessages = await anyCcdPage.getCcdErrorMessages();
-  logger.info(errorMessages);
-  expect(errorMessages).to.contain(errMsg);
+  logger.info(errorMessages.join('\n'));
+  logger.info(errorMessages[0].includes(errMsg));
+  expect(errorMessages.join('\n')).to.contain(errMsg);
 });
 
 When(
