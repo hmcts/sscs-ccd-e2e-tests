@@ -27,7 +27,7 @@ const retries: number = Math.max(serviceConfig.get('protractor.testRetries'), 0)
 const loggingDriver = serviceConfig.get('logging.driver');
 const loggingBrowser = serviceConfig.get('logging.driver');
 
-let proxy: { httpProxy: any; proxyType: string; sslProxy: any } = null;
+let proxy: { httpProxy: string; proxyType: string; sslProxy: string } = null;
 if (useProxy) {
   const proxyBase = proxyUrl.replace('http://', '');
   proxy = {
@@ -81,6 +81,7 @@ const plugins = [
       reportName: 'SSCS CCD E2E Tests',
       jsonDir: 'reports/tests/functional',
       reportPath: 'reports/tests/functional',
+      saveCollectedJSON: true,
     },
   },
 ];
