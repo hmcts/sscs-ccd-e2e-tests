@@ -5,7 +5,7 @@ import { Logger } from '@hmcts/nodejs-logging';
 const logger = Logger.getLogger('hooks.ts');
 
 After(async function (scenario) {
-  logger.info(`Scenario results are ################ ${scenario.result.status}`);
+  logger.info(`Scenario results are ${scenario.result.status}`);
   if (scenario.result.status === 'failed') {
     // const screenShot = await browser.takeScreenshot();
     // this.attach(screenShot, "image/png");

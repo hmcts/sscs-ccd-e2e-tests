@@ -33,7 +33,6 @@ Then('the hearing recording should (be|not be) in {string} tab', async function 
 });
 
 Then('the {string} should be successfully listed in {string} tab', async function (action, tabName) {
-  // await delay(10000);
   await anyCcdPage.clickTab(tabName);
   expect(await caseDetailsPage.eventsPresentInHistory(action)).to.equal(true);
 });

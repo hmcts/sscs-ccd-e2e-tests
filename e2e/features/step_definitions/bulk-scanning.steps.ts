@@ -81,10 +81,6 @@ async function checkIncompleteDataItems(): Promise<void> {
   areFieldsDisplayed.forEach((isFieldDisplayed) => expect(isFieldDisplayed).to.equal(true));
 }
 
-function delay(ms: number): Promise<unknown> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 async function enterMrnDate(): Promise<void> {
   await browser.sleep(2000);
   await caseDetailsPage.addDayItems('caseCreated');
@@ -258,7 +254,7 @@ Then('the bundles should be successfully listed in {string} tab', async function
   await caseDetailsPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
   if (await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')) {
-    await delay(Wait.short);
+    await browser.sleep(Wait.short);
     await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab(tabName);
   }
@@ -271,7 +267,7 @@ Then('The edited bundles should be successfully listed in {string} tab', async f
   await caseDetailsPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
   if (await caseDetailsPage.eventsPresentInHistory('Create an edited bundle')) {
-    await delay(Wait.short);
+    await browser.sleep(Wait.short);
     await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab(tabName);
   }
@@ -282,7 +278,7 @@ Then('the Stitching bundle event should be successfully listed in {string} tab',
   await caseDetailsPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
   if (await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')) {
-    await delay(Wait.veryShort);
+    await browser.sleep(Wait.veryShort);
     await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab(tabName);
   }
@@ -311,14 +307,14 @@ Given('I presetup an {string} SYA case', async function (caseType) {
 });
 
 Given('I navigate to an existing case', async function () {
-  logger.info(`the saved case id is ################## ${caseReference}`);
+  logger.info(`the saved case id is ${caseReference}`);
   await anyCcdPage.get(`/v2/case/${caseReference}`);
   await anyCcdPage.waitForSpinner();
 });
 
 Given('I complete the event', async function () {
   await anyCcdPage.clickSubmit();
-  await delay(2000);
+  await browser.sleep(2000);
 });
 
 When('I choose execute CCD event {string}', async function (action) {
