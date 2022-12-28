@@ -128,9 +128,7 @@ When('I upload a doc', async function () {
 });
 
 Then('I see {string} event in case fields', async function (expectedEvent) {
-  await anyCcdPage.click('History');
-  // await anyCcdPage.reloadPage();
-  await browser.sleep(50);
+  await anyCcdPage.clickTab('History');
   expect(await caseDetailsPage.isFieldValueDisplayed('Event', expectedEvent)).to.equal(true);
   await browser.driver.sleep(50);
 });

@@ -81,11 +81,8 @@ When('I update joint party to {string} for UC', async function (hasJointParty) {
     await jointPartyPage.addJointPartyDetails();
     await browser.sleep(100);
     await anyCcdPage.clickSubmit();
-    await browser.sleep(100);
   }
-  await browser.sleep(10);
-  await anyCcdPage.click('History');
-  await browser.sleep(10);
+  await anyCcdPage.clickTab('History');
   expect(await caseDetailsPage.eventsPresentInHistory('Update to case data')).to.equal(true);
   expect(await caseDetailsPage.eventsPresentInHistory('Joint Party Added')).to.equal(true);
   logger.info('&&&& Joint Party Added');

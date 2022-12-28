@@ -24,7 +24,7 @@ export class AnyCcdPage extends AnyPage {
       'Button did not show in time'
     );
     await element.all(by.xpath(linkPath)).first().click();
-    await this.smartWait(2000);
+    await this.smartWait(Wait.quick);
   }
 
   async clickContinue(): Promise<ElementFinder> {
