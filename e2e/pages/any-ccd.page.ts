@@ -385,7 +385,7 @@ export class AnyCcdPage extends AnyPage {
     await this.reloadPage();
     await this.clickTab('History');
     if (!(await this.isFieldValueDisplayed(endStateLabel, state))) {
-      await browser.sleep(Wait.short);
+      await browser.sleep(Wait.veryShort);
       await this.reloadPage();
       await this.clickTab('History');
     }
