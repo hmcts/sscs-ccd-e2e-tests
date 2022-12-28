@@ -30,8 +30,8 @@ When('generate a letter in {string} with {string} option', async function (lette
     throw new Error('No adjustment option passed in test');
   }
   await anyCcdPage.clickContinue();
-  const errors = await anyCcdPage.getCcdErrorMessages();
-  expect(errors.length).to.equal(0);
+  const errors = await anyCcdPage.numberOfCcdErrorMessages();
+  expect(errors).to.equal(0);
   await anyCcdPage.clickSubmit();
 });
 

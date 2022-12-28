@@ -50,6 +50,6 @@ When('I select Confidentiality Status as {word}', async function (confidentialit
   await anyCcdPage.fillValues('appeal_mrnDetails_dwpIssuingOffice', 'Tax Credit Office');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
-  const errors = await anyCcdPage.getCcdErrorMessages();
-  expect(errors.length).to.equal(0);
+  const errors = await anyCcdPage.numberOfCcdErrorMessages();
+  expect(errors).to.equal(0);
 });
