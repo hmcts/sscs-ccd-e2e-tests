@@ -41,10 +41,10 @@ Then('reasonable adjustment details are seen in summary page', async function ()
 });
 
 Then('reasonable adjustment details are not seen in summary page', async function () {
-  const reasonableAdjustment = await anyCcdPage.getFieldValue('Wants Reasonable Adjustment');
-  expect(reasonableAdjustment).to.not.equal('Yes');
-  const formatRequirements = await anyCcdPage.getFieldValue('Alternative Format Requirements');
-  expect(formatRequirements).to.not.equal('A2');
+  const reasonableAdjustment = await anyCcdPage.getFieldValues('Wants Reasonable Adjustment');
+  expect(reasonableAdjustment).to.not.include('Yes');
+  const formatRequirements = await anyCcdPage.getFieldValues('Alternative Format Requirements');
+  expect(formatRequirements).to.not.include('A2');
 });
 
 Then('Reasonable adjustment tab is seen with {string} as {string}', async function (field, value) {
