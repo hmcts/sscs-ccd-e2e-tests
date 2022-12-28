@@ -34,13 +34,17 @@ When('generate a letter in {string} with {string} option', async function (lette
 });
 
 Then('reasonable adjustment details are seen in summary page', async function () {
-  await anyCcdPage.isFieldValueDisplayed('Wants Reasonable Adjustment', 'Yes');
-  await anyCcdPage.isFieldValueDisplayed('Alternative Format Requirements', 'A2');
+  const reasonableAdjustment = await anyCcdPage.getFieldValue('Wants Reasonable Adjustment');
+  expect(reasonableAdjustment).to.equal('Yes');
+  const formatRequirements = await anyCcdPage.getFieldValue('Alternative Format Requirements');
+  expect(formatRequirements).to.equal('A2');
 });
 
 Then('reasonable adjustment details are not seen in summary page', async function () {
-  expect(await anyCcdPage.isFieldValueDisplayed('Wants Reasonable Adjustment', 'Yes')).to.equal(false);
-  expect(await anyCcdPage.isFieldValueDisplayed('Alternative Format Requirements', 'A2')).to.equal(false);
+  const reasonableAdjustment = await anyCcdPage.getFieldValue('Wants Reasonable Adjustment');
+  expect(reasonableAdjustment).to.not.equal('Yes');
+  const formatRequirements = await anyCcdPage.getFieldValue('Alternative Format Requirements');
+  expect(formatRequirements).to.not.equal('A2');
 });
 
 Then('Reasonable adjustment tab is seen with {string} as {string}', async function (field, value) {

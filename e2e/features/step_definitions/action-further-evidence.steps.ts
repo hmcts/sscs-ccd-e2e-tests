@@ -94,7 +94,10 @@ Then('I see {string} and {string} event being processed successfully', async fun
 
 Then('I should still see previous uploaded file collection within documents tab', async function () {
   await anyCcdPage.clickTab('Documents');
-  expect(await anyCcdPage.isFieldValueDisplayed('Type', 'Appellant evidence')).to.equal(true);
-  expect(await anyCcdPage.isFieldValueDisplayed('Evidence issued', 'Yes')).to.equal(true);
-  expect(await anyCcdPage.isFieldValueDisplayed('Original document URL', 'issue1.pdf')).to.equal(true);
+  const type = await anyCcdPage.getFieldValue('Type');
+  expect(type).to.equal('Appellant evidence');
+  const evidenceIssued = await anyCcdPage.getFieldValue('Evidence issued');
+  expect(evidenceIssued).to.equal('Yes');
+  const originalDocumentUrl = await anyCcdPage.getFieldValue('Original document URL');
+  expect(originalDocumentUrl).to.equal('issue1.pdf');
 });

@@ -126,13 +126,15 @@ When('I upload a doc', async function () {
 
 Then('I see {string} event in case fields', async function (expectedEvent) {
   await anyCcdPage.clickTab('History');
-  expect(await caseDetailsPage.isFieldValueDisplayed('Event', expectedEvent)).to.equal(true);
+  const fieldValue = await caseDetailsPage.getFieldValue('Event');
+  expect(fieldValue).to.equal(expectedEvent);
   await browser.driver.sleep(50);
 });
 
 Then('I see field {string} with value {string} in {string} tab', async function (key, value, tab) {
   await anyCcdPage.clickTab(tab);
-  expect(await caseDetailsPage.isFieldValueDisplayed(key, value)).to.equal(true);
+  const fieldValue = await caseDetailsPage.getFieldValue(key);
+  expect(fieldValue).to.equal(value);
   await browser.driver.sleep(60);
 });
 

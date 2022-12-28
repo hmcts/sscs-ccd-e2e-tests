@@ -1,6 +1,7 @@
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
 import { Given, Then } from 'cucumber';
 import { browser } from 'protractor';
+import { expect } from 'chai';
 
 const anyCcdPage = new AnyCcdFormPage();
 
@@ -20,7 +21,8 @@ Given('I upload supplementary response', async function () {
 
 Then('I should see supplementary response in the Unprocessed Correspondence tab', async function () {
   await anyCcdPage.clickTab('Unprocessed Correspondence');
-  await anyCcdPage.isFieldValueDisplayed('Original document URL', 'issue1.pdf');
+  const fieldValue = await anyCcdPage.getFieldValue('Original document URL');
+  expect(fieldValue).to.equal('issue1.pdf');
 });
 
 Given('I upload a document with redacted content', async function () {
@@ -32,6 +34,8 @@ Given('I upload a document with redacted content', async function () {
 
 Then('I should see redacted content in Documents tab', async function () {
   await anyCcdPage.clickTab('Documents');
-  await anyCcdPage.isFieldValueDisplayed('Original document URL', 'issue1.pdf');
-  await anyCcdPage.isFieldValueDisplayed('Edited document URL', 'issue2.pdf');
+  const originalDocumentUrl = await anyCcdPage.getFieldValue('Original document URL');
+  expect(originalDocumentUrl).to.equal('issue1.pdf');
+  const editedDocumentUrl = await anyCcdPage.getFieldValue('Edited document URL');
+  expect(editedDocumentUrl).to.equal('issue2.pdf');
 });

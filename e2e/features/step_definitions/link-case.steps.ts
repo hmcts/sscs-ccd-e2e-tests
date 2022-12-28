@@ -14,5 +14,6 @@ When('I add a {string} case to be linked', async function (caseId: string) {
 
 Then('I should see {string} case linked within related cases tab', async function (caseId: string) {
   await anyCcdPage.clickTab('Related Cases');
-  expect(await anyCcdPage.isFieldValueDisplayed('Has related appeal(s)', caseId)).to.equal(true);
+  const fieldValue = await anyCcdPage.getFieldValue('Has related appeal(s)');
+  expect(fieldValue).to.equal(caseId);
 });

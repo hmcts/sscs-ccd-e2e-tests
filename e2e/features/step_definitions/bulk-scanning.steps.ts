@@ -166,7 +166,8 @@ Given(
     await anyCcdPage.clickContinue();
     await anyCcdPage.clickSubmit();
     expect(await caseDetailsPage.getAlertMessage()).to.equal('has been created');
-    expect(await caseDetailsPage.isFieldValueDisplayed('Event', 'Create an exception record')).to.equal(true);
+    const fieldValue = await caseDetailsPage.getFieldValue('Event');
+    expect(fieldValue).to.equal('Create an exception record');
   }
 );
 
@@ -188,7 +189,8 @@ Given('I have a PIP bulk-scanned document filled with incomplete fields', async 
   await anyCcdPage.clickSubmit();
 
   expect(await caseDetailsPage.getAlertMessage()).to.equal('has been created');
-  expect(await caseDetailsPage.isFieldValueDisplayed('Event', 'Create an exception record')).to.equal(true);
+  const fieldValue = await caseDetailsPage.getFieldValue('Event');
+  expect(fieldValue).to.equal('Create an exception record');
   await anyCcdPage.clickTab('Form OCR');
   await checkIncompleteDataItems();
 });
@@ -273,12 +275,15 @@ Then('the Stitching bundle event should be successfully listed in {string} tab',
 
 Then('the case bundle details should be listed in {string} tab', async function (tabName) {
   await anyCcdPage.clickTab(tabName);
-  expect(await caseDetailsPage.isFieldValueDisplayed('Stitch status', 'DONE')).to.equal(true);
-  expect(await caseDetailsPage.isFieldValueDisplayed('Config used for bundle', 'SSCS Bundle Original')).to.equal(true);
+  const switchStatus = await caseDetailsPage.getFieldValue('Stitch status');
+  expect(switchStatus).to.equal('DONE');
+  const configUsed = await caseDetailsPage.getFieldValue('Config used for bundle');
+  expect(configUsed).to.equal('SSCS Bundle Original');
 });
 
 Then('the {string} bundle configuration should have been used', async function (config) {
-  expect(await caseDetailsPage.isFieldValueDisplayed('Config used for bundle', config)).to.equal(true);
+  const fieldValue = await caseDetailsPage.getFieldValue('Config used for bundle');
+  expect(fieldValue).to.equal(config);
 });
 
 Given('I preset up a test case', async function () {

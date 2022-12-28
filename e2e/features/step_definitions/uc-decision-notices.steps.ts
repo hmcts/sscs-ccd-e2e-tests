@@ -123,5 +123,6 @@ Then('I should see the Request outcome status for {string} to be {string}', asyn
   await anyCcdPage.clickTab('Summary');
   await browser.driver.sleep(2000);
   await anyCcdPage.pageHeadingContains(`Confidentiality request outcome ${partyType}`);
-  await anyCcdPage.isFieldValueDisplayed('Request outcome', status);
+  const fieldValue = await anyCcdPage.getFieldValue('Request outcome');
+  expect(fieldValue).to.equal(status);
 });

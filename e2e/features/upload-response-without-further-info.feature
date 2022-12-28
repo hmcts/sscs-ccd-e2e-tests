@@ -68,8 +68,8 @@ Feature: The happy path
     Given I navigate to an existing case
 
     When I choose "Update to case data"
-    And  I select Confidentiality Status as yes
-    Then I should see "Is case confidential? Yes"
+    And  I select Confidentiality Status as Yes
+    Then I should see "Yes" for the field "Confidentiality Required"
 
 
 

@@ -9,8 +9,9 @@ Given('I wait {string} seconds', async function (number) {
   await browser.sleep(number * 1000);
 });
 
-Then('I should see {string}', async function (text) {
-  await anyCcdPage.contentContains(text);
+Then('I should see {string} for the field {string}', async function (value: string, field: string) {
+  const fieldValue = await anyCcdPage.getFieldValue(field);
+  expect(fieldValue).to.equal(value);
 });
 
 Then('the {string} tab is seen with {string} content', async function (tabName: string, tabContent: string) {

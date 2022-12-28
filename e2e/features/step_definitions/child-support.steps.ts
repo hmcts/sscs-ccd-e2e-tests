@@ -44,8 +44,8 @@ Given('I add taxCredit other party data', async function () {
   await caseDetailsPage.reloadPage();
 });
 
-When('I select Confidentiality Status as yes', async function () {
-  await anyCcdPage.clickElementById('appeal_appellant_confidentialityRequired_Yes');
+When('I select Confidentiality Status as {word}', async function (confidentialityStatus: string) {
+  await anyCcdPage.clickElementById(`appeal_appellant_confidentialityRequired_${confidentialityStatus}`);
   await anyCcdPage.fillValues('appeal_mrnDetails_dwpIssuingOffice', 'Tax Credit Office');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
