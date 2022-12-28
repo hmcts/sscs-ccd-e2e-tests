@@ -397,11 +397,12 @@ export class AnyCcdPage extends AnyPage {
     await this.reloadPage();
     await this.clickTab('History');
     if (!(await this.isFieldValueDisplayed(endStateLabel, state))) {
-      await browser.sleep(Wait.normal);
+      logger.info(`end state not found, waiting for ${Wait.long / 1000}s`);
+      await browser.sleep(Wait.long);
       await this.reloadPage();
       await this.clickTab('History');
     }
     const locator = await this.getFieldValueLocator(endStateLabel, state);
-    await this.waitForElement(locator, Wait.max);
+    await this.waitForElement(locator, Wait.short);
   }
 }
