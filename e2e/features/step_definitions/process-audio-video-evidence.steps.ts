@@ -1,7 +1,6 @@
 import { Given, Then, When } from 'cucumber';
 import { by, element } from 'protractor';
 import { expect } from 'chai';
-import { Logger } from '@hmcts/nodejs-logging';
 
 import { CaseDetailsPage } from '../../pages/case-details.page';
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
@@ -10,8 +9,6 @@ import { DwpResponsePage } from '../../pages/dwpresponse.page';
 const caseDetailsPage = new CaseDetailsPage();
 const anyCcdPage = new AnyCcdFormPage();
 const dwpresponse = new DwpResponsePage();
-
-const logger = Logger.getLogger('process-audio-video-evidence.steps');
 
 When('I upload AV evidence and complete Upload response event for {string} case', async function (benefitType) {
   const dwpState = 'YES';
@@ -54,20 +51,18 @@ When('I process the AV evidence using the {string} action', async function (acti
 Then('I {string} see the AV evidence in the FTA Documents tab', async function (assertion) {
   await anyCcdPage.clickTab('FTA Documents');
   const avVisibility = assertion === 'should';
-  let documentTypeDisplayed = false;
-  try {
-    documentTypeDisplayed = await caseDetailsPage.isFieldValueDisplayed('Document type', 'Audio document');
-  } catch (error) {
-    logger.info(error.message);
+  const documentTypeDisplayed = caseDetailsPage.getFieldValues('Document type');
+  if (avVisibility) {
+    expect(documentTypeDisplayed).to.contain('Audio document');
+  } else {
+    expect(documentTypeDisplayed).to.not.contain('Audio document');
   }
-  expect(documentTypeDisplayed).to.equal(avVisibility);
-  let audioVideoDocumentDisplayed = false;
-  try {
-    audioVideoDocumentDisplayed = await caseDetailsPage.isFieldValueDisplayed('Audio/video document', 'test_av.mp3');
-  } catch (error) {
-    logger.info(error.message);
+  const audioVideoDocumentDisplayed = caseDetailsPage.getFieldValues('Audio/video document');
+  if (avVisibility) {
+    expect(audioVideoDocumentDisplayed).to.contain('test_av.mp3');
+  } else {
+    expect(audioVideoDocumentDisplayed).to.not.contain('test_av.mp3');
   }
-  expect(audioVideoDocumentDisplayed).to.equal(avVisibility);
 });
 
 Then('the bundle should include the AV evidence', async function () {
