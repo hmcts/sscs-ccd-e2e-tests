@@ -1,5 +1,5 @@
 import { AnyCcdPage } from '../../pages/any-ccd.page';
-import { Given, Then, When } from 'cucumber';
+import { Given, Then } from 'cucumber';
 import { expect } from 'chai';
 import { browser } from 'protractor';
 
@@ -11,10 +11,6 @@ Given('I wait {string} seconds', async function (number) {
 
 Then('I should see {string}', async function (text) {
   await anyCcdPage.contentContains(text);
-});
-
-When('I click {string}', async function (toClick) {
-  await anyCcdPage.click(toClick);
 });
 
 Then('the {string} tab is seen with {string} content', async function (tabName: string, tabContent: string) {

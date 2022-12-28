@@ -205,7 +205,7 @@ Given('I have a PIP bulk-scanned document filled with incomplete fields', async 
 
   expect(await caseDetailsPage.getAlertMessage()).to.equal('has been created');
   expect(await caseDetailsPage.isFieldValueDisplayed('Event', 'Create an exception record')).to.equal(true);
-  await anyCcdPage.click('Form OCR');
+  await anyCcdPage.clickTab('Form OCR');
   await checkIncompleteDataItems();
 });
 
@@ -219,7 +219,7 @@ When('I choose {string} for an incomplete application', async function (action) 
   expect(await anyCcdPage.pageHeadingContains('Create new case from exception')).to.equal(true);
 
   await anyCcdPage.clickSubmit();
-  await anyCcdPage.click('Ignore Warning and Go');
+  await anyCcdPage.clickIgnoreWarning();
   // expect(await anyCcdPage.pageHeadingContains('History')).to.equal(true);
 });
 
