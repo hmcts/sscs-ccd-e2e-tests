@@ -144,6 +144,10 @@ export class AnyCcdPage extends AnyPage {
     return element.all(this.getFieldLocator(fieldLabel)).first().getText();
   }
 
+  async getFieldValues(fieldLabel: string): Promise<Array<string>> {
+    return element.all(this.getFieldLocator(fieldLabel)).map(async (elementFinder) => elementFinder.getText());
+  }
+
   async pageHeadingContains(match: string): Promise<boolean> {
     try {
       await browser.wait(

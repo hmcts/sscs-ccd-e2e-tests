@@ -122,21 +122,24 @@ Then('the case should end in {string} state', async function (state: string) {
 
 Then('FTA documents should be seen against the case', async function () {
   await anyCcdPage.clickTab('FTA Documents');
-  await anyCcdPage.isFieldValueDisplayed('Document type', 'FTA evidence bundle');
-  await anyCcdPage.isFieldValueDisplayed('Original document Url', `FTA evidence received on ${formattedDate}.pdf`);
 
-  await anyCcdPage.isFieldValueDisplayed('Document type', 'FTA response');
-  await anyCcdPage.isFieldValueDisplayed('Original document Url', `FTA response received on ${formattedDate}.pdf`);
+  const documentTypes = await anyCcdPage.getFieldValues('Document type');
+  expect(documentTypes).to.include('FTA evidence bundle');
+  expect(documentTypes).to.include('FTA response');
+  expect(documentTypes).to.include('AT38');
 
-  await anyCcdPage.isFieldValueDisplayed('Document type', 'AT38');
-  await anyCcdPage.isFieldValueDisplayed('Original document Url', `AT38 received on ${formattedDate}.pdf`);
+  const originalDocumentUrls = await anyCcdPage.getFieldValues('Original document Url');
+  expect(originalDocumentUrls).to.include(`FTA evidence received on ${formattedDate}.pdf`);
+  expect(originalDocumentUrls).to.include(`AT38 received on ${formattedDate}.pdf`);
 });
 
 Then('FTA edited documents should be seen against the case', async function () {
   await anyCcdPage.clickTab('FTA Documents');
-  await anyCcdPage.isFieldValueDisplayed('Document type', 'FTA evidence bundle');
-  await anyCcdPage.isFieldValueDisplayed('Edited document Url', `FTA edited evidence received on ${formattedDate}.pdf`);
 
-  await anyCcdPage.isFieldValueDisplayed('Document type', 'FTA response');
-  await anyCcdPage.isFieldValueDisplayed('Edited document Url', `FTA edited response received on ${formattedDate}.pdf`);
+  const documentTypes = await anyCcdPage.getFieldValues('Document type');
+  expect(documentTypes).to.include('FTA evidence bundle');
+  expect(documentTypes).to.include('FTA response');
+
+  const originalDocumentUrls = await anyCcdPage.getFieldValues('Original document Url');
+  expect(originalDocumentUrls).to.include(`FTA evidence received on ${formattedDate}.pdf`);
 });
