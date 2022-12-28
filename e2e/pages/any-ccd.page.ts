@@ -57,7 +57,7 @@ export class AnyCcdPage extends AnyPage {
   }
 
   async clickTab(tabTitle: string): Promise<ElementFinder> {
-    await this.waitForTabToLoad(tabTitle);
+    await this.waitForTabsToLoad();
     return this.clickElement('div', tabTitle);
   }
 
@@ -181,13 +181,8 @@ export class AnyCcdPage extends AnyPage {
     await browser.waitForAngular();
   }
 
-  async waitForTabToLoad(fieldLabel: string): Promise<void> {
-    await browser.wait(
-      ExpectedConditions.visibilityOf(
-        element(by.xpath(`//div[@class="mat-tab-label-content" and normalize-space()="${fieldLabel}"]`))
-      ),
-      Wait.extended
-    );
+  async waitForTabsToLoad(): Promise<void> {
+    await this.waitForElement(by.tagName('mat-tab-header'));
   }
 
   async reloadPage(): Promise<void> {
