@@ -235,6 +235,12 @@ export class AnyCcdPage extends AnyPage {
     await element(by.id('tempNoteDetail')).sendKeys('This is a test');
   }
 
+  async getCaseFields(): Promise<Array<string>> {
+    return element
+      .all(by.xpath('//*[@class="case-field"]//markdown/*'))
+      .map(async (elementFinder) => elementFinder.getText());
+  }
+
   async contentContains(match: string, wait: Wait = Wait.extended): Promise<boolean> {
     const contentPath =
       `//*[` +

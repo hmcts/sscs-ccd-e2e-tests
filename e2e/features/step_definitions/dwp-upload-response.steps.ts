@@ -10,7 +10,7 @@ const anyCcdPage = new AnyCcdFormPage();
 const caseDetailsPage = new CaseDetailsPage();
 const dwpresponse = new DwpResponsePage();
 
-const logger = Logger.getLogger('bulk-scanning-steps.ts');
+const logger = Logger.getLogger('dwp-upload-response.steps');
 
 const date = new Date();
 const month = date.getMonth() + 1; // months (0-11)
