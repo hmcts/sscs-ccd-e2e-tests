@@ -270,7 +270,6 @@ export class DwpResponsePage extends AnyPage {
     await anyCcdFormPage.clickElementById('otherParties_0_unacceptableCustomerBehaviour_No');
     await anyCcdFormPage.chooseOptionContainingText('otherParties_0_role_name', 'Paying parent');
     await anyCcdFormPage.clickContinue();
-    await anyCcdFormPage.scrollBar("//button[@type='submit']");
-    await browser.sleep(10000);
+    await anyCcdFormPage.clickSubmit();
   }
 }

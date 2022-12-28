@@ -20,7 +20,7 @@ When('I write a final decision generate notice no generate', async function () {
   await issueDecisionPage.uploadDirection();
   await browser.sleep(5000);
   await anyCcdPage.clickContinue();
-  await anyCcdPage.scrollBar("//button[@type='submit']");
+  await anyCcdPage.clickSubmit();
 });
 
 When('I write a final decision generate notice yes daily living mobility is no face to face', async function () {
