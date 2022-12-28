@@ -9,5 +9,5 @@ Feature: Link a case
 
   Scenario: Link with another sscs case
     When I choose "Link a case"
-    And I add a "1627639474273394" case to be linked
-    Then I should see "1627639474273394" case linked within related cases tab
+    And I add a case to be linked
+    Then I should see the case linked within related cases tab

@@ -1,19 +1,29 @@
 import { When, Then } from 'cucumber';
 import { expect } from 'chai';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
+import * as ccd from '../../helpers/ccd';
+import { Logger } from '@hmcts/nodejs-logging';
+
+const logger = Logger.getLogger('link-case');
 
 const anyCcdPage = new AnyCcdPage();
 
-When('I add a {string} case to be linked', async function (caseId: string) {
+let linkedCaseReference: string = null;
+
+When('I add a case to be linked', async function () {
+  linkedCaseReference = await ccd.createSYACase('PIP');
+  logger.info(`linked Case Id: ${linkedCaseReference}`);
+
   await anyCcdPage.clickAddNew();
-  await anyCcdPage.setText('//*[@id="linkedCase_0_0"]', caseId);
+  await anyCcdPage.setText('//*[@id="linkedCase_0_0"]', linkedCaseReference);
 
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
 });
 
-Then('I should see {string} case linked within related cases tab', async function (caseId: string) {
+Then('I should see the case linked within related cases tab', async function () {
   await anyCcdPage.clickTab('Related Cases');
-  const fieldValue = await anyCcdPage.getFieldValue('Has related appeal(s)');
-  expect(fieldValue).to.equal(caseId);
+  const linkedCases = await anyCcdPage.getFieldValues('Linked case(s)');
+  logger.info(`Linked Cases Ids:\n${linkedCases.join('\n')}`);
+  expect(linkedCases).to.equal(linkedCaseReference);
 });
