@@ -99,6 +99,7 @@ export class AnyCcdPage extends AnyPage {
     const choiceLocator = by.id(elementId);
     await this.waitForElement(choiceLocator);
     await element(choiceLocator).element(locator).click();
+    await browser.sleep(Wait.quick);
   }
 
   async chooseOptionContainingText(elementId: string, text: string): Promise<void> {
