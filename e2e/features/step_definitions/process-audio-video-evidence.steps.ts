@@ -77,7 +77,7 @@ Then('the bundle should include the AV evidence', async function () {
 });
 
 Given('I submit {string} as {string} in the Upload document FE event', async function (filename, type) {
-  await anyCcdPage.click('Add new');
+  await anyCcdPage.clickAddNew();
   await anyCcdPage.chooseOptionContainingText('draftSscsFurtherEvidenceDocument_0_documentType', type);
   await anyCcdPage.uploadFile('draftSscsFurtherEvidenceDocument_0_documentLink', filename);
   await anyCcdPage.clickContinue();

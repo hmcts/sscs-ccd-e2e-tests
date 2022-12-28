@@ -63,7 +63,7 @@ When('request for Hearing recording is {string}', async function (hearingPermiss
 
 Given('I submit {string} as Request for Hearing Recording in the Upload document FE event', async function (filename) {
   expect(await anyCcdPage.pageHeadingContains('Upload document FE')).to.equal(true);
-  await anyCcdPage.click('Add new');
+  await anyCcdPage.clickAddNew();
   await anyCcdPage.chooseOptionContainingText(
     '#draftSscsFurtherEvidenceDocument_0_documentType',
     'Request for Hearing Recording'
