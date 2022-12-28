@@ -34,8 +34,8 @@ Given('I upload a document with redacted content', async function () {
 
 Then('I should see redacted content in Documents tab', async function () {
   await anyCcdPage.clickTab('Documents');
-  const originalDocumentUrl = await anyCcdPage.getFieldValue('Original document URL');
-  expect(originalDocumentUrl).to.equal('issue1.pdf');
-  const editedDocumentUrl = await anyCcdPage.getFieldValue('Edited document URL');
-  expect(editedDocumentUrl).to.equal('issue2.pdf');
+  const originalDocumentUrl = await anyCcdPage.getFieldValues('Original document URL');
+  expect(originalDocumentUrl).to.include('issue1.pdf');
+  const editedDocumentUrl = await anyCcdPage.getFieldValues('Edited document URL');
+  expect(editedDocumentUrl).to.include('issue2.pdf');
 });
