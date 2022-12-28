@@ -3,6 +3,8 @@ import { expect } from 'chai';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import * as ccd from '../../helpers/ccd';
 import { Logger } from '@hmcts/nodejs-logging';
+import { Wait } from '../../enums/wait';
+import { browser } from 'protractor';
 
 const logger = Logger.getLogger('link-case');
 
@@ -13,6 +15,8 @@ let linkedCaseReference: string = null;
 When('I add a case to be linked', async function () {
   linkedCaseReference = await ccd.createSYACase('PIP');
   logger.info(`linked Case Id: ${linkedCaseReference}`);
+
+  await browser.sleep(Wait.normal);
 
   await anyCcdPage.clickAddNew();
   await anyCcdPage.setText('//*[@id="linkedCase_0_0"]', linkedCaseReference);
