@@ -126,7 +126,7 @@ async function enterBenefitDetails(): Promise<void> {
 async function createSSCSCase(): Promise<void> {
   await anyCcdPage.chooseOptionByValue('cc-case-type', 'Benefit');
   await anyCcdPage.chooseOptionByValue('cc-event', 'validAppealCreated');
-  await anyCcdPage.click('Start');
+  await anyCcdPage.clickButton('Start');
   await browser.sleep(2000);
 
   await enterMrnDate();
@@ -136,7 +136,7 @@ async function createSSCSCase(): Promise<void> {
 }
 
 Given('I create an child support case', async function () {
-  await anyCcdPage.click('Create case');
+  await anyCcdPage.clickCreateCase();
   expect(await anyCcdPage.pageHeadingContains('Create Case')).to.equal(true);
   await browser.sleep(3000);
   await createSSCSCase();
@@ -153,11 +153,11 @@ Given(
   'I have a {word} bulk-scanned document with {word} fields',
   { timeout: 600 * 1000 },
   async function (benefitCode: string, formType: string): Promise<void> {
-    await anyCcdPage.click('Create case');
+    await anyCcdPage.clickCreateCase();
     expect(await anyCcdPage.pageHeadingContains('Create Case')).to.equal(true);
     await browser.sleep(3000);
     await anyCcdFormPage.setCreateCaseFieldValue('Case type', 'SSCS Bulkscanning');
-    await anyCcdPage.click('Start');
+    await anyCcdPage.clickButton('Start');
 
     expect(await anyCcdPage.pageHeadingContains('Envelope meta data')).to.equal(true);
 
@@ -187,10 +187,10 @@ Given(
 );
 
 Given('I have a PIP bulk-scanned document filled with incomplete fields', async function () {
-  await anyCcdPage.click('Create new case');
+  await anyCcdPage.clickCreateCase();
   expect(await anyCcdPage.pageHeadingContains('Create Case')).to.equal(true);
   await anyCcdFormPage.setCreateCaseFieldValue('Case type', 'SSCS Bulkscanning');
-  await anyCcdPage.click('Start');
+  await anyCcdPage.clickButton('Start');
 
   expect(await anyCcdPage.pageHeadingContains('Envelope meta data')).to.equal(true);
 

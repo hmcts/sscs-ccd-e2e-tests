@@ -47,6 +47,12 @@ export class AnyCcdPage extends AnyPage {
     return this.clickElementByXpath('//ccd-event-trigger//button[@type="submit"]');
   }
 
+  async clickCreateCase(): Promise<ElementFinder> {
+    return this.clickElementByXpath(
+      '//a[contains(@class,"hmcts-primary-navigation") and contains(text(), "Create case")]'
+    );
+  }
+
   async clickElementById(elementId: string): Promise<ElementFinder> {
     return this.clickAction(by.id(elementId));
   }
