@@ -294,6 +294,7 @@ Given('I preset up a test case', async function () {
 
 Given('I presetup an {string} SYA case', async function (caseType) {
   caseReference = await ccd.createSYACase(caseType);
+  await browser.sleep(Wait.normal);
 });
 
 Given('I navigate to an existing case', async function () {
