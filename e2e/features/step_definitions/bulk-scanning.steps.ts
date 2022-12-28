@@ -240,6 +240,7 @@ Then('the case should be in {string} state', async function (state: string): Pro
 });
 
 Then('the bundles should be successfully listed in {string} tab', async function (tabName) {
+  await anyCcdPage.waitForTabsToLoad();
   await caseDetailsPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
   if (await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')) {
