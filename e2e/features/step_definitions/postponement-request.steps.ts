@@ -9,7 +9,7 @@ const adjournmentPage = new AdjournmentPage();
 const postponementRequestPage = new PostponementRequestPage();
 
 When('I book a hearing in the future', async function () {
-  await anyCcdPage.click('Add new');
+  await anyCcdPage.clickAddNew();
   const targetDate = new Date();
   targetDate.setDate(targetDate.getDate() + 10);
 

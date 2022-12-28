@@ -9,7 +9,7 @@ const anyCcdFormPage = new AnyCcdFormPage();
 const caseDetailsPage = new CaseDetailsPage();
 
 Given('I add other party data', async function () {
-  await anyCcdPage.click('Add new');
+  await anyCcdPage.clickAddNew();
   await anyCcdFormPage.fillValues('otherParties_0_name_title', 'Mr');
   await anyCcdFormPage.fillValues('otherParties_0_name_firstName', 'Other');
   await anyCcdFormPage.fillValues('otherParties_0_name_lastName', 'Tester');
@@ -30,7 +30,7 @@ Given('I add other party data', async function () {
 });
 
 Given('I add taxCredit other party data', async function () {
-  await anyCcdPage.click('Add new');
+  await anyCcdPage.clickAddNew();
   await anyCcdFormPage.fillValues('otherParties_0_name_title', 'Mr');
   await anyCcdFormPage.fillValues('otherParties_0_name_firstName', 'Other');
   await anyCcdFormPage.fillValues('otherParties_0_name_lastName', 'Tester');

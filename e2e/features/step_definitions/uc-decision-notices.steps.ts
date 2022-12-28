@@ -98,7 +98,7 @@ When('I update the scanned document for {string}', async function (originator) {
   } else if (originator === 'JointParty') {
     await anyCcdPage.chooseOptionContainingText('originalSender', 'Joint party');
   }
-  await anyCcdPage.click('Add new');
+  await anyCcdPage.clickAddNew();
   await anyCcdPage.chooseOptionContainingText('scannedDocuments_0_type', 'Confidentiality request');
   await dwpResponse.uploadDoc('scannedDocuments_0_url');
   await browser.driver.sleep(300);

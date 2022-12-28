@@ -245,7 +245,7 @@ export class DwpResponsePage extends AnyPage {
     await anyCcdFormPage.uploadFile('dwpAT38Document_documentLink', 'issue2.pdf');
     await anyCcdFormPage.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
 
-    await anyCcdFormPage.click('Add new');
+    await anyCcdFormPage.clickAddNew();
     await anyCcdFormPage.uploadFile('dwpUploadAudioVideoEvidence_0_rip1Document', 'rip1.pdf');
     await anyCcdFormPage.uploadFile('dwpUploadAudioVideoEvidence_0_documentLink', 'test_av.mp3');
 
@@ -259,7 +259,7 @@ export class DwpResponsePage extends AnyPage {
   }
 
   async addOtherParties() {
-    await anyCcdFormPage.click('Add new');
+    await anyCcdFormPage.clickAddNew();
     await browser.sleep(2000);
     await anyCcdFormPage.fillValues('otherParties_0_name_firstName', 'Other');
     await anyCcdFormPage.fillValues('otherParties_0_name_lastName', 'Tester');

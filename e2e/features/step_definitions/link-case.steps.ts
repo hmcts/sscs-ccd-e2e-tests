@@ -6,7 +6,7 @@ import { AnyCcdPage } from '../../pages/any-ccd.page';
 const anyCcdPage = new AnyCcdPage();
 
 When('I add a {string} case to be linked', async function (caseId: string) {
-  await anyCcdPage.click('Add new');
+  await anyCcdPage.clickAddNew();
   await anyCcdPage.setText('//*[@id="linkedCase_0_0"]', caseId);
 
   await anyCcdPage.clickContinue();

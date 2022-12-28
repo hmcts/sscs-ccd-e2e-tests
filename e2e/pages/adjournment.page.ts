@@ -81,12 +81,12 @@ export class AdjournmentPage extends AnyPage {
   }
 
   async addReasons() {
-    await anyCcdPage.click('Add new');
+    await anyCcdPage.clickAddNew();
     await element(by.id('adjournCaseReasons_0')).sendKeys('Appellant not available');
   }
 
   async setAdjournCaseReasonsText() {
-    await anyCcdPage.click('Add new');
+    await anyCcdPage.clickAddNew();
     await anyCcdPage.setText("//textarea[@rows='3']", 'I am very busy so i cannot');
   }
 }
