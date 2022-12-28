@@ -203,7 +203,7 @@ function getConfig(): Config {
     onCleanUp,
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     onPrepare,
-    afterLaunch,
+    afterLaunch: retries > 0 ? afterLaunch : null,
   };
 
   logger.info(`argv.parallelFeatures: ${argv.parallelFeatures}, argv.parallelScenarios ${argv.parallelScenarios}`);
