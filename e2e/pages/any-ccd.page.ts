@@ -27,7 +27,7 @@ export class AnyCcdPage extends AnyPage {
   }
 
   async clickAddNew(): Promise<ElementFinder> {
-    return this.clickButton('Add New');
+    return this.clickButton('Add new');
   }
 
   async clickNextStep(): Promise<ElementFinder> {
