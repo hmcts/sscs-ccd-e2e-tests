@@ -214,9 +214,10 @@ export class AnyCcdPage extends AnyPage {
       .click();
   }
 
-  async eventsPresentInHistory(linkText: string): Promise<boolean> {
-    const linkPath = `//*[self::button or self::a][normalize-space()="${linkText}"]`;
-    return (await element(by.xpath(linkPath))).isPresent();
+  async getHistoryEvents(): Promise<Array<string>> {
+    await this.clickTab('History');
+    const locator = by.xpath('//ccd-event-log-table//*[contains(@class,"event-link")]');
+    return element.all(locator).map(async (elementFinder) => elementFinder.getText());
   }
 
   async elementNotPresent(linkText: string): Promise<void> {

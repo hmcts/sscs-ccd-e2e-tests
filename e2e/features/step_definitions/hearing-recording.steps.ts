@@ -30,9 +30,9 @@ Then('the hearing recording should (be|not be) in {string} tab', async function 
   expect(await anyCcdPage.contentContains('Fox Court')).to.equal(isDisplayed);
 });
 
-Then('the {string} should be successfully listed in {string} tab', async function (action, tabName) {
-  await anyCcdPage.clickTab(tabName);
-  expect(await caseDetailsPage.eventsPresentInHistory(action)).to.equal(true);
+Then('the {string} should be successfully listed in the History', async function (action) {
+  const events = await caseDetailsPage.getHistoryEvents();
+  expect(events).to.include(action);
 });
 
 When('I request for Hearing recording', async function () {

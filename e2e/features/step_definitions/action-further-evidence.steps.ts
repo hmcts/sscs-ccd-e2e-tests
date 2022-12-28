@@ -43,9 +43,9 @@ When('I fill the further evidence form with {string} invalid file', async functi
   await anyCcdPage.clickContinue();
 });
 
-Then('the case should have successfully processed {string} event', async function (event) {
-  await anyCcdPage.clickTab('History');
-  expect(await caseDetailsPage.eventsPresentInHistory(event)).to.equal(true);
+Then('the case should have successfully processed {string} event', async function (event: string) {
+  const events = await caseDetailsPage.getHistoryEvents();
+  expect(events).to.include(event);
 });
 
 When('I fill the direction notice form with {string}', async function (reinstatement) {
@@ -87,9 +87,9 @@ When('resend evidence to appellant and FTA user', async function () {
 
 Then('I see {string} and {string} event being processed successfully', async function (eventName, anotherEventName) {
   // await caseDetailsPage.reloadPage();
-  await anyCcdPage.clickTab('History');
-  expect(await caseDetailsPage.eventsPresentInHistory(anotherEventName)).to.equal(true);
-  expect(await caseDetailsPage.eventsPresentInHistory(eventName)).to.equal(true);
+  const events = await caseDetailsPage.getHistoryEvents();
+  expect(events).to.include(anotherEventName);
+  expect(events).to.include(eventName);
 });
 
 Then('I should still see previous uploaded file collection within documents tab', async function () {

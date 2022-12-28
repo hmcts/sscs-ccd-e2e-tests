@@ -10,6 +10,6 @@ When('resend only to appellant and not to representative', async function () {
 });
 
 Then('the reissue document event should be seen in “History” tab', async function () {
-  await anyCcdPage.clickTab('History');
-  expect(await anyCcdPage.eventsPresentInHistory('Reissue document')).to.equal(true);
+  const events = await anyCcdPage.getHistoryEvents();
+  expect(events).to.include('Reissue document');
 });

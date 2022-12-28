@@ -79,9 +79,9 @@ When('I update joint party to {string} for UC', async function (hasJointParty) {
     await jointPartyPage.addJointPartyDetails();
     await anyCcdPage.clickSubmit();
   }
-  await anyCcdPage.clickTab('History');
-  expect(await caseDetailsPage.eventsPresentInHistory('Update to case data')).to.equal(true);
-  expect(await caseDetailsPage.eventsPresentInHistory('Joint Party Added')).to.equal(true);
+  const events = await caseDetailsPage.getHistoryEvents();
+  expect(events).to.include('Update to case data');
+  expect(events).to.include('Joint Party Added');
   logger.info('&&&& Joint Party Added');
 });
 
@@ -112,11 +112,9 @@ When('I select Granted for Appellant and Refused for Joint Party as a confidenti
   await anyCcdPage.clickElementById('confidentialityRequestJointPartyGrantedOrRefused-refuseConfidentialityRequest');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
-  await browser.driver.sleep(2000);
-  await anyCcdPage.clickTab('History');
-  await browser.driver.sleep(2000);
-  expect(await caseDetailsPage.eventsPresentInHistory('Action further evidence')).to.equal(true);
-  expect(await caseDetailsPage.eventsPresentInHistory('Review confidentiality request')).to.equal(true);
+  const events = await caseDetailsPage.getHistoryEvents();
+  expect(events).to.include('Action further evidence');
+  expect(events).to.include('Review confidentiality request');
 });
 
 Then('I should see the Request outcome status for {string} to be {string}', async function (partyType, status) {

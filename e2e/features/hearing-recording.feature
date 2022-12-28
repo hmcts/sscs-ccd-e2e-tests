@@ -19,7 +19,7 @@ Feature: Hearing recording
     And I select a hearing
     And I upload a hearing recording
     Then the hearing recording should be in "Hearing Recordings" tab
-    And the "Upload hearing recording" should be successfully listed in "History" tab
+    And the "Upload hearing recording" should be successfully listed in the History
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
@@ -30,8 +30,8 @@ Feature: Hearing recording
     And I navigate to an existing case
     And I choose "Action hearing recording req"
     And request for Hearing recording is "Granted"
-    Then the "FTA Request hearing recording" should be successfully listed in "History" tab
-    Then the "Action hearing recording req" should be successfully listed in "History" tab
+    Then the "FTA Request hearing recording" should be successfully listed in the History
+    Then the "Action hearing recording req" should be successfully listed in the History
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
@@ -41,12 +41,12 @@ Feature: Hearing recording
     And I select a hearing
     And I upload a hearing recording
     Then the hearing recording should be in "Hearing Recordings" tab
-    And the "Upload hearing recording" should be successfully listed in "History" tab
+    And the "Upload hearing recording" should be successfully listed in the History
 
     And I choose "Upload document FE"
     When I submit "issue1.pdf" as Request for Hearing Recording in the Upload document FE event
     Then the hearing recording should be in "Unprocessed Correspondence" tab
     And I choose "Action hearing recording req"
     And request for Hearing recording is "Refused"
-    Then the "Action hearing recording req" should be successfully listed in "History" tab
+    Then the "Action hearing recording req" should be successfully listed in the History
     And the recording collection is cleared from Unprocessed correspondence tab

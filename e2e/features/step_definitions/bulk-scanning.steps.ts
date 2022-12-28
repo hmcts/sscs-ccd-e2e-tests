@@ -239,39 +239,39 @@ Then('the case should be in {string} state', async function (state: string): Pro
   await anyCcdPage.waitForEndState(state);
 });
 
-Then('the bundles should be successfully listed in {string} tab', async function (tabName) {
+Then('the bundles should be successfully listed in the History', async function () {
   await anyCcdPage.waitForTabsToLoad();
   await caseDetailsPage.reloadPage();
-  await anyCcdPage.clickTab(tabName);
-  if (await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')) {
+  let events = await caseDetailsPage.getHistoryEvents();
+  if (events.includes('Stitching bundle complete') && events.includes('Create a bundle')) {
     await browser.sleep(Wait.long);
     await caseDetailsPage.reloadPage();
-    await anyCcdPage.clickTab(tabName);
+    events = await caseDetailsPage.getHistoryEvents();
   }
-  expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
-  expect(await caseDetailsPage.eventsPresentInHistory('Create a bundle')).to.equal(true);
+  expect(events).to.include('Stitching bundle complete');
+  expect(events).to.include('Create a bundle');
 });
 
-Then('The edited bundles should be successfully listed in {string} tab', async function (tabName) {
+Then('The edited bundles should be successfully listed in the History', async function () {
   await caseDetailsPage.reloadPage();
-  await anyCcdPage.clickTab(tabName);
-  if (await caseDetailsPage.eventsPresentInHistory('Create an edited bundle')) {
+  let events = await caseDetailsPage.getHistoryEvents();
+  if (events.includes('Create an edited bundle')) {
     await browser.sleep(Wait.long);
     await caseDetailsPage.reloadPage();
-    await anyCcdPage.clickTab(tabName);
+    events = await caseDetailsPage.getHistoryEvents();
   }
-  expect(await caseDetailsPage.eventsPresentInHistory('Create an edited bundle')).to.equal(true);
+  expect(events).to.include('Create an edited bundle');
 });
 
-Then('the Stitching bundle event should be successfully listed in {string} tab', async function (tabName) {
+Then('the Stitching bundle event should be successfully listed in the History', async function () {
   await caseDetailsPage.reloadPage();
-  await anyCcdPage.clickTab(tabName);
-  if (await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')) {
+  let events = await caseDetailsPage.getHistoryEvents();
+  if (events.includes('Stitching bundle complete')) {
     await browser.sleep(Wait.normal);
     await caseDetailsPage.reloadPage();
-    await anyCcdPage.clickTab(tabName);
+    events = await caseDetailsPage.getHistoryEvents();
   }
-  expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
+  expect(events).to.include('Stitching bundle complete');
 });
 
 Then('the case bundle details should be listed in {string} tab', async function (tabName) {
