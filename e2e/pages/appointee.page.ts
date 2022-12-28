@@ -1,9 +1,8 @@
-import { by, element, browser } from 'protractor';
+import { by, element } from 'protractor';
 import { AnyCcdPage } from './any-ccd.page';
 
 export class AppointeePage extends AnyCcdPage {
   async addAppointeeDetails() {
-    await browser.sleep(2000);
     await element(by.id('appeal_appellant_appointee_name_title')).sendKeys('Mr');
     await element(by.id('appeal_appellant_appointee_name_firstName')).sendKeys('AppointeeFirstName');
     await element(by.id('appeal_appellant_appointee_name_lastName')).sendKeys('AppointeeLastName');

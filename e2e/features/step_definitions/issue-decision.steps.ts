@@ -1,4 +1,3 @@
-import { browser } from 'protractor';
 import { When } from 'cucumber';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { IssueDecisionPage } from '../../pages/issue-decision.page';
@@ -18,7 +17,6 @@ When('I write a final decision generate notice no generate', async function () {
   await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-allowed');
   await anyCcdPage.clickContinue();
   await issueDecisionPage.uploadDirection();
-  await browser.sleep(5000);
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
 });
@@ -30,17 +28,14 @@ When('I write a final decision generate notice yes daily living mobility is no f
   await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-allowed');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('writeFinalDecisionTypeOfHearing-faceToFace');
-  await browser.sleep(4000);
   await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion_Yes');
   await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion_Yes');
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Panel members')).to.equal(true);
   await issueDecisionPage.addPanelMembers();
-  await browser.sleep(3000);
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Decision date')).to.equal(true);
   await caseDetailsPage.addDayItems('writeFinalDecisionDateOfDecision');
-  await browser.sleep(3000);
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Bundle page')).to.equal(true);
   await issueDecisionPage.pageReference();
@@ -55,7 +50,6 @@ When('I write a final decision generate notice yes daily living mobility is no f
   expect(await anyCcdPage.pageHeadingContains('Anything else?')).to.equal(true);
   await anyCcdPage.clickContinue();
   // decision generated
-  await browser.sleep(5000);
   expect(await anyCcdPage.pageHeadingContains('Preview Decision Notice')).to.equal(true);
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
@@ -66,7 +60,6 @@ When('I write a final decision generate notice yes daily living mobility is yes 
   await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('writeFinalDecisionTypeOfHearing-faceToFace');
-  await browser.sleep(1000);
   await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion_Yes');
   await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion_Yes');
   await anyCcdPage.clickContinue();
@@ -78,9 +71,7 @@ When('I write a final decision generate notice yes daily living mobility is yes 
   expect(await anyCcdPage.pageHeadingContains('Award dates')).to.equal(true);
   await caseDetailsPage.addDayItems('writeFinalDecisionStartDate');
   await anyCcdPage.clickElementById('writeFinalDecisionEndDateType-setEndDate');
-  await browser.sleep(2000);
   await caseDetailsPage.addDayItems('writeFinalDecisionEndDate');
-  await browser.sleep(3000);
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Panel members')).to.equal(true);
   await issueDecisionPage.addPanelMembers();
@@ -88,7 +79,7 @@ When('I write a final decision generate notice yes daily living mobility is yes 
   expect(await anyCcdPage.pageHeadingContains('Decision date')).to.equal(true);
   await caseDetailsPage.addDayItems('writeFinalDecisionDateOfDecision');
   await anyCcdPage.clickContinue();
-  // await browser.sleep(3000);
+  //
   // await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('pipWriteFinalDecisionDailyLivingActivitiesQuestion-preparingFood');
   await anyCcdPage.clickElementById('pipWriteFinalDecisionMobilityActivitiesQuestion-planningAndFollowing');
@@ -105,7 +96,6 @@ When('I write a final decision generate notice yes daily living mobility is yes 
   expect(await anyCcdPage.pageHeadingContains('Anything else?')).to.equal(true);
   await anyCcdPage.clickContinue();
   // decision generated
-  await browser.sleep(5000);
   expect(await anyCcdPage.pageHeadingContains('Preview Decision Notice')).to.equal(true);
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Check your answers')).to.equal(true);
@@ -120,19 +110,16 @@ When('I see {string}', async function (notice) {
 When('I test final decision', async function () {
   const caseReference = '1601983355417609';
   await anyCcdPage.get(`/case/SSCS/Benefit/${caseReference}`);
-  await browser.sleep(10000);
 });
 
 When('I issue a final decision generate decision no', async function () {
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
   expect(await anyCcdPage.contentContains('Decision in favour of appellant')).to.equal(true);
-  await browser.sleep(500);
 });
 
 When('I issue a final decision generate decision upheld', async function () {
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
   expect(await anyCcdPage.contentContains('Decision upheld')).to.equal(true);
-  await browser.sleep(500);
 });

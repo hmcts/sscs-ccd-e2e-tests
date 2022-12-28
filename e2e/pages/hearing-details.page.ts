@@ -31,7 +31,6 @@ export class HearingDetailsPage extends AnyPage {
     await anyCcdPage.clickContinue();
     await anyCcdPage.clickContinue();
     await anyCcdPage.clickButton('Submit request');
-    await browser.sleep(2000);
     expect(await anyCcdPage.pageHeadingContains('Hearing request submitted')).to.equal(true);
   }
 

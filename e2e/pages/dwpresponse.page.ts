@@ -19,13 +19,10 @@ export class DwpResponsePage extends AnyPage {
     await anyCcdFormPage.uploadFile('dwpAT38Document_documentLink', 'issue2.pdf');
     await anyCcdFormPage.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
     if (action === 'YES') {
-      await browser.sleep(10000);
       await anyCcdFormPage.clickElementById('dwpFurtherInfo_Yes');
     } else {
-      await browser.sleep(5000);
       await anyCcdFormPage.clickElementById('dwpFurtherInfo_No');
       await anyCcdFormPage.clickElementById('dwpUCB_No');
-      await browser.sleep(3000);
     }
     if (dwpState === 'YES' && benefitType !== 'UC') {
       await anyCcdFormPage.chooseOptionContainingText('benefitCode', '001');
@@ -42,13 +39,10 @@ export class DwpResponsePage extends AnyPage {
     await anyCcdFormPage.uploadFile('dwpResponseDocument_documentLink', 'issue1.pdf');
     await anyCcdFormPage.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
     if (action === 'YES') {
-      await browser.sleep(10000);
       await anyCcdFormPage.clickElementById('dwpFurtherInfo_Yes');
     } else {
-      await browser.sleep(5000);
       await anyCcdFormPage.clickElementById('dwpFurtherInfo_No');
       await anyCcdFormPage.clickElementById('dwpUCB_No');
-      await browser.sleep(3000);
     }
     if (dwpState === 'YES' && benefitType !== 'UC') {
       await anyCcdFormPage.chooseOptionContainingText('benefitCode', '001');
@@ -72,14 +66,12 @@ export class DwpResponsePage extends AnyPage {
     await anyCcdFormPage.uploadFile('dwpAT38Document_documentLink', 'issue2.pdf');
     await anyCcdFormPage.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
     if (isUCB) {
-      await browser.sleep(1000);
       await anyCcdFormPage.clickElementById('dwpUCB_Yes');
       logger.info('uploading ucb doc....');
       await anyCcdFormPage.uploadFile(docLink, 'issue3.pdf');
     }
 
     if (isPHME) {
-      await browser.sleep(1000);
       await anyCcdFormPage.chooseOptionContainingText('dwpEditedEvidenceReason', 'Potentially harmful evidence');
       logger.info('uploading edited doc....');
       await anyCcdFormPage.uploadFile('dwpEditedResponseDocument_documentLink', 'issue1.pdf');
@@ -89,9 +81,7 @@ export class DwpResponsePage extends AnyPage {
 
     if (containsFurtherInfo) {
       await anyCcdFormPage.clickElementById('dwpFurtherInfo_Yes');
-      await browser.sleep(1000);
     } else {
-      await browser.sleep(1000);
       await anyCcdFormPage.clickElementById('dwpFurtherInfo_No');
     }
     if (dwpState === 'YES') {
@@ -108,15 +98,12 @@ export class DwpResponsePage extends AnyPage {
     await anyCcdFormPage.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
 
     if (isPHME) {
-      await browser.sleep(1000);
       await anyCcdFormPage.chooseOptionContainingText('dwpEditedEvidenceReason', 'Potentially harmful evidence');
     }
 
     if (containsFurtherInfo) {
       await anyCcdFormPage.clickElementById('dwpFurtherInfo_Yes');
-      await browser.sleep(1000);
     } else {
-      await browser.sleep(1000);
       await anyCcdFormPage.clickElementById('dwpFurtherInfo_No');
     }
     if (dwpState === 'YES') {
@@ -175,7 +162,6 @@ export class DwpResponsePage extends AnyPage {
     await anyCcdFormPage.chooseOptionContainingText('dwpState', 'Appeal to-be registered');
     await anyCcdFormPage.clickElementById('dwpIsOfficerAttending_No');
     await anyCcdFormPage.clickContinue();
-    await browser.sleep(2000);
   }
 
   async uploadResponseForTaxCredit(action: string) {
@@ -189,7 +175,6 @@ export class DwpResponsePage extends AnyPage {
     await anyCcdFormPage.chooseOptionContainingText('dwpState', 'Appeal to-be registered');
     await anyCcdFormPage.clickElementById('dwpIsOfficerAttending_No');
     await anyCcdFormPage.clickContinue();
-    await browser.sleep(2000);
     expect(await anyCcdFormPage.pageHeadingContains('Check your answers')).to.equal(true);
     await anyCcdFormPage.clickSubmit();
   }
@@ -201,7 +186,6 @@ export class DwpResponsePage extends AnyPage {
   async issueCodePage(disputed: string) {
     expect(await anyCcdFormPage.pageHeadingContains('Issue codes')).to.equal(true);
     await anyCcdFormPage.addNewCollectionItem(disputed);
-    await browser.sleep(1000);
     await anyCcdFormPage.chooseOptionContainingText(`elementsDisputed${disputed}_0_issueCode`, 'AD');
   }
 
@@ -224,7 +208,6 @@ export class DwpResponsePage extends AnyPage {
   }
 
   async jointPartyIdentityDetails() {
-    await browser.sleep(2000);
     expect(await anyCcdFormPage.pageHeadingContains('Joint party identity details')).to.equal(true);
     await element(by.id('dob-day')).sendKeys('20');
     await element(by.id('dob-month')).sendKeys('12');
@@ -251,7 +234,6 @@ export class DwpResponsePage extends AnyPage {
 
     await anyCcdFormPage.clickElementById('dwpFurtherInfo_No');
     await anyCcdFormPage.clickElementById('dwpUCB_No');
-    await browser.sleep(3000);
     await anyCcdFormPage.chooseOptionContainingText('benefitCode', '001');
     await anyCcdFormPage.chooseOptionContainingText('dwpFurtherEvidenceStates', 'No action');
     await anyCcdFormPage.chooseOptionContainingText('dwpState', 'Response submitted (FTA)');
@@ -260,7 +242,6 @@ export class DwpResponsePage extends AnyPage {
 
   async addOtherParties() {
     await anyCcdFormPage.clickAddNew();
-    await browser.sleep(2000);
     await anyCcdFormPage.fillValues('otherParties_0_name_firstName', 'Other');
     await anyCcdFormPage.fillValues('otherParties_0_name_lastName', 'Tester');
     await anyCcdFormPage.fillValues('otherParties_0_address_line1', '101, test');

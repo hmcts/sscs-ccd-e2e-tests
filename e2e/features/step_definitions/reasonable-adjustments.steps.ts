@@ -10,36 +10,25 @@ const caseDetailsPage = new CaseDetailsPage();
 When('generate a letter in {string} with {string} option', async function (letterFormat, adjustmentOption) {
   await anyCcdPage.chooseOptionContainingText('reasonableAdjustmentChoice', letterFormat);
   if (adjustmentOption === 'Yes') {
-    await browser.sleep(2000);
     await anyCcdPage.clickElementById(`reasonableAdjustments_appellant_wantsReasonableAdjustment_${adjustmentOption}`);
-    await browser.sleep(2000);
     await anyCcdPage.fillValues('reasonableAdjustments_appellant_reasonableAdjustmentRequirements', 'A2');
     await anyCcdPage.clickElementById('reasonableAdjustments_representative_wantsReasonableAdjustment_No');
   } else if (adjustmentOption === 'No') {
-    await browser.sleep(2000);
     await anyCcdPage.clickElementById(`reasonableAdjustments_appellant_wantsReasonableAdjustment_${adjustmentOption}`);
-    await browser.sleep(2000);
     await anyCcdPage.clickElementById('reasonableAdjustments_representative_wantsReasonableAdjustment_No');
   } else if (adjustmentOption === 'otherPartyYes') {
-    await browser.sleep(2000);
     await anyCcdPage.clickElementById(`reasonableAdjustments_appellant_wantsReasonableAdjustment_No`);
     await anyCcdPage.clickElementById('reasonableAdjustments_representative_wantsReasonableAdjustment_No');
-    await browser.sleep(2000);
     await anyCcdPage.clickElementById(`otherParties_0_reasonableAdjustment_wantsReasonableAdjustment_Yes`);
     await anyCcdPage.fillValues('otherParties_0_reasonableAdjustment_reasonableAdjustmentRequirements', 'A2');
-    await browser.sleep(2000);
   } else if (adjustmentOption === 'otherPartyNo') {
-    await browser.sleep(2000);
     await anyCcdPage.clickElementById(`otherParties_0_reasonableAdjustment_wantsReasonableAdjustment_No`);
-    await browser.sleep(2000);
     await anyCcdPage.clickElementById('reasonableAdjustments_representative_wantsReasonableAdjustment_No');
     await anyCcdPage.clickElementById(`reasonableAdjustments_appellant_wantsReasonableAdjustment_No`);
-    await browser.sleep(2000);
     await anyCcdPage.clickElementById(`otherParties_0_reasonableAdjustment_wantsReasonableAdjustment_No`);
   } else {
     throw new Error('No adjustment option passed in test');
   }
-  await browser.sleep(1000);
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
 });
@@ -55,10 +44,8 @@ Then('reasonable adjustment details are not seen in summary page', async functio
 });
 
 Then('Reasonable adjustment tab is seen with {string} as {string}', async function (field, value) {
-  await browser.sleep(8000);
   await anyCcdPage.reloadPage();
   await browser.manage().window().maximize();
-  await browser.sleep(5000);
   await anyCcdPage.clickTab('Reasonable Adjustments Letters');
 
   await caseDetailsPage.getFieldValue(field).then(function (actText) {

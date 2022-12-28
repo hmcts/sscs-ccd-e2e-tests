@@ -1,4 +1,4 @@
-import { browser, by, element, ElementFinder } from 'protractor';
+import { by, element, ElementFinder } from 'protractor';
 import { AnyCcdPage } from './any-ccd.page';
 import { FormFiller } from '../helpers/form-filler';
 import { OrdinalToCardinal } from '../helpers/ordinal-to-cardinal';
@@ -23,7 +23,6 @@ export class AnyCcdFormPage extends AnyCcdPage {
 
   async setTextFiledValueNull(key: string): Promise<void> {
     await element(by.id(key)).clear();
-    await browser.sleep(500);
   }
 
   async setCollectionItemFieldValue(

@@ -1,6 +1,5 @@
 import { When, Then } from 'cucumber';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
-import { browser } from 'protractor';
 import { assert, expect } from 'chai';
 import { FurtherEvidencePage } from '../../pages/further-evidence.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
@@ -40,7 +39,6 @@ When('I fill the further evidence form with {string} invalid file', async functi
   await furtherEvidencePage.enterFileName('scannedDocuments_0_fileName', 'testfile.pdf');
   await furtherEvidencePage.enterScannedDate('20', '1', '2021');
   await anyCcdPage.clickElementById('scannedDocuments_0_includeInBundle_Yes');
-  await browser.sleep(3000);
 
   await anyCcdPage.clickContinue();
 });

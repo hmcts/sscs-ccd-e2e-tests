@@ -103,7 +103,6 @@ When(
       await anyCcdPage.clickElementById('jointParty_No');
       await anyCcdPage.clickContinue();
     }
-    await browser.sleep(2000);
     await anyCcdPage.clickSubmit();
   }
 );
@@ -121,7 +120,6 @@ When('I do not upload edited docs after selecting {string} option', async functi
 When('I upload a doc', async function () {
   const docLink = 'tl1Form_documentLink';
   await dwpresponse.uploadDoc(docLink);
-  await browser.sleep(2000);
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
 });
@@ -133,7 +131,6 @@ Then('I see {string} event in case fields', async function (expectedEvent) {
 });
 
 Then('I see field {string} with value {string} in {string} tab', async function (key, value, tab) {
-  await browser.sleep(5000);
   await anyCcdPage.clickTab(tab);
   expect(await caseDetailsPage.isFieldValueDisplayed(key, value)).to.equal(true);
   await browser.driver.sleep(60);
@@ -156,7 +153,6 @@ Then('I should see PHME flag as {string}', async function (state) {
 
 Then('not listable reason is {string} on summary page', async function (isVisible) {
   if (isVisible === 'Visible') {
-    await browser.sleep(100);
     expect(await anyCcdPage.contentContains('reason for not listable goes here')).to.equal(true);
   }
 });
@@ -178,7 +174,6 @@ When(
         await anyCcdPage.clickSubmit();
         await anyCcdPage.clickTab('History');
         expect(await anyCcdPage.contentContains('Review by Judge')).to.equal(true);
-        await browser.sleep(2000);
       } else {
         await anyCcdPage.clickElementById('updateNotListableInterlocReview_No');
         await anyCcdPage.clickContinue();
@@ -252,12 +247,8 @@ Then('I subscribed to all parties to {string}', async function (isSubscribed) {
     );
     await anyCcdPage.setValueByElementId('subscriptions_supporterSubscription_mobile', '01234567890');
   }
-
-  await browser.sleep(500);
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
-
-  await browser.sleep(50);
   await anyCcdPage.clickTab('Subscriptions');
 
   expect(await anyCcdPage.contentContains(action)).to.equal(true);

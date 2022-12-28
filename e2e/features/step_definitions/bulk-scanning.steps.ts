@@ -82,19 +82,15 @@ async function checkIncompleteDataItems(): Promise<void> {
 }
 
 async function enterMrnDate(): Promise<void> {
-  await browser.sleep(2000);
   await caseDetailsPage.addDayItems('caseCreated');
   await anyCcdPage.chooseOptionByValue('appeal_receivedVia', '1: Paper');
   await caseDetailsPage.addDayItems('mrnDate');
 }
 
 async function enterAppellantDetails(): Promise<void> {
-  await browser.sleep(2000);
   await anyCcdPage.fillValues('appeal_appellant_name_title', 'Mr');
   await anyCcdPage.fillValues('appeal_appellant_name_firstName', faker.name.firstName());
   await anyCcdPage.fillValues('appeal_appellant_name_lastName', faker.name.lastName());
-
-  await browser.sleep(2000);
   await anyCcdPage.fillValues('dob-day', '10');
   await anyCcdPage.fillValues('dob-month', '3');
   await anyCcdPage.fillValues('dob-year', '1988');
@@ -102,7 +98,6 @@ async function enterAppellantDetails(): Promise<void> {
 }
 
 async function enterAddressDetails(): Promise<void> {
-  await browser.sleep(2000);
   await anyCcdPage.fillValues('appeal_appellant_address_line1', '1000, test');
   await anyCcdPage.fillValues('appeal_appellant_address_line2', faker.address.streetAddress());
   await anyCcdPage.fillValues('appeal_appellant_address_line3', 'test');
@@ -123,7 +118,6 @@ async function createSSCSCase(): Promise<void> {
   await anyCcdPage.chooseOptionByValue('cc-case-type', 'Benefit');
   await anyCcdPage.chooseOptionByValue('cc-event', 'validAppealCreated');
   await anyCcdPage.clickButton('Start');
-  await browser.sleep(2000);
 
   await enterMrnDate();
   await enterAppellantDetails();
@@ -134,9 +128,7 @@ async function createSSCSCase(): Promise<void> {
 Given('I create an child support case', async function () {
   await anyCcdPage.clickCreateCase();
   expect(await anyCcdPage.pageHeadingContains('Create Case')).to.equal(true);
-  await browser.sleep(3000);
   await createSSCSCase();
-  await browser.sleep(5000);
 
   await caseDetailsPage.doNextStep('Admin - update event');
   await anyCcdPage.clickNextStep();
@@ -151,7 +143,6 @@ Given(
   async function (benefitCode: string, formType: string): Promise<void> {
     await anyCcdPage.clickCreateCase();
     expect(await anyCcdPage.pageHeadingContains('Create Case')).to.equal(true);
-    await browser.sleep(3000);
     await anyCcdFormPage.setCreateCaseFieldValue('Case type', 'SSCS Bulkscanning');
     await anyCcdPage.clickButton('Start');
 
@@ -165,7 +156,6 @@ Given(
     );
     await caseDetailsPage.addDateItems('deliveryDate');
     await caseDetailsPage.addDateItems('openingDate');
-    await browser.sleep(3000);
 
     await addDataItems(benefitCode, formType);
     if (formType === 'SSCSPE') {
@@ -175,10 +165,8 @@ Given(
     }
     await anyCcdPage.clickContinue();
     await anyCcdPage.clickSubmit();
-    await browser.sleep(3000);
     expect(await caseDetailsPage.getAlertMessage()).to.equal('has been created');
     expect(await caseDetailsPage.isFieldValueDisplayed('Event', 'Create an exception record')).to.equal(true);
-    await browser.sleep(3000);
   }
 );
 
@@ -206,7 +194,6 @@ Given('I have a PIP bulk-scanned document filled with incomplete fields', async 
 });
 
 When('I choose {string} for an incomplete application', async function (action) {
-  await browser.sleep(500);
   await caseDetailsPage.doNextStep(action);
   await anyCcdPage.clickNextStep();
   expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
@@ -260,7 +247,6 @@ Then('the bundles should be successfully listed in {string} tab', async function
   }
   expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
   expect(await caseDetailsPage.eventsPresentInHistory('Create a bundle')).to.equal(true);
-  await browser.sleep(3000);
 });
 
 Then('The edited bundles should be successfully listed in {string} tab', async function (tabName) {
@@ -283,12 +269,10 @@ Then('the Stitching bundle event should be successfully listed in {string} tab',
     await anyCcdPage.clickTab(tabName);
   }
   expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
-  await browser.sleep(500);
 });
 
 Then('the case bundle details should be listed in {string} tab', async function (tabName) {
   await anyCcdPage.clickTab(tabName);
-  await browser.sleep(1000);
   expect(await caseDetailsPage.isFieldValueDisplayed('Stitch status', 'DONE')).to.equal(true);
   expect(await caseDetailsPage.isFieldValueDisplayed('Config used for bundle', 'SSCS Bundle Original')).to.equal(true);
 });
@@ -314,7 +298,6 @@ Given('I navigate to an existing case', async function () {
 
 Given('I complete the event', async function () {
   await anyCcdPage.clickSubmit();
-  await browser.sleep(2000);
 });
 
 When('I choose execute CCD event {string}', async function (action) {

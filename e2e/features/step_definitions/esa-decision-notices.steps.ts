@@ -16,28 +16,22 @@ When(
   async function (appealType, wcaAppeal, supportGroup, allowed) {
     await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
     await anyCcdPage.clickContinue();
-    await browser.sleep(500);
     if (allowed === 'YES') {
       await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-allowed');
     } else {
       await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-refused');
     }
     await anyCcdPage.clickContinue();
-    await browser.sleep(500);
     await anyCcdPage.clickElementById('writeFinalDecisionTypeOfHearing-faceToFace');
-    await browser.sleep(1000);
     await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion_Yes');
     await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion_Yes');
     await anyCcdPage.clickContinue();
-    await browser.sleep(1000);
     await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
     await anyCcdPage.clickContinue();
     expect(await anyCcdPage.pageHeadingContains('Decision date')).to.equal(true);
     await caseDetailsPage.addPastDate('writeFinalDecisionDateOfDecision');
-    await browser.sleep(3000);
     await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
     await anyCcdPage.clickContinue();
-    await browser.sleep(2000);
     if (wcaAppeal === 'YES') {
       const wcaYes = `${appealType}Appeal_Yes`;
       await anyCcdPage.clickElementById(wcaYes);
@@ -45,23 +39,19 @@ When(
       const wcaNo = `${appealType}Appeal_No`;
       await anyCcdPage.clickElementById(wcaNo);
     }
-    await browser.sleep(1000);
     if (supportGroup === 'YES') {
       await anyCcdPage.clickElementById('supportGroupOnlyAppeal_Yes');
     } else {
       await anyCcdPage.clickElementById('supportGroupOnlyAppeal_No');
     }
     await anyCcdPage.clickContinue();
-    await browser.sleep(500);
   }
 );
 
 When('I select schedule 2 activities with <15 points and reg 29 {string}', async function (reg29Apply) {
   await anyCcdPage.clickElementById('esaWriteFinalDecisionPhysicalDisabilitiesQuestion-consciousness');
   await anyCcdPage.clickElementById('esaWriteFinalDecisionMentalAssessmentQuestion-copingWithChange');
-  await browser.sleep(3000);
   await anyCcdPage.scrollBar('//div/form/div/button[2]');
-  await browser.sleep(500);
   await anyCcdPage.clickElementById('esaWriteFinalDecisionConsciousnessQuestion-consciousness10c');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('esaWriteFinalDecisionCopingWithChangeQuestion-copingWithChange14d');
@@ -78,7 +68,6 @@ When('I select schedule 2 activities with >=15 points', async function () {
   await anyCcdPage.clickElementById('esaWriteFinalDecisionPhysicalDisabilitiesQuestion-reaching');
   await anyCcdPage.clickElementById('esaWriteFinalDecisionMentalAssessmentQuestion-learningTasks');
   await anyCcdPage.scrollBar('//div/form/div/button[2]');
-  await browser.sleep(500);
   await anyCcdPage.clickElementById('esaWriteFinalDecisionReachingQuestion-reaching3b');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('esaWriteFinalDecisionLearningTasksQuestion-learningTasks11b');
@@ -88,14 +77,12 @@ When('I select schedule 2 activities with >=15 points', async function () {
 When('I opt out schedule 3 activities and reg 35 {string}', async function (reg35Apply) {
   await anyCcdPage.clickElementById('esaWriteFinalDecisionSchedule3ActivitiesApply-No');
   await anyCcdPage.scrollBar('//div/form/div/button[2]');
-  await browser.sleep(500);
   if (reg35Apply === 'YES') {
     await anyCcdPage.clickElementById('doesRegulation35Apply_Yes');
   } else {
     await anyCcdPage.clickElementById('doesRegulation35Apply_No');
   }
   await anyCcdPage.scrollBar('//div/form/div/button[2]');
-  await browser.sleep(500);
 });
 
 When('I select schedule 3 activities', async function () {
@@ -120,11 +107,9 @@ When('I provide reasons and check answers To Allowed {string}', async function (
   if (allowed === 'YES') {
     await anyCcdPage.clickElementById('dwpReassessTheAward-noRecommendation');
     await anyCcdPage.clickContinue();
-    await browser.sleep(500);
   }
   expect(await anyCcdPage.pageHeadingContains('Reasons for decision')).to.equal(true);
   await anyCcdFormPage.addNewCollectionItem('Reasons for decision');
-  await browser.sleep(500);
   await anyCcdFormPage.setCollectionItemFieldValue('Reasons for decision', 0, 'Reasons for decision', 'Some Reason');
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Anything else?')).to.equal(true);
@@ -136,23 +121,19 @@ When('I provide reasons and check answers To Allowed {string}', async function (
 
 When('I provide reasons and check answers for non WCA To Allowed {string}', async function (allowed) {
   await anyCcdFormPage.addNewCollectionItem('Reasons for decision');
-  await browser.sleep(500);
   await anyCcdFormPage.setCollectionItemFieldValue('Reasons for decision', 0, 'Reasons for decision', 'Some Reason');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickContinue();
   await anyCcdPage.scrollBar('//form/div/button[2]');
-  await browser.sleep(5000);
 });
 
 When('I choose manual upload', async function () {
-  await browser.sleep(1000);
   await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice-No');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-allowed');
   await anyCcdPage.clickContinue();
   await issueDecisionPage.uploadDirection();
-  await browser.sleep(5000);
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
 });
@@ -162,49 +143,37 @@ When(
   async function (appealType, supportGroup, allowed) {
     await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
     await anyCcdPage.clickContinue();
-    await browser.sleep(500);
     if (allowed === 'YES') {
       await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-allowed');
     } else {
       await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-refused');
     }
     await anyCcdPage.clickContinue();
-    await browser.sleep(500);
     await anyCcdPage.clickElementById('writeFinalDecisionTypeOfHearing-faceToFace');
-    await browser.sleep(1000);
     await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion_Yes');
     await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion_Yes');
     await anyCcdPage.clickContinue();
-    await browser.sleep(1000);
     await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
     await anyCcdPage.clickContinue();
     expect(await anyCcdPage.pageHeadingContains('Decision date')).to.equal(true);
     await caseDetailsPage.addPastDate('writeFinalDecisionDateOfDecision');
-    await browser.sleep(3000);
     await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
     await anyCcdPage.clickContinue();
-    await browser.sleep(3000);
     await anyCcdPage.fillValues('writeFinalDecisionPageSectionReference', 'lastpage');
-    await browser.sleep(2000);
     await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
     await anyCcdPage.clickContinue();
     await anyCcdPage.fillValues('writeFinalDecisionDetailsOfDecision', 'summary of decision notice');
-    await browser.sleep(2000);
     await browser.wait(ExpectedConditions.elementToBeClickable(element(by.css('button[type=submit]'))), 5000);
     await anyCcdPage.clickContinue();
     expect(await anyCcdPage.pageHeadingContains('Reasons for decision')).to.equal(true);
     await anyCcdFormPage.addNewCollectionItem('Reasons for decision');
-    await browser.sleep(500);
     await anyCcdFormPage.setCollectionItemFieldValue('Reasons for decision', 0, 'Reasons for decision', 'Some Reason');
     await anyCcdPage.clickContinue();
-    await browser.sleep(2000);
     expect(await anyCcdPage.pageHeadingContains('Anything else?')).to.equal(true);
     await anyCcdPage.clickContinue();
-    await browser.sleep(5000);
     expect(await anyCcdPage.pageHeadingContains('Preview Decision Notice')).to.equal(true);
     await anyCcdPage.clickContinue();
     expect(await anyCcdPage.pageHeadingContains('Check your answers')).to.equal(true);
     await anyCcdPage.clickSubmit();
-    await browser.sleep(5000);
   }
 );
