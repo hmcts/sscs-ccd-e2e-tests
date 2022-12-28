@@ -28,7 +28,7 @@ Feature: UC Final Decision Notices
     Then the case should be in "Dormant" state
     And I see "Final Decision Notice"
 
-  @uc-decision @nightly-test-wip @UC-DN-3 @bug-ticket-EUI-2744
+  @uc-decision @nightly-test @UC-DN-3 @bug-ticket-EUI-2744
   Scenario: Write UC final decision LCWA and Support group, >= points for schedule 6, No Schedule 7, schedule 9 para 4 YES and allow
     And I write a final decision of "lcwa" appeal "YES" and Support group "NO" To Allowed "YES"
     And I select schedule 6 activities with >=15 points
