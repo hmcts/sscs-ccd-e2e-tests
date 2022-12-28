@@ -1,5 +1,5 @@
 import { Given, Then, When } from 'cucumber';
-import { browser, by, element } from 'protractor';
+import { by, element } from 'protractor';
 import { expect } from 'chai';
 import { Logger } from '@hmcts/nodejs-logging';
 
@@ -17,10 +17,8 @@ When('I upload AV evidence and complete Upload response event for {string} case'
   const dwpState = 'YES';
   await dwpresponse.uploadResponseWithAV(dwpState, benefitType);
   await anyCcdPage.selectIssueCode();
-  await anyCcdPage.scrollBar("//button[@type='submit']");
-  await browser.sleep(2000);
-  await anyCcdPage.scrollBar("//button[@type='submit']");
-  await browser.sleep(2000);
+  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
 });
 
 Then('I should see the AV evidence after clicking the AV tab', async function () {

@@ -190,7 +190,6 @@ When(
         await anyCcdPage.clickElementById('updateNotListableWhereShouldCaseMoveTo-withDwp');
         await anyCcdPage.clickContinue();
         await anyCcdPage.clickSubmit();
-        await browser.sleep(2000);
       }
     }
   }

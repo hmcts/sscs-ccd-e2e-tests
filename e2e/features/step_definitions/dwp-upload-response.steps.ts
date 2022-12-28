@@ -68,8 +68,7 @@ When(
       await anyCcdPage.clickContinue();
       await browser.sleep(500);
     }
-    await anyCcdPage.scrollBar("//button[@type='submit']");
-    await browser.sleep(2000);
+    await anyCcdPage.clickSubmit();
   }
 );
 
@@ -87,7 +86,7 @@ When('I upload with default issue code', async function () {
   await browser.sleep(500);
   await anyCcdPage.scrollBar('//div/form/div/button[2]');
   await browser.sleep(500);
-  await anyCcdPage.scrollBar("//button[@type='submit']");
+  await anyCcdPage.clickSubmit();
 });
 
 Then('I should see {string} error message', async function (errMsg: string) {

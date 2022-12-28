@@ -28,13 +28,13 @@ export class AnyCcdPage extends AnyPage {
   }
 
   async clickContinue(): Promise<ElementFinder> {
-    const clickedElement = this.clickElement('button', 'Continue');
+    const clickedElement = this.clickButton('Continue');
     await browser.waitForAngular();
     return clickedElement;
   }
 
   async clickSubmit(): Promise<ElementFinder> {
-    const clickedElement = this.clickElement('button', 'Submit');
+    const clickedElement = this.clickButton('Submit');
     await browser.waitForAngular();
     return clickedElement;
   }

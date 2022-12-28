@@ -120,8 +120,7 @@ async function enterBenefitDetails(): Promise<void> {
   await anyCcdPage.fillValues('appeal_benefitType_description', 'Child Support');
   await anyCcdPage.chooseOptionByValue('appeal_hearingType', '3: paper');
   await anyCcdPage.clickContinue();
-  await anyCcdPage.scrollBar("//button[@type='submit']");
-  await browser.sleep(2000);
+  await anyCcdPage.clickSubmit();
 }
 
 async function createSSCSCase(): Promise<void> {
@@ -147,8 +146,7 @@ Given('I create an child support case', async function () {
   await anyCcdPage.click('Go');
   await anyCcdPage.chooseOptionByValue('createdInGapsFrom', '1: readyToList');
   await anyCcdPage.clickContinue();
-  await anyCcdPage.scrollBar("//button[@type='submit']");
-  await browser.sleep(2000);
+  await anyCcdPage.clickSubmit();
 });
 
 Given(
