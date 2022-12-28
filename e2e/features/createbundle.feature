@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test-skip
+@migrated-to-exui @nightly-test
 Feature: Create bundle for a case
 
   Background:

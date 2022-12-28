@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test-bug
+@migrated-to-exui @nightly-test
 Feature: Link a case
 
   Background:
