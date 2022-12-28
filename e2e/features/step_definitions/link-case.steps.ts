@@ -28,7 +28,7 @@ When('I add a case to be linked', async function () {
 Then('I should see the case linked within related cases tab', async function () {
   await anyCcdPage.clickTab('Related Cases');
   const linkedCaseIds = await anyCcdPage.getFieldValues('Linked case(s)');
-  const linkedCaseIdsTrimmed = linkedCaseIds.map((caseId) => caseId.replace('-', ''));
+  const linkedCaseIdsTrimmed = linkedCaseIds.map((caseId) => caseId.replace(/-/g, ''));
   logger.info(`Linked Cases Ids:\n${linkedCaseIdsTrimmed.join('\n')}`);
   expect(linkedCaseIdsTrimmed).to.equal(linkedCaseReference);
 });
