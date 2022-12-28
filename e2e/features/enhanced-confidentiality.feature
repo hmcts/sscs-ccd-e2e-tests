@@ -12,7 +12,7 @@ Feature: Enhanced confidentiality
         And I fill the further evidence form with "sendToInterlocReviewByJudge" and "Confidentiality request"
         And I choose "Review confidentiality request"
         When I "grant" confidentiality request
-        Then I should see "Is case confidential? Yes"
+        Then I should see "Yes" for the field "Confidentiality Required"
         Given I choose "Supplementary response"
         When I upload supplementary response
         Then I should see supplementary response in the Unprocessed Correspondence tab

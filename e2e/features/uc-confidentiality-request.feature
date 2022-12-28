@@ -13,7 +13,7 @@ Feature: UC Confidentiality Request
     And I choose "Action further evidence"
     Then I update the scanned document for "JointParty"
     And I should see the Request outcome status for "appellant" to be "In progress"
-    Then I should see "Confidentiality Request: Under Review"
+    Then I should see "Under Review" for the field "Confidentiality Request:"
 
   @nightly-test-skip
   Scenario: Review Confidentiality - Granted for Appellant and Refused for Joint Party
@@ -22,5 +22,5 @@ Feature: UC Confidentiality Request
     And I choose "Review confidentiality request"
     And I select Granted for Appellant and Refused for Joint Party as a confidentiality
     And I should see the Request outcome status for "appellant" to be "Granted"
-    Then I should see "Is case confidential? Yes"
+    Then I should see "Yes" for the field "Confidentiality Required"
 
