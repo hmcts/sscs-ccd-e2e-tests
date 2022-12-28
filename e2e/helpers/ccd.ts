@@ -106,6 +106,7 @@ async function createSYACase(caseType: string) {
     })
     .catch(function (error) {
       logger.error(`Error at CCD createCase`, error);
+      throw error;
     });
 
   return caseId;
