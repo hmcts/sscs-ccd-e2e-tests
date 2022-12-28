@@ -51,13 +51,13 @@ When('I process the AV evidence using the {string} action', async function (acti
 Then('I {string} see the AV evidence in the FTA Documents tab', async function (assertion) {
   await anyCcdPage.clickTab('FTA Documents');
   const avVisibility = assertion === 'should';
-  const documentTypeDisplayed = caseDetailsPage.getFieldValues('Document type');
+  const documentTypeDisplayed = await caseDetailsPage.getFieldValues('Document type');
   if (avVisibility) {
     expect(documentTypeDisplayed).to.contain('Audio document');
   } else {
     expect(documentTypeDisplayed).to.not.contain('Audio document');
   }
-  const audioVideoDocumentDisplayed = caseDetailsPage.getFieldValues('Audio/video document');
+  const audioVideoDocumentDisplayed = await caseDetailsPage.getFieldValues('Audio/video document');
   if (avVisibility) {
     expect(audioVideoDocumentDisplayed).to.contain('test_av.mp3');
   } else {
