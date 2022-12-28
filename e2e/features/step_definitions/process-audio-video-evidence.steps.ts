@@ -67,8 +67,8 @@ Then('I {string} see the AV evidence in the FTA Documents tab', async function (
 
 Then('the bundle should include the AV evidence', async function () {
   await anyCcdPage.clickTab('Bundles');
-  const fieldValue = await caseDetailsPage.getFieldValue('Folder Name');
-  expect(fieldValue).to.equal('Further additions');
+  const folderNames = await caseDetailsPage.getFieldValues('Folder Name');
+  expect(folderNames).to.contain('Further additions');
   expect(await anyCcdPage.contentContains('Audio/video evidence document')).to.equal(true);
   expect(await anyCcdPage.contentContains('Addition B - DWP - RIP 1 document for A/V file: test_av.mp3')).to.equal(
     true
