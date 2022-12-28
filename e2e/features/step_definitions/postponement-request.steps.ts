@@ -1,4 +1,3 @@
-import { browser } from 'protractor';
 import { When, Then } from 'cucumber';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { AdjournmentPage } from '../../pages/adjournment.page';
@@ -18,7 +17,6 @@ When('I book a hearing in the future', async function () {
     (targetDate.getMonth() + 1).toString(),
     targetDate.getFullYear().toString()
   );
-  await browser.sleep(500);
 });
 
 Then('I enter postponement request details', async function () {

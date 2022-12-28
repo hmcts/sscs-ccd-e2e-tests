@@ -1,4 +1,4 @@
-import { browser, by, element } from 'protractor';
+import { by, element } from 'protractor';
 import { expect } from 'chai';
 import { AnyPage } from './any.page';
 import { AnyCcdPage } from './any-ccd.page';
@@ -17,7 +17,6 @@ export class PostponementRequestPage extends AnyPage {
 
   async actionPostponementRequest(action: string) {
     await anyCcdPage.chooseOptionContainingText('actionPostponementRequestSelected', action);
-    await browser.sleep(500);
     if (action === 'Send to Judge') {
       await element(by.id('postponementRequestDetails')).sendKeys(
         'We would like to delay the hearing, since the Judge cannot attend this day.'

@@ -1,4 +1,4 @@
-@reissue-document @migrated-to-exui 
+@reissue-document @migrated-to-exui
 Feature: Reissue document
 
     Scenario: Reissue an document to appellants
@@ -13,7 +13,6 @@ Feature: Reissue document
         And I allow the appeal to proceed
         Then I should see Addition details in documents tab
         When I switch to be a Case Officer
-        And I wait for Judge to sign out
         And I navigate to an existing case
         When I choose "Reissue document"
         And resend only to appellant and not to representative

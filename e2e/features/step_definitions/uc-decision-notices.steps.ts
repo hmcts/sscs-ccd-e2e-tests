@@ -22,7 +22,6 @@ const caseDetailsPage = new CaseDetailsPage();
 const furtherEvidencePage = new FurtherEvidencePage();
 
 When('I select schedule 6 activities with <15 points and schedule 8 para 4 {string}', async function (para4Apply) {
-  await browser.sleep(2500);
   await issueDecisionPage.schedule6PageFieldsAreInTheCorrectOrder();
   await anyCcdPage.clickElementById('ucWriteFinalDecisionPhysicalDisabilitiesQuestion-mobilisingUnaided');
   await anyCcdPage.clickContinue();
@@ -38,7 +37,6 @@ When('I select schedule 6 activities with <15 points and schedule 8 para 4 {stri
 });
 
 When('I select schedule 6 activities with >=15 points', async function () {
-  await browser.sleep(2000);
   await issueDecisionPage.schedule6PageFieldsAreInTheCorrectOrder();
   await anyCcdPage.clickElementById('ucWriteFinalDecisionPhysicalDisabilitiesQuestion-mobilisingUnaided');
   await anyCcdPage.clickContinue();
@@ -79,7 +77,6 @@ When('I update joint party to {string} for UC', async function (hasJointParty) {
   if (hasJointParty === 'YES') {
     await anyCcdPage.clickElementById('jointParty-Yes');
     await jointPartyPage.addJointPartyDetails();
-    await browser.sleep(100);
     await anyCcdPage.clickSubmit();
   }
   await anyCcdPage.clickTab('History');
@@ -102,9 +99,7 @@ When('I update the scanned document for {string}', async function (originator) {
 
   await anyCcdFormPage.setValueByElementId('scannedDocuments_0_fileName', 'test-confidentiality-file');
   await furtherEvidencePage.enterScannedDate('20', '1', '2021');
-  await browser.sleep(2000);
   await anyCcdPage.clickElementById('scannedDocuments_0_includeInBundle_Yes');
-  await browser.sleep(2000);
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
   await browser.driver.sleep(2000);

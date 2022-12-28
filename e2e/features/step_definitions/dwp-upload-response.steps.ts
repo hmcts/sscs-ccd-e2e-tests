@@ -3,7 +3,6 @@ import { CaseDetailsPage } from '../../pages/case-details.page';
 import { Then, When } from 'cucumber';
 import { expect } from 'chai';
 import { DwpResponsePage } from '../../pages/dwpresponse.page';
-import { browser } from 'protractor';
 import config from 'config';
 import { Logger } from '@hmcts/nodejs-logging';
 
@@ -20,7 +19,6 @@ const year = date.getFullYear();
 const formattedDate = `${day}-${month}-${year}`;
 
 When('I choose {string}', async function (action) {
-  await browser.sleep(4000);
   if (
     action === 'Write adjournment notice' ||
     action === 'Not listable' ||
@@ -32,7 +30,6 @@ When('I choose {string}', async function (action) {
   await caseDetailsPage.doNextStep(action);
   if (config.get('tests.crossBrowser')) {
     await anyCcdPage.clickNextStep();
-    await browser.sleep(30000);
   } else {
     await anyCcdPage.clickNextStep();
     expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
@@ -46,27 +43,19 @@ When(
     await dwpresponse.uploadResponse(action, dwpState, benefitType);
     if (benefitType !== 'UC') {
       await anyCcdPage.selectIssueCode();
-      await browser.sleep(2000);
     }
-    await browser.sleep(500);
     await anyCcdPage.scrollBar('//div/form/div/button[2]');
-    await browser.sleep(500);
     if (benefitType === 'UC') {
-      await browser.sleep(3000);
       await anyCcdPage.clickElementById('elementsDisputedList-general');
       await anyCcdPage.clickContinue();
-      await browser.sleep(500);
       expect(await anyCcdPage.pageHeadingContains('Issue codes')).to.equal(true);
       await anyCcdPage.addNewCollectionItem('General');
       await anyCcdPage.selectGeneralIssueCode();
       await anyCcdPage.clickContinue();
-      await browser.sleep(500);
       await anyCcdPage.clickElementById('elementsDisputedIsDecisionDisputedByOthers_No');
       await anyCcdPage.clickContinue();
-      await browser.sleep(500);
       await anyCcdPage.clickElementById('jointParty_No');
       await anyCcdPage.clickContinue();
-      await browser.sleep(500);
     }
     await anyCcdPage.clickSubmit();
   }
@@ -76,16 +65,13 @@ When('I upload only evidence and original documents', async function () {
   const dwpState = 'YES';
   const benefitType = 'PIP';
   await dwpresponse.uploadOnlyResponseAndEvidence('No', dwpState, benefitType);
-  await browser.sleep(500);
   await anyCcdPage.scrollBar('//div/form/div/button[2]');
 });
 
 When('I upload with default issue code', async function () {
   const dwpState = 'YES';
   await dwpresponse.uploadResponse('No', dwpState, 'PIP');
-  await browser.sleep(500);
   await anyCcdPage.scrollBar('//div/form/div/button[2]');
-  await browser.sleep(500);
   await anyCcdPage.clickSubmit();
 });
 
@@ -127,7 +113,6 @@ When(
 );
 
 Then('the case should be in {string} appeal status', async function (state: string) {
-  await browser.sleep(5000);
   expect(await anyCcdPage.contentContains(state)).to.equal(true);
 });
 
@@ -145,7 +130,6 @@ Then('FTA documents should be seen against the case', async function () {
 
   await anyCcdPage.isFieldValueDisplayed('Document type', 'AT38');
   await anyCcdPage.isFieldValueDisplayed('Original document Url', `AT38 received on ${formattedDate}.pdf`);
-  await browser.sleep(500);
 });
 
 Then('FTA edited documents should be seen against the case', async function () {
@@ -155,5 +139,4 @@ Then('FTA edited documents should be seen against the case', async function () {
 
   await anyCcdPage.isFieldValueDisplayed('Document type', 'FTA response');
   await anyCcdPage.isFieldValueDisplayed('Edited document Url', `FTA edited response received on ${formattedDate}.pdf`);
-  await browser.sleep(500);
 });
