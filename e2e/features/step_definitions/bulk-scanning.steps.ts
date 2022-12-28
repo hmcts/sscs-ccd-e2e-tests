@@ -244,7 +244,7 @@ Then('the bundles should be successfully listed in the History', async function 
   await caseDetailsPage.reloadPage();
   let events = await caseDetailsPage.getHistoryEvents();
   if (events.includes('Stitching bundle complete') && events.includes('Create a bundle')) {
-    await browser.sleep(Wait.long);
+    await browser.sleep(Wait.extended);
     await caseDetailsPage.reloadPage();
     events = await caseDetailsPage.getHistoryEvents();
   }

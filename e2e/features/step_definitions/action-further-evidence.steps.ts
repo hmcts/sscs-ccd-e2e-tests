@@ -93,6 +93,7 @@ Then('I see {string} and {string} event being processed successfully', async fun
 });
 
 Then('I should still see previous uploaded file collection within documents tab', async function () {
+  await anyCcdPage.reloadPage();
   await anyCcdPage.clickTab('Documents');
   const types = await anyCcdPage.getFieldValues('Type');
   expect(types).to.include('Appellant evidence');
