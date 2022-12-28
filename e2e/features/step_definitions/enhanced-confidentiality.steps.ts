@@ -29,7 +29,7 @@ Given('I upload a document with redacted content', async function () {
   await anyCcdPage.uploadFile('scannedDocuments_0_editedUrl', 'issue2.pdf');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
-  await anyCcdPage.click('Ignore Warning and Go');
+  await anyCcdPage.clickIgnoreWarning();
   await browser.sleep(5000);
 });
 

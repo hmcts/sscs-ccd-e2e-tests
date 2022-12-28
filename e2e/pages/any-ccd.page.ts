@@ -14,19 +14,6 @@ const logger = Logger.getLogger('any-ccd.pages');
 const crossBrowserTest = Boolean(config.get('tests.crossBrowser'));
 
 export class AnyCcdPage extends AnyPage {
-  async click(linkText: string): Promise<void> {
-    const linkPath = `//*[self::button or self::a][normalize-space()="${linkText}"]`;
-    await browser.wait(
-      async () => {
-        return element.all(by.xpath(linkPath)).isPresent();
-      },
-      Wait.long,
-      'Button did not show in time'
-    );
-    await element.all(by.xpath(linkPath)).first().click();
-    await this.smartWait(Wait.quick);
-  }
-
   async clickContinue(): Promise<ElementFinder> {
     const clickedElement = this.clickButton('Continue');
     await browser.waitForAngular();
@@ -51,6 +38,10 @@ export class AnyCcdPage extends AnyPage {
     return this.clickElementByXpath(
       '//a[contains(@class,"hmcts-primary-navigation") and contains(text(), "Create case")]'
     );
+  }
+
+  async clickIgnoreWarning(): Promise<ElementFinder> {
+    return this.clickButton('Ignore Warning and Go');
   }
 
   async clickElementById(elementId: string): Promise<ElementFinder> {
