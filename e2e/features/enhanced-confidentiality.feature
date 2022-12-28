@@ -21,7 +21,7 @@ Feature: Enhanced confidentiality
         Then I should see redacted content in Documents tab
         When I choose "Create a bundle"
         And I submit "Create a bundle"
-        Then the bundles should be successfully listed in "History" tab
+        Then the bundles should be successfully listed in the History
         And the case bundle details should be listed in "Bundles" tab
         And the "SSCS Bundle Edited" bundle configuration should have been used
         And the "SSCS Bundle Original" bundle configuration should have been used

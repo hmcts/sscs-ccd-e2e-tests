@@ -20,8 +20,8 @@ When('I add issue codes for respective elements', async function () {
 });
 
 Then('the Amend elements event should be seen in "History" tab', async function () {
-  await anyCcdPage.clickTab('History');
-  expect(await anyCcdPage.eventsPresentInHistory('Amend elements/issues')).to.equal(true);
+  const events = await anyCcdPage.getHistoryEvents();
+  expect(events).to.include('Amend elements/issues');
 });
 
 Then('I should see the choose elements and issue code within "Elements and issues" tab', async function () {
