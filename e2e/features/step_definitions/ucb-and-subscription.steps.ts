@@ -26,8 +26,7 @@ Then('I set UCB flag to {string}', async function (ucbFlag) {
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
   if (ucbFlag === 'Yes') {
-    await anyCcdPage.click('Listing Requirements');
-    await browser.sleep(10);
+    await anyCcdPage.clickTab('Listing Requirements');
     expect(await anyCcdPage.contentContains(ucbFlag)).to.equal(true);
   }
   expect(await anyCcdPage.contentContains(ucbFlag)).to.equal(true);
