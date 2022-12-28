@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-shadow
 export enum Wait {
-  quick = 2000,
-  veryShort = 5000,
-  short = 10000,
-  normal = 50000,
-  long = 100000,
+  short = 2000,
+  normal = 5000,
+  long = 10000,
+  extended = 50000,
+  max = 100000,
 }

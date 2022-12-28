@@ -2,4 +2,4 @@ import { setDefaultTimeout } from 'cucumber';
 import { Wait } from './enums/wait';
 
 // eslint-disable-next-line no-magic-numbers
-setDefaultTimeout(2 * Wait.long);
+setDefaultTimeout(2 * Wait.max);

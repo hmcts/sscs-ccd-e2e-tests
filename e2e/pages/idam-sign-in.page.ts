@@ -20,7 +20,7 @@ export class IdamSignInPage extends AnyPage {
   async waitUntilLoaded() {
     await browser.driver.wait(
       ExpectedConditions.visibilityOf($(this.signInButton)),
-      Wait.long,
+      Wait.max,
       'IDAM Sign In page did not load in time'
     );
   }
