@@ -2,6 +2,7 @@ import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
 import { Given, When } from 'cucumber';
+import { expect } from 'chai';
 
 const anyCcdPage = new AnyCcdPage();
 const anyCcdFormPage = new AnyCcdFormPage();
@@ -49,4 +50,6 @@ When('I select Confidentiality Status as {word}', async function (confidentialit
   await anyCcdPage.fillValues('appeal_mrnDetails_dwpIssuingOffice', 'Tax Credit Office');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
+  const errors = await anyCcdPage.getCcdErrorMessages();
+  expect(errors.length).to.equal(0);
 });
