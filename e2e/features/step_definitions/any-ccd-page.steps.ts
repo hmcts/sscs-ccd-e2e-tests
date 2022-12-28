@@ -13,7 +13,7 @@ Given('I wait {string} seconds', async function (number) {
 });
 
 Then('I should see {string} as a case field', async function (value: string, field: string) {
-  const caseFields = anyCcdPage.getCaseFields();
+  const caseFields = await anyCcdPage.getCaseFields();
   logger.info(caseFields);
   expect(caseFields).to.contain(value);
 });
