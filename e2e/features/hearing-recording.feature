@@ -1,4 +1,4 @@
-@migrated-to-exui @hearing-recording @nightly-test-wip
+@migrated-to-exui @hearing-recording @nightly-test
 Feature: Hearing recording
 
   Background:
