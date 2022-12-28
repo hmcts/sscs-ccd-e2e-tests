@@ -143,7 +143,7 @@ Given('I create an child support case', async function () {
   await browser.sleep(5000);
 
   await caseDetailsPage.doNextStep('Admin - update event');
-  await anyCcdPage.click('Go');
+  await anyCcdPage.clickNextStep();
   await anyCcdPage.chooseOptionByValue('createdInGapsFrom', '1: readyToList');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
@@ -212,7 +212,7 @@ Given('I have a PIP bulk-scanned document filled with incomplete fields', async 
 When('I choose {string} for an incomplete application', async function (action) {
   await browser.sleep(500);
   await caseDetailsPage.doNextStep(action);
-  await anyCcdPage.click('Go');
+  await anyCcdPage.clickNextStep();
   expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
 
   await anyCcdPage.clickContinue();
@@ -238,7 +238,7 @@ When('I choose the next step {string}', async function (action) {
       throw new Error(`Do not understand action "${action}"`);
   }
 
-  await anyCcdPage.click('Go');
+  await anyCcdPage.clickNextStep();
   expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
 
   if (action === 'Create new case from exception') {
