@@ -30,10 +30,13 @@ When('generate a letter in {string} with {string} option', async function (lette
     throw new Error('No adjustment option passed in test');
   }
   await anyCcdPage.clickContinue();
+  const errors = await anyCcdPage.getCcdErrorMessages();
+  expect(errors.length).to.equal(0);
   await anyCcdPage.clickSubmit();
 });
 
 Then('reasonable adjustment details are seen in summary page', async function () {
+  await anyCcdPage.clickTab('Summary');
   const reasonableAdjustment = await anyCcdPage.getFieldValue('Wants Reasonable Adjustment');
   expect(reasonableAdjustment).to.equal('Yes');
   const formatRequirements = await anyCcdPage.getFieldValue('Alternative Format Requirements');
@@ -41,6 +44,7 @@ Then('reasonable adjustment details are seen in summary page', async function ()
 });
 
 Then('reasonable adjustment details are not seen in summary page', async function () {
+  await anyCcdPage.clickTab('Summary');
   const reasonableAdjustment = await anyCcdPage.getFieldValues('Wants Reasonable Adjustment');
   expect(reasonableAdjustment).to.not.include('Yes');
   const formatRequirements = await anyCcdPage.getFieldValues('Alternative Format Requirements');
