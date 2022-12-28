@@ -43,6 +43,10 @@ export class AnyCcdPage extends AnyPage {
     return this.clickButton('Add New');
   }
 
+  async clickNextStep(): Promise<ElementFinder> {
+    return this.clickElementByXpath('//ccd-event-trigger//button[@type="submit"]');
+  }
+
   async clickElementById(elementId: string): Promise<ElementFinder> {
     return this.clickAction(by.id(elementId));
   }

@@ -31,10 +31,10 @@ When('I choose {string}', async function (action) {
   }
   await caseDetailsPage.doNextStep(action);
   if (config.get('tests.crossBrowser')) {
-    await anyCcdPage.click('Go');
+    await anyCcdPage.clickNextStep();
     await browser.sleep(30000);
   } else {
-    await anyCcdPage.click('Go');
+    await anyCcdPage.clickNextStep();
     expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
   }
 });
