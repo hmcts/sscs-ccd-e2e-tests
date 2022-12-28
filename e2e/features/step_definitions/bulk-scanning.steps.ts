@@ -241,7 +241,7 @@ Then('the bundles should be successfully listed in {string} tab', async function
   await caseDetailsPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
   if (await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')) {
-    await browser.sleep(Wait.short);
+    await browser.sleep(Wait.long);
     await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab(tabName);
   }
@@ -253,7 +253,7 @@ Then('The edited bundles should be successfully listed in {string} tab', async f
   await caseDetailsPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
   if (await caseDetailsPage.eventsPresentInHistory('Create an edited bundle')) {
-    await browser.sleep(Wait.short);
+    await browser.sleep(Wait.long);
     await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab(tabName);
   }
@@ -264,7 +264,7 @@ Then('the Stitching bundle event should be successfully listed in {string} tab',
   await caseDetailsPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
   if (await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')) {
-    await browser.sleep(Wait.veryShort);
+    await browser.sleep(Wait.normal);
     await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab(tabName);
   }

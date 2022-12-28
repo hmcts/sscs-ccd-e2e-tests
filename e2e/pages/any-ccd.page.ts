@@ -78,7 +78,7 @@ export class AnyCcdPage extends AnyPage {
     await this.waitForElement(locator);
     const elementFinder = element(locator);
     await elementFinder.click();
-    await this.smartWait(Wait.quick);
+    await this.smartWait(Wait.short);
     await this.waitForSpinner();
     return elementFinder;
   }
@@ -87,16 +87,16 @@ export class AnyCcdPage extends AnyPage {
     const elementFinder = element.all(locator).last();
     await this.waitForElement(locator);
     await elementFinder.click();
-    await this.smartWait(Wait.quick);
+    await this.smartWait(Wait.short);
     await this.waitForSpinner();
     return elementFinder;
   }
 
-  async waitForElement(locator: Locator, wait: number = Wait.normal): Promise<void> {
+  async waitForElement(locator: Locator, wait: number = Wait.extended): Promise<void> {
     await browser.wait(until.elementLocated(locator), wait, 'Element Locator Timeout');
   }
 
-  async waitForElements(locator: Locator, wait: number = Wait.normal): Promise<void> {
+  async waitForElements(locator: Locator, wait: number = Wait.extended): Promise<void> {
     await browser.wait(until.elementsLocated(locator), wait, 'Elements Locator Timeout');
   }
 
@@ -104,7 +104,7 @@ export class AnyCcdPage extends AnyPage {
     const choiceLocator = by.id(elementId);
     await this.waitForElement(choiceLocator);
     await element(choiceLocator).element(locator).click();
-    await browser.sleep(Wait.quick);
+    await browser.sleep(Wait.short);
   }
 
   async chooseOptionContainingText(elementId: string, text: string): Promise<void> {
@@ -150,7 +150,7 @@ export class AnyCcdPage extends AnyPage {
         element
           .all(by.xpath(`//*[self::h1 or self::h2 or self::h3 or self::span][contains(text(), "${match}")]`))
           .isPresent(),
-        Wait.normal,
+        Wait.extended,
         'Page heading did not show in time'
       );
 
@@ -182,7 +182,7 @@ export class AnyCcdPage extends AnyPage {
       ExpectedConditions.visibilityOf(
         element(by.xpath(`//div[@class="mat-tab-label-content" and normalize-space()="${fieldLabel}"]`))
       ),
-      Wait.normal
+      Wait.extended
     );
   }
 
@@ -190,7 +190,7 @@ export class AnyCcdPage extends AnyPage {
     await browser.navigate().refresh();
     await this.waitUntilLoaded();
     await this.waitForSpinner();
-    await browser.sleep(Wait.quick);
+    await browser.sleep(Wait.short);
   }
 
   async selectIssueCode(): Promise<void> {
@@ -231,7 +231,7 @@ export class AnyCcdPage extends AnyPage {
     await element(by.id('tempNoteDetail')).sendKeys('This is a test');
   }
 
-  async contentContains(match: string, wait: Wait = Wait.normal): Promise<boolean> {
+  async contentContains(match: string, wait: Wait = Wait.extended): Promise<boolean> {
     const contentPath =
       `//*[` +
       `self::h1 or ` +
@@ -322,7 +322,7 @@ export class AnyCcdPage extends AnyPage {
     await runAndReportAccessibility();
   }
 
-  async contentContainsSubstring(substring: string, wait: Wait = Wait.normal): Promise<boolean> {
+  async contentContainsSubstring(substring: string, wait: Wait = Wait.extended): Promise<boolean> {
     const contentPath =
       '//*[' +
       'self::h1 or ' +
@@ -366,7 +366,7 @@ export class AnyCcdPage extends AnyPage {
 
   async waitForSpinner(): Promise<void> {
     const elementFinder = element(by.className('spinner-container'));
-    await browser.wait(ExpectedConditions.not(ExpectedConditions.presenceOf(elementFinder)), Wait.normal);
+    await browser.wait(ExpectedConditions.not(ExpectedConditions.presenceOf(elementFinder)), Wait.extended);
   }
 
   async uploadFile(inputElement: string, fileName: string, folder = 'e2e/dwpResponse/') {
@@ -377,7 +377,7 @@ export class AnyCcdPage extends AnyPage {
     }
     const uploadingLocator = by.cssContainingText('.error-message', 'Uploading');
     logger.info(`Uploading: ${await element(uploadingLocator).isPresent()}`);
-    await browser.wait(ExpectedConditions.not(ExpectedConditions.presenceOf(element(uploadingLocator))), Wait.long);
+    await browser.wait(ExpectedConditions.not(ExpectedConditions.presenceOf(element(uploadingLocator))), Wait.max);
   }
 
   async waitForEndState(state: string): Promise<void> {
@@ -385,11 +385,11 @@ export class AnyCcdPage extends AnyPage {
     await this.reloadPage();
     await this.clickTab('History');
     if (!(await this.isFieldValueDisplayed(endStateLabel, state))) {
-      await browser.sleep(Wait.veryShort);
+      await browser.sleep(Wait.normal);
       await this.reloadPage();
       await this.clickTab('History');
     }
     const locator = await this.getFieldValueLocator(endStateLabel, state);
-    await this.waitForElement(locator, Wait.long);
+    await this.waitForElement(locator, Wait.max);
   }
 }
