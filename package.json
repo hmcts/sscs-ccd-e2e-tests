@@ -66,7 +66,8 @@
     "typescript": "4.9.4"
   },
   "resolutions": {
-    "protractor-multiple-cucumber-html-reporter-plugin/**/multiple-cucumber-html-reporter" : "^3.0.2",
-    "protractor/**/qs" : "^6.11.0"
+    "protractor-multiple-cucumber-html-reporter-plugin/**/multiple-cucumber-html-reporter": "^3.0.2",
+    "protractor/**/qs": "^6.11.0",
+    "protractor/**/ajv": "^8.11.2"
   }
 }
