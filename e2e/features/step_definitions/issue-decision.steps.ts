@@ -50,9 +50,12 @@ When('I write a final decision generate notice yes daily living mobility is no f
   expect(await anyCcdPage.pageHeadingContains('Anything else?')).to.equal(true);
   await anyCcdPage.clickContinue();
   // decision generated
+  await anyCcdPage.waitForSpinner();
   expect(await anyCcdPage.pageHeadingContains('Preview Decision Notice')).to.equal(true);
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
+  const errors = await anyCcdPage.numberOfCcdErrorMessages();
+  expect(errors).to.equal(0);
 });
 
 When('I write a final decision generate notice yes daily living mobility is yes face to face', async function () {
@@ -96,10 +99,13 @@ When('I write a final decision generate notice yes daily living mobility is yes 
   expect(await anyCcdPage.pageHeadingContains('Anything else?')).to.equal(true);
   await anyCcdPage.clickContinue();
   // decision generated
+  await anyCcdPage.waitForSpinner();
   expect(await anyCcdPage.pageHeadingContains('Preview Decision Notice')).to.equal(true);
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Check your answers')).to.equal(true);
   await anyCcdPage.clickSubmit();
+  const errors = await anyCcdPage.numberOfCcdErrorMessages();
+  expect(errors).to.equal(0);
 });
 
 When('I see {string}', async function (notice) {
