@@ -67,6 +67,7 @@ const cucumberOpts = {
   keepAlive: false,
   tags: false,
   profile: false,
+  backtrace: true,
   'fail-fast': failFast,
   'nightly-tag': testAnnotation,
   'no-source': true,
