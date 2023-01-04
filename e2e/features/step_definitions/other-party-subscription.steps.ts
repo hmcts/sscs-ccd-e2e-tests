@@ -77,6 +77,7 @@ Then('I subscribed to all parties including other party to {string}', async func
     );
     await anyCcdPage.setValueByElementId('otherParties_0_otherPartyRepresentativeSubscription_mobile', '01234567890');
   } else {
+    await browser.sleep(Wait.extended);
     await anyCcdPage.clickElementById(`subscriptions_appellantSubscription_wantSmsNotifications_${action}`);
     await anyCcdPage.clickElementById(`subscriptions_appellantSubscription_subscribeEmail_${action}`);
 
