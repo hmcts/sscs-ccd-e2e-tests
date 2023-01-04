@@ -35,16 +35,16 @@ When('generate a letter in {string} with {string} option', async function (lette
   await anyCcdPage.clickSubmit();
 });
 
-Then('reasonable adjustment details are seen in summary page', async function () {
-  await anyCcdPage.clickTab('Summary');
+Then('reasonable adjustment details are seen on the {string} tab', async function (tab: string) {
+  await anyCcdPage.clickTab(tab);
   const reasonableAdjustment = await anyCcdPage.getFieldValue('Wants Reasonable Adjustment');
   expect(reasonableAdjustment).to.equal('Yes');
   const formatRequirements = await anyCcdPage.getFieldValue('Alternative Format Requirements');
   expect(formatRequirements).to.equal('A2');
 });
 
-Then('reasonable adjustment details are not seen in summary page', async function () {
-  await anyCcdPage.clickTab('Summary');
+Then('reasonable adjustment details are not seen on the {string} tab', async function (tab: string) {
+  await anyCcdPage.clickTab(tab);
   const reasonableAdjustment = await anyCcdPage.getFieldValues('Wants Reasonable Adjustment');
   expect(reasonableAdjustment).to.not.include('Yes');
   const formatRequirements = await anyCcdPage.getFieldValues('Alternative Format Requirements');

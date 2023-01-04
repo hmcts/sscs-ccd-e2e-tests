@@ -10,7 +10,7 @@ Feature: Reasonable adjustments functionality
 
     When I choose "Update reasonable adjustment"
     And generate a letter in "Alternative Letter Format" with "Yes" option
-    Then reasonable adjustment details are seen in summary page
+    Then reasonable adjustment details are seen on the "Summary" tab
 
     When I choose "Issue directions notice"
     And I fill the direction notice form with "Provide information"
@@ -30,4 +30,4 @@ Feature: Reasonable adjustments functionality
 
     When I choose "Update reasonable adjustment"
     And generate a letter in "Alternative Letter Format" with "No" option
-    Then reasonable adjustment details are not seen in summary page
+    Then reasonable adjustment details are not seen on the "Summary" tab
