@@ -13,7 +13,7 @@ const dwpresponse = new DwpResponsePage();
 
 const logger = Logger.getLogger('dwp-upload-response.steps');
 
-const formattedDate = moment().format('DD-MMM-YYYY');
+const formattedDate = moment().format('DD-MM-YYYY');
 
 When('I choose {string}', async function (action) {
   if (
