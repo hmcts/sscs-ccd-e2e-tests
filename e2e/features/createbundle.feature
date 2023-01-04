@@ -9,6 +9,7 @@ Feature: Create bundle for a case
 
     When I choose "Upload response"
     And I upload contains further information "NO" for "PIP"
+    Then the case should end in "Ready to list" state
 
   @bundle @preview-test-skip
   Scenario: Verify create bundle event for cases
