@@ -5,6 +5,7 @@ Feature: UC Confidentiality Request
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
+    And the case should be in "With FTA" state
     Given I choose "Upload response"
     And I upload UC further information with disputed General disputed by others No and further info No
     And I wait "8" seconds
