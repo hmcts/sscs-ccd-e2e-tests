@@ -188,6 +188,7 @@ export class AnyCcdPage extends AnyPage {
   }
 
   async waitForTabsToLoad(): Promise<void> {
+    await this.waitForSpinner();
     await this.waitForElement(by.tagName('mat-tab-header'));
   }
 
