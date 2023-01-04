@@ -38,6 +38,11 @@ Feature: Other party Reasonable adjustments functionality
     And generate a letter in "Alternative Letter Format" with "otherPartyYes" option
     Then reasonable adjustment details are seen on the "Other Party Details" tab
 
+    When I choose "Issue directions notice"
+    And I fill the direction notice form with "Provide information"
+    Then the "Stop bulk print" event should be successfully listed in the History
+    Then Reasonable adjustment tab is seen with "Reasonable adjustment status" as "Required"
+
     When I choose "Update reasonable adjustment"
     And generate a letter in "Alternative Letter Format" with "otherPartyNo" option
     Then reasonable adjustment details are not seen on the "Other Party Details" tab
