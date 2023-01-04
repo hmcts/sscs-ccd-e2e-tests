@@ -1,5 +1,5 @@
 @migrated-to-exui
-Feature: The happy path
+Feature: Happy Path
 
   @happy-path @nightly-test @dwp-upload-response @preview-test
   Scenario: Should end up in "Ready to list" state when ALL fields are present

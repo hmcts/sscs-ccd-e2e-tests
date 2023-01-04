@@ -1,5 +1,5 @@
 @migrated-to-exui
-Feature: The alternate happy path
+Feature: Alternate Happy Path
 
   @alt-happy-path @nightly-test @preview-test
   Scenario: Should end up in "With FTA" state when ALL fields are present

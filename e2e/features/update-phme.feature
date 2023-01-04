@@ -1,5 +1,5 @@
 @migrated-to-exui @nightly-test
-Feature: The Update Phme
+Feature: Update Phme
 
   Background:
     Given I presetup an "PIP" SYA case

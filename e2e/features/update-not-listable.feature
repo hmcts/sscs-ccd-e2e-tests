@@ -1,5 +1,5 @@
 @migrated-to-exui @nightly-test
-Feature: The Update Not Listable
+Feature: Update Not Listable
 
   Background:
     Given I presetup an "PIP" SYA case
