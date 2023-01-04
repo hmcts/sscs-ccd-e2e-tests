@@ -1,10 +1,13 @@
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
 import { Then } from 'cucumber';
 import { expect } from 'chai';
+import { browser } from 'protractor';
+import { Wait } from '../../enums/wait';
 
 const anyCcdPage = new AnyCcdFormPage();
 
-Then('I subscribed to all parties including other party to {string}', async function (isSubscribed) {
+Then('I subscribed to all parties including other party to {string}', async function (isSubscribed: string) {
+  await browser.sleep(Wait.extended);
   const action = isSubscribed;
   if (action === 'Yes') {
     await anyCcdPage.clickElementById(`subscriptions_appellantSubscription_wantSmsNotifications_${action}`);
