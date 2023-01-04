@@ -1,5 +1,5 @@
 @migrated-to-exui @nightly-test @update-other-party-subscriptions
-Feature: The Update subscriptions
+Feature: Update Other Party Subscriptions
 
   Background:
     Given I presetup an "Child Support" SYA case
@@ -17,4 +17,5 @@ Feature: The Update subscriptions
     And I subscribed to all parties including other party to "Yes"
 
   Scenario: Update Subscription - No
+    And I wait "35" seconds
     And I subscribed to all parties including other party to "No"
