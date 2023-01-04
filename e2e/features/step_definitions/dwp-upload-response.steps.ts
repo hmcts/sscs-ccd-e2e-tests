@@ -5,6 +5,7 @@ import { expect } from 'chai';
 import { DwpResponsePage } from '../../pages/dwpresponse.page';
 import config from 'config';
 import { Logger } from '@hmcts/nodejs-logging';
+import moment from 'moment';
 
 const anyCcdPage = new AnyCcdFormPage();
 const caseDetailsPage = new CaseDetailsPage();
@@ -12,11 +13,7 @@ const dwpresponse = new DwpResponsePage();
 
 const logger = Logger.getLogger('dwp-upload-response.steps');
 
-const date = new Date();
-const month = date.getMonth() + 1; // months (0-11)
-const day = date.getDate(); // day (1-31)
-const year = date.getFullYear();
-const formattedDate = `${day}-${month}-${year}`;
+const formattedDate = moment().format('DD-MMM-YYYY');
 
 When('I choose {string}', async function (action) {
   if (
