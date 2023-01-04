@@ -282,9 +282,9 @@ Then('the case bundle details should be listed in {string} tab', async function 
   expect(configUsed).to.equal('SSCS Bundle Original');
 });
 
-Then('the {string} bundle configuration should have been used', async function (config) {
-  const fieldValue = await caseDetailsPage.getFieldValue('Config used for bundle');
-  expect(fieldValue).to.equal(config);
+Then('the {string} bundle configuration should have been used', async function (value) {
+  const fieldValue = await caseDetailsPage.getFieldValues('Config used for bundle');
+  expect(fieldValue).to.include(value);
 });
 
 Given('I preset up a test case', async function () {
