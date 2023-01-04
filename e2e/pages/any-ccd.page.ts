@@ -397,8 +397,14 @@ export class AnyCcdPage extends AnyPage {
     await this.reloadPage();
     await this.clickTab('History');
     if (!(await this.isFieldValueDisplayed(endStateLabel, state))) {
-      logger.info(`end state not found, waiting for ${Wait.long / 1000}s`);
-      await browser.sleep(Wait.long);
+      logger.info(`end state not found, waiting for ${Wait.normal / 1000}s`);
+      await browser.sleep(Wait.normal);
+      await this.reloadPage();
+      await this.clickTab('History');
+    }
+    if (!(await this.isFieldValueDisplayed(endStateLabel, state))) {
+      logger.info(`end state not found, waiting for ${Wait.extended / 1000}s`);
+      await browser.sleep(Wait.extended);
       await this.reloadPage();
       await this.clickTab('History');
     }
