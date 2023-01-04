@@ -239,39 +239,20 @@ Then('the case should be in {string} state', async function (state: string): Pro
   await anyCcdPage.waitForEndState(state);
 });
 
-Then('the bundles should be successfully listed in the History', async function () {
-  await anyCcdPage.waitForTabsToLoad();
+Then('the {string} event should be successfully listed in the History', async function (event: string) {
   await caseDetailsPage.reloadPage();
   let events = await caseDetailsPage.getHistoryEvents();
-  if (events.includes('Stitching bundle complete') && events.includes('Create a bundle')) {
-    await browser.sleep(Wait.extended);
-    await caseDetailsPage.reloadPage();
-    events = await caseDetailsPage.getHistoryEvents();
-  }
-  expect(events).to.include('Stitching bundle complete');
-  expect(events).to.include('Create a bundle');
-});
-
-Then('The edited bundles should be successfully listed in the History', async function () {
-  await caseDetailsPage.reloadPage();
-  let events = await caseDetailsPage.getHistoryEvents();
-  if (events.includes('Create an edited bundle')) {
-    await browser.sleep(Wait.long);
-    await caseDetailsPage.reloadPage();
-    events = await caseDetailsPage.getHistoryEvents();
-  }
-  expect(events).to.include('Create an edited bundle');
-});
-
-Then('the Stitching bundle event should be successfully listed in the History', async function () {
-  await caseDetailsPage.reloadPage();
-  let events = await caseDetailsPage.getHistoryEvents();
-  if (events.includes('Stitching bundle complete')) {
+  if (events.includes(event)) {
     await browser.sleep(Wait.normal);
     await caseDetailsPage.reloadPage();
     events = await caseDetailsPage.getHistoryEvents();
   }
-  expect(events).to.include('Stitching bundle complete');
+  if (events.includes(event)) {
+    await browser.sleep(Wait.extended);
+    await caseDetailsPage.reloadPage();
+    events = await caseDetailsPage.getHistoryEvents();
+  }
+  expect(events).to.include(event);
 });
 
 Then('the case bundle details should be listed in {string} tab', async function (tabName) {

@@ -19,6 +19,7 @@ Feature: Other party Reasonable adjustments functionality
 
     When I choose "Issue directions notice"
     And I fill the direction notice form with "Provide information"
+    Then Then the "Stop bulk print" event should be successfully listed in the History
     Then Reasonable adjustment tab is seen with "Reasonable adjustment status" as "Required"
 
   Scenario: Remove reasonable adjustment flag from a case

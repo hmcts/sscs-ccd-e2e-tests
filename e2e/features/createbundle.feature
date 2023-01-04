@@ -15,11 +15,12 @@ Feature: Create bundle for a case
     Given I navigate to an existing case
     And I choose "Create a bundle"
     And I submit "Create a bundle"
-    Then the bundles should be successfully listed in the History
+    Then the "Create a bundle" event should be successfully listed in the History
+    Then the "Stitching bundle complete" event should be successfully listed in the History
     And the case bundle details should be listed in "Bundles" tab
 
   @stitch-bundle
   Scenario: Verify stitch bundle event for cases
     And I choose "Stitching bundle complete"
     And I submit "Stitching bundle complete"
-    Then the Stitching bundle event should be successfully listed in the History
+    Then the "Stitching bundle complete" event should be successfully listed in the History
