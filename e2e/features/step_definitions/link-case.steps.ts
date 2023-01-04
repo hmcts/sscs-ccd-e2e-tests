@@ -30,5 +30,5 @@ Then('I should see the case linked within related cases tab', async function () 
   const linkedCaseIds = await anyCcdPage.getFieldValues('Linked case(s)');
   const linkedCaseIdsTrimmed = linkedCaseIds.map((caseId) => caseId.replace(/-/g, ''));
   logger.info(`Linked Cases Ids:\n${linkedCaseIdsTrimmed.join('\n')}`);
-  expect(linkedCaseIdsTrimmed).to.equal(linkedCaseReference);
+  expect(linkedCaseIdsTrimmed).to.include(linkedCaseReference);
 });
