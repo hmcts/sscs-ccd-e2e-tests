@@ -55,7 +55,7 @@
     "prettier": "2.8.1",
     "protractor": "7.0.0",
     "protractor-beautiful-reporter": "1.2.5",
-    "protractor-cucumber-framework": "6.1.1",
+    "protractor-cucumber-framework": "9.0.0",
     "protractor-multiple-cucumber-html-reporter-plugin": "1.8.1",
     "protractor-retry": "2.0.1",
     "puppeteer": "19.4.1",
