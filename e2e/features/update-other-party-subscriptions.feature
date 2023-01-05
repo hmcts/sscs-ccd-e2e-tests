@@ -10,12 +10,13 @@ Feature: Update Other Party Subscriptions
     And I choose "Update other party data"
     And I add other party data
     Then the case should end in "Not listable" state
-    And I choose "Update subscription"
 
   @preview-test-skip
   Scenario: Update Subscription - Yes
+    And I choose "Update subscription"
     And I subscribed to all parties including other party to "Yes"
 
   Scenario: Update Subscription - No
     And I wait "35" seconds
+    And I choose "Update subscription"
     And I subscribed to all parties including other party to "No"
