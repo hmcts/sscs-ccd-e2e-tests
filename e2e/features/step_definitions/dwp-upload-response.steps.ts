@@ -1,6 +1,6 @@
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
-import { Then, When } from 'cucumber';
+import { Then, When } from '@cucumber/cucumber';
 import { expect } from 'chai';
 import { DwpResponsePage } from '../../pages/dwpresponse.page';
 import config from 'config';

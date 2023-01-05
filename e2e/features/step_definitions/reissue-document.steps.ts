@@ -1,4 +1,4 @@
-import { Then, When } from 'cucumber';
+import { Then, When } from '@cucumber/cucumber';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { expect } from 'chai';
 const anyCcdPage = new AnyCcdPage();

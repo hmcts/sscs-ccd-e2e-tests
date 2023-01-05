@@ -1,5 +1,5 @@
 import { AnyCcdPage } from '../../pages/any-ccd.page';
-import { Given, Then } from 'cucumber';
+import { Given, Then } from '@cucumber/cucumber';
 import { expect } from 'chai';
 import { browser } from 'protractor';
 import { Logger } from '@hmcts/nodejs-logging';

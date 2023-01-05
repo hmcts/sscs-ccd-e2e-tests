@@ -4,12 +4,12 @@ import serviceConfig from 'config';
 import path from 'path';
 import { Logger } from '@hmcts/nodejs-logging';
 import { retry } from 'protractor-retry';
+import { IParsedArgvOptions } from '@cucumber/cucumber/lib/cli/argv_parser';
 
 const logger = Logger.getLogger('features.crossbrowser.conf');
 
 const ccdWebUrl: string = serviceConfig.get('ccd.webUrl');
-const failFast = Boolean(JSON.parse(serviceConfig.get('protractor.FailFast')));
-const testAnnotation: string = serviceConfig.get('protractor.testAnnotation');
+// const failFast = Boolean(JSON.parse(serviceConfig.get('protractor.FailFast')));
 const sauceUser: string = serviceConfig.get('sauce.user');
 const sauceKey: string = serviceConfig.get('sauce.key');
 const retries: number = Math.max(serviceConfig.get('protractor.testRetries'), 0);
@@ -31,26 +31,25 @@ async function onComplete(): Promise<void> {
   logger.info(`SauceOnDemandSessionID=${session.getId()} job-name=sscs-ccd-e2e-tests`);
 }
 
-function afterLaunch(): any {
-  return retry.afterLaunch(retries);
-}
+// function afterLaunch(): any {
+//   return retry.afterLaunch(retries);
+// }
 
 const featuresPath = path.resolve(process.cwd(), 'e2e/features/*.feature');
+
+const cucumberOpts: IParsedArgvOptions = <IParsedArgvOptions>{
+  format: ['@cucumber/pretty-formatter', 'json:./cb_reports/saucelab_results.json'],
+  require: ['./cucumber.conf.js', './features/step_definitions/**/*.steps.js'],
+  // failFast,
+  strict: true,
+  backtrace: true,
+  retry: retries,
+};
 
 export const config: Config = {
   framework: 'custom',
   frameworkPath: require.resolve('protractor-cucumber-framework'),
-  cucumberOpts: {
-    require: ['./cucumber.conf.js', './features/step_definitions/**/*.steps.js'],
-    keepAlive: false,
-    tags: false,
-    profile: false,
-    'fail-fast': failFast,
-    'nightly-tag': testAnnotation,
-    'no-source': true,
-    strict: true,
-    format: ['node_modules/cucumber-pretty', 'json:./cb_reports/saucelab_results.json'],
-  },
+  cucumberOpts,
 
   sauceSeleniumAddress: 'ondemand.eu-central-1.saucelabs.com:443/wd/hub',
   host: 'ondemand.eu-central-1.saucelabs.com',
@@ -86,5 +85,5 @@ export const config: Config = {
   onPrepare,
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   onComplete,
-  afterLaunch,
+  // afterLaunch,
 };

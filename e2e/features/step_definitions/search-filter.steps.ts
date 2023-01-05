@@ -1,5 +1,5 @@
 import { element, by } from 'protractor';
-import { When, Then } from 'cucumber';
+import { When, Then } from '@cucumber/cucumber';
 import { expect } from 'chai';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 

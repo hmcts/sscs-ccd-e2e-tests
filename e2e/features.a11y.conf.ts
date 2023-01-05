@@ -6,6 +6,7 @@ import { generateAccessibilityReport } from './reporter/customReporter';
 import path from 'path';
 
 import { Logger } from '@hmcts/nodejs-logging';
+import { IParsedArgvOptions } from '@cucumber/cucumber/lib/cli/argv_parser';
 
 const logger = Logger.getLogger('features.a11y.conf');
 
@@ -13,8 +14,7 @@ const proxyUrl: string = serviceConfig.get('proxy.url');
 const useProxy = Boolean(JSON.parse(serviceConfig.get('proxy.use')));
 const useHeadlessBrowser = Boolean(JSON.parse(serviceConfig.get('protractor.UseHeadlessBrowser')));
 const ccdWebUrl: string = serviceConfig.get('ccd.webUrl');
-const failFast = Boolean(JSON.parse(serviceConfig.get('protractor.FailFast')));
-const testAnnotation: string = serviceConfig.get('protractor.testAnnotation');
+// const failFast = Boolean(JSON.parse(serviceConfig.get('protractor.FailFast')));
 const retries: number = Math.max(serviceConfig.get('protractor.testRetries'), 0);
 
 const loggingDriver = serviceConfig.get('logging.driver');
@@ -54,15 +54,12 @@ const capabilities = {
   shardTestFiles: false,
 };
 
-const cucumberOpts = {
-  format: ['node_modules/cucumber-pretty', 'json:reports/tests/functionTestResult.json'],
+const cucumberOpts: IParsedArgvOptions = <IParsedArgvOptions>{
+  format: ['@cucumber/pretty-formatter', 'json:reports/tests/functionTestResult.json'],
   require: ['./cucumber.conf.js', './features/step_definitions/*.steps.js', './support/hooks.js'],
-  keepAlive: false,
-  tags: false,
-  profile: false,
-  'fail-fast': failFast,
-  'nightly-tag': testAnnotation,
-  'no-source': true,
+  backtrace: true,
+  // failFast,
+  retry: retries,
 };
 
 const plugins = [
@@ -92,9 +89,9 @@ async function onPrepare(): Promise<void> {
   retry.onPrepare();
 }
 
-function afterLaunch(): any {
-  return retry.afterLaunch(retries);
-}
+// function afterLaunch(): any {
+//   return retry.afterLaunch(retries);
+// }
 
 export const config: Config = {
   baseUrl: ccdWebUrl,
@@ -119,7 +116,7 @@ export const config: Config = {
   onCleanUp,
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   onPrepare,
-  afterLaunch,
+  // afterLaunch,
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   onComplete: generateAccessibilityReport,
 };

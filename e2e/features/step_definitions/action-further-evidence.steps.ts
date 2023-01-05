@@ -1,4 +1,4 @@
-import { When, Then } from 'cucumber';
+import { When, Then } from '@cucumber/cucumber';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { assert, expect } from 'chai';
 import { FurtherEvidencePage } from '../../pages/further-evidence.page';

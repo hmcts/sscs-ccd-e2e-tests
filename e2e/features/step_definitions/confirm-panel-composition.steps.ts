@@ -1,5 +1,5 @@
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
-import { When, Then } from 'cucumber';
+import { When, Then } from '@cucumber/cucumber';
 import { expect, assert } from 'chai';
 import { CaseDetailsPage } from '../../pages/case-details.page';
 

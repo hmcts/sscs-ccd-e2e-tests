@@ -1,4 +1,4 @@
-import { When, Then } from 'cucumber';
+import { When, Then } from '@cucumber/cucumber';
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
 import { expect } from 'chai';
 

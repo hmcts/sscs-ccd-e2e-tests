@@ -1,7 +1,7 @@
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
-import { Given, When } from 'cucumber';
+import { Given, When } from '@cucumber/cucumber';
 import { expect } from 'chai';
 
 const anyCcdPage = new AnyCcdPage();

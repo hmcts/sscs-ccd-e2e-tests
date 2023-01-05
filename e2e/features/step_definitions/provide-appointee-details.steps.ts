@@ -1,4 +1,4 @@
-import { Then } from 'cucumber';
+import { Then } from '@cucumber/cucumber';
 import { expect } from 'chai';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 

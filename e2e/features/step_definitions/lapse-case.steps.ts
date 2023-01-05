@@ -1,4 +1,4 @@
-import { When } from 'cucumber';
+import { When } from '@cucumber/cucumber';
 import { LapseCasePage } from '../../pages/lapsecase.page';
 
 const lapseCase = new LapseCasePage();

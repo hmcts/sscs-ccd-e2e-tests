@@ -1,4 +1,4 @@
-import { When, Then } from 'cucumber';
+import { When, Then } from '@cucumber/cucumber';
 import { browser } from 'protractor';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { JointPartyPage } from '../../pages/joint-party.page';

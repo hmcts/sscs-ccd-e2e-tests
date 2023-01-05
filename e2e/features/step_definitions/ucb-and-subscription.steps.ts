@@ -2,7 +2,7 @@ import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
 import { AppointeePage } from '../../pages/appointee.page';
 import { DwpResponsePage } from '../../pages/dwpresponse.page';
-import { Then, When } from 'cucumber';
+import { Then, When } from '@cucumber/cucumber';
 import { expect } from 'chai';
 import { browser } from 'protractor';
 

@@ -1,4 +1,4 @@
-import { When } from 'cucumber';
+import { When } from '@cucumber/cucumber';
 import { browser, ExpectedConditions, element, by } from 'protractor';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { IssueDecisionPage } from '../../pages/issue-decision.page';

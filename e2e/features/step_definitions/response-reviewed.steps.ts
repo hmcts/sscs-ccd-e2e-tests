@@ -1,5 +1,5 @@
 import { AnyCcdPage } from '../../pages/any-ccd.page';
-import { When } from 'cucumber';
+import { When } from '@cucumber/cucumber';
 import { expect } from 'chai';
 import { ResponseReviewedPage } from '../../pages/response-reviewed.page';
 const anyCcdPage = new AnyCcdPage();

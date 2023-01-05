@@ -1,6 +1,6 @@
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
-import { Then } from 'cucumber';
+import { Then } from '@cucumber/cucumber';
 
 const anyCcdPage = new AnyCcdPage();
 const anyCcdFormPage = new AnyCcdFormPage();

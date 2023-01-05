@@ -1,5 +1,5 @@
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
-import { Given, Then } from 'cucumber';
+import { Given, Then } from '@cucumber/cucumber';
 import { browser } from 'protractor';
 import { expect } from 'chai';
 

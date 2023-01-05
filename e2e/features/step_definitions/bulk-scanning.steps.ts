@@ -3,7 +3,7 @@ import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
 import { generateNINumber } from '../../helpers/ni-generator';
 import { DwpOffice } from '../../helpers/dwp-office';
-import { Given, Then, When } from 'cucumber';
+import { Given, Then, When } from '@cucumber/cucumber';
 import { expect } from 'chai';
 import { browser } from 'protractor';
 import * as ccd from '../../helpers/ccd';
