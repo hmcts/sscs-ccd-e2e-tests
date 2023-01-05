@@ -3248,10 +3248,10 @@ protractor-beautiful-reporter@1.2.5:
     mkdirp "~0.3.5"
     underscore "~1.6.0"
 
-protractor-cucumber-framework@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/protractor-cucumber-framework/-/protractor-cucumber-framework-6.1.1.tgz#19e56836702b014d3ec8fe4fa6a65075ee9ab056"
-  integrity sha512-zbV/JWCtpr3FrEP1tpFZeOnytuYjAVnTtE85LDOmSDFFM6fcso1X4VypwEpcvW4adSN+cBuYnCKcdm/kay1slg==
+protractor-cucumber-framework@6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/protractor-cucumber-framework/-/protractor-cucumber-framework-6.2.1.tgz#4cacd11bcad1c42afd1ad894720c4c660bebc021"
+  integrity sha512-ZKOvX0Yoq2aL1nrlX5RzeHB9jtWGGiuaqqTPUvPXpyAFbrs3wfDAmMwrdWjg8m62wEhamZMVQIYqSPMPd9obMw==
   dependencies:
     debug "^3.1.0"
     glob "^7.1.2"
