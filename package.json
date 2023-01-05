@@ -40,7 +40,7 @@
     "codelyzer": "4.5.0",
     "config": "^3.3.8",
     "cross-env": "4.0.0",
-    "cucumber": "5.1.0",
+    "cucumber": "6.0.7",
     "cucumber-pretty": "1.5.2",
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.5.0",
