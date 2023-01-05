@@ -3,9 +3,10 @@ import { retry } from 'protractor-retry';
 import puppeteer from 'puppeteer';
 import serviceConfig from 'config';
 import path from 'path';
-
 import { Logger } from '@hmcts/nodejs-logging';
-import { IParsedArgvOptions } from '@cucumber/cucumber/lib/cli/argv_parser';
+import { IConfiguration } from '@cucumber/cucumber/lib/configuration/types';
+import report from 'multiple-cucumber-html-reporter';
+import { mkdirSync } from 'fs';
 
 const logger = Logger.getLogger('features.parallel.conf');
 
@@ -16,6 +17,8 @@ const maxInstances: number = Math.max(serviceConfig.get('protractor.RunWithNumbe
 const ccdWebUrl: string = serviceConfig.get('ccd.webUrl');
 // const failFast = Boolean(JSON.parse(serviceConfig.get('protractor.FailFast')));
 const retries: number = Math.max(serviceConfig.get('protractor.testRetries'), 0);
+const testOutputDir: string = path.resolve(process.cwd(), serviceConfig.get('protractor.TestOutputDir'));
+const reportDir: string = path.resolve(testOutputDir, 'functional');
 
 const loggingDriver = serviceConfig.get('logging.driver');
 const loggingBrowser = serviceConfig.get('logging.driver');
@@ -54,27 +57,16 @@ const capabilities = {
   shardTestFiles: maxInstances > 1,
 };
 
-const cucumberOpts: IParsedArgvOptions = <IParsedArgvOptions>{
-  format: ['@cucumber/pretty-formatter', 'json:reports/tests/functionTestResult.json'],
+const jsonDir = path.resolve(reportDir, 'json');
+mkdirSync(jsonDir, { recursive: true });
+
+const cucumberOpts: IConfiguration = <IConfiguration>{
+  format: ['@cucumber/pretty-formatter', `json:${path.resolve(jsonDir, 'testResult.json')}`],
   require: ['./cucumber.conf.js', './features/step_definitions/*.steps.js', './support/hooks.js'],
   backtrace: true,
   // failFast,
   retry: retries,
 };
-
-const plugins = [
-  {
-    package: 'protractor-multiple-cucumber-html-reporter-plugin',
-    options: {
-      automaticallyGenerateReport: true,
-      removeExistingJsonReportFile: true,
-      reportName: 'SSCS CCD E2E Tests',
-      jsonDir: 'reports/tests/functional',
-      reportPath: 'reports/tests/functional',
-      saveCollectedJSON: true,
-    },
-  },
-];
 
 const frameworkPath = require.resolve('protractor-cucumber-framework');
 
@@ -88,6 +80,16 @@ async function onPrepare(): Promise<void> {
   await browser.getProcessedConfig();
 
   retry.onPrepare();
+}
+
+function onComplete(): void {
+  report.generate({
+    jsonDir: reportDir,
+    reportPath: reportDir,
+    customData: {
+      title: 'SSCS CCD E2E Tests',
+    },
+  });
 }
 
 // function afterLaunch(): any {
@@ -113,11 +115,11 @@ export const config: Config = {
   framework: 'custom',
   frameworkPath,
   cucumberOpts,
-  plugins,
   onCleanUp,
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   onPrepare,
   // afterLaunch: retries > 0 ? afterLaunch : null,
+  onComplete,
 };
 
 logger.info(JSON.stringify(config, null, 2));

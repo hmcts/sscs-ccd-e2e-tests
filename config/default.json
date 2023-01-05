@@ -14,7 +14,7 @@
   },
   "protractor": {
     "UseHeadlessBrowser": true,
-    "TestOutputDir": "./reports/tests",
+    "TestOutputDir": "./reports/tests-results",
     "RunWithNumberOfBrowsers": 2,
     "WaitForAngular": true,
     "FailFast": true,

@@ -71,7 +71,7 @@ withNightlyPipeline("nodejs", product, component) {
                 allowMissing         : true,
                 alwaysLinkToLastBuild: true,
                 keepAll              : true,
-                reportDir            : "reports/tests/",
+                reportDir            : "reports/tests-results/a11y/",
                 reportFiles          : 'a11y.html',
                 reportName           : 'ExUi Manage Cases a11y Accessibility Report'
         ])
@@ -79,11 +79,11 @@ withNightlyPipeline("nodejs", product, component) {
                 allowMissing         : true,
                 alwaysLinkToLastBuild: true,
                 keepAll              : true,
-                reportDir            : "reports/tests/a11y/",
+                reportDir            : "reports/tests-results/a11y/",
                 reportFiles          : 'index.html',
                 reportName           : 'ExUi Manage Cases a11y Test Report'
         ])
-        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/a11y/*'
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests-results/a11y/*'
     }
 
     enableCrossBrowserTest(60)
@@ -94,11 +94,11 @@ withNightlyPipeline("nodejs", product, component) {
             allowMissing         : true,
             alwaysLinkToLastBuild: true,
             keepAll              : true,
-            reportDir            : "reports/tests/crossbrowser/",
+            reportDir            : "reports/tests-results/crossbrowser/",
             reportFiles          : 'index.html',
             reportName           : 'ExUi Cross Browser Report'
         ])
-        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/crossbrowser/*'
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests-results/crossbrowser/*'
     }
 
     afterAlways('fullFunctionalTest') {
@@ -106,11 +106,11 @@ withNightlyPipeline("nodejs", product, component) {
             allowMissing         : true,
             alwaysLinkToLastBuild: true,
             keepAll              : true,
-            reportDir            : "reports/tests/functional/",
+            reportDir            : "reports/tests-results/functional/",
             reportFiles          : 'index.html',
             reportName           : 'ExUi Functional Test Report'
         ])
-        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/functional/*'
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests-results/functional/*'
     }
     enableSlackNotifications('#sscs-tech')    // can be turned back on once the overnight functionality is working fully
 
