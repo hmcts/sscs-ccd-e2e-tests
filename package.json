@@ -24,7 +24,7 @@
   "dependencies": {
     "@angular/compiler": "11.2.14",
     "@angular/core": "11.2.14",
-    "@axe-core/webdriverjs": "4.2.1",
+    "@axe-core/webdriverjs": "4.5.2",
     "@faker-js/faker": "^7.6.0",
     "@hmcts/eslint-config": "1.4.0",
     "@hmcts/nodejs-logging": "4.0.4",
