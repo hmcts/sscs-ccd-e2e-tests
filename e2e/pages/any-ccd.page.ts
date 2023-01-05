@@ -75,6 +75,7 @@ export class AnyCcdPage extends AnyPage {
   }
 
   async clickAction(locator: Locator): Promise<ElementFinder> {
+    await this.waitForSpinner();
     await this.waitForElement(locator);
     const elementFinder = element(locator);
     await elementFinder.click();
