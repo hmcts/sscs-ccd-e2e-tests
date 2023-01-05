@@ -38,6 +38,7 @@ Feature: Other party Reasonable adjustments functionality
     And I choose "Update reasonable adjustment"
     And generate a letter in "Alternative Letter Format" with "otherPartyYes" option
     Then reasonable adjustment details are seen on the "Other Party Details" tab
+    And I wait "15" seconds
 
     When I choose "Update reasonable adjustment"
     And generate a letter in "Alternative Letter Format" with "otherPartyNo" option
