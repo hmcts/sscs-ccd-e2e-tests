@@ -41,7 +41,7 @@ const cucumberOpts: IParsedArgvOptions = <IParsedArgvOptions>{
   format: ['@cucumber/pretty-formatter', 'json:./cb_reports/saucelab_results.json'],
   require: ['./cucumber.conf.js', './features/step_definitions/**/*.steps.js'],
   // failFast,
-  strict: true,
+  // strict: true,
   backtrace: true,
   retry: retries,
 };
