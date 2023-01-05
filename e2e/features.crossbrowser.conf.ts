@@ -36,9 +36,7 @@ async function onComplete(): Promise<void> {
   report.generate({
     jsonDir: reportDir,
     reportPath: reportDir,
-    customData: {
-      title: 'SSCS Service Cross Browser Test',
-    },
+    pageTitle: 'SSCS Service Cross Browser Test',
   });
 }
 

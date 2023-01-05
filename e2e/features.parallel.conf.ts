@@ -86,9 +86,7 @@ function onComplete(): void {
   report.generate({
     jsonDir: reportDir,
     reportPath: reportDir,
-    customData: {
-      title: 'SSCS CCD E2E Tests',
-    },
+    pageTitle: 'SSCS CCD E2E Tests',
   });
 }
 

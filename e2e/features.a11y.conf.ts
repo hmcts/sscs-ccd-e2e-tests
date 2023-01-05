@@ -87,9 +87,7 @@ function onComplete(): void {
   report.generate({
     jsonDir: reportDir,
     reportPath: reportDir,
-    customData: {
-      title: 'SSCS CCD Pa11y Accessibility Tests',
-    },
+    pageTitle: 'SSCS CCD Pa11y Accessibility Tests',
   });
 }
 
