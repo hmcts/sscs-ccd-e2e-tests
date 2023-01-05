@@ -304,10 +304,7 @@ When('I choose execute CCD event {string}', async function (action) {
   }
 });
 
-Then(
-  'The case should end in {string} state and interloc state should be in {string}',
-  async function (state: string, interlocState: string) {
-    await anyCcdPage.waitForEndState(state);
-    expect(await anyCcdPage.contentContains(interlocState)).to.equal(true);
-  }
-);
+Then('the interloc state should be in {string}', async function (interlocState: string) {
+  await anyCcdPage.clickTab('History');
+  expect(await anyCcdPage.getFieldValue('Interlocutory review state')).to.equal(interlocState);
+});

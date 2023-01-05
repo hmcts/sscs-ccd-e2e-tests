@@ -63,4 +63,5 @@ Feature: Alternate Happy Path
 
     When I choose "Upload response"
     And I respond to the appeal with upload contains further information "Yes" option
-    Then The case should end in "Response received" state and interloc state should be in "Awaiting Admin Action"
+    Then the case should end in "Response received" state
+    Then the interloc state should be in "Awaiting Admin Action"
