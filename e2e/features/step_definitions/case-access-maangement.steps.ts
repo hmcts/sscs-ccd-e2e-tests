@@ -1,5 +1,5 @@
 import { AnyCcdPage } from '../../pages/any-ccd.page';
-import { Given } from 'cucumber';
+import { Given } from '@cucumber/cucumber';
 import { assert } from 'chai';
 
 const anyCcdPage = new AnyCcdPage();

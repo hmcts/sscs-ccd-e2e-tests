@@ -3,7 +3,7 @@ import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
 import { generateNINumber } from '../../helpers/ni-generator';
 import { DwpOffice } from '../../helpers/dwp-office';
-import { Given, Then, When } from 'cucumber';
+import { Given, Then, When } from '@cucumber/cucumber';
 import { expect } from 'chai';
 import { browser } from 'protractor';
 import * as ccd from '../../helpers/ccd';
@@ -15,6 +15,7 @@ import { formData } from '../data/scannedCase';
 import { incompleteFormData } from '../data/incompleteScannedCase';
 
 import { sscsPeuFormData } from '../data/sscs1PeuCase';
+import { Wait } from '../../enums/wait';
 
 const anyCcdPage = new AnyCcdPage();
 const anyCcdFormPage = new AnyCcdFormPage();
@@ -80,24 +81,16 @@ async function checkIncompleteDataItems(): Promise<void> {
   areFieldsDisplayed.forEach((isFieldDisplayed) => expect(isFieldDisplayed).to.equal(true));
 }
 
-function delay(ms: number): Promise<unknown> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 async function enterMrnDate(): Promise<void> {
-  await browser.sleep(2000);
   await caseDetailsPage.addDayItems('caseCreated');
   await anyCcdPage.chooseOptionByValue('appeal_receivedVia', '1: Paper');
   await caseDetailsPage.addDayItems('mrnDate');
 }
 
 async function enterAppellantDetails(): Promise<void> {
-  await browser.sleep(2000);
   await anyCcdPage.fillValues('appeal_appellant_name_title', 'Mr');
   await anyCcdPage.fillValues('appeal_appellant_name_firstName', faker.name.firstName());
   await anyCcdPage.fillValues('appeal_appellant_name_lastName', faker.name.lastName());
-
-  await browser.sleep(2000);
   await anyCcdPage.fillValues('dob-day', '10');
   await anyCcdPage.fillValues('dob-month', '3');
   await anyCcdPage.fillValues('dob-year', '1988');
@@ -105,7 +98,6 @@ async function enterAppellantDetails(): Promise<void> {
 }
 
 async function enterAddressDetails(): Promise<void> {
-  await browser.sleep(2000);
   await anyCcdPage.fillValues('appeal_appellant_address_line1', '1000, test');
   await anyCcdPage.fillValues('appeal_appellant_address_line2', faker.address.streetAddress());
   await anyCcdPage.fillValues('appeal_appellant_address_line3', 'test');
@@ -119,15 +111,13 @@ async function enterBenefitDetails(): Promise<void> {
   await anyCcdPage.fillValues('appeal_benefitType_description', 'Child Support');
   await anyCcdPage.chooseOptionByValue('appeal_hearingType', '3: paper');
   await anyCcdPage.clickContinue();
-  await anyCcdPage.scrollBar("//button[@type='submit']");
-  await browser.sleep(2000);
+  await anyCcdPage.clickSubmit();
 }
 
 async function createSSCSCase(): Promise<void> {
   await anyCcdPage.chooseOptionByValue('cc-case-type', 'Benefit');
   await anyCcdPage.chooseOptionByValue('cc-event', 'validAppealCreated');
-  await anyCcdPage.click('Start');
-  await browser.sleep(2000);
+  await anyCcdPage.clickButton('Start');
 
   await enterMrnDate();
   await enterAppellantDetails();
@@ -136,29 +126,25 @@ async function createSSCSCase(): Promise<void> {
 }
 
 Given('I create an child support case', async function () {
-  await anyCcdPage.click('Create case');
+  await anyCcdPage.clickCreateCase();
   expect(await anyCcdPage.pageHeadingContains('Create Case')).to.equal(true);
-  await browser.sleep(3000);
   await createSSCSCase();
-  await browser.sleep(5000);
 
   await caseDetailsPage.doNextStep('Admin - update event');
-  await anyCcdPage.click('Go');
+  await anyCcdPage.clickNextStep();
   await anyCcdPage.chooseOptionByValue('createdInGapsFrom', '1: readyToList');
   await anyCcdPage.clickContinue();
-  await anyCcdPage.scrollBar("//button[@type='submit']");
-  await browser.sleep(2000);
+  await anyCcdPage.clickSubmit();
 });
 
 Given(
   'I have a {word} bulk-scanned document with {word} fields',
   { timeout: 600 * 1000 },
   async function (benefitCode: string, formType: string): Promise<void> {
-    await anyCcdPage.click('Create case');
+    await anyCcdPage.clickCreateCase();
     expect(await anyCcdPage.pageHeadingContains('Create Case')).to.equal(true);
-    await browser.sleep(3000);
     await anyCcdFormPage.setCreateCaseFieldValue('Case type', 'SSCS Bulkscanning');
-    await anyCcdPage.click('Start');
+    await anyCcdPage.clickButton('Start');
 
     expect(await anyCcdPage.pageHeadingContains('Envelope meta data')).to.equal(true);
 
@@ -170,7 +156,6 @@ Given(
     );
     await caseDetailsPage.addDateItems('deliveryDate');
     await caseDetailsPage.addDateItems('openingDate');
-    await browser.sleep(3000);
 
     await addDataItems(benefitCode, formType);
     if (formType === 'SSCSPE') {
@@ -180,18 +165,17 @@ Given(
     }
     await anyCcdPage.clickContinue();
     await anyCcdPage.clickSubmit();
-    await browser.sleep(3000);
     expect(await caseDetailsPage.getAlertMessage()).to.equal('has been created');
-    expect(await caseDetailsPage.isFieldValueDisplayed('Event', 'Create an exception record')).to.equal(true);
-    await browser.sleep(3000);
+    const fieldValue = await caseDetailsPage.getFieldValue('Event');
+    expect(fieldValue).to.equal('Create an exception record');
   }
 );
 
 Given('I have a PIP bulk-scanned document filled with incomplete fields', async function () {
-  await anyCcdPage.click('Create new case');
+  await anyCcdPage.clickCreateCase();
   expect(await anyCcdPage.pageHeadingContains('Create Case')).to.equal(true);
   await anyCcdFormPage.setCreateCaseFieldValue('Case type', 'SSCS Bulkscanning');
-  await anyCcdPage.click('Start');
+  await anyCcdPage.clickButton('Start');
 
   expect(await anyCcdPage.pageHeadingContains('Envelope meta data')).to.equal(true);
 
@@ -205,22 +189,22 @@ Given('I have a PIP bulk-scanned document filled with incomplete fields', async 
   await anyCcdPage.clickSubmit();
 
   expect(await caseDetailsPage.getAlertMessage()).to.equal('has been created');
-  expect(await caseDetailsPage.isFieldValueDisplayed('Event', 'Create an exception record')).to.equal(true);
-  await anyCcdPage.click('Form OCR');
+  const fieldValue = await caseDetailsPage.getFieldValue('Event');
+  expect(fieldValue).to.equal('Create an exception record');
+  await anyCcdPage.clickTab('Form OCR');
   await checkIncompleteDataItems();
 });
 
 When('I choose {string} for an incomplete application', async function (action) {
-  await browser.sleep(500);
   await caseDetailsPage.doNextStep(action);
-  await anyCcdPage.click('Go');
+  await anyCcdPage.clickNextStep();
   expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
 
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Create new case from exception')).to.equal(true);
 
   await anyCcdPage.clickSubmit();
-  await anyCcdPage.click('Ignore Warning and Go');
+  await anyCcdPage.clickIgnoreWarning();
   // expect(await anyCcdPage.pageHeadingContains('History')).to.equal(true);
 });
 
@@ -239,7 +223,7 @@ When('I choose the next step {string}', async function (action) {
       throw new Error(`Do not understand action "${action}"`);
   }
 
-  await anyCcdPage.click('Go');
+  await anyCcdPage.clickNextStep();
   expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
 
   if (action === 'Create new case from exception') {
@@ -252,50 +236,36 @@ When('I choose the next step {string}', async function (action) {
 });
 
 Then('the case should be in {string} state', async function (state: string): Promise<void> {
-  await delay(15000);
-  await anyCcdPage.reloadPage();
-  await delay(8000);
-  await anyCcdPage.clickTab('History');
-  const fieldLabel = 'End state';
-  await anyCcdPage.waitForElement(await anyCcdPage.getFieldValueLocator(fieldLabel, state));
-  const isEndStateDisplayed = await caseDetailsPage.isFieldValueDisplayed(fieldLabel, state);
-  expect(isEndStateDisplayed).to.equal(true);
+  await anyCcdPage.waitForEndState(state);
 });
 
-Then('the bundles should be successfully listed in {string} tab', async function (tabName) {
-  await delay(15000);
+Then('the {string} event should be successfully listed in the History', async function (event: string) {
   await caseDetailsPage.reloadPage();
-  await anyCcdPage.clickTab(tabName);
-  expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
-  expect(await caseDetailsPage.eventsPresentInHistory('Create a bundle')).to.equal(true);
-  await browser.sleep(3000);
-});
-
-Then('The edited bundles should be successfully listed in {string} tab', async function (tabName) {
-  await delay(15000);
-  await caseDetailsPage.reloadPage();
-  await anyCcdPage.clickTab(tabName);
-  expect(await caseDetailsPage.eventsPresentInHistory('Create an edited bundle')).to.equal(true);
-  await browser.sleep(3000);
-});
-
-Then('the Stitching bundle event should be successfully listed in {string} tab', async function (tabName) {
-  await delay(5000);
-  await caseDetailsPage.reloadPage();
-  await anyCcdPage.clickTab(tabName);
-  expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
-  await browser.sleep(500);
+  let events = await caseDetailsPage.getHistoryEvents();
+  if (events.includes(event)) {
+    await browser.sleep(Wait.normal);
+    await caseDetailsPage.reloadPage();
+    events = await caseDetailsPage.getHistoryEvents();
+  }
+  if (events.includes(event)) {
+    await browser.sleep(Wait.extended);
+    await caseDetailsPage.reloadPage();
+    events = await caseDetailsPage.getHistoryEvents();
+  }
+  expect(events).to.include(event);
 });
 
 Then('the case bundle details should be listed in {string} tab', async function (tabName) {
   await anyCcdPage.clickTab(tabName);
-  await browser.sleep(1000);
-  expect(await caseDetailsPage.isFieldValueDisplayed('Stitch status', 'DONE')).to.equal(true);
-  expect(await caseDetailsPage.isFieldValueDisplayed('Config used for bundle', 'SSCS Bundle Original')).to.equal(true);
+  const switchStatus = await caseDetailsPage.getFieldValue('Stitch status');
+  expect(switchStatus).to.equal('DONE');
+  const configUsed = await caseDetailsPage.getFieldValue('Config used for bundle');
+  expect(configUsed).to.equal('SSCS Bundle Original');
 });
 
-Then('the {string} bundle configuration should have been used', async function (config) {
-  expect(await caseDetailsPage.isFieldValueDisplayed('Config used for bundle', config)).to.equal(true);
+Then('the {string} bundle configuration should have been used', async function (value) {
+  const fieldValue = await caseDetailsPage.getFieldValues('Config used for bundle');
+  expect(fieldValue).to.include(value);
 });
 
 Given('I preset up a test case', async function () {
@@ -305,17 +275,17 @@ Given('I preset up a test case', async function () {
 
 Given('I presetup an {string} SYA case', async function (caseType) {
   caseReference = await ccd.createSYACase(caseType);
+  await browser.sleep(Wait.normal);
 });
 
 Given('I navigate to an existing case', async function () {
-  logger.info(`the saved case id is ################## ${caseReference}`);
+  logger.info(`the saved case id is ${caseReference}`);
   await anyCcdPage.get(`/v2/case/${caseReference}`);
   await anyCcdPage.waitForSpinner();
 });
 
 Given('I complete the event', async function () {
   await anyCcdPage.clickSubmit();
-  await delay(2000);
 });
 
 When('I choose execute CCD event {string}', async function (action) {
@@ -334,13 +304,7 @@ When('I choose execute CCD event {string}', async function (action) {
   }
 });
 
-Then(
-  'The case should end in {string} state and interloc state should be in {string}',
-  async function (state: string, interlocState: string) {
-    await delay(10000);
-    await anyCcdPage.clickTab('History');
-    expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
-    expect(await anyCcdPage.contentContains(interlocState)).to.equal(true);
-    await browser.sleep(500);
-  }
-);
+Then('the interloc state should be in {string}', async function (interlocState: string) {
+  await anyCcdPage.clickTab('History');
+  expect(await anyCcdPage.getFieldValue('Interlocutory review state')).to.equal(interlocState);
+});

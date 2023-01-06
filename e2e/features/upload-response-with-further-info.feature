@@ -1,5 +1,5 @@
 @migrated-to-exui
-Feature: The alternate happy path
+Feature: Alternate Happy Path
 
   @alt-happy-path @nightly-test @preview-test
   Scenario: Should end up in "With FTA" state when ALL fields are present
@@ -63,4 +63,5 @@ Feature: The alternate happy path
 
     When I choose "Upload response"
     And I respond to the appeal with upload contains further information "Yes" option
-    Then The case should end in "Response received" state and interloc state should be in "Review by Judge"
+    Then the case should end in "Response received" state
+    Then the interloc state should be in "Awaiting Admin Action"

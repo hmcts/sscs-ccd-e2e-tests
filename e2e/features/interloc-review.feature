@@ -1,5 +1,5 @@
 @migrated-to-exui @nightly-test
-Feature: The interloc review
+Feature: Interloc Review
 
   Background:
     Given I presetup an "PIP" SYA case

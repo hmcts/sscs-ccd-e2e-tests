@@ -1,4 +1,5 @@
-import { setDefaultTimeout } from 'cucumber';
+import { setDefaultTimeout } from '@cucumber/cucumber';
+import { Wait } from './enums/wait';
 
-const timeout = 2 * 60 * 1000;
-setDefaultTimeout(timeout);
+// eslint-disable-next-line no-magic-numbers
+setDefaultTimeout(2 * Wait.max);

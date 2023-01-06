@@ -13,7 +13,7 @@ Feature: Issue decision award
     And I navigate to an existing case
     When I choose "Write final decision"
 
-  @Issue-decision-award @nightly-test-wip
+  @Issue-decision-award @nightly-test
     Scenario: Yes to generate decision and award is about daily living or mobility
       Then I write a final decision generate notice yes daily living mobility is yes face to face
       When I choose "Issue final decision"

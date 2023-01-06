@@ -14,29 +14,34 @@ const logger = Logger.getLogger('any-ccd.pages');
 const crossBrowserTest = Boolean(config.get('tests.crossBrowser'));
 
 export class AnyCcdPage extends AnyPage {
-  async click(linkText: string): Promise<void> {
-    const linkPath = `//*[self::button or self::a][normalize-space()="${linkText}"]`;
-    await browser.wait(
-      async () => {
-        return element.all(by.xpath(linkPath)).isPresent();
-      },
-      Wait.long,
-      'Button did not show in time'
-    );
-    await element.all(by.xpath(linkPath)).first().click();
-    await this.smartWait(2000);
-  }
-
   async clickContinue(): Promise<ElementFinder> {
-    const clickedElement = this.clickElement('button', 'Continue');
+    const clickedElement = this.clickButton('Continue');
     await browser.waitForAngular();
     return clickedElement;
   }
 
   async clickSubmit(): Promise<ElementFinder> {
-    const clickedElement = this.clickElement('button', 'Submit');
+    const clickedElement = this.clickButton('Submit');
     await browser.waitForAngular();
     return clickedElement;
+  }
+
+  async clickAddNew(): Promise<ElementFinder> {
+    return this.clickButton('Add new');
+  }
+
+  async clickNextStep(): Promise<ElementFinder> {
+    return this.clickElementByXpath('//ccd-event-trigger//button[@type="submit"]');
+  }
+
+  async clickCreateCase(): Promise<ElementFinder> {
+    return this.clickElementByXpath(
+      '//a[contains(@class,"hmcts-primary-navigation") and contains(text(), "Create case")]'
+    );
+  }
+
+  async clickIgnoreWarning(): Promise<ElementFinder> {
+    return this.clickButton('Ignore Warning and Go');
   }
 
   async clickElementById(elementId: string): Promise<ElementFinder> {
@@ -52,6 +57,7 @@ export class AnyCcdPage extends AnyPage {
   }
 
   async clickTab(tabTitle: string): Promise<ElementFinder> {
+    await this.waitForTabsToLoad();
     return this.clickElement('div', tabTitle);
   }
 
@@ -69,10 +75,12 @@ export class AnyCcdPage extends AnyPage {
   }
 
   async clickAction(locator: Locator): Promise<ElementFinder> {
+    await this.waitForSpinner();
     await this.waitForElement(locator);
     const elementFinder = element(locator);
     await elementFinder.click();
-    await this.smartWait(2000);
+    await this.smartWait(Wait.short);
+    await this.waitForSpinner();
     return elementFinder;
   }
 
@@ -80,22 +88,24 @@ export class AnyCcdPage extends AnyPage {
     const elementFinder = element.all(locator).last();
     await this.waitForElement(locator);
     await elementFinder.click();
-    await this.smartWait(2000);
+    await this.smartWait(Wait.short);
+    await this.waitForSpinner();
     return elementFinder;
   }
 
-  async waitForElement(locator: Locator): Promise<void> {
-    await browser.wait(until.elementLocated(locator), Wait.normal, 'Element Locator Timeout');
+  async waitForElement(locator: Locator, wait: number = Wait.extended): Promise<void> {
+    await browser.wait(until.elementLocated(locator), wait, 'Element Locator Timeout');
   }
 
-  async waitForElements(locator: Locator): Promise<void> {
-    await browser.wait(until.elementsLocated(locator), Wait.normal, 'Elements Locator Timeout');
+  async waitForElements(locator: Locator, wait: number = Wait.extended): Promise<void> {
+    await browser.wait(until.elementsLocated(locator), wait, 'Elements Locator Timeout');
   }
 
   async chooseOption(elementId: string, locator: Locator): Promise<void> {
     const choiceLocator = by.id(elementId);
     await this.waitForElement(choiceLocator);
     await element(choiceLocator).element(locator).click();
+    await browser.sleep(Wait.short);
   }
 
   async chooseOptionContainingText(elementId: string, text: string): Promise<void> {
@@ -135,13 +145,17 @@ export class AnyCcdPage extends AnyPage {
     return element.all(this.getFieldLocator(fieldLabel)).first().getText();
   }
 
+  async getFieldValues(fieldLabel: string): Promise<Array<string>> {
+    return element.all(this.getFieldLocator(fieldLabel)).map(async (elementFinder) => elementFinder.getText());
+  }
+
   async pageHeadingContains(match: string): Promise<boolean> {
     try {
       await browser.wait(
         element
           .all(by.xpath(`//*[self::h1 or self::h2 or self::h3 or self::span][contains(text(), "${match}")]`))
           .isPresent(),
-        Wait.normal,
+        Wait.extended,
         'Page heading did not show in time'
       );
 
@@ -157,23 +171,33 @@ export class AnyCcdPage extends AnyPage {
     return element(locator).getText();
   }
 
+  async numberOfCcdErrorMessages(): Promise<number> {
+    const locator = by.id(`errors`);
+    const errors = await element.all(locator).map(async (x) => x.getText());
+    return errors.length;
+  }
+
+  async getCcdErrorMessages(): Promise<Array<string>> {
+    const locator = by.id(`errors`);
+    await this.waitForElements(locator);
+    return element.all(locator).map(async (x) => x.getText());
+  }
+
   async waitUntilLoaded(): Promise<void> {
     await browser.waitForAngularEnabled(false);
     await browser.waitForAngular();
   }
 
-  async waitForTabToLoad(fieldLabel: string): Promise<void> {
-    await browser.wait(
-      ExpectedConditions.visibilityOf(
-        element(by.xpath(`//div[@class="mat-tab-label-content" and normalize-space()="${fieldLabel}"]`))
-      ),
-      30000
-    );
+  async waitForTabsToLoad(): Promise<void> {
+    await this.waitForSpinner();
+    await this.waitForElement(by.tagName('mat-tab-header'));
   }
 
   async reloadPage(): Promise<void> {
     await browser.navigate().refresh();
-    await browser.waitForAngular();
+    await this.waitUntilLoaded();
+    await this.waitForSpinner();
+    await browser.sleep(Wait.short);
   }
 
   async selectIssueCode(): Promise<void> {
@@ -198,9 +222,10 @@ export class AnyCcdPage extends AnyPage {
       .click();
   }
 
-  async eventsPresentInHistory(linkText: string): Promise<boolean> {
-    const linkPath = `//*[self::button or self::a][normalize-space()="${linkText}"]`;
-    return (await element(by.xpath(linkPath))).isPresent();
+  async getHistoryEvents(): Promise<Array<string>> {
+    await this.clickTab('History');
+    const locator = by.xpath('//ccd-event-log-table//*[contains(@class,"event-link")]');
+    return element.all(locator).map(async (elementFinder) => elementFinder.getText());
   }
 
   async elementNotPresent(linkText: string): Promise<void> {
@@ -214,7 +239,13 @@ export class AnyCcdPage extends AnyPage {
     await element(by.id('tempNoteDetail')).sendKeys('This is a test');
   }
 
-  async contentContains(match: string, wait: Wait = Wait.normal): Promise<boolean> {
+  async getCaseFields(): Promise<Array<string>> {
+    return element
+      .all(by.xpath('//*[@class="case-field"]//markdown/*'))
+      .map(async (elementFinder) => elementFinder.getText());
+  }
+
+  async contentContains(match: string, wait: Wait = Wait.extended): Promise<boolean> {
     const contentPath =
       `//*[` +
       `self::h1 or ` +
@@ -305,7 +336,7 @@ export class AnyCcdPage extends AnyPage {
     await runAndReportAccessibility();
   }
 
-  async contentContainsSubstring(substring: string, wait: Wait = Wait.normal): Promise<boolean> {
+  async contentContainsSubstring(substring: string, wait: Wait = Wait.extended): Promise<boolean> {
     const contentPath =
       '//*[' +
       'self::h1 or ' +
@@ -349,7 +380,7 @@ export class AnyCcdPage extends AnyPage {
 
   async waitForSpinner(): Promise<void> {
     const elementFinder = element(by.className('spinner-container'));
-    await browser.wait(ExpectedConditions.not(ExpectedConditions.presenceOf(elementFinder)), Wait.normal);
+    await browser.wait(ExpectedConditions.not(ExpectedConditions.presenceOf(elementFinder)), Wait.extended);
   }
 
   async uploadFile(inputElement: string, fileName: string, folder = 'e2e/dwpResponse/') {
@@ -360,6 +391,26 @@ export class AnyCcdPage extends AnyPage {
     }
     const uploadingLocator = by.cssContainingText('.error-message', 'Uploading');
     logger.info(`Uploading: ${await element(uploadingLocator).isPresent()}`);
-    await browser.wait(ExpectedConditions.not(ExpectedConditions.presenceOf(element(uploadingLocator))), Wait.long);
+    await browser.wait(ExpectedConditions.not(ExpectedConditions.presenceOf(element(uploadingLocator))), Wait.max);
+  }
+
+  async waitForEndState(state: string): Promise<void> {
+    const endStateLabel = 'End state';
+    await this.reloadPage();
+    await this.clickTab('History');
+    if (!(await this.isFieldValueDisplayed(endStateLabel, state))) {
+      logger.info(`end state not found, waiting for ${Wait.normal / 1000}s`);
+      await browser.sleep(Wait.normal);
+      await this.reloadPage();
+      await this.clickTab('History');
+    }
+    if (!(await this.isFieldValueDisplayed(endStateLabel, state))) {
+      logger.info(`end state not found, waiting for ${Wait.extended / 1000}s`);
+      await browser.sleep(Wait.extended);
+      await this.reloadPage();
+      await this.clickTab('History');
+    }
+    const locator = await this.getFieldValueLocator(endStateLabel, state);
+    await this.waitForElement(locator, Wait.short);
   }
 }

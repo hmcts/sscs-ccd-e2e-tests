@@ -1,6 +1,5 @@
-import { When, Then } from 'cucumber';
+import { When, Then } from '@cucumber/cucumber';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
-import { browser } from 'protractor';
 import { assert, expect } from 'chai';
 import { FurtherEvidencePage } from '../../pages/further-evidence.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
@@ -15,7 +14,7 @@ When(
     expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
     await anyCcdPage.chooseOptionByValue('furtherEvidenceAction', actionType);
     await anyCcdPage.chooseOptionContainingText('originalSender', 'Appellant (or Appointee)');
-    await anyCcdPage.click('Add new');
+    await anyCcdPage.clickAddNew();
 
     expect(await anyCcdPage.pageHeadingContains('Document Type')).to.equal(true);
     await anyCcdPage.chooseOptionContainingText('scannedDocuments_0_type', requestType);
@@ -33,21 +32,20 @@ When('I fill the further evidence form with {string} invalid file', async functi
   expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
   await anyCcdPage.chooseOptionByValue('furtherEvidenceAction', 'sendToInterlocReviewByJudge');
   await anyCcdPage.chooseOptionContainingText('originalSender', 'Appellant (or Appointee)');
-  await anyCcdPage.click('Add new');
+  await anyCcdPage.clickAddNew();
 
   await anyCcdPage.chooseOptionContainingText('scannedDocuments_0_type', 'Confidentiality request');
   await anyCcdPage.uploadFile('scannedDocuments_0_url', `${testFile}.pdf`);
   await furtherEvidencePage.enterFileName('scannedDocuments_0_fileName', 'testfile.pdf');
   await furtherEvidencePage.enterScannedDate('20', '1', '2021');
   await anyCcdPage.clickElementById('scannedDocuments_0_includeInBundle_Yes');
-  await browser.sleep(3000);
 
   await anyCcdPage.clickContinue();
 });
 
-Then('the case should have successfully processed {string} event', async function (event) {
-  await anyCcdPage.clickTab('History');
-  expect(await caseDetailsPage.eventsPresentInHistory(event)).to.equal(true);
+Then('the case should have successfully processed {string} event', async function (event: string) {
+  const events = await caseDetailsPage.getHistoryEvents();
+  expect(events).to.include(event);
 });
 
 When('I fill the direction notice form with {string}', async function (reinstatement) {
@@ -89,14 +87,18 @@ When('resend evidence to appellant and FTA user', async function () {
 
 Then('I see {string} and {string} event being processed successfully', async function (eventName, anotherEventName) {
   // await caseDetailsPage.reloadPage();
-  await anyCcdPage.clickTab('History');
-  expect(await caseDetailsPage.eventsPresentInHistory(anotherEventName)).to.equal(true);
-  expect(await caseDetailsPage.eventsPresentInHistory(eventName)).to.equal(true);
+  const events = await caseDetailsPage.getHistoryEvents();
+  expect(events).to.include(anotherEventName);
+  expect(events).to.include(eventName);
 });
 
 Then('I should still see previous uploaded file collection within documents tab', async function () {
+  await anyCcdPage.reloadPage();
   await anyCcdPage.clickTab('Documents');
-  expect(await anyCcdPage.isFieldValueDisplayed('Type', 'Appellant evidence')).to.equal(true);
-  expect(await anyCcdPage.isFieldValueDisplayed('Evidence issued', 'Yes')).to.equal(true);
-  expect(await anyCcdPage.isFieldValueDisplayed('Original document URL', 'issue1.pdf')).to.equal(true);
+  const types = await anyCcdPage.getFieldValues('Type');
+  expect(types).to.include('Appellant evidence');
+  const evidencesIssued = await anyCcdPage.getFieldValues('Evidence issued');
+  expect(evidencesIssued).to.include('Yes');
+  const originalDocumentUrls = await anyCcdPage.getFieldValues('Original document URL');
+  expect(originalDocumentUrls).to.include('issue1.pdf');
 });
