@@ -40,9 +40,9 @@ async function onComplete(): Promise<void> {
   });
 }
 
-// function afterLaunch(): any {
-//   return retry.afterLaunch(retries);
-// }
+function afterLaunch(): any {
+  return retry.afterLaunch(retries);
+}
 
 const featuresPath = path.resolve(process.cwd(), 'e2e/features/*.feature');
 
@@ -84,5 +84,5 @@ export const config: Config = {
   onPrepare,
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   onComplete,
-  // afterLaunch,
+  afterLaunch,
 };

@@ -91,9 +91,9 @@ function onComplete(): void {
   });
 }
 
-// function afterLaunch(): any {
-//   return retry.afterLaunch(retries);
-// }
+function afterLaunch(): any {
+  return retry.afterLaunch(retries);
+}
 
 export const config: Config = {
   baseUrl: ccdWebUrl,
@@ -117,7 +117,7 @@ export const config: Config = {
   onCleanUp,
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   onPrepare,
-  // afterLaunch,
+  afterLaunch,
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   onComplete,
 };
