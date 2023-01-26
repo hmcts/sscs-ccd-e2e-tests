@@ -1,4 +1,4 @@
-Feature: Update UCB
+Feature: The Update UCB
 
 @update-ucb @migrated-to-exui @nightly-test
   Scenario: Update UCB flag with upload response Granted and Refused

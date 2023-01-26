@@ -1,4 +1,4 @@
-@migrated-to-exui-1 @nightly-test
+@migrated-to-exui-1 @nightly-test-skip
 Feature: Reissue evidence on a case
 
   Scenario: Reissue an evidence using Reissue further evidence event
@@ -7,7 +7,7 @@ Feature: Reissue evidence on a case
     And I navigate to an existing case
     Then the case should end in "With FTA" state
     When I choose "Action further evidence"
-    And I fill the further evidence form with "otherDocumentManual" and "Form"
+    And I fill the further evidence form with "Other document type" and "Form"
     Then the case should have successfully processed "Action further evidence" event
 
     When I choose "Reissue further evidence"

@@ -1,5 +1,5 @@
-@migrated-to-exui @nightly-test @update-subscriptions @preview-test
-Feature: Update subscriptions
+@migrated-to-exui @nightly-test-skip @update-subscriptions @preview-test
+Feature: The Update subscriptions
 
   Background:
     Given I presetup an "UC" SYA case

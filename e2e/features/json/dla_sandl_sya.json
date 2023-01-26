@@ -1,10 +1,10 @@
 {
     "benefitType": {
-      "description": "Personal Independence Payment",
-      "code": "PIP"
+      "description": "Disability Living Allowance",
+      "code": "DLA"
     },
     "mrn": {
-      "dwpIssuingOffice": "DWP PIP (1)",
+      "dwpIssuingOffice": "The Pension Service 11",
       "date": "01-01-2021",
       "reasonForBeingLate": "Lost my paperwork"
     },
@@ -21,7 +21,7 @@
         "addressLine2": "Off Hairy Park",
         "townCity": "Hairyfield",
         "county": "Kent",
-        "postCode": "M16 0RA",
+        "postCode": "CF24 3AD",
         "phoneNumber": "07411222222",
         "emailAddress": "joe@bloggs.com"
       }
@@ -30,22 +30,7 @@
       "wantsSMSNotifications": true,
       "smsNumber": "07411333333"
     },
-    "hasRepresentative": true,
-    "representative": {
-      "title": "Mr",
-      "firstName": "Harry",
-      "lastName": "Potter",
-      "organisation": "HP Ltd",
-      "contactDetails": {
-        "addressLine1": "123 Hairy Lane",
-        "addressLine2": "Off Hairy Park",
-        "townCity": "Town",
-        "county": "County",
-        "postCode": "CM14 4LQ",
-        "phoneNumber": "07411999999",
-        "emailAddress": "harry.potter@wizards.com"
-      }
-    },
+    "hasRepresentative": false,
     "reasonsForAppealing": {
       "reasons": [
         {
@@ -63,15 +48,14 @@
       ],
       "otherReasons": "Another reason"
     },
+    "hearingType":"oral",
     "hearing": {
       "wantsToAttend": true,
       "wantsSupport": true,
       "anythingElse": "Yes, this...",
-      "interpreterLanguageType": "An interpreter language",
-      "signLanguageType": "A sign language",
+      "interpreterLanguageType": "danish",
       "arrangements": {
         "languageInterpreter": true,
-        "signLanguageInterpreter": true,
         "hearingLoop": true,
         "accessibleHearingRoom": false,
         "other": true
@@ -81,7 +65,14 @@
         "10-12-2022",
         "11-12-2022",
         "12-12-2022"
-      ]
+      ],
+      "options": {
+        "hearingTypeTelephone": true,
+        "telephone": "0999733733",
+        "hearingTypeVideo": true,
+        "email": "test@gmail.com",
+        "hearingTypeFaceToFace": true
+       }
     },
     "signAndSubmit": {
       "signer": "Joe Bloggs"

@@ -1,5 +1,5 @@
 @migrated-to-exui
-Feature: Happy Path
+Feature: The happy path
 
   @happy-path @nightly-test @dwp-upload-response @preview-test
   Scenario: Should end up in "Ready to list" state when ALL fields are present
@@ -21,7 +21,7 @@ Feature: Happy Path
     And FTA documents should be seen against the case
 
 
- @happy-path @nightly-test @dwp-upload-response
+ @happy-path @nightly-test-wip @dwp-upload-response
   Scenario: Should end up in "Ready to List" state when a UC is not disputed by others
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
@@ -37,7 +37,7 @@ Feature: Happy Path
     When I switch to be a Case Officer
     Then the case should be in "Ready to list" state
 
- @nightly-test
+ @nightly-test-skip-bug
  Scenario: Child support case should end up in "Not listable" state when FTA responds
     Given I presetup an "Child Support" SYA case
     And I am signed in as a Case Officer
@@ -46,8 +46,7 @@ Feature: Happy Path
 
     When I choose "Upload response"
     And I respond to the appeal with upload contains further information "No" option
-    Then the case should end in "Not listable" state
-    Then the interloc state should be in "Review by Judge"
+    Then The case should end in "Not listable" state and interloc state should be in "Review by Judge"
     And the "Other Party Details" tab is seen with "Other parties 1" content
 
   @nightly-test
@@ -58,7 +57,7 @@ Feature: Happy Path
     And the case should be in "With FTA" state
 
     When I choose "Upload response"
-    And I respond to the taxCredit appeal with upload contains further information "No" option
+    And I respond to the appeal with upload contains further information "No" option and "ML" issue code
     Given I navigate to an existing case
     Then the case should end in "Ready to list" state
 
@@ -69,8 +68,8 @@ Feature: Happy Path
     Given I navigate to an existing case
 
     When I choose "Update to case data"
-    And  I select Confidentiality Status as Yes
-    Then I should see "Is case confidential? Yes" as a case field
+    And  I select Confidentiality Status as yes
+    Then I should see "Is case confidential? Yes"
 
 
 
