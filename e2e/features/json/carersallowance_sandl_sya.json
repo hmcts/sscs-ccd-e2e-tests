@@ -1,10 +1,10 @@
 {
     "benefitType": {
-      "description": "Universal Credit",
-      "code": "UC"
+      "description": "Carer's Allowance",
+      "code": "carersAllowance"
     },
     "mrn": {
-      "dwpIssuingOffice": "Universal Credit",
+      "dwpIssuingOffice": "Carer’s Allowance Dispute Resolution Team",
       "date": "01-01-2021",
       "reasonForBeingLate": "Lost my paperwork"
     },
@@ -21,7 +21,7 @@
         "addressLine2": "Off Hairy Park",
         "townCity": "Hairyfield",
         "county": "Kent",
-        "postCode": "TN32 6PL",
+        "postCode": "CF24 3AD",
         "phoneNumber": "07411222222",
         "emailAddress": "joe@bloggs.com"
       }
@@ -84,7 +84,7 @@
       "options": {
         "hearingTypeTelephone": true,
         "telephone": "0999733733",
-        "hearingTypeVideo": true,
+        "hearingTypeVideo": false,
         "email": "test@gmail.com",
         "hearingTypeFaceToFace": false
        }
@@ -93,4 +93,3 @@
       "signer": "Joe Bloggs"
     }
   }
-  

@@ -1,10 +1,10 @@
 {
     "benefitType": {
-      "description": "Universal Credit",
-      "code": "UC"
+      "description": "Industrial Injuries Disablement Benefit",
+      "code": "industrialInjuriesDisablement"
     },
     "mrn": {
-      "dwpIssuingOffice": "Universal Credit",
+      "dwpIssuingOffice": "Barrow IIDB Centre",
       "date": "01-01-2021",
       "reasonForBeingLate": "Lost my paperwork"
     },
@@ -21,7 +21,7 @@
         "addressLine2": "Off Hairy Park",
         "townCity": "Hairyfield",
         "county": "Kent",
-        "postCode": "TN32 6PL",
+        "postCode": "CF24 3AD",
         "phoneNumber": "07411222222",
         "emailAddress": "joe@bloggs.com"
       }
@@ -30,22 +30,7 @@
       "wantsSMSNotifications": true,
       "smsNumber": "07411333333"
     },
-    "hasRepresentative": true,
-    "representative": {
-      "title": "Mr",
-      "firstName": "Harry",
-      "lastName": "Potter",
-      "organisation": "HP Ltd",
-      "contactDetails": {
-        "addressLine1": "123 Hairy Lane",
-        "addressLine2": "Off Hairy Park",
-        "townCity": "Town",
-        "county": "County",
-        "postCode": "CM14 4LQ",
-        "phoneNumber": "07411999999",
-        "emailAddress": "harry.potter@wizards.com"
-      }
-    },
+    "hasRepresentative": false,
     "reasonsForAppealing": {
       "reasons": [
         {
@@ -84,13 +69,12 @@
       "options": {
         "hearingTypeTelephone": true,
         "telephone": "0999733733",
-        "hearingTypeVideo": true,
+        "hearingTypeVideo": false,
         "email": "test@gmail.com",
-        "hearingTypeFaceToFace": false
+        "hearingTypeFaceToFace": true
        }
     },
     "signAndSubmit": {
       "signer": "Joe Bloggs"
     }
   }
-  
