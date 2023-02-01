@@ -1,10 +1,10 @@
 {
     "benefitType": {
-      "description": "Personal Independence Payment",
-      "code": "PIP"
+      "description": "Carer's Allowance",
+      "code": "carersAllowance"
     },
     "mrn": {
-      "dwpIssuingOffice": "DWP PIP (1)",
+      "dwpIssuingOffice": "Carer’s Allowance Dispute Resolution Team",
       "date": "01-01-2021",
       "reasonForBeingLate": "Lost my paperwork"
     },
@@ -21,7 +21,7 @@
         "addressLine2": "Off Hairy Park",
         "townCity": "Hairyfield",
         "county": "Kent",
-        "postCode": "M16 0RA",
+        "postCode": "CF24 3AD",
         "phoneNumber": "07411222222",
         "emailAddress": "joe@bloggs.com"
       }
@@ -63,15 +63,14 @@
       ],
       "otherReasons": "Another reason"
     },
+    "hearingType":"oral",
     "hearing": {
       "wantsToAttend": true,
       "wantsSupport": true,
       "anythingElse": "Yes, this...",
-      "interpreterLanguageType": "An interpreter language",
-      "signLanguageType": "A sign language",
+      "interpreterLanguageType": "danish",
       "arrangements": {
         "languageInterpreter": true,
-        "signLanguageInterpreter": true,
         "hearingLoop": true,
         "accessibleHearingRoom": false,
         "other": true
@@ -81,7 +80,14 @@
         "10-12-2022",
         "11-12-2022",
         "12-12-2022"
-      ]
+      ],
+      "options": {
+        "hearingTypeTelephone": true,
+        "telephone": "0999733733",
+        "hearingTypeVideo": false,
+        "email": "test@gmail.com",
+        "hearingTypeFaceToFace": false
+       }
     },
     "signAndSubmit": {
       "signer": "Joe Bloggs"

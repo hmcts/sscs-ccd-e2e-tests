@@ -1,5 +1,5 @@
 @migrated-to-exui @nightly-test
-Feature: Lapse Appeal
+Feature: The lapse
 
   Background:
   Given I presetup an "PIP" SYA case

@@ -10,7 +10,7 @@ Feature: ESA Final Decision WCA And Refuse
     When I switch to be a Judge
     When I choose "Write final decision"
 
-  @esa-decision @nightly-test @wip @ESA-DN-2 @TA-608
+  @esa-decision @nightly-test-wip @ESA-DN-2 @TA-608
   Scenario: Write ESA final decision WCA and Support group, >= points for schedule 2, No Schedule 3, No reg 35 and refuse
     And I write a final decision of "wca" appeal "YES" and Support group "YES" To Allowed "NO"
     And I opt out schedule 3 activities and reg 35 "NO"

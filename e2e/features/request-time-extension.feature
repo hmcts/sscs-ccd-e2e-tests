@@ -1,5 +1,5 @@
 @request-time-extension @nightly-test @migrated-to-exui
-Feature: Request time extension functionality
+Feature: The Request time extension functionality
 
   Background:
     Given I preset up a test case
