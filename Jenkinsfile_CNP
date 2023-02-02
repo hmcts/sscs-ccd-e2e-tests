@@ -72,7 +72,7 @@ withNightlyPipeline("nodejs", product, component) {
     enableCrossBrowserTest(60)
     enableFullFunctionalTest(120)
 
-    after('crossBrowserTest') {
+    afterAlways('crossBrowserTest') {
         publishHTML([
                 allowMissing         : true,
                 alwaysLinkToLastBuild: true,
@@ -88,7 +88,7 @@ withNightlyPipeline("nodejs", product, component) {
         steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests/crossbrowser/**/*'
     }
 
-    after('fullFunctionalTest') {
+    afterAlways('fullFunctionalTest') {
         publishHTML([
                 allowMissing         : true,
                 alwaysLinkToLastBuild: true,
