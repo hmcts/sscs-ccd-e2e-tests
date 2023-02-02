@@ -1,6 +1,6 @@
 # TEMPLATE CCD End2End Journey Tests
 
-## Purpose 
+## Purpose
 
 This service is to help people to run End2End Journey Tests for their service,
 without needing to start from scratch.
