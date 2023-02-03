@@ -3,7 +3,7 @@ import { getAccessibilityTestResult } from '../helpers/axe-runner';
 import * as fs from 'fs';
 import * as path from 'path';
 
-const testOutputDir: string = path.resolve(process.cwd(), config.get('protractor.TestOutputDir'));
+const testOutputDir: string = path.resolve(process.cwd(), config.get('protractor.TestOutputDir'), 'a11y');
 
 export function copyResources(): void {
   const resourceDir = path.resolve(testOutputDir, 'resources/');

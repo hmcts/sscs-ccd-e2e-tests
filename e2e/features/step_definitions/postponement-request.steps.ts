@@ -1,5 +1,4 @@
-import { browser } from 'protractor';
-import { When, Then } from 'cucumber';
+import { When, Then } from '@cucumber/cucumber';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { AdjournmentPage } from '../../pages/adjournment.page';
 import { PostponementRequestPage } from '../../pages/postponement-request.page';
@@ -9,7 +8,7 @@ const adjournmentPage = new AdjournmentPage();
 const postponementRequestPage = new PostponementRequestPage();
 
 When('I book a hearing in the future', async function () {
-  await anyCcdPage.click('Add new');
+  await anyCcdPage.clickAddNew();
   const targetDate = new Date();
   targetDate.setDate(targetDate.getDate() + 10);
 
@@ -18,7 +17,6 @@ When('I book a hearing in the future', async function () {
     (targetDate.getMonth() + 1).toString(),
     targetDate.getFullYear().toString()
   );
-  await browser.sleep(500);
 });
 
 Then('I enter postponement request details', async function () {

@@ -1,5 +1,5 @@
 @migrated-to-exui
-Feature: The happy path
+Feature: Happy Path
 
   @happy-path @nightly-test @dwp-upload-response @preview-test
   Scenario: Should end up in "Ready to list" state when ALL fields are present
@@ -21,7 +21,7 @@ Feature: The happy path
     And FTA documents should be seen against the case
 
 
- @happy-path @nightly-test-wip @dwp-upload-response
+ @happy-path @nightly-test @dwp-upload-response
   Scenario: Should end up in "Ready to List" state when a UC is not disputed by others
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
@@ -37,7 +37,7 @@ Feature: The happy path
     When I switch to be a Case Officer
     Then the case should be in "Ready to list" state
 
- @nightly-test-skip-bug
+ @nightly-test
  Scenario: Child support case should end up in "Not listable" state when FTA responds
     Given I presetup an "Child Support" SYA case
     And I am signed in as a Case Officer
@@ -46,7 +46,8 @@ Feature: The happy path
 
     When I choose "Upload response"
     And I respond to the appeal with upload contains further information "No" option
-    Then The case should end in "Not listable" state and interloc state should be in "Review by Judge"
+    Then the case should end in "Not listable" state
+    Then the interloc state should be in "Review by Judge"
     And the "Other Party Details" tab is seen with "Other parties 1" content
 
   @nightly-test
@@ -68,8 +69,8 @@ Feature: The happy path
     Given I navigate to an existing case
 
     When I choose "Update to case data"
-    And  I select Confidentiality Status as yes
-    Then I should see "Is case confidential? Yes"
+    And  I select Confidentiality Status as Yes
+    Then I should see "Is case confidential? Yes" as a case field
 
 
 

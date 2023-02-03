@@ -1,4 +1,4 @@
-import { Given } from 'cucumber';
+import { Given } from '@cucumber/cucumber';
 import { HearingDetailsPage } from '../../pages/hearing-details.page';
 
 const hearingDetailsPage = new HearingDetailsPage();

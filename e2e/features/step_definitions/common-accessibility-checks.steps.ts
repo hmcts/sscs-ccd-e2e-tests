@@ -1,5 +1,5 @@
 import { AnyCcdPage } from '../../pages/any-ccd.page';
-import { Given, Then } from 'cucumber';
+import { Given, Then } from '@cucumber/cucumber';
 import { AuthenticationFlow } from '../../flows/authentication.flow';
 
 const authenticationFlow = new AuthenticationFlow();

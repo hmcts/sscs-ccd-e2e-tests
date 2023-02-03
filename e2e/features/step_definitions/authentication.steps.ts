@@ -1,6 +1,6 @@
 import { AuthenticationFlow } from '../../flows/authentication.flow';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
-import { Given } from 'cucumber';
+import { Given } from '@cucumber/cucumber';
 import { browser } from 'protractor';
 
 const anyCcdPage = new AnyCcdPage();

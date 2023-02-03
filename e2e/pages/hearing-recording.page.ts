@@ -11,7 +11,6 @@ export class HearingRecordingPage extends AnyPage {
     await element(by.id('hearingRecording_recordings'))
       .element(by.xpath('//*[@id="hearingRecording_recordings"]/div/button[1]'))
       .click();
-    await browser.sleep(500);
     await browser.waitForAngular();
     browser.setFileDetector(new remote.FileDetector());
     await anyCcdPage.uploadFile('hearingRecording_recordings_value', 'test_av.mp3');
@@ -21,7 +20,6 @@ export class HearingRecordingPage extends AnyPage {
     await anyCcdPage.clickElementById('hearingRecording_hearingType-final');
     await this.addHearingRecording();
     await anyCcdPage.clickContinue();
-    await browser.sleep(500);
     await anyCcdPage.clickSubmit();
   }
 

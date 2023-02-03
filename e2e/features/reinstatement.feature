@@ -1,5 +1,5 @@
 @migrated-to-exui @reinstatement @nightly-test
-Feature: The Reinstatement functionality
+Feature: Reinstatement functionality
 
   Background:
     Given I presetup an "PIP" SYA case

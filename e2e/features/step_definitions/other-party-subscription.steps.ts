@@ -1,12 +1,10 @@
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
-import { Then } from 'cucumber';
+import { Then } from '@cucumber/cucumber';
 import { expect } from 'chai';
-import { browser } from 'protractor';
 
 const anyCcdPage = new AnyCcdFormPage();
 
-Then('I subscribed to all parties including other party to {string}', async function (isSubscribed) {
-  await browser.sleep(5000);
+Then('I subscribed to all parties including other party to {string}', async function (isSubscribed: string) {
   const action = isSubscribed;
   if (action === 'Yes') {
     await anyCcdPage.clickElementById(`subscriptions_appellantSubscription_wantSmsNotifications_${action}`);
@@ -102,17 +100,11 @@ Then('I subscribed to all parties including other party to {string}', async func
     );
     await anyCcdPage.clickElementById(`otherParties_0_otherPartyRepresentativeSubscription_subscribeEmail_${action}`);
   }
-
-  await browser.sleep(500);
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
-
-  await browser.sleep(50);
   await anyCcdPage.clickTab('Subscriptions');
 
   expect(await anyCcdPage.contentContains(action)).to.equal(true);
-
-  await browser.sleep(50);
   await anyCcdPage.clickTab('Other Party Details');
 
   expect(await anyCcdPage.contentContains(action)).to.equal(true);

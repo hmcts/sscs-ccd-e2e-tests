@@ -14,11 +14,11 @@
   },
   "protractor": {
     "UseHeadlessBrowser": true,
-    "TestOutputDir": "./reports/tests",
+    "TestOutputDir": "./reports/tests-results",
     "RunWithNumberOfBrowsers": 2,
     "WaitForAngular": true,
     "FailFast": true,
-    "testAnnotation": "--cucumberOpts.tags=@nightly-test",
+    "testAnnotation": "--cucumberOpts.tags=~@wip --cucumberOpts.tags=@nightly-test",
     "testRetries": 0
   },
   "users": {

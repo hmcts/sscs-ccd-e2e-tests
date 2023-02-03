@@ -1,8 +1,7 @@
-import { browser } from 'protractor';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { HearingRecordingPage } from '../../pages/hearing-recording.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
-import { Then, When, Given } from 'cucumber';
+import { Then, When, Given } from '@cucumber/cucumber';
 import { expect } from 'chai';
 
 const anyCcdPage = new AnyCcdPage();
@@ -29,13 +28,11 @@ Then('the hearing recording should (be|not be) in {string} tab', async function 
   expect(await anyCcdPage.contentContains('Final Hearing')).to.equal(isDisplayed);
   expect(await anyCcdPage.contentContains('12345')).to.equal(isDisplayed);
   expect(await anyCcdPage.contentContains('Fox Court')).to.equal(isDisplayed);
-  await browser.sleep(5000);
 });
 
-Then('the {string} should be successfully listed in {string} tab', async function (action, tabName) {
-  // await delay(10000);
-  await anyCcdPage.clickTab(tabName);
-  expect(await caseDetailsPage.eventsPresentInHistory(action)).to.equal(true);
+Then('the {string} should be successfully listed in the History', async function (action) {
+  const events = await caseDetailsPage.getHistoryEvents();
+  expect(events).to.include(action);
 });
 
 When('I request for Hearing recording', async function () {
@@ -63,7 +60,7 @@ When('request for Hearing recording is {string}', async function (hearingPermiss
 
 Given('I submit {string} as Request for Hearing Recording in the Upload document FE event', async function (filename) {
   expect(await anyCcdPage.pageHeadingContains('Upload document FE')).to.equal(true);
-  await anyCcdPage.click('Add new');
+  await anyCcdPage.clickAddNew();
   await anyCcdPage.chooseOptionContainingText(
     '#draftSscsFurtherEvidenceDocument_0_documentType',
     'Request for Hearing Recording'
@@ -82,5 +79,4 @@ Then('the recording collection is cleared from Unprocessed correspondence tab', 
   await anyCcdPage.clickTab('Unprocessed Correspondence');
   await anyCcdPage.elementNotPresent('Requested hearing recordings 1');
   await anyCcdPage.elementNotPresent('Fox Court');
-  await browser.sleep(5000);
 });

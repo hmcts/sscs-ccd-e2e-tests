@@ -1,5 +1,4 @@
-import { browser } from 'protractor';
-import { When, Then } from 'cucumber';
+import { When, Then } from '@cucumber/cucumber';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { AdjournmentPage } from '../../pages/adjournment.page';
 import { expect } from 'chai';
@@ -8,10 +7,8 @@ const anyCcdPage = new AnyCcdPage();
 const adjournmentPage = new AdjournmentPage();
 
 When('I book a hearing', async function () {
-  await browser.sleep(2000);
-  await anyCcdPage.click('Add new');
+  await anyCcdPage.clickAddNew();
   await adjournmentPage.addVenue('20', '10', '2021');
-  await browser.sleep(500);
 });
 
 When('I generate an adjournment notice', async function () {
@@ -75,7 +72,6 @@ When('I upload an adjournment notice and issue direction {string}', async functi
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Preview Adjournment')).to.equal(true);
   await adjournmentPage.uploadAdjournmentNotice();
-  await browser.sleep(3000);
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Check your answers')).to.equal(true);
   await anyCcdPage.clickSubmit();
@@ -86,9 +82,6 @@ When('I continue', async function () {
 });
 
 Then('the case should be in Hearing appeal status', async function () {
-  await browser.sleep(500);
   await anyCcdPage.reloadPage();
   expect(await anyCcdPage.contentContains('Hearing')).to.equal(true);
-
-  await browser.sleep(5000);
 });
