@@ -1,7 +1,7 @@
-@migrated-to-exui-1
+@migrated-to-exui-1 @wip
 Feature: Upload evidences to a case
 
-  @nightly-test-wip
+  @nightly-test
   Scenario: Upload an evidence using Upload document event
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
@@ -12,7 +12,7 @@ Feature: Upload evidences to a case
     And I upload a new document
     Then I should see uploaded file within documents tab
 
-  @nightly-test-wip
+  @nightly-test
   Scenario: Upload an evidence using Upload document FE event
     Given I am signed in as a Case Officer
     And I navigate to an existing case
