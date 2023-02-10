@@ -1,5 +1,5 @@
 @migrated-to-exui
-Feature: The alternate happy path
+Feature: Alternate Happy Path
 
   @alt-happy-path @nightly-test @preview-test
   Scenario: Should end up in "With FTA" state when ALL fields are present
@@ -11,7 +11,7 @@ Feature: The alternate happy path
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
     When I choose "Upload response"
-    And I upload contains further information YES for "PIP"
+    And I upload contains further information "YES" for "PIP"
     Then the case should be in "Response received" state
 
     When I switch to be a Case Officer
@@ -27,8 +27,6 @@ Feature: The alternate happy path
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
-    And I choose "Admin - send to With FTA"
-    Given I complete the event
     Then the case should be in "With FTA" state
 
     When I switch to be a DWPResponse Writer
@@ -65,4 +63,5 @@ Feature: The alternate happy path
 
     When I choose "Upload response"
     And I respond to the appeal with upload contains further information "Yes" option
-    Then The case should end in "Response received" state and interloc state should be in "Review by Judge"
+    Then the case should end in "Response received" state
+    Then the interloc state should be in "Awaiting Admin Action"

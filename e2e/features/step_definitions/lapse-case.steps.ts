@@ -1,8 +1,8 @@
-import { When } from 'cucumber';
+import { When } from '@cucumber/cucumber';
 import { LapseCasePage } from '../../pages/lapsecase.page';
 
-const lapsecase = new LapseCasePage();
+const lapseCase = new LapseCasePage();
 
-When(/^I set FTA State to Lapsed "(.+)"$/, async function (action) {
-    await lapsecase.uploadResponse(action);
+When('I set FTA State to Lapsed {string}', async function (action) {
+  await lapseCase.uploadResponse(action);
 });

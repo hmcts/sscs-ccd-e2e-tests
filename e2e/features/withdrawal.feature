@@ -1,5 +1,5 @@
 @migrated-to-exui
-Feature: The withdrawal
+Feature: Withdrawal
 
   Background:
     Given I preset up a test case

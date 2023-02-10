@@ -1,5 +1,5 @@
-@migrated-to-exui @nightly-test-skip
-Feature: The Update Not Listable
+@migrated-to-exui @nightly-test
+Feature: Update Not Listable
 
   Background:
     Given I presetup an "PIP" SYA case
@@ -16,7 +16,7 @@ Feature: The Update Not Listable
   Scenario: Update not listable : Yes to direction full filled and end to Ready to list
     And I choose "Update not listable case"
     And I choose not listable direction full filled to "YES" and interloc review to "NO"
-    Then not listable reason is " Invisible" on summary page
+    Then not listable reason is "Invisible" on summary page
     Then the case should end in "Ready to list" state
 
   @update-not-listable

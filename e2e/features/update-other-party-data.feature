@@ -1,5 +1,5 @@
 @update-other-party-data @migrated-to-exui @nightly-test
-Feature: The Update Other Party Data
+Feature: Update Other Party Data
 
  Scenario: Update Other Party Data
     Given I presetup an "Child Support" SYA case
