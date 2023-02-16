@@ -4,20 +4,20 @@
   },
   "users": {
     "caseOfficer": {
-      "user": "sscs.superuser@mailinator.com",
-      "password": "Testing123"
+      "user": "TEST_CASEOFFICER_USERNAME",
+      "password": "TEST_CASEOFFICER_PASSWORD"
     },
     "clerk": {
       "user": "",
       "password": ""
     },
     "judge": {
-      "user": "sscs.judge.user@mailinator.com",
-      "password": "Testing123"
+      "user": "TEST_JUDGE_USERNAME",
+      "password": "TEST_JUDGE_PASSWORD"
     },
     "DWPResponseWriter": {
-      "user": "sscs.dwp.user@mailinator.com",
-      "password": "Testing123"
+      "user": "TEST_DWP_USERNAME",
+      "password": "TEST_DWP_PASSWORD"
     }
   }
 }
