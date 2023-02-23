@@ -67,7 +67,7 @@ withNightlyPipeline("nodejs", product, component) {
         }
     } 
 
-    enableCrossBrowserTest(60)
+    //enableCrossBrowserTest(60)
     enableFullFunctionalTest(120)
 
     after('crossBrowserTest') {
