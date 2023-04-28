@@ -11,6 +11,7 @@
     "lint": "yarn eslint . && yarn prettier --check .",
     "lint:fix": "yarn prettier --write . && yarn eslint . --fix --quiet",
     "webdriverUpdate": "webdriver-manager update --versions.chrome 109.0.5414.74 --gecko=false",
+    "nodeUpgrade": "npm install -g npm",
     "e2e": "yarn test:fullfunctional",
     "test:local": "yarn build && cross-env NODE_ENV=development protractor ./dist/e2e/features.parallel.conf.js --cucumberOpts.tags=~@wip --cucumberOpts.tags=@nightly-test",
     "test:aat": "yarn build && cross-env NODE_ENV=aat protractor ./dist/e2e/features.parallel.conf.js --cucumberOpts.tags=~@wip --cucumberOpts.tags=@nightly-test",
@@ -71,5 +72,6 @@
   "resolutions": {
     "protractor/**/qs": "^6.11.0",
     "protractor/**/ajv": "^8.11.2"
-  }
+  },
+  "packageManager": "yarn@3.5.0"
 }
