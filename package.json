@@ -63,7 +63,7 @@
     "protractor-retry": "2.0.1",
     "puppeteer": "^19.11.1",
     "request-promise": "4.2.6",
-    "rxjs": "6.3.3",
+    "rxjs": "6.6.7",
     "selenium-webdriver": "3.6.0",
     "ts-loader": "5.2.2",
     "ts-node": "10.9.1",
