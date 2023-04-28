@@ -35,11 +35,8 @@ After(async function (this: any, scenario: any) {
     // Attach browser error logs to the report
     try {
       await this.attach(JSON.stringify(browserErrorLogs, null, 2));
-    } catch (error) {
+    } catch (error: unknown) {
       logger.error('Error occurred adding message to report.', error);
     }
   }
 });
-
-
-
