@@ -31,14 +31,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@axe-core/webdriverjs@npm:4.5.2":
-  version: 4.5.2
-  resolution: "@axe-core/webdriverjs@npm:4.5.2"
+"@axe-core/webdriverjs@npm:4.6.1":
+  version: 4.6.1
+  resolution: "@axe-core/webdriverjs@npm:4.6.1"
   dependencies:
-    axe-core: ^4.5.2
+    axe-core: ^4.6.3
   peerDependencies:
     selenium-webdriver: ">3.0.0-beta  || >=2.53.1 || >4.0.0-alpha"
-  checksum: 9699f656195c743d0c9af6c8c812b38cc4547a96ab06c9bc924bb740709cd74109b4109da7b1d154c9a06d7ff4d8c52b0cad3f7f2cbe4918e3f6012d23f09cc7
+  checksum: 576c443b053c3f1042a0540273c7a921805d026e7c2f10e88ebdcf895d22ad998a3aac85918903aeed2db426b98b2f81c498febf2d7fc4940f60943dbd8f9622
   languageName: node
   linkType: hard
 
@@ -1126,17 +1126,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:4.7.0":
+"axe-core@npm:4.7.0, axe-core@npm:^4.6.3":
   version: 4.7.0
   resolution: "axe-core@npm:4.7.0"
   checksum: f086bcab42be1761ba2b0b127dec350087f4c3a853bba8dd58f69d898cefaac31a1561da23146f6f3c07954c76171d1f2ce460e555e052d2b02cd79af628fa4a
-  languageName: node
-  linkType: hard
-
-"axe-core@npm:^4.5.2":
-  version: 4.6.2
-  resolution: "axe-core@npm:4.6.2"
-  checksum: 81523eeaf101a3a129545a936d448d235ecf1f8c0daccdee224d29f63bec716fa38cf1a65c8462548b1f995624277eed790d9d9977ae40ba692c4cadf1196403
   languageName: node
   linkType: hard
 
@@ -5768,7 +5761,7 @@ __metadata:
   dependencies:
     "@angular/compiler": 15.2.8
     "@angular/core": 11.2.14
-    "@axe-core/webdriverjs": 4.5.2
+    "@axe-core/webdriverjs": 4.6.1
     "@cucumber/cucumber": ^9.1.0
     "@cucumber/messages": 21.0.1
     "@cucumber/pretty-formatter": 1.0.0
