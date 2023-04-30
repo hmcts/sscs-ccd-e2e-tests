@@ -41,7 +41,7 @@
     "axe-core": "4.7.0",
     "chai": "4.3.7",
     "chai-as-promised": "7.1.1",
-    "codelyzer": "4.5.0",
+    "codelyzer": "6.0.2",
     "config": "^3.3.8",
     "cross-env": "4.0.0",
     "cucumber": "^6.0.7",
