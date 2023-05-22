@@ -16,7 +16,7 @@ export class AuthenticationFlow {
     await browser.waitForAngularEnabled(false);
     await browser.driver.manage().deleteAllCookies();
     console.log(`We url to load on the browser is   ########################### ${ccdWebUrl}`);
-      await browser.get(`${ccdWebUrl}/`);
+    await browser.get(`${ccdWebUrl}/`);
     await this.idamSignInPage.waitUntilLoaded();
   }
 
