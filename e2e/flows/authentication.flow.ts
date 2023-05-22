@@ -17,7 +17,7 @@ export class AuthenticationFlow {
     logger.info(`Signed out of user ${this.userName}`);
     await browser.waitForAngularEnabled(false);
     await browser.driver.manage().deleteAllCookies();
-    await browser.get(`${ccdGatewayUrl}/logout`);
+    await browser.get(`${ccdGatewayUrl}`);
     await browser.get(`${ccdWebUrl}/`);
     await this.idamSignInPage.waitUntilLoaded();
   }
