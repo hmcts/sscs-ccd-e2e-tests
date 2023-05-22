@@ -5,7 +5,7 @@ import { Logger } from '@hmcts/nodejs-logging';
 
 const logger = Logger.getLogger('authentication.flow');
 
-//const ccdGatewayUrl: string = config.get('ccd.gatewayUrl');
+
 const ccdWebUrl: string = config.get('ccd.webUrl');
 
 export class AuthenticationFlow {
