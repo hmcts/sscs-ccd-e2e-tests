@@ -7,7 +7,7 @@ const responseReviewedPage = new ResponseReviewedPage();
 
 When('I choose Requires Interlocutory Review No {string}', async function (action) {
   await anyCcdPage.scrollBar('//input[@id="isInterlocRequired_No"]');
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
 });
 
 When('I submit {string}', async function (action) {
