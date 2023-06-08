@@ -7,6 +7,7 @@ const anyCcdPage = new AnyCcdPage();
 
 When('I allow the appeal to proceed', async function () {
   await anyCcdPage.chooseOptionContainingText('directionTypeDl', 'Appeal to Proceed');
+  await anyCcdPage.clickElementById('confidentialityType-general');
   await anyCcdPage.scrollPage('//*[@id="generateNotice_Yes"]');
   await anyCcdPage.fillValues('bodyContent', 'This is a test body content');
   await anyCcdPage.fillValues('signedBy', 'This is a test signed content');

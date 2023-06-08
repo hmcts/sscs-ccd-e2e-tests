@@ -18,8 +18,7 @@
     "RunWithNumberOfBrowsers": 2,
     "WaitForAngular": true,
     "FailFast": true,
-    "testAnnotation": "--cucumberOpts.tags=~@wip --cucumberOpts.tags=@nightly-test",
-    "testRetries": 0
+    "testRetries": 3
   },
   "users": {
     "caseOfficer": {
