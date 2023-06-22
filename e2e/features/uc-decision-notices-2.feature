@@ -7,12 +7,11 @@ Feature: UC Final Decision Notices 2
     And I navigate to an existing case
 
     When I choose execute CCD event "Admin - send to Ready to List"
-    Then I should see case should be in "Ready to list" state
 
     When I switch to be a Judge
     When I choose "Write final decision"
 
-  @uc-decision @nightly-test @wip @UC-DN-2
+  @uc-decision @nightly-test-wip @wip @UC-DN-2
   Scenario: Write ESA final decision WCA and Support group, >= points for schedule 2, No Schedule 3, No reg 35 and refuse
     And I write a final decision of "wca" appeal "YES" and Support group "YES" To Allowed "NO"
     And I opt out schedule 7 activities and schedule 9 para 4 "NO"

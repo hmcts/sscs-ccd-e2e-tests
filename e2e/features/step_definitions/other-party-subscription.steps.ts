@@ -1,6 +1,8 @@
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
 import { Then } from '@cucumber/cucumber';
 import { expect } from 'chai';
+import { browser } from 'protractor';
+import { Wait } from '../../enums/wait';
 
 const anyCcdPage = new AnyCcdFormPage();
 
@@ -100,7 +102,8 @@ Then('I subscribed to all parties including other party to {string}', async func
     );
     await anyCcdPage.clickElementById(`otherParties_0_otherPartyRepresentativeSubscription_subscribeEmail_${action}`);
   }
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
+  await browser.sleep(Wait.extended);
   await anyCcdPage.clickSubmit();
   await anyCcdPage.clickTab('Subscriptions');
 

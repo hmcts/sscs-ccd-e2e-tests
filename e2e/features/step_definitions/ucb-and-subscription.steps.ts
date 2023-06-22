@@ -23,7 +23,7 @@ Then('I set UCB flag to {string}', async function (ucbFlag) {
   } else {
     await anyCcdPage.clickElementById('dwpUCB_No');
   }
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
   if (ucbFlag === 'Yes') {
     await anyCcdPage.clickTab('Listing Requirements');
@@ -38,7 +38,7 @@ Then('I set PHME Granted flag to {string}', async function (phmeGranted) {
   } else {
     await anyCcdPage.clickElementById('phmeGranted_No');
   }
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
 });
 
@@ -46,11 +46,11 @@ Then('I enter date of appellant death with {string} to appointee', async functio
   await caseDetailsPage.addPastDate('dateOfAppellantDeath');
   if (hasAppointee === 'No') {
     await anyCcdPage.clickElementById('appeal_appellant_isAppointee_No');
-    await anyCcdPage.clickContinue();
+    await anyCcdPage.clickSubmit();
   } else if (hasAppointee === 'Yes') {
     await anyCcdPage.clickElementById('appeal_appellant_isAppointee_Yes');
     await appointeePage.addAppointeeDetails();
-    await anyCcdPage.clickContinue();
+    await anyCcdPage.clickSubmit();
   } else {
     throw new Error('Appointee option not provided ');
   }
@@ -120,7 +120,7 @@ When('I do not upload edited docs after selecting {string} option', async functi
 When('I upload a doc', async function () {
   const docLink = 'tl1Form_documentLink';
   await dwpresponse.uploadDoc(docLink);
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
 });
 

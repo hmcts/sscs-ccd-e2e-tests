@@ -100,7 +100,7 @@ When('I update the scanned document for {string}', async function (originator) {
   await anyCcdFormPage.setValueByElementId('scannedDocuments_0_fileName', 'test-confidentiality-file');
   await furtherEvidencePage.enterScannedDate('20', '1', '2021');
   await anyCcdPage.clickElementById('scannedDocuments_0_includeInBundle_Yes');
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
   await browser.driver.sleep(2000);
   await anyCcdPage.clickTab('History');

@@ -2,6 +2,7 @@ import { When, Then } from '@cucumber/cucumber';
 import { browser } from 'protractor';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { assert, expect } from 'chai';
+import { Wait } from '../../enums/wait';
 import { CaseDetailsPage } from '../../pages/case-details.page';
 
 const anyCcdPage = new AnyCcdPage();
@@ -29,9 +30,10 @@ When('generate a letter in {string} with {string} option', async function (lette
   } else {
     throw new Error('No adjustment option passed in test');
   }
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   const errors = await anyCcdPage.numberOfCcdErrorMessages();
   expect(errors).to.equal(0);
+  await browser.sleep(Wait.extended);
   await anyCcdPage.clickSubmit();
 });
 
@@ -67,5 +69,6 @@ When('I update adjustment status to be {string}', async function (adjustmentStat
     adjustmentStatusOption
   );
   await anyCcdPage.scrollBar('//div/form/div/button[2]');
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
 });

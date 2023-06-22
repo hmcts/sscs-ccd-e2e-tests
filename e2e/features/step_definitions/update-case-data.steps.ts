@@ -20,6 +20,6 @@ Then('I should update case with a valid nino and confidentiality option', async 
   await anyCcdFormPage.setValueByElementId('appeal_appellant_identity_nino', 'SK982165A');
   await anyCcdFormPage.clickElementById('appeal_appellant_confidentialityRequired_No');
 
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
 });

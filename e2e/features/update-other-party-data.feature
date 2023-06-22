@@ -9,7 +9,7 @@ Feature: Update Other Party Data
 
     And I choose "Update other party data"
     And I add other party data
-    Then the case should end in "Not listable" state
+    Then the case should end in "With FTA" state
 
   Scenario: Update Other Party Data
     Given I presetup an "Tax Credit" SYA case

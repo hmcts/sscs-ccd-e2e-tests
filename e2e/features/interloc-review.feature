@@ -19,10 +19,8 @@ Feature: Interloc Review
     And I navigate to an existing case
     When I choose "Response reviewed"
     And I choose Requires Interlocutory Review Yes "Response reviewed"
-    And I submit "Response reviewed"
     Then the case should end in "Response received" state
 
     When I choose "Action direction"
     And I set FTA State to No action "Action direction"
-    And I submit "Action direction"
     Then the case should end in "Response received" state

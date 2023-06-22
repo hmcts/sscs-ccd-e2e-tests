@@ -1,5 +1,6 @@
 import { browser, by, element } from 'protractor';
 import { AnyPage } from './any.page';
+import { Wait } from '../enums/wait';
 import { AnyCcdPage } from './any-ccd.page';
 
 import * as remote from 'selenium-webdriver/remote';
@@ -20,6 +21,7 @@ export class HearingRecordingPage extends AnyPage {
     await anyCcdPage.clickElementById('hearingRecording_hearingType-final');
     await this.addHearingRecording();
     await anyCcdPage.clickContinue();
+    await browser.sleep(Wait.long);
     await anyCcdPage.clickSubmit();
   }
 

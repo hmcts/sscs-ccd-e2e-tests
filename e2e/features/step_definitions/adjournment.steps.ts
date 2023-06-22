@@ -78,7 +78,7 @@ When('I upload an adjournment notice and issue direction {string}', async functi
 });
 
 When('I continue', async function () {
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
 });
 
 Then('the case should be in Hearing appeal status', async function () {

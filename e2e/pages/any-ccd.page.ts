@@ -137,6 +137,11 @@ export class AnyCcdPage extends AnyPage {
     return by.xpath(`//${tag}[normalize-space()="${fieldLabel}"]/../..//td[normalize-space()="${fieldValue}"]`);
   }
 
+  async getTitleAttribute() {
+    const ele = element(by.xpath('//*[@id="isConfidentialCaseLabel"]/dt/ccd-markdown/div/markdown/h2/img'));
+    return ele.getAttribute('title');
+  }
+
   getFieldLocator(fieldLabel: string): Locator {
     return by.xpath(`//*[normalize-space()="${fieldLabel}"]/../../td`);
   }

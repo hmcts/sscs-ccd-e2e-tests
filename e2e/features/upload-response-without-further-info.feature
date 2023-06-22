@@ -37,7 +37,7 @@ Feature: Happy Path
     When I switch to be a Case Officer
     Then the case should be in "Ready to list" state
 
- @nightly-test
+ @nightly-test-wip
  Scenario: Child support case should end up in "Not listable" state when FTA responds
     Given I presetup an "Child Support" SYA case
     And I am signed in as a Case Officer

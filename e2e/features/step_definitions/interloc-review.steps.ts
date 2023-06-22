@@ -10,10 +10,10 @@ When('I choose Requires Interlocutory Review Yes {string}', async function (acti
   await anyCcdPage.chooseOptionContainingText('selectWhoReviewsCase', 'Review by Judge');
   await anyCcdPage.chooseOptionContainingText('interlocReferralReason', 'Complex Case');
   await anyCcdPage.fillNote();
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
 });
 
 When('I set FTA State to No action {string}', async function (action) {
   await anyCcdPage.chooseOptionContainingText('dwpState', 'No action');
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
 });

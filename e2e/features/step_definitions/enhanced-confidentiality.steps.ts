@@ -2,6 +2,7 @@ import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
 import { Given, Then } from '@cucumber/cucumber';
 import { browser } from 'protractor';
 import { expect } from 'chai';
+import { Wait } from '../../enums/wait';
 
 const anyCcdPage = new AnyCcdFormPage();
 
@@ -27,7 +28,7 @@ Then('I should see supplementary response in the Unprocessed Correspondence tab'
 
 Given('I upload a document with redacted content', async function () {
   await anyCcdPage.uploadFile('scannedDocuments_0_editedUrl', 'issue2.pdf');
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
   await anyCcdPage.clickIgnoreWarning();
 });
@@ -38,4 +39,5 @@ Then('I should see redacted content in Documents tab', async function () {
   expect(originalDocumentUrl).to.include('issue1.pdf');
   const editedDocumentUrl = await anyCcdPage.getFieldValues('Edited document URL');
   expect(editedDocumentUrl).to.include('issue2.pdf');
+  await browser.sleep(Wait.extended);
 });

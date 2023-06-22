@@ -125,7 +125,6 @@ When('I issue a final decision generate decision no', async function () {
 });
 
 When('I issue a final decision generate decision upheld', async function () {
-  await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
   expect(await anyCcdPage.contentContains('Decision upheld')).to.equal(true);
 });

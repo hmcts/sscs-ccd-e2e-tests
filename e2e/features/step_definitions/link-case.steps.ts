@@ -21,7 +21,7 @@ When('I add a case to be linked', async function () {
   await anyCcdPage.clickAddNew();
   await anyCcdPage.setText('//*[@id="linkedCase_0_0"]', linkedCaseReference);
 
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
 });
 

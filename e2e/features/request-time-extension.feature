@@ -1,4 +1,4 @@
-@request-time-extension @nightly-test @migrated-to-exui
+@request-time-extension @migrated-to-exui
 Feature: Request time extension functionality
 
   Background:

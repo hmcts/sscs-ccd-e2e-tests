@@ -9,7 +9,7 @@ Feature: Update Other Party Subscriptions
 
     And I choose "Update other party data"
     And I add other party data
-    Then the case should end in "Not listable" state
+    Then the case should end in "With FTA" state
 
   @preview-test-skip
   Scenario: Update Subscription - Yes

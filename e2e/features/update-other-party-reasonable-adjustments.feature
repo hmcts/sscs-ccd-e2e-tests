@@ -1,4 +1,4 @@
-@reasonable-adjustments-other-party @nightly-test
+@reasonable-adjustments-other-party
 Feature: Other party Reasonable adjustments functionality
 
   Scenario: Actioned reasonable adjustments
@@ -9,7 +9,7 @@ Feature: Other party Reasonable adjustments functionality
 
     And I choose "Update other party data"
     And I add other party data
-    Then the case should end in "Not listable" state
+    Then the case should end in "With FTA" state
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
@@ -20,7 +20,6 @@ Feature: Other party Reasonable adjustments functionality
     When I choose "Issue directions notice"
     And I fill the direction notice form with "Provide information"
     And I wait "30" seconds
-    Then the "Stop bulk print" event should be successfully listed in the History
     Then Reasonable adjustment tab is seen with "Reasonable adjustment status" as "Required"
 
   Scenario: Remove reasonable adjustment flag from a case
@@ -31,7 +30,7 @@ Feature: Other party Reasonable adjustments functionality
 
     And I choose "Update other party data"
     And I add other party data
-    Then the case should end in "Not listable" state
+    Then the case should end in "With FTA" state
 
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case

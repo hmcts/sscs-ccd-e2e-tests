@@ -19,8 +19,8 @@ When('I select a hearing', async function () {
   await anyCcdPage.clickContinue();
 });
 
-Then('the hearing recording should (be|not be) in {string} tab', async function (seeOrNotSee, tabName) {
-  const isDisplayed = seeOrNotSee === 'be';
+Then('the hearing recording should be in {string} tab', async function (tabName) {
+  const isDisplayed = true;
   // await anyCcdPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
   expect(await anyCcdPage.contentContains('recordings 1')).to.equal(isDisplayed);

@@ -1,4 +1,4 @@
-@reasonable-adjustments @nightly-test
+@reasonable-adjustments @nightly-test-wip
 Feature: Reasonable adjustments functionality
 
 

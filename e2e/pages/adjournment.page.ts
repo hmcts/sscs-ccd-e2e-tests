@@ -66,8 +66,9 @@ export class AdjournmentPage extends AnyPage {
     await element(by.id('hearings_0_epimsId')).sendKeys('372653');
 
     await anyCcdPage.chooseOptionContainingText('hearings_0_hearingChannel', 'Face To Face');
+    await anyCcdPage.clickSubmit();
 
-    await anyCcdPage.clickContinue();
+    // Event description page
     await anyCcdPage.clickSubmit();
   }
 

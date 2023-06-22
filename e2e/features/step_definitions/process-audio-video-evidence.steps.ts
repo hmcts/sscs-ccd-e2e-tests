@@ -1,6 +1,7 @@
 import { Given, Then, When } from '@cucumber/cucumber';
-import { by, element } from 'protractor';
+import { by, element, browser } from 'protractor';
 import { expect } from 'chai';
+import { Wait } from '../../enums/wait';
 
 import { CaseDetailsPage } from '../../pages/case-details.page';
 import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
@@ -16,6 +17,7 @@ When('I upload AV evidence and complete Upload response event for {string} case'
   await anyCcdPage.selectIssueCode();
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
+  await browser.sleep(Wait.long);
 });
 
 Then('I should see the AV evidence after clicking the AV tab', async function () {
@@ -79,7 +81,8 @@ Given('I submit {string} as {string} in the Upload document FE event', async fun
   await anyCcdPage.clickAddNew();
   await anyCcdPage.chooseOptionContainingText('draftSscsFurtherEvidenceDocument_0_documentType', type);
   await anyCcdPage.uploadFile('draftSscsFurtherEvidenceDocument_0_documentLink', filename);
-  await anyCcdPage.clickContinue();
+  await browser.sleep(Wait.long);
+  await anyCcdPage.clickSubmit();
   expect(await anyCcdPage.contentContains('Event summary (optional)')).to.equal(true);
   await anyCcdPage.clickSubmit();
 });

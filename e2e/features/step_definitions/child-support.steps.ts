@@ -22,7 +22,7 @@ Given('I add other party data', async function () {
   await anyCcdFormPage.clickElementById('otherParties_0_hearingSubtype_wantsHearingTypeFaceToFace_Yes');
   await anyCcdFormPage.clickElementById('otherParties_0_isAppointee_No');
   await anyCcdFormPage.clickElementById('otherParties_0_rep_hasRepresentative_No');
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
   await caseDetailsPage.reloadPage();
 });
@@ -40,7 +40,7 @@ Given('I add taxCredit other party data', async function () {
   await anyCcdFormPage.clickElementById('otherParties_0_hearingSubtype_wantsHearingTypeFaceToFace_Yes');
   await anyCcdFormPage.clickElementById('otherParties_0_isAppointee_No');
   await anyCcdFormPage.clickElementById('otherParties_0_rep_hasRepresentative_No');
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
   await caseDetailsPage.reloadPage();
 });

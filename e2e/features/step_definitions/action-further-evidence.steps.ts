@@ -23,7 +23,7 @@ When(
     await furtherEvidencePage.enterScannedDate('20', '1', '2021');
     await anyCcdPage.clickElementById('scannedDocuments_0_includeInBundle_Yes');
 
-    await anyCcdPage.clickContinue();
+    await anyCcdPage.clickSubmit();
     await anyCcdPage.clickSubmit();
   }
 );
@@ -40,7 +40,7 @@ When('I fill the further evidence form with {string} invalid file', async functi
   await furtherEvidencePage.enterScannedDate('20', '1', '2021');
   await anyCcdPage.clickElementById('scannedDocuments_0_includeInBundle_Yes');
 
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
 });
 
 Then('the case should have successfully processed {string} event', async function (event: string) {
@@ -50,13 +50,14 @@ Then('the case should have successfully processed {string} event', async functio
 
 When('I fill the direction notice form with {string}', async function (reinstatement) {
   await anyCcdPage.chooseOptionContainingText('directionTypeDl', reinstatement);
+  await anyCcdPage.clickElementById('confidentialityType-general');
   await caseDetailsPage.addDayItems('directionDueDate');
   await anyCcdPage.scrollPage('//*[@id="generateNotice_No"]');
   await anyCcdPage.chooseOptionContainingText('sscsInterlocDirectionDocument_documentType', 'Directions Notice');
   await anyCcdPage.uploadFile('sscsInterlocDirectionDocument_documentLink', 'issue2.pdf');
   await furtherEvidencePage.enterFileName('sscsInterlocDirectionDocument_documentFileName', 'testfile.pdf');
 
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
 });
 
@@ -81,7 +82,7 @@ When('resend evidence to appellant and FTA user', async function () {
   await anyCcdPage.clickElementById('resendToRepresentative_No');
   await anyCcdPage.clickElementById('resendToDwp_Yes');
 
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
 });
 
