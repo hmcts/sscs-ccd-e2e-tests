@@ -75,7 +75,6 @@ withNightlyPipeline("nodejs", product, component) {
         steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests-results/a11y/*'
     }
 
-    enableCrossBrowserTest(60)
     enableFullFunctionalTest(120)
 
     afterAlways('crossBrowserTest') {
