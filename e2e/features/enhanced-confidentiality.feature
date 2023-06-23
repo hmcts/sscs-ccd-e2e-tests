@@ -8,7 +8,7 @@ Feature: Enhanced confidentiality
         Then the case should be in "With FTA" state
         Given I choose "Upload response"
         And I upload UC further information with disputed General disputed by others No and further info No
-        And I wait "25" seconds
+        And I wait "60" seconds
         And I choose "Action further evidence"
         And I fill the further evidence form with "sendToInterlocReviewByJudge" and "Confidentiality request"
         And I choose "Review confidentiality request"

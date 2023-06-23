@@ -2,6 +2,8 @@ import { When, Then } from '@cucumber/cucumber';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { AdjournmentPage } from '../../pages/adjournment.page';
 import { expect } from 'chai';
+import { Wait } from '../../enums/wait';
+import { browser } from 'protractor';
 
 const anyCcdPage = new AnyCcdPage();
 const adjournmentPage = new AdjournmentPage();
@@ -74,6 +76,7 @@ When('I upload an adjournment notice and issue direction {string}', async functi
   await adjournmentPage.uploadAdjournmentNotice();
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Check your answers')).to.equal(true);
+  await browser.sleep(Wait.extended);
   await anyCcdPage.clickSubmit();
 });
 

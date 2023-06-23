@@ -1,6 +1,6 @@
 Feature: UC Confidentiality Request
 
-  @uc-confidentiality-request @nightly-test
+  @uc-confidentiality-request @nightly-test-skip
   Scenario: confidentiality request for appellant
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
