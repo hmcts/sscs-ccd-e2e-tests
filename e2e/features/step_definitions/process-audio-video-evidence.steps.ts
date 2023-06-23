@@ -47,6 +47,7 @@ When('I process the AV evidence using the {string} action', async function (acti
   expect(await anyCcdPage.contentContains('Preview Document')).to.equal(true);
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.contentContains('Event summary (optional)')).to.equal(true);
+  await browser.sleep(Wait.long);
   await anyCcdPage.clickSubmit();
 });
 

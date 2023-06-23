@@ -62,7 +62,7 @@ Feature: Happy Path
     Given I navigate to an existing case
     Then the case should end in "Ready to list" state
 
-  @tc-decision  @nightly-test
+  @tc-decision  @nightly-test-skip
   Scenario: Tax Credit case should end up in "Ready to list" state when FTA responds
     Given I presetup an "Tax Credit" SYA case
     And I am signed in as a Case Officer

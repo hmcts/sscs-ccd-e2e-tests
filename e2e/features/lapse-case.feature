@@ -17,7 +17,6 @@ Feature: Lapse Appeal
     And I submit "Confirm lapsed"
     Then the case should end in "Dormant" state
 
-  @crossbrowser
   Scenario: Should end up in "With FTA" state when ALL fields are present
     When I choose "Lapse appeal"
     And I set FTA State to Lapsed "Lapse appeal"

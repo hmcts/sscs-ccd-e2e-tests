@@ -44,7 +44,7 @@ function afterLaunch(): any {
   return retry.afterLaunch(retries);
 }
 
-const featuresPath = path.resolve(process.cwd(), 'e2e/features/lapse-case.feature');
+const featuresPath = path.resolve(process.cwd(), 'e2e/features/link-case.feature');
 
 const jsonDir = path.resolve(reportDir, 'json');
 mkdirSync(jsonDir, { recursive: true });

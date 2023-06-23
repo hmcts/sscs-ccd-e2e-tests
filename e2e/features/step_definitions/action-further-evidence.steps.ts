@@ -3,6 +3,9 @@ import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { assert, expect } from 'chai';
 import { FurtherEvidencePage } from '../../pages/further-evidence.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
+import { Wait } from '../../enums/wait';
+import { browser } from 'protractor';
+
 
 const anyCcdPage = new AnyCcdPage();
 const furtherEvidencePage = new FurtherEvidencePage();
@@ -24,6 +27,7 @@ When(
     await anyCcdPage.clickElementById('scannedDocuments_0_includeInBundle_Yes');
 
     await anyCcdPage.clickSubmit();
+    await browser.sleep(Wait.extended);
     await anyCcdPage.clickSubmit();
   }
 );

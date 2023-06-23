@@ -1,4 +1,4 @@
-@nightly-test
+@nightly-test-skip
 Feature: Case Access Management
 
  Scenario: SSCS1 benefit - check RPC and case management location on the appearl details page

@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test
+@migrated-to-exui @nightly-test @crossbrowser
 Feature: Link a case
 
   Background:

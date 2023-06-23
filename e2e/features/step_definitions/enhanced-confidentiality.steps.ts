@@ -16,6 +16,7 @@ Given('I {string} confidentiality request', async function (verdict) {
 Given('I upload supplementary response', async function () {
   await anyCcdPage.uploadFile('dwpSupplementaryResponseDoc_documentLink', 'issue1.pdf');
   await anyCcdPage.clickContinue();
+  await browser.sleep(Wait.extended);
   await anyCcdPage.clickSubmit();
   await browser.manage().window().maximize();
 });
