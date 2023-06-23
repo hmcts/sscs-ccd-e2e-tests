@@ -6,7 +6,6 @@ import { CaseDetailsPage } from '../../pages/case-details.page';
 import { Wait } from '../../enums/wait';
 import { browser } from 'protractor';
 
-
 const anyCcdPage = new AnyCcdPage();
 const furtherEvidencePage = new FurtherEvidencePage();
 const caseDetailsPage = new CaseDetailsPage();
