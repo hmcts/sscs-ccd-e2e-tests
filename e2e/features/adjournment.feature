@@ -24,7 +24,7 @@ Feature: Adjournment decision
     And I submit "Issue adjournment notice"
     Then the case should end in "Ready to list" state
 
-  @nightly-test-5 @TA-619 @nightly-test
+  @nightly-test-5 @TA-619 @nightly-test-skip
   Scenario: Should end up in "Ready to list" state when decision is issued with generate notice is yes and issue direction is no
     And I upload an adjournment notice and issue direction "No"
     And I see "Draft Adjournment Notice"

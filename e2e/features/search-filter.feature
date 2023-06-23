@@ -1,4 +1,4 @@
-@nightly-test
+@nightly-test @crossbrowser
 Feature: Workbasket filter search
 
   Scenario: Search by benefit and issue code

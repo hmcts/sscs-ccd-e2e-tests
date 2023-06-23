@@ -65,7 +65,7 @@ const cucumberOpts: IConfiguration = <IConfiguration>{
   require: ['./cucumber.conf.js', './features/step_definitions/*.steps.js', './support/hooks.js'],
   backtrace: true,
   // failFast,
-  retry: retries,
+  // retry: retries,
 };
 
 const frameworkPath = require.resolve('protractor-cucumber-framework');
