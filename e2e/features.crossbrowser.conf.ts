@@ -55,7 +55,7 @@ const cucumberOpts: IConfiguration = <IConfiguration>{
   // failFast,
   // strict: true,
   backtrace: true,
-  retry: retries,
+  // retry: retries,
 };
 
 export const config: Config = {
