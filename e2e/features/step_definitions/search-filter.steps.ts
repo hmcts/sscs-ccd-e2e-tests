@@ -2,10 +2,13 @@ import { element, by } from 'protractor';
 import { When, Then } from '@cucumber/cucumber';
 import { expect } from 'chai';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
+import { Wait } from '../../enums/wait';
+import { browser } from 'protractor';
 
 const anyCcdPage = new AnyCcdPage();
 
 When('I choose to filter with benefit and issue code in workbasket filter', async function () {
+  await browser.sleep(Wait.extended);
   await anyCcdPage.waitForSpinner();
   await anyCcdPage.chooseOptionContainingText('benefitCode', '002');
   await anyCcdPage.waitForSpinner();
