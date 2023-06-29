@@ -34,7 +34,7 @@
     "@sinonjs/fake-timers": "^10.2.0",
     "@types/chai": "4.3.5",
     "@types/config": "3.3.0",
-    "@types/jasmine": "4.3.1",
+    "@types/jasmine": "4.3.5",
     "@types/node": "20.2.3",
     "@typescript-eslint/eslint-plugin": "5.59.7",
     "@typescript-eslint/parser": "5.59.7",
