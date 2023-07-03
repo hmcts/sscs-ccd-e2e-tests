@@ -8,7 +8,7 @@ Feature: Enhanced confidentiality
         Then the case should be in "With FTA" state
         Given I choose "Upload response"
         And I upload UC further information with disputed General disputed by others No and further info No
-        And I wait "60" seconds
+        And I wait "120" seconds
         And I choose "Action further evidence"
         And I fill the further evidence form with "sendToInterlocReviewByJudge" and "Confidentiality request"
         And I choose "Review confidentiality request"
@@ -20,6 +20,7 @@ Feature: Enhanced confidentiality
         Given I choose "Action further evidence"
         When I upload a document with redacted content
         Then I should see redacted content in Documents tab
+        And I wait "60" seconds
         When I choose "Create a bundle"
         And I submit "Create a bundle"
         Then the "Create a bundle" event should be successfully listed in the History
