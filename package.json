@@ -34,7 +34,7 @@
     "@sinonjs/fake-timers": "^10.2.0",
     "@types/chai": "4.3.5",
     "@types/config": "3.3.0",
-    "@types/jasmine": "4.3.1",
+    "@types/jasmine": "4.3.5",
     "@types/node": "20.2.3",
     "@typescript-eslint/eslint-plugin": "5.59.7",
     "@typescript-eslint/parser": "5.59.7",
@@ -65,7 +65,7 @@
     "request-promise": "4.2.6",
     "rxjs": "7.8.1",
     "selenium-webdriver": "4.9.2",
-    "ts-loader": "9.4.2",
+    "ts-loader": "9.4.4",
     "ts-node": "10.9.1",
     "typescript": "5.0.4"
   },
