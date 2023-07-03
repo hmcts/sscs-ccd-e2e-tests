@@ -12,17 +12,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/compiler@npm:16.0.2":
-  version: 16.0.2
-  resolution: "@angular/compiler@npm:16.0.2"
+"@angular/compiler@npm:16.1.3":
+  version: 16.1.3
+  resolution: "@angular/compiler@npm:16.1.3"
   dependencies:
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/core": 16.0.2
+    "@angular/core": 16.1.3
   peerDependenciesMeta:
     "@angular/core":
       optional: true
-  checksum: 3fc722dc3f1f35ee8ca4104c1dad1b65a8c98c85c482e66be06da55b85239ec420a735f11e947c8f4c3652226960fd9da594f97c014355b76c5a8b2c1eb8c586
+  checksum: 83d100b8f6aafd904ae371017e3d743fc2c395c52880d12798c5f54f02a626d552fb09648f72cc26c81abb40bacad8d8f53f21735ff29f6388f9c106b103bbe5
   languageName: node
   linkType: hard
 
@@ -35,15 +35,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/core@npm:16.0.2":
-  version: 16.0.2
-  resolution: "@angular/core@npm:16.0.2"
+"@angular/core@npm:16.1.3":
+  version: 16.1.3
+  resolution: "@angular/core@npm:16.1.3"
   dependencies:
     tslib: ^2.3.0
   peerDependencies:
     rxjs: ^6.5.3 || ^7.4.0
     zone.js: ~0.13.0
-  checksum: 00ddc1835aad2503cd6f232bd061e59cd136e5798c5965483df7a76c102d9e65afaf606b1fbc4f751c3573d7a1df62462881782c491336106c0b95690a520c7b
+  checksum: ae8d69542bebd2b12becc1cc8866b93e977c4cf8636c8e2854a5480023d6733f2038d5db281c9fe319b81cb696af099bbd2a6267bac026f9c51e6306484c2162
   languageName: node
   linkType: hard
 
@@ -5060,8 +5060,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sscs-ccd-e2e-tests@workspace:."
   dependencies:
-    "@angular/compiler": 16.0.2
-    "@angular/core": 16.0.2
+    "@angular/compiler": 16.1.3
+    "@angular/core": 16.1.3
     "@axe-core/webdriverjs": 4.7.1
     "@cucumber/cucumber": ^9.1.2
     "@cucumber/messages": 22.0.0
