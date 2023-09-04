@@ -12,7 +12,7 @@
     "lint:fix": "yarn prettier --write . && yarn eslint . --fix --quiet",
     "webdriverUpdate": "webdriver-manager update --versions.chrome 113.0.5672.63 --gecko=false",
     "e2e": "yarn test:fullfunctional",
-    "test:local": "yarn build && cross-env NODE_ENV=development protractor ./dist/e2e/features.parallel.conf.js --cucumberOpts.tags=~@wip --cucumberOpts.tags=@nightly-test",
+    "test:local": "yarn build && cross-env NODE_ENV=development protractor ./dist/e2e/features.parallel.conf.js --cucumberOpts.tags=~@wip --cucumberOpts.tags=@nightly-test1",
     "test:aat": "yarn build && cross-env NODE_ENV=aat protractor ./dist/e2e/features.parallel.conf.js --tags \"not @wip and @nightly-test\"",
     "test:fullfunctional": "yarn build && cross-env NODE_ENV=aat protractor ./dist/e2e/features.parallel.conf.js --cucumberOpts.tags=@nightly-test",
     "test:previewfunctional": "yarn build && cross-env NODE_ENV=aat protractor ./dist/e2e/features.parallel.conf.js --cucumberOpts.tags=@preview-test",
