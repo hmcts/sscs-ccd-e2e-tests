@@ -13,21 +13,21 @@ export class UpdateListingRequirementsPage extends AnyPage {
      await browser.sleep(1500);
     await anyCcdPage.chooseOptionContainingText('#overrideFields_appellantHearingChannel', video);
     await browser.sleep(1500);
-    await anyCcdPage.click('Continue');
+    await anyCcdPage.clickButton('Continue');
   }
   async updatePOOfficerAttending(yes: string) {
     await browser.sleep(1500);
     await anyCcdPage.clickElementById('overrideFields_poToAttend_' + yes);
     await browser.sleep(1500);
-    await anyCcdPage.click('Continue');
+    await anyCcdPage.clickButton('Continue');
   }
   async amendReasonForUpdate() {
     expect(await anyCcdPage.pageHeadingContains('Amend Reason')).to.equal(true);
      await browser.sleep(1500);
      await anyCcdPage.clickElementById('amendReasons-judgereq');
      await browser.sleep(1500);
-     await anyCcdPage.click('Continue');
+     await anyCcdPage.clickButton('Continue');
      await browser.sleep(1500);
-     await anyCcdPage.click('Submit');
+     await anyCcdPage.clickButton('Submit');
   }
  }
