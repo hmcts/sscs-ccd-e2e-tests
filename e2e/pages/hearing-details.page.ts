@@ -127,13 +127,13 @@ export class HearingDetailsPage extends AnyPage {
 
     async verifyAmendReasonForUpdate() {
         await browser.sleep(500);
-         await anyCcdPage.click('Continue');
+         await anyCcdPage.clickButton('Continue');
          await browser.sleep(500);
           await anyCcdPage.clickElementById('amendReasons-judgereq');
           await browser.sleep(500);
-         await anyCcdPage.click('Continue');
+         await anyCcdPage.clickButton('Continue');
          await browser.sleep(500);
-         await anyCcdPage.click('Submit');
+         await anyCcdPage.clickButton('Submit');
          await browser.sleep(500);
 }
 

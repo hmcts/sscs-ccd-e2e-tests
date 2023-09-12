@@ -27,9 +27,9 @@ export class HearingRecordingPage extends AnyPage {
     async uploadHearingRecording() {
         await anyCcdPage.clickElementById('hearingRecording_hearingType-final');
         await this.addHearingRecording();
-        await anyCcdPage.click('Continue');
+        await anyCcdPage.clickButton('Continue');
         await browser.sleep(500);
-        await anyCcdPage.click('Submit');
+        await anyCcdPage.clickButton('Submit');
     }
 
     async selectHearing() {
