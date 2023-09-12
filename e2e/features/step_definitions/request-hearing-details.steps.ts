@@ -20,15 +20,15 @@ Then('I click on hearing details', async function () {
      await hearingDetailsPage.viewHearingDetails();
 });
 
-Then(/^the venue of the hearing should be in "(.+)"$/, async function (venueName: string) {
+Then('the venue of the hearing should be in "(.+)"$', async function (venueName: string) {
      await hearingDetailsPage.verifyHearingVenue(venueName);
 });
 
-Then(/^the duration of the hearing should be "(.+)"$/, async function (hearingDuration: string) {
+Then('the duration of the hearing should be "(.+)"$', async function (hearingDuration: string) {
      await hearingDetailsPage.verifyHearingDuration(hearingDuration);
 });
 
-Then(/^the earliest hearing date should be from "(.+)" days of hearing requested$/, async function (noOfDays: string) {
+Then('the earliest hearing date should be from "(.+)" days of hearing requested$', async function (noOfDays: string) {
 
      let date = new Date();
      let numberOfDaysToAdd = Number(noOfDays);
@@ -42,19 +42,19 @@ Then(/^the earliest hearing date should be from "(.+)" days of hearing requested
      await hearingDetailsPage.verifyHearingDuration(formattedDate);
 });
 
-Then(/^I update the length of hearing to "(.+)" hours$/, async function (hearingDuration: string) {
+Then('I update the length of hearing to "(.+)" hours$', async function (hearingDuration: string) {
      await hearingDetailsPage.updateHearingDetails(hearingDuration);
 });
 
-Then(/^the hearing status should be updated to "(.+)"$/, async function (hearingStatus: string) {
+Then('the hearing status should be updated to "(.+)"$', async function (hearingStatus: string) {
      await hearingDetailsPage.verifyHearingStatus(hearingStatus);
 });
 
-Then(/^I click on Hearings tab$/, async function () {
+Then('I click on Hearings tab$/', async function () {
        await hearingDetailsPage.verifyHearingStatusSummary();
 });
 
-When(/^I click on "(.+)" hearing link and select "(.+)" as cancellation reason$/, async function (cncl: string, reason: string) {
+When('I click on "(.+)" hearing link and select "(.+)" as cancellation reason$', async function (cncl: string, reason: string) {
         await anyCcdPage.click(cncl);
         await browser.sleep(3000);
 
@@ -63,15 +63,15 @@ When(/^I click on "(.+)" hearing link and select "(.+)" as cancellation reason$/
         await browser.sleep(5000);
 });
 
-Then(/^I should see "(.+)" hearing status in summary page$/, async function (hearingStats: string) {
+Then(/'I should see "(.+)" hearing status in summary page$', async function (hearingStats: string) {
      await hearingDetailsPage.verifyCancelHearingStatus(hearingStats);
 });
 
-When(/^submit the event$/, async function () {
+When('submit the event$/', async function () {
      await anyCcdPage.click('Submit');
 });
 
-Then(/^the hearing status should be "(.+)"$/, async function (hearingStats: string) {
+Then('the hearing status should be "(.+)"$', async function (hearingStats: string) {
      await hearingDetailsPage.requestAutoHearing();
      await hearingDetailsPage.verifyCancelHearingStatus(hearingStats);
 });
