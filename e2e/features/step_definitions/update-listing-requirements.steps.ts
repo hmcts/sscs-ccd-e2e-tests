@@ -3,7 +3,7 @@ import { UpdateListingRequirementsPage } from '../../pages/update-listing-requir
 
 const updateListingRequirementsPage = new UpdateListingRequirementsPage();
 
-Given('I choose (.+)" option from appellant hearing channel', async function (video) {
+Given('I choose "(.+)" option from appellant hearing channel', async function (video) {
      await updateListingRequirementsPage.updateHearingChannel(video);
 });
 
