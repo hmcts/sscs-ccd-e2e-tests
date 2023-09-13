@@ -90,12 +90,14 @@ export class HearingDetailsPage extends AnyPage {
     await element(by.id('durationhours'))
       .clear()
       .then(function () {
-        element(by.id('durationhours')).sendKeys(2);
+        // eslint-disable-next-line no-void
+        void element(by.id('durationhours')).sendKeys(2);
       });
     await browser.sleep(500);
     await anyCcdPage.clickButton('Continue');
     await browser.sleep(500);
     await anyCcdPage.clickButton('Submit updated request');
+    s;
     await browser.sleep(500);
     await anyCcdPage.clickElementById('adminreq');
     await browser.sleep(500);
