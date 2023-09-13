@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { browser, by, element } from 'protractor';
 import { AnyPage } from './any.page';
 import { expect } from 'chai';
@@ -52,11 +53,11 @@ export class HearingDetailsPage extends AnyPage {
   }
 
   async doYouWantSpecificJudge(yesOrNo: string) {
-    await anyCcdPage.clickElementById(`specific-judge-selection` + yesOrNo);
+    await anyCcdPage.clickElementById(`specific-judge-selection${yesOrNo}`);
   }
 
   async doYouRequireAdditionalFacilities(yesOrNo: string) {
-    await anyCcdPage.clickElementById(`addition-security-confirmation` + yesOrNo);
+    await anyCcdPage.clickElementById(`addition-security-confirmation${yesOrNo}`);
   }
 
   async requestAutoHearing() {
@@ -113,7 +114,7 @@ export class HearingDetailsPage extends AnyPage {
 
   async verifyHearingChannel(hearingChannel: string) {
     await browser.sleep(500);
-    await anyCcdPage.chooseOption('overrideFields_appellantHearingChannel',hearingChannel);
+    await anyCcdPage.chooseOption('overrideFields_appellantHearingChannel', hearingChannel);
     await browser.sleep(500);
   }
 

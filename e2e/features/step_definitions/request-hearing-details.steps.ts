@@ -29,14 +29,18 @@ Then('the duration of the hearing should be {string}$', async function (hearingD
 });
 
 Then('the earliest hearing date should be from {string} days of hearing requested$', async function (noOfDays: string) {
-  let date = new Date();
-  let numberOfDaysToAdd = Number(noOfDays);
-  let result = date.setDate(date.getDate() + numberOfDaysToAdd);
+  const date = new Date();
+  const numberOfDaysToAdd = Number(noOfDays);
+  const result = date.setDate(date.getDate() + numberOfDaysToAdd);
 
   const additionalDate = new Date(result);
-  const formattedDate = additionalDate.toLocaleDateString('en-GB', {
-  day: 'numeric', month: 'long', year: 'numeric'
-     }).replace(/ /g, ' ');
+  const formattedDate = additionalDate
+    .toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    })
+    .replace(/ /g, ' ');
 
   await hearingDetailsPage.verifyHearingDuration(formattedDate);
 });
@@ -53,13 +57,16 @@ Then('I click on Hearings tab$/', async function () {
   await hearingDetailsPage.verifyHearingStatusSummary();
 });
 
-When('I click on "(.+)" hearing link and select {string} as cancellation reason', async function (cncl: string, reason: string) {
-  await anyCcdPage.clickButton(cncl);
-  await browser.sleep(3000);
-  await anyCcdPage.clickElementById(reason);
-  await anyCcdPage.clickButton('Continue');
-  await browser.sleep(5000);
-});
+When(
+  'I click on "(.+)" hearing link and select {string} as cancellation reason',
+  async function (cncl: string, reason: string) {
+    await anyCcdPage.clickButton(cncl);
+    await browser.sleep(3000);
+    await anyCcdPage.clickElementById(reason);
+    await anyCcdPage.clickButton('Continue');
+    await browser.sleep(5000);
+  }
+);
 
 Then('I should see {string} hearing status in summary page', async function (hearingStats: string) {
   await hearingDetailsPage.verifyCancelHearingStatus(hearingStats);
