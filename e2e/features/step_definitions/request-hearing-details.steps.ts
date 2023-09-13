@@ -1,4 +1,4 @@
-import { Given, When, Then } from 'cucumber';
+import { Given, When, Then } from '@cucumber/cucumber';
 import { HearingDetailsPage } from '../../pages/hearing-details.page';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { browser } from 'protractor';
@@ -53,7 +53,7 @@ Then('the hearing status should be updated to {string}$', async function (hearin
   await hearingDetailsPage.verifyHearingStatus(hearingStatus);
 });
 
-Then('I click on Hearings tab$/', async function () {
+Then('I click on Hearings tab', async function () {
   await hearingDetailsPage.verifyHearingStatusSummary();
 });
 
@@ -76,7 +76,7 @@ When('submit the event', async function () {
   await anyCcdPage.clickButton('Submit');
 });
 
-Then('the hearing status should be {string}$', async function (hearingStats: string) {
+Then('the hearing status should be {string}', async function (hearingStats: string) {
   await hearingDetailsPage.requestAutoHearing();
   await hearingDetailsPage.verifyCancelHearingStatus(hearingStats);
 });
