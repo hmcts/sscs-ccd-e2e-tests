@@ -97,7 +97,6 @@ export class HearingDetailsPage extends AnyPage {
     await anyCcdPage.clickButton('Continue');
     await browser.sleep(500);
     await anyCcdPage.clickButton('Submit updated request');
-    s;
     await browser.sleep(500);
     await anyCcdPage.clickElementById('adminreq');
     await browser.sleep(500);
