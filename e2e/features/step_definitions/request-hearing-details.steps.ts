@@ -20,15 +20,15 @@ Then('I click on hearing details', async function () {
   await hearingDetailsPage.viewHearingDetails();
 });
 
-Then('the venue of the hearing should be in {string}$', async function (venueName: string) {
+Then('the venue of the hearing should be in {string}', async function (venueName: string) {
   await hearingDetailsPage.verifyHearingVenue(venueName);
 });
 
-Then('the duration of the hearing should be {string}$', async function (hearingDuration: string) {
+Then('the duration of the hearing should be {string}', async function (hearingDuration: string) {
   await hearingDetailsPage.verifyHearingDuration(hearingDuration);
 });
 
-Then('the earliest hearing date should be from {string} days of hearing requested$', async function (noOfDays: string) {
+Then('the earliest hearing date should be from {string} days of hearing requested', async function (noOfDays: string) {
   const date = new Date();
   const numberOfDaysToAdd = Number(noOfDays);
   const result = date.setDate(date.getDate() + numberOfDaysToAdd);
@@ -49,7 +49,7 @@ Then('I update the length of hearing to {string} hours', async function (hearing
   await hearingDetailsPage.updateHearingDetails(hearingDuration);
 });
 
-Then('the hearing status should be updated to {string}$', async function (hearingStatus: string) {
+Then('the hearing status should be updated to {string}', async function (hearingStatus: string) {
   await hearingDetailsPage.verifyHearingStatus(hearingStatus);
 });
 
@@ -58,7 +58,7 @@ Then('I click on Hearings tab', async function () {
 });
 
 When(
-  'I click on "(.+)" hearing link and select {string} as cancellation reason',
+  'I click on {string} hearing link and select {string} as cancellation reason',
   async function (cncl: string, reason: string) {
     await anyCcdPage.clickButton(cncl);
     await browser.sleep(3000);
