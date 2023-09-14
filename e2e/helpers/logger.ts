@@ -1,8 +1,7 @@
-import moment = require('moment');
+import moment from 'moment';
 
 export class Logger {
-
-    public static log(o: Object) {
-        console.log(`${moment().toISOString()} - ${o}`);
-    }
+  public static log(o: object) {
+    console.log(`${moment().toISOString()} - ${o}`);
+  }
 }

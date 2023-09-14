@@ -1,14 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import rp from 'request-promise';
-
-import serviceConfig from '../service.conf';
 import { Logger } from '@hmcts/nodejs-logging';
-
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-const logger = Logger.getLogger('ccd.ts');
-const timeout = serviceConfig.ApiCallTimeout;
-
+import config from 'config';
+import rp from 'request-promise';
 import ucPayload from '../features/json/uc_sya.json';
 import pipPayload from '../features/json/pip_sya.json';
 import esaPayload from '../features/json/esa_sya.json';
@@ -16,10 +8,6 @@ import childSupportPayload from '../features/json/child_support_sya.json';
 import taxCreditPayload from '../features/json/tax_credit_sya.json';
 import pipSandLPayload from '../features/json/pip_sandl_sya.json';
 import dlaSandLPayload from '../features/json/dla_sandl_sya.json';
-import ucSandLVideoPayload from '../features/json/uc_sandl_video_sya.json';
-import repSandLPayload from '../features/json/pip_sandl_rep.json';
-import repFtoFSandLPayload from '../features/json/pip_sandl_rep_ftof.json';
-import { config } from 'chai';
 
 const logger = Logger.getLogger('ccd.ts');
 
@@ -34,7 +22,7 @@ interface CaseDetails {
   email: string;
 }
 
-async function createCase(hearingType: string): Promise<CaseDetails> {
+async function createCase(hearingType): Promise<CaseDetails> {
   const randomNumber = parseInt(`${Math.random() * 10000000}`, 10);
   const email = `test${randomNumber}@hmcts.net`;
   const options = {
@@ -55,7 +43,6 @@ async function createCase(hearingType: string): Promise<CaseDetails> {
   return caseDetails;
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 async function createSYACase(caseType: string) {
   let caseId: string = null;
   let options = {};
@@ -108,35 +95,11 @@ async function createSYACase(caseType: string) {
       json: true,
       resolveWithFullResponse: true,
     };
-  } else if (caseType === 'SANDLUCVIDEO') {
-    options = {
-      method: 'POST',
-      uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
-      body: ucSandLVideoPayload,
-      json: true,
-      resolveWithFullResponse: true,
-    };
   } else if (caseType === 'SANDLDLA') {
     options = {
       method: 'POST',
-      uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+      uri: `${config.get('tribunals.uri')}/api/appeals`,
       body: dlaSandLPayload,
-      json: true,
-      resolveWithFullResponse: true,
-    };
-  } else if (caseType === 'SANDLPIPREPF2F') {
-    options = {
-      method: 'POST',
-      uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
-      body: repFtoFSandLPayload,
-      json: true,
-      resolveWithFullResponse: true,
-    };
-  } else if (caseType === 'SANDLPIPREP') {
-    options = {
-      method: 'POST',
-      uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
-      body: repSandLPayload,
       json: true,
       resolveWithFullResponse: true,
     };
@@ -146,11 +109,11 @@ async function createSYACase(caseType: string) {
 
   await rp
     .post(options)
-    .then(function (response: { headers: { location: string } }) {
+    .then(function (response) {
       const locationUrl: string = response.headers.location;
       caseId = locationUrl.substring(locationUrl.lastIndexOf('/') + 1);
     })
-    .catch(function (error: any) {
+    .catch(function (error) {
       logger.error(`Error at CCD createCase`, error);
       throw error;
     });
