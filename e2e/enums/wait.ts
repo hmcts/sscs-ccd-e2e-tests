@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 // eslint-disable-next-line no-shadow
 export enum Wait {
   short = 2000,
