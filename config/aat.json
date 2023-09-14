@@ -1,6 +1,6 @@
 {
   "tribunals": {
-    "uri": "http://sscs-tribunals-api-aat.service.core-compute-aat.internal"
+    "uri": "http://sscs-tribunals-api-demo.service.core-compute-demo.internal"
   },
   "users": {
     "caseOfficer": {
