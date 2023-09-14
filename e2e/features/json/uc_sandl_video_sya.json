@@ -63,7 +63,7 @@
     ],
     "otherReasons": "Another reason"
   },
-  "hearingType":"oral",
+  "hearingType": "oral",
   "hearing": {
     "wantsToAttend": true,
     "wantsSupport": true,
@@ -76,11 +76,7 @@
       "other": true
     },
     "scheduleHearing": true,
-    "datesCantAttend": [
-      "10-12-2022",
-      "11-12-2022",
-      "12-12-2022"
-    ],
+    "datesCantAttend": ["10-12-2022", "11-12-2022", "12-12-2022"],
     "options": {
       "hearingTypeTelephone": false,
       "telephone": "0999733733",
@@ -93,4 +89,3 @@
     "signer": "Joe Bloggs"
   }
 }
-
