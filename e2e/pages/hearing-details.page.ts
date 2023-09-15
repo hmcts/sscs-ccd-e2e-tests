@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import { AnyCcdPage } from './any-ccd.page';
 
 const anyCcdPage = new AnyCcdPage();
+const hearingStatus: string = 'waiting to be listed';
 
 const sleepAmount = 500;
 

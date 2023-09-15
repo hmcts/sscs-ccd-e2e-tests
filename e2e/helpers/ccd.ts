@@ -46,68 +46,106 @@ async function createSYACase(caseType: string) {
   let caseId: string = null;
   let options = {};
 
-  if (caseType === 'UC') {
-    options = {
-      method: 'POST',
-      uri: `${config.get('tribunals.uri')}/api/appeals`,
-      body: ucPayload,
-      json: true,
-      resolveWithFullResponse: true,
-    };
-  } else if (caseType === 'PIP' || caseType === 'CAMPIP') {
-    options = {
-      method: 'POST',
-      uri: `${config.get('tribunals.uri')}/api/appeals`,
-      body: pipPayload,
-      json: true,
-      resolveWithFullResponse: true,
-    };
-  } else if (caseType === 'ESA') {
-    options = {
-      method: 'POST',
-      uri: `${config.get('tribunals.uri')}/api/appeals`,
-      body: esaPayload,
-      json: true,
-      resolveWithFullResponse: true,
-    };
-  } else if (caseType === 'Child Support') {
-    options = {
-      method: 'POST',
-      uri: `${config.get('tribunals.uri')}/api/appeals`,
-      body: childSupportPayload,
-      json: true,
-      resolveWithFullResponse: true,
-    };
-  } else if (caseType === 'Tax Credit') {
-    options = {
-      method: 'POST',
-      uri: `${config.get('tribunals.uri')}/api/appeals`,
-      body: taxCreditPayload,
-      json: true,
-      resolveWithFullResponse: true,
-    };
-  } else if (caseType === 'SANDLPIP') {
-    options = {
-      method: 'POST',
-      uri: `${config.get('tribunals.uri')}/api/appeals`,
-      body: pipSandLPayload,
-      json: true,
-      resolveWithFullResponse: true,
-    };
-  } else {
-    throw new Error('Unsupported case type passed');
-  }
+    if (caseType === 'UC') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: ucPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
+    } else if (caseType === 'PIP') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: pipPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
+    } else if (caseType === 'CAMPIP') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: pipPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
+    } else if (caseType === 'ESA') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: esaPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
+    } else if (caseType === 'Child Support') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: childSupportPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
+    } else if (caseType === 'Tax Credit') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: taxCreditPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
+    } else if (caseType === 'SANDLPIP') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: pipSandLPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
+    } else if (caseType === 'SANDLUCVIDEO') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: ucSandLVideoPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
+    } else if (caseType === 'SANDLDLA') {
+        options = {
+            method: 'POST',
+            uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+            body: dlaSandLPayload,
+            json: true,
+            resolveWithFullResponse: true
+        };
+    } else if (caseType === 'SANDLPIPREPF2F') {
+            options = {
+                method: 'POST',
+                uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+                body: repFtoFSandLPayload,
+                json: true,
+                resolveWithFullResponse: true
+            };
+    } else if (caseType === 'SANDLPIPREP') {
+             options = {
+                 method: 'POST',
+                 uri: `${serviceConfig.TribunalApiUri}/api/appeals`,
+                 body: repSandLPayload,
+                 json: true,
+                 resolveWithFullResponse: true
+             };
+    } else {
+        throw 'Unsupported case type passed';
+    }
 
-  await rp
-    .post(options)
-    .then(function (response) {
-      const locationUrl: string = response.headers.location;
-      caseId = locationUrl.substring(locationUrl.lastIndexOf('/') + 1);
-    })
-    .catch(function (error) {
-      logger.error(`Error at CCD createCase`, error);
-      throw error;
-    });
+    await rp.post(options)
+            .then(function (response) {
+                let locationUrl = response.headers['location'];
+                caseId = locationUrl.substring(locationUrl.lastIndexOf('/') + 1)
+            })
+            .catch(function (err) {
+                console.log(`Error at CCD createCase: ${err}`);
+            });
 
   return caseId;
 }

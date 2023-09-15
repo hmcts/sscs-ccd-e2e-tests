@@ -10,6 +10,10 @@ const anyCcdPage = new AnyCcdPage();
 const furtherEvidencePage = new FurtherEvidencePage();
 const caseDetailsPage = new CaseDetailsPage();
 
+function delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
+
 When(
   'I fill the further evidence form with {string} and {string}',
   async function (actionType: string, requestType: string) {
@@ -32,10 +36,11 @@ When(
 );
 
 When('I fill the further evidence form with {string} invalid file', async function (testFile: string) {
-  expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
-  await anyCcdPage.chooseOptionByValue('furtherEvidenceAction', 'sendToInterlocReviewByJudge');
-  await anyCcdPage.chooseOptionContainingText('originalSender', 'Appellant (or Appointee)');
-  await anyCcdPage.clickAddNew();
+    expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
+    await anyCcdPage.chooseOptionContainingText('#furtherEvidenceAction', 'Review by Judge');
+    await anyCcdPage.chooseOptionContainingText('#originalSender', 'Appellant (or Appointee)');
+    await anyCcdPage.click('Add new');
+    await browser.sleep(1000);
 
   await anyCcdPage.chooseOptionContainingText('scannedDocuments_0_type', 'Confidentiality request');
   await anyCcdPage.uploadFile('scannedDocuments_0_url', `${testFile}.pdf`);
@@ -46,38 +51,47 @@ When('I fill the further evidence form with {string} invalid file', async functi
   await anyCcdPage.clickSubmit();
 });
 
-Then('the case should have successfully processed {string} event', async function (event: string) {
-  const events = await caseDetailsPage.getHistoryEvents();
-  expect(events).to.include(event);
+Then('the case should have successfully processed {string} event', async function (event) {
+    await delay(5000);
+    await anyCcdPage.clickTab('History');
+    expect(await caseDetailsPage.eventsPresentInHistory(event)).to.equal(true);
+    await delay(500);
 });
 
 When('I fill the direction notice form with {string}', async function (reinstatement) {
-  await anyCcdPage.chooseOptionContainingText('directionTypeDl', reinstatement);
-  await anyCcdPage.clickElementById('confidentialityType-general');
-  await caseDetailsPage.addDayItems('directionDueDate');
-  await anyCcdPage.scrollPage('//*[@id="generateNotice_No"]');
-  await anyCcdPage.chooseOptionContainingText('sscsInterlocDirectionDocument_documentType', 'Directions Notice');
-  await anyCcdPage.uploadFile('sscsInterlocDirectionDocument_documentLink', 'issue2.pdf');
-  await furtherEvidencePage.enterFileName('sscsInterlocDirectionDocument_documentFileName', 'testfile.pdf');
+
+    await anyCcdPage.chooseOptionContainingText('#directionTypeDl', reinstatement);
+    await caseDetailsPage.addDayItems('directionDueDate');
+    await browser.sleep(3000);
+    await anyCcdPage.scrollPage('//*[@id="generateNotice_No"]');
+    await browser.sleep(2000);
+    await anyCcdPage.chooseOptionContainingText('#sscsInterlocDirectionDocument_documentType', 'Directions Notice');
+    await furtherEvidencePage.uploadFile('sscsInterlocDirectionDocument_documentLink', 'issue2.pdf');
+    await furtherEvidencePage.enterFileName('sscsInterlocDirectionDocument_documentFileName', 'testfile.pdf');
+    await browser.sleep(3000);
 
   await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
 });
 
 Then('the case should be {string} permissions for {string}', async function (reinstatement, directionType) {
-  const todayDate = new Date().toISOString().slice(0, 10);
-  // await anyCcdPage.reloadPage();
-  await anyCcdPage.clickTab('Appeal Details');
-  const outcomeText = directionType === 'Reinstatement' ? 'Outcome' : 'outcome';
-  const regText = directionType === 'Reinstatement' ? 'Registered' : 'registered';
-  await caseDetailsPage.getFieldValue(`${directionType} ${outcomeText}`).then(function (actText) {
-    assert.equal(reinstatement, actText);
-  });
-  await caseDetailsPage.getFieldValue(`${directionType} ${regText}`).then(function (actText) {
-    const date = new Date(actText);
-    const actualDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().split('T')[0];
-    assert.equal(todayDate, actualDate);
-  });
+    let todayDate = new Date().toISOString().slice(0, 10);
+    await delay(5000);
+    // await anyCcdPage.reloadPage();
+    await anyCcdPage.clickTab('Appeal Details');
+    await delay(10000);
+    let outcomeText = (directionType === 'Reinstatement') ? 'Outcome' : 'outcome';
+    let regText = (directionType === 'Reinstatement') ? 'Registered' : 'registered';
+    await caseDetailsPage.getFieldValue(`${directionType} ${outcomeText}`).then(function(actText) {
+        assert.equal(reinstatement, actText);
+    });
+    await caseDetailsPage.getFieldValue(`${directionType} ${regText}`).then(function(actText) {
+        let date = new Date(actText);
+        let actualDate = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
+            .toISOString()
+            .split('T')[0];
+        assert.equal(todayDate, actualDate);
+    });
 });
 
 When('resend evidence to appellant and FTA user', async function () {

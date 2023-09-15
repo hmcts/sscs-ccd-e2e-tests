@@ -11,6 +11,7 @@ const caseDetailsPage = new CaseDetailsPage();
 const anyCcdFormPage = new AnyCcdFormPage();
 
 When('I write a final decision generate notice no generate', async function () {
+When('I write a final decision generate notice no generate', async function () {
   await anyCcdPage.clickElementById('writeFinalDecisionIsDescriptorFlow_No');
   await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_No');
   await anyCcdPage.clickContinue();
@@ -21,6 +22,7 @@ When('I write a final decision generate notice no generate', async function () {
   await anyCcdPage.clickSubmit();
 });
 
+When('I write a final decision generate notice yes daily living mobility is no face to face', async function () {
 When('I write a final decision generate notice yes daily living mobility is no face to face', async function () {
   await anyCcdPage.clickElementById('writeFinalDecisionIsDescriptorFlow_No');
   await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
@@ -58,6 +60,7 @@ When('I write a final decision generate notice yes daily living mobility is no f
   expect(errors).to.equal(0);
 });
 
+When('I write a final decision generate notice yes daily living mobility is yes face to face', async function () {
 When('I write a final decision generate notice yes daily living mobility is yes face to face', async function () {
   await anyCcdPage.clickElementById('writeFinalDecisionIsDescriptorFlow_Yes');
   await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
@@ -108,6 +111,7 @@ When('I write a final decision generate notice yes daily living mobility is yes 
   expect(errors).to.equal(0);
 });
 
+When('I see {string}', async function (notice) {
 When('I see {string}', async function (notice) {
   await anyCcdPage.clickTab('Documents');
   expect(await anyCcdPage.contentContains(notice)).to.equal(true);

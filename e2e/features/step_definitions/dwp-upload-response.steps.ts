@@ -58,11 +58,16 @@ When(
   }
 );
 
-When('I upload only evidence and original documents', async function () {
-  const dwpState = 'YES';
-  const benefitType = 'PIP';
-  await dwpresponse.uploadOnlyResponseAndEvidence('No', dwpState, benefitType);
-  await anyCcdPage.scrollBar('//div/form/div/button[2]');
+When(/^I upload only evidence and original documents$/, async function () {
+    let dwpState = 'YES';
+    let benefitType = 'PIP';
+    await dwpresponse.uploadOnlyResponseAndEvidence('No', dwpState, benefitType);
+    if (benefitType !== 'UC') {
+        await anyCcdPage.selectIssueCode();
+        await browser.sleep(2000);
+    }
+    await browser.sleep(500);
+    await anyCcdPage.scrollBar('//div/form/div/button[2]');
 });
 
 When('I upload with default issue code', async function () {

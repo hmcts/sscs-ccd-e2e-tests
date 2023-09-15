@@ -81,10 +81,13 @@ When('I upload an adjournment notice and issue direction {string}', async functi
 });
 
 When('I continue', async function () {
-  await anyCcdPage.clickSubmit();
+    await anyCcdPage.click('Continue');
 });
 
 Then('the case should be in Hearing appeal status', async function () {
-  await anyCcdPage.reloadPage();
-  expect(await anyCcdPage.contentContains('Hearing')).to.equal(true);
+    await browser.sleep(500);
+    await anyCcdPage.reloadPage();
+    expect(await anyCcdPage.contentContains('Hearing')).to.equal(true);
+
+    await browser.sleep(5000);
 });

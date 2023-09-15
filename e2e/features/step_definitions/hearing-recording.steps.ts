@@ -9,10 +9,12 @@ const hearingRecordingPage = new HearingRecordingPage();
 const caseDetailsPage = new CaseDetailsPage();
 
 When('I upload a hearing recording', async function () {
+When('I upload a hearing recording', async function () {
   expect(await anyCcdPage.pageHeadingContains('Hearing recording')).to.equal(true);
   await hearingRecordingPage.uploadHearingRecording();
 });
 
+When('I select a hearing', async function () {
 When('I select a hearing', async function () {
   expect(await anyCcdPage.pageHeadingContains('Upload hearing recording')).to.equal(true);
   await hearingRecordingPage.selectHearing();
@@ -36,12 +38,14 @@ Then('the {string} should be successfully listed in the History', async function
 });
 
 When('I request for Hearing recording', async function () {
+When('I request for Hearing recording', async function () {
   expect(await anyCcdPage.pageHeadingContains('Request hearing recording')).to.equal(true);
   await hearingRecordingPage.requestDwpHearingRecording();
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
 });
 
+When('request for Hearing recording is {string}', async function (hearingPermission: string) {
 When('request for Hearing recording is {string}', async function (hearingPermission: string) {
   expect(await anyCcdPage.pageHeadingContains('Action hearing recording request')).to.equal(true);
   await anyCcdPage.chooseOptionContainingText('selectHearingDetails', 'Fox Court 13:00:00 20 Oct 2021');
@@ -59,6 +63,7 @@ When('request for Hearing recording is {string}', async function (hearingPermiss
 });
 
 Given('I submit {string} as Request for Hearing Recording in the Upload document FE event', async function (filename) {
+Given('I submit {string} as Request for Hearing Recording in the Upload document FE event', async function (filename) {
   expect(await anyCcdPage.pageHeadingContains('Upload document FE')).to.equal(true);
   await anyCcdPage.clickAddNew();
   await anyCcdPage.chooseOptionContainingText(
@@ -75,6 +80,7 @@ Given('I submit {string} as Request for Hearing Recording in the Upload document
   await anyCcdPage.clickSubmit();
 });
 
+Then('the recording collection is cleared from Unprocessed correspondence tab', async function () {
 Then('the recording collection is cleared from Unprocessed correspondence tab', async function () {
   await anyCcdPage.clickTab('Unprocessed Correspondence');
   await anyCcdPage.elementNotPresent('Requested hearing recordings 1');
