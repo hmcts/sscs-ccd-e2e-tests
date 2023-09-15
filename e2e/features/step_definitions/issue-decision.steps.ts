@@ -11,7 +11,7 @@ const issueDecisionPage = new IssueDecisionPage();
 const caseDetailsPage = new CaseDetailsPage();
 const anyCcdFormPage = new AnyCcdFormPage();
 
-When(/^I write a final decision generate notice no generate$/, async function () {
+When('I write a final decision generate notice no generate', async function () {
   await anyCcdPage.clickElementById('writeFinalDecisionIsDescriptorFlow_No');
   await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_No');
   await anyCcdPage.click('Continue');
@@ -23,7 +23,7 @@ When(/^I write a final decision generate notice no generate$/, async function ()
   await anyCcdPage.scrollBar('//button[@type=\'submit\']');
 });
 
-When(/^I write a final decision generate notice yes daily living mobility is no face to face$/, async function () {
+When('I write a final decision generate notice yes daily living mobility is no face to face', async function () {
   await anyCcdPage.clickElementById('writeFinalDecisionIsDescriptorFlow_No');
   await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
   await anyCcdPage.click('Continue');
@@ -68,7 +68,7 @@ When(/^I write a final decision generate notice yes daily living mobility is no 
   await browser.sleep(5000);
 });
 
-When(/^I write a final decision generate notice yes daily living mobility is yes face to face$/, async function () {
+When('I write a final decision generate notice yes daily living mobility is yes face to face', async function () {
   await anyCcdPage.clickElementById('writeFinalDecisionIsDescriptorFlow_Yes');
   await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
   await anyCcdPage.click('Continue');
@@ -121,19 +121,19 @@ When(/^I write a final decision generate notice yes daily living mobility is yes
   await browser.sleep(5000);
 });
 
-When(/^I see "(.+)"$/, async function (notice) {
+When('I see {string}', async function (notice) {
   await anyCcdPage.clickTab('Documents');
   await browser.sleep(500);
   expect(await anyCcdPage.contentContains(notice)).to.equal(true);
 });
 
-When(/^I test final decision$/, async function () {
+When('I test final decision', async function () {
   const caseReference = '1601983355417609';
   await anyCcdPage.get(`/case/SSCS/Benefit/${caseReference}`);
   await browser.sleep(10000);
 });
 
-When(/^I issue a final decision generate decision no$/, async function () {
+When('I issue a final decision generate decision no', async function () {
   await anyCcdPage.click('Continue');
   await anyCcdPage.click('Submit');
   await browser.sleep(1000);
@@ -141,7 +141,7 @@ When(/^I issue a final decision generate decision no$/, async function () {
   await browser.sleep(500);
 });
 
-When(/^I issue a final decision generate decision upheld$/, async function () {
+When('I issue a final decision generate decision upheld', async function () {
   await anyCcdPage.click('Continue');
   await anyCcdPage.click('Submit');
   await browser.sleep(1000);

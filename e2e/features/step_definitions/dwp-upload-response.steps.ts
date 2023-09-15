@@ -16,7 +16,7 @@ let day = date.getDate(); // day (1-31)
 let year = date.getFullYear();
 let formattedDate =  day + '-' + month + '-' + year;
 
-When(/^I choose "(.+)"$/, async function (action) {
+When('I choose {string}', async function (action) {
     await browser.sleep(4000)
     if (action === 'Write adjournment notice'
     || action === 'Not listable' || action === 'Update not listable'
@@ -33,7 +33,7 @@ When(/^I choose "(.+)"$/, async function (action) {
     }
 });
 
-When(/^I upload contains further information (.+) for "(.+)"$/, async function (action: string, benefitType: string) {
+When('I upload contains further information {string} for {string}', async function (action: string, benefitType: string) {
     const dwpState = 'YES';
     await dwpresponse.uploadResponse(action, dwpState, benefitType);
     if (benefitType !== 'UC') {
@@ -64,7 +64,7 @@ When(/^I upload contains further information (.+) for "(.+)"$/, async function (
     await browser.sleep(2000);
 });
 
-When(/^I upload only evidence and original documents$/, async function () {
+When('I upload only evidence and original documents', async function () {
     let dwpState = 'YES';
     let benefitType = 'PIP';
     await dwpresponse.uploadOnlyResponseAndEvidence('No', dwpState, benefitType);
@@ -76,7 +76,7 @@ When(/^I upload only evidence and original documents$/, async function () {
     await anyCcdPage.scrollBar('//div/form/div/button[2]');
 });
 
-When(/^I upload with default issue code$/, async function () {
+When('I upload with default issue code', async function () {
     const dwpState = 'YES';
     await dwpresponse.uploadResponse('No', dwpState, 'PIP');
     await browser.sleep(500);
@@ -85,36 +85,36 @@ When(/^I upload with default issue code$/, async function () {
     await anyCcdPage.scrollBar('//button[@type=\'submit\']');
 });
 
-Then(/^I should see "(.+)" error message$/, async function (errMsg: string) {
+Then('I should see {string} error message', async function (errMsg: string) {
     await browser.sleep(5000);
     expect(await anyCcdPage.contentContains(errMsg)).to.equal(true);
 });
 
-When(/^I respond to the appeal with upload contains further information "(.+)" option$/, async function (action: string) {
+When('I respond to the appeal with upload contains further information {string} option', async function (action: string) {
     await dwpresponse.uploadResponseForChildSupport(action);
     await dwpresponse.addOtherParties();
 });
 
-When(/^I respond to the appeal with upload contains further information "(.+)" option and "(.+)" issue code$/,
+When('I respond to the appeal with upload contains further information {string} option and {string} issue code',
                                                                       async function (action: string, issueCode: string) {
     await dwpresponse.uploadResponseForTaxCredit(action, issueCode);
 });
 
-When(/^dwp responds requesting "(.+)" for the uploads contains further info option$/, async function (action: string, issueCode: string) {
+When('dwp responds requesting {string} for the uploads contains further info option', async function (action: string, issueCode: string) {
     await dwpresponse.uploadResponseForTaxCredit(action, issueCode);
 });
 
-When(/^I upload (.+) further information with disputed (.+) disputed by others (.+) and further info (.+)$/,
+When('I upload {string} further information with disputed {string} disputed by others {string} and further info {string}',
                                                async function (benefitType, disputed, disputedByOthersYesOrNo, dwpFurtherInfoYesOrNo) {
     await dwpresponse.uploadResponseWithJointParty(benefitType, disputed, disputedByOthersYesOrNo, dwpFurtherInfoYesOrNo);
 });
 
-Then(/^the case should be in "(.+)" appeal status$/, async function (state) {
+Then('the case should be in {string} appeal status', async function (state) {
     await browser.sleep(5000);
     expect(await anyCcdPage.contentContains(state)).to.equal(true);
 });
 
-Then(/^the case should end in "(.+)" state$/, async function (state) {
+Then('the case should end in {string} state', async function (state) {
     await browser.sleep(10000);
     await anyCcdPage.clickTab('History');
     await browser.sleep(5000);
@@ -122,7 +122,7 @@ Then(/^the case should end in "(.+)" state$/, async function (state) {
     await browser.sleep(500);
 });
 
-Then(/^FTA documents should be seen against the case$/, async function () {
+Then('FTA documents should be seen against the case', async function () {
     await anyCcdPage.clickTab('FTA Documents');
     await browser.sleep(5000);
     await anyCcdPage.isFieldValueDisplayed('Document type', 'FTA evidence bundle');
@@ -136,7 +136,7 @@ Then(/^FTA documents should be seen against the case$/, async function () {
     await browser.sleep(500);
 });
 
-Then(/^FTA edited documents should be seen against the case$/, async function () {
+Then('FTA edited documents should be seen against the case', async function () {
     await anyCcdPage.clickTab('FTA Documents');
     await browser.sleep(5000);
     await anyCcdPage.isFieldValueDisplayed('Document type', 'FTA evidence bundle');

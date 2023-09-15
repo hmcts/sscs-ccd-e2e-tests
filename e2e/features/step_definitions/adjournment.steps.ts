@@ -7,14 +7,14 @@ import { expect } from 'chai';
 const anyCcdPage = new AnyCcdPage();
 const adjournmentPage = new AdjournmentPage();
 
-When(/^I book a hearing$/, async function () {
+When('I book a hearing', async function () {
   await browser.sleep(2000);
   await anyCcdPage.click('Add new');
   await adjournmentPage.addVenue('20', '10', '2021');
   await browser.sleep(500);
 });
 
-When(/^I generate an adjournment notice$/, async function () {
+When('I generate an adjournment notice', async function () {
   await anyCcdPage.clickElementById('adjournCaseGenerateNotice_Yes');
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCasePanelMembersExcluded-No');
@@ -50,7 +50,7 @@ When(/^I generate an adjournment notice$/, async function () {
   await browser.sleep(5000);
 });
 
-When(/^I upload an adjournment notice and issue direction "(.+)"$/, async function (issueDirection) {
+When('I upload an adjournment notice and issue direction {string}', async function (issueDirection) {
   await anyCcdPage.clickElementById('adjournCaseGenerateNotice_No');
   await anyCcdPage.click('Continue');
   await anyCcdPage.clickElementById('adjournCasePanelMembersExcluded-No');
@@ -83,11 +83,11 @@ When(/^I upload an adjournment notice and issue direction "(.+)"$/, async functi
   await browser.sleep(5000);
 });
 
-When(/^I continue$/, async function () {
+When('I continue', async function () {
     await anyCcdPage.click('Continue');
 });
 
-Then(/^the case should be in Hearing appeal status$/, async function () {
+Then('the case should be in Hearing appeal status', async function () {
     await browser.sleep(500);
     await anyCcdPage.reloadPage();
     expect(await anyCcdPage.contentContains('Hearing')).to.equal(true);

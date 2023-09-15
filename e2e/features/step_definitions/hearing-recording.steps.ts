@@ -14,19 +14,19 @@ const hearingRecordingPage = new HearingRecordingPage();
 const caseDetailsPage = new CaseDetailsPage();
 const dwpresponse = new DwpResponsePage();
 
-When(/^I upload a hearing recording$/, async function () {
+When('I upload a hearing recording', async function () {
   expect(await anyCcdPage.pageHeadingContains('Hearing recording')).to.equal(true);
   await hearingRecordingPage.uploadHearingRecording();
 });
 
-When(/^I select a hearing$/, async function () {
+When('I select a hearing', async function () {
   expect(await anyCcdPage.pageHeadingContains('Upload hearing recording')).to.equal(true);
   await hearingRecordingPage.selectHearing();
   await browser.sleep(500);
   await anyCcdPage.click('Continue');
 });
 
-Then(/^the hearing recording should (be|not be) in "(.+)" tab$/, async function (seeOrNotSee, tabName) {
+Then('the hearing recording should (be|not be) in {string} tab', async function (seeOrNotSee, tabName) {
   const isDisplayed = (seeOrNotSee === 'be');
   await browser.sleep(500);
   // await anyCcdPage.reloadPage();
@@ -39,14 +39,14 @@ Then(/^the hearing recording should (be|not be) in "(.+)" tab$/, async function 
   await browser.sleep(5000);
 });
 
-Then(/^the "(.+)" should be successfully listed in "(.+)" tab$/, async function (action, tabName) {
+Then('the {string} should be successfully listed in {string} tab', async function (action, tabName) {
   // await delay(10000);
   await anyCcdPage.clickTab(tabName);
   expect(await caseDetailsPage.eventsPresentInHistory(action)).to.equal(true);
   await browser.sleep(500);
 });
 
-When(/^I request for Hearing recording$/, async function () {
+When('I request for Hearing recording', async function () {
   expect(await anyCcdPage.pageHeadingContains('Request hearing recording')).to.equal(true);
   await hearingRecordingPage.requestDwpHearingRecording();
   await anyCcdPage.click('Continue');
@@ -54,7 +54,7 @@ When(/^I request for Hearing recording$/, async function () {
   await browser.sleep(500);
 });
 
-When(/^request for Hearing recording is "(.+)"$/, async function (hearingPermission: string) {
+When('request for Hearing recording is {string}', async function (hearingPermission: string) {
   expect(await anyCcdPage.pageHeadingContains('Action hearing recording request')).to.equal(true);
   await anyCcdPage.chooseOptionContainingText('#selectHearingDetails', 'Fox Court 13:00:00 20 Oct 2021');
   await anyCcdPage.click('Continue');
@@ -71,7 +71,7 @@ When(/^request for Hearing recording is "(.+)"$/, async function (hearingPermiss
   await browser.sleep(500);
 });
 
-Given(/^I submit "(.+)" as Request for Hearing Recording in the Upload document FE event$/, async function (filename) {
+Given('I submit {string} as Request for Hearing Recording in the Upload document FE event', async function (filename) {
   expect(await anyCcdPage.pageHeadingContains('Upload document FE')).to.equal(true);
   await anyCcdPage.click('Add new');
   await anyCcdPage.chooseOptionContainingText('#draftSscsFurtherEvidenceDocument_0_documentType', 'Request for Hearing Recording');
@@ -87,7 +87,7 @@ Given(/^I submit "(.+)" as Request for Hearing Recording in the Upload document 
   await browser.sleep(2000);
 });
 
-Then(/^the recording collection is cleared from Unprocessed correspondence tab$/, async function () {
+Then('the recording collection is cleared from Unprocessed correspondence tab', async function () {
   await anyCcdPage.clickTab('Unprocessed Correspondence');
   await anyCcdPage.elementNotPresent('Requested hearing recordings 1');
   await anyCcdPage.elementNotPresent('Fox Court');

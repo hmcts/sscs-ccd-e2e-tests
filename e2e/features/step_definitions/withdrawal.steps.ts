@@ -3,6 +3,6 @@ import { When } from 'cucumber';
 
 const anyCcdPage = new AnyCcdPage();
 
-When(/^I click submit withdrawal "(.+)"$/, async function (action) {
+When('I click submit withdrawal {string}', async function (action) {
     await anyCcdPage.click('Continue');
 });

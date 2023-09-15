@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { browser } from 'protractor';
 const anyCcdPage = new AnyCcdPage();
 
-When(/^I allow the appeal to proceed$/, async function () {
+When('I allow the appeal to proceed', async function () {
     await anyCcdPage.chooseOptionContainingText('#directionTypeDl', 'Appeal to Proceed');
     await browser.sleep(3000);
     await anyCcdPage.scrollPage('//*[@id="generateNotice_Yes"]');

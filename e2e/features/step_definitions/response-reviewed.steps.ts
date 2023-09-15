@@ -6,12 +6,12 @@ import { browser } from 'protractor';
 const anyCcdPage = new AnyCcdPage();
 const responseReviewedPage = new ResponseReviewedPage();
 
-When(/^I choose Requires Interlocutory Review to be "(.+)"$/, async function (action) {
+When('I choose Requires Interlocutory Review to be {string}', async function (action) {
     await anyCcdPage.scrollBar(`//input[@id="isInterlocRequired_${action}"]`);
     await anyCcdPage.click('Continue');
 });
 
-When(/^I submit "(.+)"$/, async function (action) {
+When('I submit {string}', async function (action) {
     // await anyCcdPage.click('Continue');
     await browser.sleep(4000);
     expect(await anyCcdPage.pageHeadingContains(action)).to.equal(true);
@@ -19,6 +19,6 @@ When(/^I submit "(.+)"$/, async function (action) {
     await browser.sleep(1000);
 });
 
-When(/I review the UC received Response$/, async function() {
+When('I review the UC received Response', async function() {
     await responseReviewedPage.reviewUCResponse();
 });

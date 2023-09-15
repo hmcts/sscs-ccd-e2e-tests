@@ -11,13 +11,13 @@ const caseDetailsPage = new CaseDetailsPage();
 const appointeePage = new AppointeePage();
 const dwpresponse = new DwpResponsePage();
 
-When(/^I populate fields and continue$/, async function () {
+When('I populate fields and continue', async function () {
     await caseDetailsPage.addReasonAndDate('notListableDueDate');
     await anyCcdPage.click('Submit');
     await anyCcdPage.clickTab('Summary');
 });
 
-Then(/^I set UCB flag to "(.+)"$/, async function (ucbFlag) {
+Then('I set UCB flag to {string}', async function (ucbFlag) {
 
    if (ucbFlag === 'Yes') {
    await anyCcdPage.clickElementById('dwpUCB_Yes');
@@ -35,7 +35,7 @@ Then(/^I set UCB flag to "(.+)"$/, async function (ucbFlag) {
    expect(await anyCcdPage.contentContains(ucbFlag)).to.equal(true);
 });
 
-Then(/^I set PHME Granted flag to "(.+)"$/, async function (phmeGranted) {
+Then('I set PHME Granted flag to {string}', async function (phmeGranted) {
     if (phmeGranted === 'Yes') {
         await anyCcdPage.clickElementById('phmeGranted_Yes');
     } else {
@@ -46,7 +46,7 @@ Then(/^I set PHME Granted flag to "(.+)"$/, async function (phmeGranted) {
     await browser.sleep(10);
 });
 
-Then(/^I enter date of appellant death with "(.+)" to appointee$/, async function (hasAppointee) {
+Then('I enter date of appellant death with {string} to appointee', async function (hasAppointee) {
    caseDetailsPage.addPastDate('dateOfAppellantDeath');
    if (hasAppointee === 'No') {
         await anyCcdPage.clickElementById('appeal_appellant_isAppointee_No');
@@ -68,7 +68,7 @@ Then(/^I enter date of appellant death with "(.+)" to appointee$/, async functio
    await anyCcdPage.clickTab('History');
 });
 
-Then(/^I enter "(.+)" to appointee and continue$/, async function (hasAppointee) {
+Then('I enter {string} to appointee and continue', async function (hasAppointee) {
      await anyCcdPage.clickElementById('appeal_appellant_isAppointee_Yes');
      await appointeePage.addAppointeeDetails()
      browser.driver.sleep(10);
@@ -83,7 +83,7 @@ Then(/^I enter "(.+)" to appointee and continue$/, async function (hasAppointee)
      expect(await anyCcdPage.contentContains('Provide appointee details')).to.equal(true);
 });
 
-When(/^I upload a "(.+)" doc contains further information "(.+)" for "(.+)"$/,
+When('I upload a {string} doc contains further information {string} for {string}',
     async function (docType: string, action: string, benefitType: string) {
     const dwpState = 'YES';
     const docLink = 'dwpUcbEvidenceDocument'
@@ -111,7 +111,7 @@ When(/^I upload a "(.+)" doc contains further information "(.+)" for "(.+)"$/,
     await anyCcdPage.scrollBar('//button[contains(text(),\'Submit\')]');
 });
 
-When(/^I do not upload edited docs after selecting "(.+)" option$/,
+When('I do not upload edited docs after selecting {string} option',
     async function (docType: string) {
     const dwpState = 'YES';
     const isContainsFurtherInfo = 'NO'
@@ -123,7 +123,7 @@ When(/^I do not upload edited docs after selecting "(.+)" option$/,
     await anyCcdPage.scrollBar('//button[contains(text(),\'Submit\')]');
 });
 
-When(/^I upload a doc$/, async function () {
+When('I upload a doc', async function () {
    const docLink = 'tl1Form_documentLink';
     await dwpresponse.uploadDoc(docLink);
     await browser.sleep(2000);
@@ -131,7 +131,7 @@ When(/^I upload a doc$/, async function () {
     await anyCcdPage.click('Submit');
 });
 
-Then(/^I see "(.+)" event in case fields$/, async function (expectedEvent) {
+Then('I see {string} event in case fields', async function (expectedEvent) {
     await anyCcdPage.click('History');
    // await anyCcdPage.reloadPage();
     await browser.sleep(50);
@@ -139,20 +139,20 @@ Then(/^I see "(.+)" event in case fields$/, async function (expectedEvent) {
     await browser.driver.sleep(50);
 });
 
-Then(/^I see field "(.+)" with value "(.+)" in "(.+)" tab$/, async function (key, value, tab) {
+Then('I see field {string} with value {string} in {string} tab', async function (key, value, tab) {
     await browser.sleep(5000);
     await anyCcdPage.clickTab(tab);
     expect(await caseDetailsPage.isFieldValueDisplayed(key, value)).to.equal(true);
     await browser.driver.sleep(60);
 });
 
-Then(/^I should see UCB flag$/, async function () {
+Then('I should see UCB flag', async function () {
    await anyCcdPage.clickTab('Listing Requirements');
    await browser.sleep(50);
    expect(await anyCcdPage.contentContains('Appellant - Unacceptable Customer Behaviour (UCB)')).to.equal(true);
 });
 
-Then(/^I should see PHME flag as "(.+)"$/, async function (state) {
+Then('I should see PHME flag as {string}', async function (state) {
     await anyCcdPage.clickTab('Summary');
     await browser.sleep(50);
 
@@ -164,14 +164,14 @@ Then(/^I should see PHME flag as "(.+)"$/, async function (state) {
 
 });
 
-Then(/^not listable reason is "(.+)" on summary page$/, async function (isVisible) {
+Then('not listable reason is {string} on summary page', async function (isVisible) {
    if (isVisible === 'Visible') {
     await browser.sleep(100);
    expect(await anyCcdPage.contentContains('reason for not listable goes here')).to.equal(true);
    }
 });
 
-When(/^I choose not listable direction full filled to "(.+)" and interloc review to "(.+)"$/,
+When('I choose not listable direction full filled to {string} and interloc review to {string}',
  async function (isDirectionFullFilled, isReview) {
   if (isDirectionFullFilled === 'YES') {
    await anyCcdPage.clickElementById('updateNotListableDirectionsFulfilled_Yes');
@@ -202,7 +202,7 @@ When(/^I choose not listable direction full filled to "(.+)" and interloc review
    }
 });
 
-Then(/^I subscribed to all parties to "(.+)"$/, async function (isSubscribed) {
+Then('I subscribed to all parties to {string}', async function (isSubscribed) {
 
  const action = isSubscribed;
  if (action === 'Yes') {

@@ -7,7 +7,7 @@ import { browser } from 'protractor';
 const anyCcdPage = new AnyCcdPage();
 const anyCcdFormPage = new AnyCcdFormPage();
 
-Then(/^I should update case with a valid nino$/, async function () {
+Then('I should update case with a valid nino', async function () {
 
     await anyCcdFormPage.setTextFiledValueNull('appeal_appellant_identity_nino');
     await anyCcdFormPage.setValueByElementId('appeal_appellant_identity_nino', 'SK982165A');
@@ -17,7 +17,7 @@ Then(/^I should update case with a valid nino$/, async function () {
     await anyCcdPage.click('Submit');
 });
 
-Then(/^I should update case with a valid nino and confidentiality option$/, async function () {
+Then('I should update case with a valid nino and confidentiality option', async function () {
 
     await anyCcdFormPage.setTextFiledValueNull('appeal_mrnDetails_dwpIssuingOffice');
     await anyCcdFormPage.setValueByElementId('appeal_mrnDetails_dwpIssuingOffice', 'Tax Credit Office');

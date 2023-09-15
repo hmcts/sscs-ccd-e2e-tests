@@ -5,7 +5,7 @@ import { browser } from 'protractor';
 
 const anyCcdPage = new AnyCcdFormPage();
 
-Then(/^I subscribed to all parties including other party to "(.+)"$/, async function (isSubscribed) {
+Then('I subscribed to all parties including other party to {string}', async function (isSubscribed) {
     await browser.sleep(5000);
     const action = isSubscribed;
     if (action === 'Yes') {

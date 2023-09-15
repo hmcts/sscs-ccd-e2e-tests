@@ -11,7 +11,7 @@ const issueDecisionPage = new IssueDecisionPage();
 const caseDetailsPage = new CaseDetailsPage();
 const anyCcdFormPage = new AnyCcdFormPage();
 
-When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)" To Allowed "(.+)"$/,
+When('I write a final decision of {string} appeal {string} and Support group {string} To Allowed {string}',
     async function (appealType, wcaAppeal, supportGroup, allowed) {
     await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
     await anyCcdPage.click('Continue');
@@ -54,7 +54,7 @@ When(/^I write a final decision of "(.+)" appeal "(.+)" and Support group "(.+)"
     await browser.sleep(500);
 });
 
-When(/^I select schedule 2 activities with <15 points and reg 29 "(.+)"$/, async function (reg29Apply) {
+When('I select schedule 2 activities with <15 points and reg 29 {string}', async function (reg29Apply) {
     await anyCcdPage.clickElementById('esaWriteFinalDecisionPhysicalDisabilitiesQuestion-consciousness');
     await anyCcdPage.clickElementById('esaWriteFinalDecisionMentalAssessmentQuestion-copingWithChange');
     await browser.sleep(3000);
@@ -75,7 +75,7 @@ When(/^I select schedule 2 activities with <15 points and reg 29 "(.+)"$/, async
     await browser.sleep(500);
 });
 
-When(/^I select schedule 2 activities with >=15 points$/, async function () {
+When('I select schedule 2 activities with >=15 points', async function () {
     await anyCcdPage.clickElementById('esaWriteFinalDecisionPhysicalDisabilitiesQuestion-reaching');
     await anyCcdPage.clickElementById('esaWriteFinalDecisionMentalAssessmentQuestion-learningTasks');
     await anyCcdPage.scrollBar('//div/form/div/button[2]');
@@ -88,7 +88,7 @@ When(/^I select schedule 2 activities with >=15 points$/, async function () {
     await browser.sleep(500);
 });
 
-When(/^I opt out schedule 3 activities and reg 35 "(.+)"$/, async function (reg35Apply) {
+When('I opt out schedule 3 activities and reg 35 {string}', async function (reg35Apply) {
     await anyCcdPage.clickElementById('esaWriteFinalDecisionSchedule3ActivitiesApply-No');
     await anyCcdPage.scrollBar('//div/form/div/button[2]');
     await browser.sleep(500);
@@ -101,13 +101,13 @@ When(/^I opt out schedule 3 activities and reg 35 "(.+)"$/, async function (reg3
     await browser.sleep(500);
 });
 
-When(/^I select schedule 3 activities$/, async function () {
+When('I select schedule 3 activities', async function () {
     await anyCcdPage.clickElementById('esaWriteFinalDecisionSchedule3ActivitiesQuestion-schedule3ChewingOrSwallowing');
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
 });
 
-When(/^I continue writing final decision non WCA appeal$/, async function () {
+When('I continue writing final decision non WCA appeal', async function () {
     await issueDecisionPage.pageReference();
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
@@ -116,14 +116,14 @@ When(/^I continue writing final decision non WCA appeal$/, async function () {
     await browser.sleep(500);
 });
 
-When(/^I continue writing final decision WCA appeal$/, async function () {
+When('I continue writing final decision WCA appeal', async function () {
     expect(await anyCcdPage.pageHeadingContains('Bundle page')).to.equal(true);
     await issueDecisionPage.pageReference();
     await anyCcdPage.click('Continue');
     await browser.sleep(500);
 });
 
-When(/^I provide reasons and check answers To Allowed "(.+)"$/, async function (allowed) {
+When('I provide reasons and check answers To Allowed {string}', async function (allowed) {
     if (allowed === 'YES') {
       await anyCcdPage.clickElementById('dwpReassessTheAward-noRecommendation');
       await anyCcdPage.click('Continue');
@@ -148,7 +148,7 @@ When(/^I provide reasons and check answers To Allowed "(.+)"$/, async function (
     await browser.sleep(5000);
 });
 
-When(/^I provide reasons and check answers for non WCA To Allowed "(.+)"$/, async function (allowed) {
+When('I provide reasons and check answers for non WCA To Allowed {string}', async function (allowed) {
     await anyCcdFormPage.addNewCollectionItem('Reasons for decision');
     await browser.sleep(500);
     await anyCcdFormPage.setCollectionItemFieldValue(
@@ -167,7 +167,7 @@ When(/^I provide reasons and check answers for non WCA To Allowed "(.+)"$/, asyn
     await browser.sleep(5000);
 });
 
-When(/^I choose manual upload$/, async function () {
+When('I choose manual upload', async function () {
     await browser.sleep(1000)
     await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice-No');
     await anyCcdPage.click('Continue');
@@ -183,7 +183,7 @@ When(/^I choose manual upload$/, async function () {
     await browser.sleep(5000);
 });
 
-When(/^I write a final decision of taxCredit appeal "(.+)" and Support group "(.+)" To Allowed "(.+)"$/,
+When('I write a final decision of taxCredit appeal {string} and Support group {string} To Allowed {string}',
     async function (appealType, supportGroup, allowed) {
         await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
         await anyCcdPage.click('Continue');

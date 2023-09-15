@@ -5,7 +5,7 @@ import { AnyCcdPage } from '../../pages/any-ccd.page';
 
 const anyCcdPage = new AnyCcdPage();
 
-Then(/^the case appointee details should be listed in "(.+)" tab$/, async function (tabName) {
+Then('the case appointee details should be listed in {string} tab', async function (tabName) {
         await anyCcdPage.clickTab(tabName);
         await browser.sleep(1000);
         expect(await anyCcdPage.contentContains('AppointeeFirstName')).to.equal(true);

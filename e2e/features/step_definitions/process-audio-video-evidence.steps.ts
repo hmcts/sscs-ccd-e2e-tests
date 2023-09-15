@@ -10,7 +10,7 @@ const caseDetailsPage = new CaseDetailsPage();
 const anyCcdPage = new AnyCcdFormPage();
 const dwpresponse = new DwpResponsePage();
 
-When(/^I upload AV evidence and complete Upload response event for "(.+)" case$/, async function (benefitType) {
+When('I upload AV evidence and complete Upload response event for {string} case', async function (benefitType) {
     const dwpState = 'YES';
     await dwpresponse.uploadResponseWithAV(dwpState, benefitType);
     await anyCcdPage.selectIssueCode();
@@ -20,20 +20,20 @@ When(/^I upload AV evidence and complete Upload response event for "(.+)" case$/
     await browser.sleep(2000);
 });
 
-Then(/^I should see the AV evidence after clicking the AV tab$/, async function () {
+Then('I should see the AV evidence after clicking the AV tab', async function () {
     await anyCcdPage.clickTab('Audio/Video evidence');
     expect(await caseDetailsPage.isFieldValueDisplayed('Audio/video document url', 'test_av.mp3')).to.equal(true);
 })
 
-Then(/^I should see the RIP1 document$/, async function () {
+Then('I should see the RIP1 document', async function () {
     expect(await caseDetailsPage.isFieldValueDisplayed('RIP 1 document', 'rip1.pdf')).to.equal(true);
 })
 
-Then(/^I should see that the AV evidence was uploaded by "(.+)"$/, async function (party) {
+Then('I should see that the AV evidence was uploaded by {string}', async function (party) {
     expect(await caseDetailsPage.isFieldValueDisplayed('Audio/video party uploaded', party)).to.equal(true);
 })
 
-When(/^I process the AV evidence using the "(.+)" action$/, async function (action) {
+When('I process the AV evidence using the {string} action', async function (action) {
     await anyCcdPage.click('Continue');
     expect(await anyCcdPage.contentContains('Selected Audio/Video Evidence Details')).to.equal(true);
     await anyCcdPage.chooseOptionContainingText('#processAudioVideoAction', action);
@@ -48,14 +48,14 @@ When(/^I process the AV evidence using the "(.+)" action$/, async function (acti
     await browser.sleep(50000);
 })
 
-Then(/^I "(.+)" see the AV evidence in the FTA Documents tab$/, async function (assertion) {
+Then('I {string} see the AV evidence in the FTA Documents tab', async function (assertion) {
     await anyCcdPage.clickTab('FTA Documents');
     const av_visibility = assertion === 'should';
     expect(await caseDetailsPage.isFieldValueDisplayed('Document type', 'Audio document')).to.equal(av_visibility);
     expect(await caseDetailsPage.isFieldValueDisplayed('Audio/video document', 'test_av.mp3')).to.equal(av_visibility);
 })
 
-Then(/^the bundle should include the AV evidence$/, async function () {
+Then('the bundle should include the AV evidence', async function () {
     await anyCcdPage.clickTab('Bundles');
     await browser.sleep(10000);
     expect(await caseDetailsPage.isFieldValueDisplayed('Folder Name', 'Further additions')).to.equal(true);
@@ -63,7 +63,7 @@ Then(/^the bundle should include the AV evidence$/, async function () {
     expect(await anyCcdPage.contentContains('Addition B - DWP - RIP 1 document for A/V file: test_av.mp3')).to.equal(true);
 });
 
-Given(/^I submit "(.+)" as "(.+)" in the Upload document FE event$/, async function (filename, type) {
+Given('I submit {string} as {string} in the Upload document FE event', async function (filename, type) {
     await anyCcdPage.click('Add new');
     await anyCcdPage.chooseOptionContainingText('#draftSscsFurtherEvidenceDocument_0_documentType', type);
     await dwpresponse.uploadFile('draftSscsFurtherEvidenceDocument_0_documentLink', filename);

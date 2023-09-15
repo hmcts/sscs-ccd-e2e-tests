@@ -145,7 +145,7 @@ async function enterBenefitDetails() {
     await browser.sleep(2000);
 }
 
-Given(/^I create an child support case$/, async function() {
+Given('I create an child support case', async function() {
     await anyCcdPage.click('Create case');
     expect(await anyCcdPage.pageHeadingContains('Create Case')).to.equal(true);
     await browser.sleep(3000);
@@ -163,7 +163,7 @@ Given(/^I create an child support case$/, async function() {
 
 });
 
-Given(/^I have a (.+) bulk-scanned document with (.+) fields$/, {timeout: 600 * 1000}, async function (benefit_code, formType) {
+Given('I have a {string} bulk-scanned document with {string} fields', {timeout: 600 * 1000}, async function (benefit_code, formType) {
     await anyCcdPage.click('Create case');
     expect(await anyCcdPage.pageHeadingContains('Create Case')).to.equal(true);
     await browser.sleep(3000);
@@ -216,7 +216,7 @@ Given('I have a PIP bulk-scanned document filled with incomplete fields', async 
     await checkIncompDataItems();
 });
 
-When(/^I choose "(.+)" for an incomplete application$/, async function (action) {
+When('I choose {string} for an incomplete application', async function (action) {
     await browser.sleep(500)
     await caseDetailsPage.doNextStep(action);
     await anyCcdPage.click('Go');
@@ -231,7 +231,7 @@ When(/^I choose "(.+)" for an incomplete application$/, async function (action) 
 
 });
 
-When(/^I choose the next step "(.+)"$/, async function (action) {
+When('I choose the next step {string}', async function (action) {
     switch (action) {
         case 'Create new case from exception':
             await caseDetailsPage.doNextStep(action);
@@ -260,7 +260,7 @@ When(/^I choose the next step "(.+)"$/, async function (action) {
     expect(await anyCcdPage.pageHeadingContains('History')).to.equal(true);
 });
 
-Then(/^the case should be in "(.+)" state$/, async function (state) {
+Then('the case should be in {string} state', async function (state) {
     await delay(15000);
     await anyCcdPage.reloadPage();
     await delay(8000);
@@ -269,7 +269,7 @@ Then(/^the case should be in "(.+)" state$/, async function (state) {
     expect(await caseDetailsPage.isFieldValueDisplayed('End state', state)).to.equal(true);
 });
 
-Then(/^the bundles should be successfully listed in "(.+)" tab$/, async function (tabName) {
+Then('the bundles should be successfully listed in {string} tab', async function (tabName) {
     await delay(15000);
     await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab(tabName);
@@ -279,7 +279,7 @@ Then(/^the bundles should be successfully listed in "(.+)" tab$/, async function
     await browser.sleep(3000);
 });
 
-Then(/^The edited bundles should be successfully listed in "(.+)" tab$/, async function (tabName) {
+Then('The edited bundles should be successfully listed in {string} tab', async function (tabName) {
     await delay(15000);
     await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab(tabName);
@@ -287,7 +287,7 @@ Then(/^The edited bundles should be successfully listed in "(.+)" tab$/, async f
     await browser.sleep(3000);
 });
 
-Then(/^the Stitching bundle event should be successfully listed in "(.+)" tab$/, async function (tabName) {
+Then('the Stitching bundle event should be successfully listed in {string} tab', async function (tabName) {
     await delay(5000);
     await caseDetailsPage.reloadPage();
     await anyCcdPage.clickTab(tabName);
@@ -295,14 +295,14 @@ Then(/^the Stitching bundle event should be successfully listed in "(.+)" tab$/,
     await browser.sleep(500);
 });
 
-Then(/^the case bundle details should be listed in "(.+)" tab$/, async function (tabName) {
+Then('the case bundle details should be listed in {string} tab', async function (tabName) {
     await anyCcdPage.clickTab(tabName);
     await browser.sleep(1000);
     expect(await caseDetailsPage.isFieldValueDisplayed('Stitch status', 'DONE')).to.equal(true);
     expect(await caseDetailsPage.isFieldValueDisplayed('Config used for bundle', 'SSCS Bundle Original')).to.equal(true);
 });
 
-Then(/^the "(.+)" bundle configuration should have been used$/, async function (config) {
+Then('the {string} bundle configuration should have been used', async function (config) {
     expect(await caseDetailsPage.isFieldValueDisplayed('Config used for bundle', config)).to.equal(true);
 })
 
@@ -312,23 +312,23 @@ Given('I preset up a test case', async function () {
     caseReference = ccdCreatedCase.id;
 });
 
-Given(/^I presetup an "(.+)" SYA case$/, async function (caseType) {
+Given('I presetup an {string} SYA case', async function (caseType) {
     caseReference = await ccd.createSYACase(caseType);
 });
 
-Given(/^I navigate to an existing case$/, async function () {
+Given('I navigate to an existing case', async function () {
     console.log(`the saved case id is ################## ${caseReference}`);
     await anyCcdPage.get(`/v2/case/${caseReference}`);
     await delay(10000);
     // await anyCcdPage.waitForSpinnerToHide();
 });
 
-Given(/^I complete the event$/, async function () {
+Given('I complete the event', async function () {
     await anyCcdPage.click('Submit');
     await delay(2000);
 });
 
-When(/^I choose execute CCD event "(.+)"$/, async function (action) {
+When('I choose execute CCD event {string}', async function (action) {
     switch (action) {
         case 'Create new case from exception':
             await caseDetailsPage.doNextStep(action);
@@ -346,7 +346,8 @@ When(/^I choose execute CCD event "(.+)"$/, async function (action) {
     }
 });
 
-Then(/^The case should end in "(.+)" state and interloc state should be in "(.+)"$/, async function (state: string, interlocState: string) {
+Then('The case should end in {string} state and interloc state should be in {string}',
+ async function (state: string, interlocState: string) {
     await delay(10000);
     await anyCcdPage.clickTab('History');
     await delay(5000);

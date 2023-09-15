@@ -4,7 +4,7 @@ import { browser } from 'protractor';
 
 const anyCcdPage = new AnyCcdPage();
 
-When(/^I choose Requires Interlocutory Review Yes "(.+)"$/, async function (action) {
+When('I choose Requires Interlocutory Review Yes {string}', async function (action) {
     await anyCcdPage.clickElementById('isInterlocRequired_Yes');
     await anyCcdPage.chooseOptionByElementId('dwpOriginatingOffice', 'DWP PIP (1)');
     await browser.sleep(500);
@@ -17,7 +17,7 @@ When(/^I choose Requires Interlocutory Review Yes "(.+)"$/, async function (acti
     await anyCcdPage.click('Continue');
 });
 
-When(/^I set FTA State to No action "(.+)"$/, async function (action) {
+When('I set FTA State to No action {string}', async function (action) {
     await anyCcdPage.chooseOptionByElementId('dwpState', 'No action');
     await anyCcdPage.click('Continue');
 });

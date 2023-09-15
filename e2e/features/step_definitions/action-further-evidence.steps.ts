@@ -13,7 +13,7 @@ function delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
 }
 
-When(/^I fill the further evidence form with "(.+)" and "(.+)"$/, async function (actionType, requestType) {
+When('I fill the further evidence form with {string} and {string}', async function (actionType, requestType) {
     expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
     await anyCcdPage.chooseOptionContainingText('#furtherEvidenceAction', actionType);
     await anyCcdPage.chooseOptionContainingText('#originalSender', 'Appellant (or Appointee)');
@@ -33,7 +33,7 @@ When(/^I fill the further evidence form with "(.+)" and "(.+)"$/, async function
     await anyCcdPage.click('Submit');
 });
 
-When(/^I fill the further evidence form with "(.+)" invalid file$/, async function (testFile: string) {
+When('I fill the further evidence form with {string} invalid file', async function (testFile: string) {
     expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
     await anyCcdPage.chooseOptionContainingText('#furtherEvidenceAction', 'Review by Judge');
     await anyCcdPage.chooseOptionContainingText('#originalSender', 'Appellant (or Appointee)');
@@ -50,14 +50,14 @@ When(/^I fill the further evidence form with "(.+)" invalid file$/, async functi
     await anyCcdPage.click('Continue');
 });
 
-Then(/^the case should have successfully processed "(.+)" event$/, async function (event) {
+Then('the case should have successfully processed {string} event', async function (event) {
     await delay(5000);
     await anyCcdPage.clickTab('History');
     expect(await caseDetailsPage.eventsPresentInHistory(event)).to.equal(true);
     await delay(500);
 });
 
-When(/^I fill the direction notice form with "(.+)"$/, async function (reinstatement) {
+When('I fill the direction notice form with {string}', async function (reinstatement) {
 
     await anyCcdPage.chooseOptionContainingText('#directionTypeDl', reinstatement);
     await caseDetailsPage.addDayItems('directionDueDate');
@@ -74,7 +74,7 @@ When(/^I fill the direction notice form with "(.+)"$/, async function (reinstate
     await anyCcdPage.clickAction('//button[contains(text(),\'Submit\')]');
 });
 
-Then(/^the case should be "(.+)" permissions for "(.+)"$/, async function (reinstatement, directionType) {
+Then('the case should be {string} permissions for {string}', async function (reinstatement, directionType) {
     let todayDate = new Date().toISOString().slice(0, 10);
     await delay(5000);
     // await anyCcdPage.reloadPage();

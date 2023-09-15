@@ -6,22 +6,22 @@ import { browser } from 'protractor';
 const anyCcdPage = new AnyCcdPage();
 const authenticationFlow = new AuthenticationFlow();
 
-Given(/^I am signed in as a Case Officer$/, async function () {
+Given('I am signed in as a Case Officer', async function () {
     await authenticationFlow.signInAsCaseOfficer();
     await anyCcdPage.waitUntilLoaded();
 });
 
-Given(/^I am signed in as a DWPResponse Writer$/, async function () {
+Given('I am signed in as a DWPResponse Writer', async function () {
     await authenticationFlow.signInAsDWPResponseWriter();
     await anyCcdPage.waitUntilLoaded();
 });
 
-Given(/^I am signed in as a Clerk$/, async function () {
+Given('I am signed in as a Clerk', async function () {
     await authenticationFlow.signInAsClerk();
     await anyCcdPage.waitUntilLoaded();
 });
 
-Given(/^I switch to be a DWPResponse Writer$/, async function () {
+Given('I switch to be a DWPResponse Writer', async function () {
     await browser.sleep(100);
     const currentUrl = await browser.driver.getCurrentUrl();
     await authenticationFlow.signInAsDWPResponseWriter();
@@ -30,7 +30,7 @@ Given(/^I switch to be a DWPResponse Writer$/, async function () {
     await anyCcdPage.get(currentUrl);
 });
 
-Given(/^I switch to be a Case Officer$/, async function () {
+Given('I switch to be a Case Officer', async function () {
     await browser.sleep(100);
     const currentUrl = await browser.driver.getCurrentUrl();
     await authenticationFlow.signInAsCaseOfficer();
@@ -39,7 +39,7 @@ Given(/^I switch to be a Case Officer$/, async function () {
     await anyCcdPage.get(currentUrl);
 });
 
-Given(/^I switch to be a Judge$/, async function () {
+Given('I switch to be a Judge', async function () {
     await browser.sleep(100);
     const currentUrl = await browser.driver.getCurrentUrl();
     await authenticationFlow.signInAsJudge();

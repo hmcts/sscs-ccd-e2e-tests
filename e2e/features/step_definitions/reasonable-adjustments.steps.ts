@@ -8,7 +8,7 @@ import { CaseDetailsPage } from '../../pages/case-details.page';
 const anyCcdPage = new AnyCcdPage();
 const caseDetailsPage = new CaseDetailsPage();
 
-When(/^generate a letter in "(.+)" with "(.+)" option$/, async function (letterFormat, adjustmentOption) {
+When('generate a letter in {string} with {string} option', async function (letterFormat, adjustmentOption) {
     await anyCcdPage.chooseOptionContainingText('#reasonableAdjustmentChoice', letterFormat);
     if (adjustmentOption === 'Yes') {
         await browser.sleep(2000);
@@ -56,7 +56,7 @@ Then('reasonable adjustment details are not seen in summary page', async functio
     expect(await anyCcdPage.isFieldValueDisplayed('Alternative Format Requirements', 'A2')).to.equal(false);
 });
 
-Then(/^Reasonable adjustment tab is seen with "(.+)" as "(.+)"$/, async function (field, value) {
+Then('Reasonable adjustment tab is seen with {string} as {string}', async function (field, value) {
     await browser.sleep(8000);
     await anyCcdPage.reloadPage();
     await browser.manage().window().maximize();
@@ -69,7 +69,7 @@ Then(/^Reasonable adjustment tab is seen with "(.+)" as "(.+)"$/, async function
     });
 });
 
-When(/^I update adjustment status to be "(.+)"$/, async function (adjustmentStatusOption) {
+When('I update adjustment status to be {string}', async function (adjustmentStatusOption) {
     await anyCcdPage
             .chooseOptionContainingText('#reasonableAdjustmentsLetters_appellant_0_reasonableAdjustmentStatus', adjustmentStatusOption);
     await anyCcdPage.scrollBar('//div/form/div/button[2]');

@@ -8,7 +8,7 @@ const anyCcdPage = new AnyCcdPage();
 const anyCcdFormPage = new AnyCcdFormPage();
 const caseDetailsPage = new CaseDetailsPage();
 
-Given(/^I add other party data$/, async function () {
+Given('I add other party data', async function () {
     await anyCcdPage.click('Add new');
     await anyCcdFormPage.fillValues('otherParties_0_name_title' , 'Mr');
     await anyCcdFormPage.fillValues('otherParties_0_name_firstName', 'Other');
@@ -30,7 +30,7 @@ Given(/^I add other party data$/, async function () {
 
 });
 
-Given(/^I add taxCredit other party data$/, async function () {
+Given('I add taxCredit other party data', async function () {
     await anyCcdPage.click('Add new');
     await anyCcdFormPage.fillValues('otherParties_0_name_title' , 'Mr');
     await anyCcdFormPage.fillValues('otherParties_0_name_firstName', 'Other');
@@ -51,7 +51,7 @@ Given(/^I add taxCredit other party data$/, async function () {
 
 });
 
-When(/^I select Confidentiality Status as yes$/, async function () {
+When('I select Confidentiality Status as yes', async function () {
     await browser.sleep(2000);
     await anyCcdPage.clickElementById('appeal_appellant_confidentialityRequired_Yes');
     await anyCcdPage.fillValues('appeal_mrnDetails_dwpIssuingOffice', 'Tax Credit Office');
