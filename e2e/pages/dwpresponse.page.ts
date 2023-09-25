@@ -1,3 +1,6 @@
+/* eslint-disable no-shadow */
+/* eslint-disable global-require */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { browser, by, element } from 'protractor';
 import { AnyPage } from './any.page';
 import { AnyCcdFormPage } from './any-ccd-form.page';
@@ -147,7 +150,6 @@ export class DwpResponsePage extends AnyPage {
     expect(await anyCcdFormPage.pageHeadingContains('Check your answers')).to.equal(true);
     await anyCcdFormPage.clickSubmit();
     await browser.sleep(5000);
-
   }
 
   async uploadResponseForChildSupport(action: string) {
@@ -172,7 +174,8 @@ export class DwpResponsePage extends AnyPage {
     await browser.waitForAngular();
     expect(await anyCcdFormPage.pageHeadingContains('Upload response')).to.equal(true);
     await browser.sleep(5000);
-    let remote = require('selenium-webdriver/remote');
+    const remote = require('selenium-webdriver/remote');
+
     browser.setFileDetector(new remote.FileDetector());
     await anyCcdFormPage.uploadFile('dwpResponseDocument_documentLink', 'issue1.pdf');
     await anyCcdFormPage.uploadFile('dwpAT38Document_documentLink', 'issue2.pdf');
@@ -187,8 +190,7 @@ export class DwpResponsePage extends AnyPage {
     await browser.sleep(2000);
     expect(await anyCcdFormPage.pageHeadingContains('Check your answers')).to.equal(true);
     await anyCcdFormPage.clickSubmit();
-}
-
+  }
 
   async elementsDisputedPage(disputed: string) {
     await anyCcdFormPage.clickElementById(`elementsDisputedList-${disputed.toLowerCase()}`);

@@ -8,7 +8,6 @@ const anyCcdPage = new AnyCcdPage();
 const hearingRecordingPage = new HearingRecordingPage();
 const caseDetailsPage = new CaseDetailsPage();
 
-
 When('I upload a hearing recording', async function () {
   expect(await anyCcdPage.pageHeadingContains('Hearing recording')).to.equal(true);
   await hearingRecordingPage.uploadHearingRecording();

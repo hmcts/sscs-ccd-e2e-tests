@@ -87,16 +87,14 @@ When('I continue', async function () {
 });
 
 Then('the case should be in Hearing appeal status', async function () {
-    await browser.sleep(500);
-    await anyCcdPage.reloadPage();
-    expect(await anyCcdPage.contentContains('Hearing')).to.equal(true);
+  await browser.sleep(500);
+  await anyCcdPage.reloadPage();
+  expect(await anyCcdPage.contentContains('Hearing')).to.equal(true);
 
-    await browser.sleep(5000);
+  await browser.sleep(5000);
 });
 
-
 When('I generate an adjournment notice with new hearing type and duration', async function () {
-
   await anyCcdPage.clickElementById('adjournCaseGenerateNotice_Yes');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('adjournCasePanelMembersExcluded-Yes');
@@ -130,57 +128,56 @@ When('I generate an adjournment notice with new hearing type and duration', asyn
   await anyCcdPage.clickSubmit();
 });
 
+When(
+  'I generate an adjournment notice with video hearing type and non standard timeslot with session',
+  async function () {
+    await anyCcdPage.clickElementById('adjournCaseGenerateNotice_Yes');
+    await anyCcdPage.clickContinue();
+    await anyCcdPage.clickElementById('adjournCasePanelMembersExcluded-No');
+    await anyCcdPage.clickContinue();
+    expect(await anyCcdPage.pageHeadingContains('Panel members')).to.equal(true);
+    await adjournmentPage.addPanelMembers();
+    await anyCcdPage.clickContinue();
+    await anyCcdPage.clickElementById('adjournCaseTypeOfHearing-faceToFace');
+    await anyCcdPage.clickContinue();
+    await anyCcdPage.clickElementById('adjournCaseCanCaseBeListedRightAway_No');
+    await anyCcdPage.clickContinue();
 
-When('I generate an adjournment notice with video hearing type and non standard timeslot with session', async function () {
-  
-  await anyCcdPage.clickElementById('adjournCaseGenerateNotice_Yes');
-  await anyCcdPage.clickContinue();
-  await anyCcdPage.clickElementById('adjournCasePanelMembersExcluded-No');
-  await anyCcdPage.clickContinue();
-  expect(await anyCcdPage.pageHeadingContains('Panel members')).to.equal(true);
-  await adjournmentPage.addPanelMembers();
-  await anyCcdPage.clickContinue();
-  await anyCcdPage.clickElementById('adjournCaseTypeOfHearing-faceToFace');
-  await anyCcdPage.clickContinue();
-  await anyCcdPage.clickElementById('adjournCaseCanCaseBeListedRightAway_No');
-  await anyCcdPage.clickContinue();
+    await anyCcdPage.clickElementById('adjournCaseAreDirectionsBeingMadeToParties_Yes');
+    await anyCcdPage.clickContinue();
 
-  
-  await anyCcdPage.clickElementById('adjournCaseAreDirectionsBeingMadeToParties_Yes');
-  await anyCcdPage.clickContinue();
+    await anyCcdPage.clickElementById('adjournCaseDirectionsDueDateDaysOffset-14');
+    await anyCcdPage.clickContinue();
 
-  await anyCcdPage.clickElementById('adjournCaseDirectionsDueDateDaysOffset-14');
-  await anyCcdPage.clickContinue();
+    await anyCcdPage.clickElementById('adjournCaseTypeOfNextHearing-video');
+    await anyCcdPage.clickContinue();
+    await anyCcdPage.clickElementById('adjournCaseNextHearingListingDurationType-nonStandardTimeSlot');
+    await element(by.id('adjournCaseNextHearingListingDuration')).sendKeys('2');
+    await anyCcdPage.chooseOptionContainingText('adjournCaseNextHearingListingDurationUnits', 'Session(s)');
+    await anyCcdPage.clickContinue();
 
-  await anyCcdPage.clickElementById('adjournCaseTypeOfNextHearing-video');
-  await anyCcdPage.clickContinue();
-  await anyCcdPage.clickElementById('adjournCaseNextHearingListingDurationType-nonStandardTimeSlot');
-  await element(by.id('adjournCaseNextHearingListingDuration')).sendKeys('2');
-  await anyCcdPage.chooseOptionContainingText('adjournCaseNextHearingListingDurationUnits', 'Session(s)');
-  await anyCcdPage.clickContinue();
+    await anyCcdPage.clickElementById('adjournCaseInterpreterRequired_No');
+    await anyCcdPage.clickContinue();
+    await anyCcdPage.clickElementById('adjournCaseNextHearingDateType-firstAvailableDateAfter');
+    await anyCcdPage.clickElementById('adjournCaseNextHearingDateOrPeriod-provideDate');
+    await element(by.id('adjournCaseNextHearingFirstAvailableDateAfterDate-day')).sendKeys('20');
+    await element(by.id('adjournCaseNextHearingFirstAvailableDateAfterDate-month')).sendKeys('2');
+    await element(by.id('adjournCaseNextHearingFirstAvailableDateAfterDate-year')).sendKeys('2024');
+    await anyCcdPage.clickContinue();
+    expect(await anyCcdPage.pageHeadingContains('Reasons for adjournment')).to.equal(true);
+    await adjournmentPage.setAdjournCaseReasonsText();
 
-  await anyCcdPage.clickElementById('adjournCaseInterpreterRequired_No');
-  await anyCcdPage.clickContinue();
-  await anyCcdPage.clickElementById('adjournCaseNextHearingDateType-firstAvailableDateAfter');
-  await anyCcdPage.clickElementById('adjournCaseNextHearingDateOrPeriod-provideDate');
-  await element(by.id('adjournCaseNextHearingFirstAvailableDateAfterDate-day')).sendKeys('20');
-  await element(by.id('adjournCaseNextHearingFirstAvailableDateAfterDate-month')).sendKeys('2');
-  await element(by.id('adjournCaseNextHearingFirstAvailableDateAfterDate-year')).sendKeys('2024');
-  await anyCcdPage.clickContinue();
-  expect(await anyCcdPage.pageHeadingContains('Reasons for adjournment')).to.equal(true);
-  await adjournmentPage.setAdjournCaseReasonsText();
-
-  await anyCcdPage.clickContinue();
-  expect(await anyCcdPage.pageHeadingContains('Additional directions (Optional)')).to.equal(true);
-  await anyCcdPage.clickContinue();
-  expect(await anyCcdPage.pageHeadingContains('Preview Adjournment')).to.equal(true);
-  await anyCcdPage.clickContinue();
-  expect(await anyCcdPage.pageHeadingContains('Check your answers')).to.equal(true);
-  await anyCcdPage.clickSubmit();
-});
+    await anyCcdPage.clickContinue();
+    expect(await anyCcdPage.pageHeadingContains('Additional directions (Optional)')).to.equal(true);
+    await anyCcdPage.clickContinue();
+    expect(await anyCcdPage.pageHeadingContains('Preview Adjournment')).to.equal(true);
+    await anyCcdPage.clickContinue();
+    expect(await anyCcdPage.pageHeadingContains('Check your answers')).to.equal(true);
+    await anyCcdPage.clickSubmit();
+  }
+);
 
 When('I generate an adjournment notice with Paper hearing type', async function () {
-  
   await anyCcdPage.clickElementById('adjournCaseGenerateNotice_Yes');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('adjournCasePanelMembersExcluded-Yes');
@@ -207,11 +204,9 @@ When('I generate an adjournment notice with Paper hearing type', async function 
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Check your answers')).to.equal(true);
   await anyCcdPage.clickSubmit();
-  
 });
 
 When('I generate an adjournment notice with face to face hearing type', async function () {
-
   await anyCcdPage.clickElementById('adjournCaseGenerateNotice_Yes');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('adjournCasePanelMembersExcluded-Yes');
@@ -228,7 +223,7 @@ When('I generate an adjournment notice with face to face hearing type', async fu
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('adjournCaseNextHearingVenue-sameVenue');
   await anyCcdPage.clickContinue();
-  
+
   await anyCcdPage.clickElementById('adjournCaseNextHearingListingDurationType-nonStandardTimeSlot');
   await element(by.id('adjournCaseNextHearingListingDuration')).sendKeys('2');
   await anyCcdPage.chooseOptionContainingText('adjournCaseNextHearingListingDurationUnits', 'Minutes');
@@ -249,9 +244,7 @@ When('I generate an adjournment notice with face to face hearing type', async fu
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Check your answers')).to.equal(true);
   await anyCcdPage.clickSubmit();
-
 });
-
 
 Then('new hearing value requirements should be seen against the case', async function () {
   await listingRequirementsPage.verifyOverriddenHearingValues();
@@ -264,11 +257,11 @@ Then('new hearing request must be triggered against the case', async function ()
 });
 
 Then('new hearing value requirements for video hearing type should be seen against the case', async function () {
-   await listingRequirementsPage.verifyOverriddenHearingValuesForVideoAdjourned();
+  await listingRequirementsPage.verifyOverriddenHearingValuesForVideoAdjourned();
 });
 
 Then('new hearing value requirements for paper hearing type should be seen against the case', async function () {
-   await listingRequirementsPage.verifyOverriddenHearingValuesForPaperAdjourned();
+  await listingRequirementsPage.verifyOverriddenHearingValuesForPaperAdjourned();
 });
 
 Then('new hearing value requirements for face to face hearing type should be seen against the case', async function () {
