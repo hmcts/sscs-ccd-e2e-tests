@@ -1,4 +1,4 @@
-import { Given, Then } from 'cucumber';
+import { Given, Then } from '@cucumber/cucumber';
 import { UpdateListingRequirementsPage } from '../../pages/update-listing-requirements.page';
 
 const updateListingRequirementsPage = new UpdateListingRequirementsPage();

@@ -13,7 +13,6 @@ Given('I go to the sign in page', async function () {
 
 Given('I go to {string} tab', async function(tab) {
     await anyCcdPage.clickTab(tab);
-    await browser.sleep(500);
 })
 
 Then('the page is accessible', async function () {

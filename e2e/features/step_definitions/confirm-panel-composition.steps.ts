@@ -12,7 +12,7 @@ function delay(ms: number) {
 
 When('I select {string} to include a financial panel member for hearing', async function (action) {
     await anyCcdFormPage.clickElementById(`isFqpmRequired_${action}`);
-    await anyCcdFormPage.click('Continue');
+    await anyCcdFormPage.clickSubmit();
     expect(await anyCcdFormPage.pageHeadingContains('Confirm panel composition')).to.equal(true);
     await anyCcdFormPage.scrollBar('//button[@type=\'submit\']');
 });

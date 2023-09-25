@@ -125,12 +125,10 @@ async function createSSCSCase(): Promise<void> {
   await enterBenefitDetails();
 }
 
-Given('I create an child support case', async function() {
-    await anyCcdPage.click('Create case');
-    expect(await anyCcdPage.pageHeadingContains('Create Case')).to.equal(true);
-    await browser.sleep(3000);
-    await createSSCSCase();
-    await browser.sleep(5000);
+Given('I create an child support case', async function () {
+  await anyCcdPage.clickCreateCase();
+  expect(await anyCcdPage.pageHeadingContains('Create Case')).to.equal(true);
+  await createSSCSCase();
 
   await caseDetailsPage.doNextStep('Admin - update event');
   await anyCcdPage.clickNextStep();
@@ -139,10 +137,7 @@ Given('I create an child support case', async function() {
   await anyCcdPage.clickSubmit();
 });
 
-Given('I have a {string} bulk-scanned document with {string} fields', {timeout: 600 * 1000}, async function (benefit_code, formType) {
-    await anyCcdPage.click('Create case');
-Given(
-  'I have a {word} bulk-scanned document with {word} fields',
+Given('I have a {word} bulk-scanned document with {word} fields',
   { timeout: 600 * 1000 },
   async function (benefitCode: string, formType: string): Promise<void> {
     await anyCcdPage.clickCreateCase();
@@ -243,21 +238,17 @@ Then('the case should be in {string} state', async function (state: string): Pro
   await anyCcdPage.waitForEndState(state);
 });
 
+
 Then('the {string} event should be successfully listed in the History', async function (event: string) {
   await caseDetailsPage.reloadPage();
   let events = await caseDetailsPage.getHistoryEvents();
   if (events.includes(event)) {
     await browser.sleep(Wait.normal);
     await caseDetailsPage.reloadPage();
-    await anyCcdPage.clickTab(tabName);
-    await delay(20000);
-    expect(await caseDetailsPage.eventsPresentInHistory('Stitching bundle complete')).to.equal(true);
-    expect(await caseDetailsPage.eventsPresentInHistory('Create a bundle')).to.equal(true);
-    await browser.sleep(3000);
-});
-
-Then(/^The edited bundles should be successfully listed in "(.+)" tab$/, async function (tabName) {
-    await delay(15000);
+    events = await caseDetailsPage.getHistoryEvents();
+  }
+  if (events.includes(event)) {
+    await browser.sleep(Wait.extended);
     await caseDetailsPage.reloadPage();
     events = await caseDetailsPage.getHistoryEvents();
   }
@@ -291,11 +282,6 @@ Given('I navigate to an existing case', async function () {
   logger.info(`the saved case id is ${caseReference}`);
   await anyCcdPage.get(`/v2/case/${caseReference}`);
   await anyCcdPage.waitForSpinner();
-Given('I navigate to an existing case', async function () {
-    console.log(`the saved case id is ################## ${caseReference}`);
-    await anyCcdPage.get(`/v2/case/${caseReference}`);
-    await delay(10000);
-    // await anyCcdPage.waitForSpinnerToHide();
 });
 
 Given('I complete the event', async function () {

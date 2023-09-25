@@ -8,26 +8,19 @@ const logger = Logger.getLogger('any-ccd-page.steps');
 
 const anyCcdPage = new AnyCcdPage();
 
-Then('I (?:am on|should see) the {string} page', async function (headingText) {
-    expect(await anyCcdPage.pageHeadingContains(headingText)).to.equal(true);
+Given('I wait {string} seconds', async function (number) {
+  await browser.sleep(number * 1000);
 });
 
-Given('I wait {string} seconds', async function (number) {
-    await browser.sleep(number * 1000);
-})
-
-Then('I should see {string}', async function (text) {
-    await anyCcdPage.contentContains(text)
-})
-
-When('I click {string}', async function (toClick) {
-    await anyCcdPage.click(toClick);
-})
+Then('I should see {string} as a case field', async function (value: string) {
+  await anyCcdPage.clickTab('Summary');
+  const titleVal = await anyCcdPage.getTitleAttribute();
+  logger.info(titleVal);
+  expect(titleVal).to.contain(value);
+});
 
 Then('the {string} tab is seen with {string} content', async function (tabName: string, tabContent: string) {
-
-    await browser.manage().window().maximize();
-    await browser.sleep(2000);
-    await anyCcdPage.clickTab(tabName);
-    expect(await anyCcdPage.contentContains(tabContent)).to.equal(true);
+  await browser.manage().window().maximize();
+  await anyCcdPage.clickTab(tabName);
+  expect(await anyCcdPage.contentContains(tabContent)).to.equal(true);
 });
