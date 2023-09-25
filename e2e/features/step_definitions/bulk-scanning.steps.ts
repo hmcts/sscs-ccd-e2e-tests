@@ -137,8 +137,7 @@ Given('I create an child support case', async function () {
   await anyCcdPage.clickSubmit();
 });
 
-Given(
-  'I have a {word} bulk-scanned document with {word} fields',
+Given('I have a {word} bulk-scanned document with {word} fields',
   { timeout: 600 * 1000 },
   async function (benefitCode: string, formType: string): Promise<void> {
     await anyCcdPage.clickCreateCase();
@@ -239,6 +238,7 @@ Then('the case should be in {string} state', async function (state: string): Pro
   await anyCcdPage.waitForEndState(state);
 });
 
+
 Then('the {string} event should be successfully listed in the History', async function (event: string) {
   await caseDetailsPage.reloadPage();
   let events = await caseDetailsPage.getHistoryEvents();
@@ -289,19 +289,21 @@ Given('I complete the event', async function () {
 });
 
 When('I choose execute CCD event {string}', async function (action) {
-  switch (action) {
-    case 'Create new case from exception':
-      await caseDetailsPage.doNextStep(action);
-      break;
-    case 'Create a bundle':
-      await caseDetailsPage.doNextStep(action);
-      break;
-    case 'Admin - send to Ready to List':
-      await anyCcdPage.selectEvent(action);
-      break;
-    default:
-      throw new Error(`Do not understand action "${action}"`);
-  }
+    switch (action) {
+        case 'Create new case from exception':
+            await caseDetailsPage.doNextStep(action);
+            break;
+        case 'Create a bundle':
+            await caseDetailsPage.doNextStep(action);
+            break;
+        case 'Admin - send to Ready to List':
+            await anyCcdPage.selectEvent(action);
+            break;
+        default:
+            throw new Error(
+                `Do not understand action "${action}"`
+            );
+    }
 });
 
 Then('the interloc state should be in {string}', async function (interlocState: string) {

@@ -15,6 +15,7 @@ export class DwpResponsePage extends AnyPage {
   async uploadResponse(action: string, dwpState: string, benefitType: string) {
     await browser.waitForAngular();
     browser.setFileDetector(new remote.FileDetector());
+    await browser.sleep(5000);
     await anyCcdFormPage.uploadFile('dwpResponseDocument_documentLink', 'issue1.pdf');
     await anyCcdFormPage.uploadFile('dwpAT38Document_documentLink', 'issue2.pdf');
     await anyCcdFormPage.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
@@ -142,8 +143,11 @@ export class DwpResponsePage extends AnyPage {
     await anyCcdFormPage.clickContinue();
     await this.jointPartyAddress('Yes');
     await anyCcdFormPage.clickContinue();
+    await browser.sleep(2000);
     expect(await anyCcdFormPage.pageHeadingContains('Check your answers')).to.equal(true);
     await anyCcdFormPage.clickSubmit();
+    await browser.sleep(5000);
+
   }
 
   async uploadResponseForChildSupport(action: string) {
@@ -164,20 +168,27 @@ export class DwpResponsePage extends AnyPage {
     await anyCcdFormPage.clickContinue();
   }
 
-  async uploadResponseForTaxCredit(action: string) {
+  async uploadResponseForTaxCredit(action: string, issueCode: string) {
     await browser.waitForAngular();
+    expect(await anyCcdFormPage.pageHeadingContains('Upload response')).to.equal(true);
+    await browser.sleep(5000);
+    let remote = require('selenium-webdriver/remote');
     browser.setFileDetector(new remote.FileDetector());
     await anyCcdFormPage.uploadFile('dwpResponseDocument_documentLink', 'issue1.pdf');
     await anyCcdFormPage.uploadFile('dwpAT38Document_documentLink', 'issue2.pdf');
     await anyCcdFormPage.uploadFile('dwpEvidenceBundleDocument_documentLink', 'issue3.pdf');
-    await anyCcdFormPage.chooseOptionContainingText('issueCode', 'AA');
+
+    await browser.sleep(2000);
+    await anyCcdFormPage.chooseOptionByElementId('issueCode', issueCode);
     await anyCcdFormPage.clickElementById(`dwpFurtherInfo_${action}`);
-    await anyCcdFormPage.chooseOptionContainingText('dwpState', 'Appeal to-be registered');
+    await anyCcdFormPage.chooseOptionByElementId('dwpState', 'Appeal to-be registered');
     await anyCcdFormPage.clickElementById('dwpIsOfficerAttending_No');
     await anyCcdFormPage.clickContinue();
+    await browser.sleep(2000);
     expect(await anyCcdFormPage.pageHeadingContains('Check your answers')).to.equal(true);
     await anyCcdFormPage.clickSubmit();
-  }
+}
+
 
   async elementsDisputedPage(disputed: string) {
     await anyCcdFormPage.clickElementById(`elementsDisputedList-${disputed.toLowerCase()}`);

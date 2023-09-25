@@ -1,11 +1,10 @@
 {
   "benefitType": {
-    "description": "Child Support",
-    "code": "childSupport"
+    "description": "Disability Living Allowance",
+    "code": "DLA"
   },
-  "childMaintenanceNumber": "00123",
   "mrn": {
-    "dwpIssuingOffice": "Child Maintenance Service Group",
+    "dwpIssuingOffice": "The Pension Service 11",
     "date": "01-01-2021",
     "reasonForBeingLate": "Lost my paperwork"
   },
@@ -14,7 +13,7 @@
   "appellant": {
     "title": "Mr",
     "firstName": "Joe",
-    "lastName": "Bloggs",
+    "lastName": "BloggsPIP",
     "dob": "26-02-1990",
     "nino": "AB877533C",
     "contactDetails": {
@@ -22,7 +21,7 @@
       "addressLine2": "Off Hairy Park",
       "townCity": "Hairyfield",
       "county": "Kent",
-      "postCode": "TS1 1ST",
+      "postCode": "CF24 0AD",
       "phoneNumber": "07411222222",
       "emailAddress": "joe@bloggs.com"
     }
@@ -31,22 +30,7 @@
     "wantsSMSNotifications": true,
     "smsNumber": "07411333333"
   },
-  "hasRepresentative": true,
-  "representative": {
-    "title": "Mr",
-    "firstName": "Harry",
-    "lastName": "Potter",
-    "organisation": "HP Ltd",
-    "contactDetails": {
-      "addressLine1": "123 Hairy Lane",
-      "addressLine2": "Off Hairy Park",
-      "townCity": "Town",
-      "county": "County",
-      "postCode": "CM14 4LQ",
-      "phoneNumber": "07411999999",
-      "emailAddress": "harry.potter@wizards.com"
-    }
-  },
+  "hasRepresentative": false,
   "reasonsForAppealing": {
     "reasons": [
       {
@@ -66,18 +50,18 @@
   },
   "hearing": {
     "wantsToAttend": true,
-    "wantsSupport": true,
+    "wantsSupport": false,
     "anythingElse": "Yes, this...",
-    "interpreterLanguageType": "An interpreter language",
-    "signLanguageType": "A sign language",
+    "interpreterLanguageType": "Danish",
+    "signLanguageType": "British",
     "arrangements": {
-      "languageInterpreter": true,
-      "signLanguageInterpreter": true,
-      "hearingLoop": true,
+      "languageInterpreter": false,
+      "signLanguageInterpreter": false,
+      "hearingLoop": false,
       "accessibleHearingRoom": false,
-      "other": true
+      "other": false
     },
-    "scheduleHearing": true,
+    "scheduleHearing": false,
     "datesCantAttend": ["10-12-2099", "11-12-2099", "12-12-2099"]
   },
   "signAndSubmit": {

@@ -73,8 +73,8 @@ export class AdjournmentPage extends AnyPage {
   }
 
   async addPanelMembers() {
-    await element(by.id('adjournCaseDisabilityQualifiedPanelMemberName')).sendKeys('Disability Member');
-    await element(by.id('adjournCaseMedicallyQualifiedPanelMemberName')).sendKeys('Medically Member');
+    await element(by.id('adjournCasePanelMember1')).sendKeys('Disability Member');
+    await element(by.id('adjournCasePanelMember2')).sendKeys('Medically Member');
   }
 
   async addReasons() {

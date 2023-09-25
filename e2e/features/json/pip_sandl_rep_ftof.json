@@ -1,11 +1,10 @@
 {
   "benefitType": {
-    "description": "Child Support",
-    "code": "childSupport"
+    "description": "Personal Independence Payment",
+    "code": "PIP"
   },
-  "childMaintenanceNumber": "00123",
   "mrn": {
-    "dwpIssuingOffice": "Child Maintenance Service Group",
+    "dwpIssuingOffice": "DWP PIP (1)",
     "date": "01-01-2021",
     "reasonForBeingLate": "Lost my paperwork"
   },
@@ -14,7 +13,7 @@
   "appellant": {
     "title": "Mr",
     "firstName": "Joe",
-    "lastName": "Bloggs",
+    "lastName": "BloggsPIP",
     "dob": "26-02-1990",
     "nino": "AB877533C",
     "contactDetails": {
@@ -22,7 +21,7 @@
       "addressLine2": "Off Hairy Park",
       "townCity": "Hairyfield",
       "county": "Kent",
-      "postCode": "TS1 1ST",
+      "postCode": "CF24 0AD",
       "phoneNumber": "07411222222",
       "emailAddress": "joe@bloggs.com"
     }
@@ -42,7 +41,7 @@
       "addressLine2": "Off Hairy Park",
       "townCity": "Town",
       "county": "County",
-      "postCode": "CM14 4LQ",
+      "postCode": "CF24 0AD",
       "phoneNumber": "07411999999",
       "emailAddress": "harry.potter@wizards.com"
     }
@@ -65,20 +64,7 @@
     "otherReasons": "Another reason"
   },
   "hearing": {
-    "wantsToAttend": true,
-    "wantsSupport": true,
-    "anythingElse": "Yes, this...",
-    "interpreterLanguageType": "An interpreter language",
-    "signLanguageType": "A sign language",
-    "arrangements": {
-      "languageInterpreter": true,
-      "signLanguageInterpreter": true,
-      "hearingLoop": true,
-      "accessibleHearingRoom": false,
-      "other": true
-    },
-    "scheduleHearing": true,
-    "datesCantAttend": ["10-12-2099", "11-12-2099", "12-12-2099"]
+    "wantsToAttend": false
   },
   "signAndSubmit": {
     "signer": "Joe Bloggs"
