@@ -63,11 +63,8 @@ When('I upload only evidence and original documents', async function () {
   const dwpState = 'YES';
   const benefitType = 'PIP';
   await dwpresponse.uploadOnlyResponseAndEvidence('No', dwpState, benefitType);
-  // if (benefitType !== 'UC') {
-  //   await anyCcdPage.selectIssueCode();
-  //   await browser.sleep(2000);
-  // }
-  await browser.sleep(500);
+  await anyCcdPage.selectIssueCode();
+  await browser.sleep(2000);
   await anyCcdPage.scrollBar('//div/form/div/button[2]');
 });
 
