@@ -76,9 +76,9 @@ export class AnyCcdPage extends AnyPage {
 
   async chooseOptionByElementId(elementId: string, option: string) {
     await element(by.id(elementId))
-        .element(by.xpath('.//option[normalize-space()="' + option + '"]'))
-        .click();
-  }  
+      .element(by.xpath(`.//option[normalize-space()="${option}"]`))
+      .click();
+  }
 
   async clickAction(locator: Locator): Promise<ElementFinder> {
     await this.waitForSpinner();

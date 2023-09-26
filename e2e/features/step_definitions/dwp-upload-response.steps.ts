@@ -59,16 +59,13 @@ When(
   }
 );
 
-When(/^I upload only evidence and original documents$/, async function () {
-    let dwpState = 'YES';
-    let benefitType = 'PIP';
-    await dwpresponse.uploadOnlyResponseAndEvidence('No', dwpState, benefitType);
-    if (benefitType !== 'UC') {
-        await anyCcdPage.selectIssueCode();
-        await browser.sleep(2000);
-    }
-    await browser.sleep(500);
-    await anyCcdPage.scrollBar('//div/form/div/button[2]');
+When('I upload only evidence and original documents', async function () {
+  const dwpState = 'YES';
+  const benefitType = 'PIP';
+  await dwpresponse.uploadOnlyResponseAndEvidence('No', dwpState, benefitType);
+  await anyCcdPage.selectIssueCode();
+  await browser.sleep(2000);
+  await anyCcdPage.scrollBar('//div/form/div/button[2]');
 });
 
 When('I upload with default issue code', async function () {
@@ -99,14 +96,19 @@ When(
   }
 );
 
-When('I respond to the appeal with upload contains further information {string} option and {string} issue code',
-      async function (action: string, issueCode: string) {
+When(
+  'I respond to the appeal with upload contains further information {string} option and {string} issue code',
+  async function (action: string, issueCode: string) {
     await dwpresponse.uploadResponseForTaxCredit(action, issueCode);
-});
+  }
+);
 
-When('dwp responds requesting {string} for the uploads contains further info option', async function (action: string, issueCode: string) {
-  await dwpresponse.uploadResponseForTaxCredit(action, issueCode);
-});
+When(
+  'dwp responds requesting {string} for the uploads contains further info option',
+  async function (action: string, issueCode: string) {
+    await dwpresponse.uploadResponseForTaxCredit(action, issueCode);
+  }
+);
 
 When(
   'I upload {word} further information with disputed {word} disputed by others {word} and further info {word}',

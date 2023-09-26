@@ -7,14 +7,14 @@ const authenticationFlow = new AuthenticationFlow();
 const anyCcdPage = new AnyCcdPage();
 
 Given('I go to the sign in page', async function () {
-    await authenticationFlow.goToSignInPage();
-    await anyCcdPage.pageHeadingContains('Sign in')
+  await authenticationFlow.goToSignInPage();
+  await anyCcdPage.pageHeadingContains('Sign in');
 });
 
-Given('I go to {string} tab', async function(tab) {
-    await anyCcdPage.clickTab(tab);
-})
+Given('I go to {string} tab', async function (tab) {
+  await anyCcdPage.clickTab(tab);
+});
 
 Then('the page is accessible', async function () {
-    await anyCcdPage.runAccessibility();
+  await anyCcdPage.runAccessibility();
 });

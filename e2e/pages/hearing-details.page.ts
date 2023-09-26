@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/require-await */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { browser, by, element } from 'protractor';
 import { AnyPage } from './any.page';
@@ -49,9 +50,11 @@ export class HearingDetailsPage extends AnyPage {
 
   async verifyHearingStatusSummary() {
     await browser.sleep(5000);
-    await element(by.xpath('//exui-case-hearings-list[1]/table/tbody/tr/td[3]/strong')).getText().then(async (expText) => {
+    await element(by.xpath('//exui-case-hearings-list[1]/table/tbody/tr/td[3]/strong'))
+      .getText()
+      .then(async (expText) => {
         console.log(`Actual text is #######${expText} #######`);
-        await expect(expText).to.equal(hearingStatus);
+        expect(expText).to.equal(hearingStatus);
       });
 
     expect(await anyCcdPage.contentContains('Substantive')).to.equal(true);
@@ -85,10 +88,12 @@ export class HearingDetailsPage extends AnyPage {
   }
 
   async verifyHearingDate(hearingStartDate: string) {
-    await element(by.xpath('//exui-hearing-summary/div[11]/div/div[2]/div[2]/div[2]/div')).getText().then(async (actDate) => {
-      console.log(`date fetched is #### ${actDate}`);
-      await expect(actDate).to.include(hearingStartDate);
-    });
+    await element(by.xpath('//exui-hearing-summary/div[11]/div/div[2]/div[2]/div[2]/div'))
+      .getText()
+      .then(async (actDate) => {
+        console.log(`date fetched is #### ${actDate}`);
+        expect(actDate).to.include(hearingStartDate);
+      });
   }
 
   async updateHearingDetails(hearingDuration: string) {
