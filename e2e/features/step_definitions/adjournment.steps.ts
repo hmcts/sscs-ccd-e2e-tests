@@ -12,7 +12,7 @@ const listingRequirementsPage = new ListingRequirementsPage();
 
 When('I book a hearing', async function () {
   await anyCcdPage.clickAddNew();
-  await adjournmentPage.addVenue('20', '10', '2021');
+  await adjournmentPage.addVenue('20', '10', '2023');
 });
 
 When('I generate an adjournment notice', async function () {
