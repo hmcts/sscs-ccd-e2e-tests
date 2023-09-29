@@ -9,8 +9,8 @@ Feature: Upload evidences to a case
     Then the case should end in "With FTA" state
 
     When I choose "Upload document"
-    And I upload a new document
-    Then I should see uploaded file within documents tab
+    And I upload a doc
+    Then I see field "Event" with value "Request time extension" in "History" tab
 
   @nightly-test-wip
   Scenario: Upload an evidence using Upload document FE event

@@ -15,7 +15,8 @@ When('I upload AV evidence and complete Upload response event for {string} case'
   const dwpState = 'YES';
   await dwpresponse.uploadResponseWithAV(dwpState, benefitType);
   await anyCcdPage.selectIssueCode();
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
+  await browser.sleep(2000);
   await anyCcdPage.clickSubmit();
   await browser.sleep(Wait.long);
 });

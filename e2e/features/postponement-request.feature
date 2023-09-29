@@ -2,7 +2,7 @@
 Feature: Postponement request event
 
     Background: Set up PIP case
-        Given I presetup an "PIP" SYA case
+        Given I presetup an "SANDLPIP" SYA case
         When I switch to be a Case Officer
         And I navigate to an existing case
         When I choose "Add a hearing"
