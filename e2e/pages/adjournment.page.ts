@@ -25,7 +25,7 @@ export class AdjournmentPage extends AnyPage {
     await element(by.id('hearings_0_venue_googleMapLink')).sendKeys(
       'https://www.google.com/maps/place/4th+Floor+30+Brooke+Street+EC1N+7RS/@51.518706,-0.110348'
     );
-    await element(by.id('hearings_0_judge')).sendKeys('Judge');
+    await element(by.id('hearings_0_panel_assignedTo')).sendKeys('Judge');
     await element(by.id('hearingDate-day')).sendKeys(day);
     await element(by.id('hearingDate-month')).sendKeys(month);
     await element(by.id('hearingDate-year')).sendKeys(year);
