@@ -22,7 +22,7 @@ Feature: Liberty To Apply
     Then the case should be in "Dormant" appeal status
     And I see "Final Decision Notice"
 
-  # Scenario: Add Uploaded Document to Documents Tab
+  Scenario: Add Uploaded Document to Documents Tab
     Given I am signed in as a DWPResponse Writer
     And I navigate to an existing case
     And I choose "Post Hearing Request"
@@ -35,7 +35,7 @@ Feature: Liberty To Apply
     And submit the event
     And I see "Liberty to Apply application"
   
-  # Scenario: Generate Liberty to Apply Request Document
+  Scenario: Generate Liberty to Apply Request Document
     Given I am signed in as a DWPResponse Writer
     And I navigate to an existing case
     And I choose "Post Hearing Request"
