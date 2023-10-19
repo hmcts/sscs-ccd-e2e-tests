@@ -61,7 +61,6 @@ When('I upload a post hearing request pdf file', async function () {
   await anyCcdPage.uploadFile('postHearingPreviewDocument', 'issue1.pdf');
 });
 
-
 Then('I fill {string} reasons with {string}', async function (requestType: string, text: string) {
   const textAreaId: string =
     requestType === 'Set aside' ? 'bodyContent' : `${getPosthearingType(requestType)}BodyContent`;
