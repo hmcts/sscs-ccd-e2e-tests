@@ -28,7 +28,6 @@ Feature: Liberty To Apply
     And I choose "Post Hearing Request"
     And I select "Liberty to Apply" and continue
     And I select "Upload request" and continue
-    And I click "Continue"
     And I upload a pdf file
     And submit the event
     And submit the event
@@ -39,7 +38,7 @@ Feature: Liberty To Apply
     And I navigate to an existing case
     And I choose "Post Hearing Request"
     And I select "Liberty to Apply" and continue
-    And I select "Enter request details" and continue
+    And I select "Enter request details"
     And I fill "Liberty to Apply" reasons with "reasons for liberty to apply"
     And I click "Continue"
     And submit the event
@@ -52,7 +51,6 @@ Feature: Liberty To Apply
     And I choose 'Action further evidence'
     And I fill the further evidence form with "sendToInterlocReviewByJudge" and "Liberty to Apply application"
     And submit the event
-    # And submit the event
     Then the case should be in "Post hearing" appeal status
     And the interloc state should be in "Review by Judge"
     And FTA State should be set to "Liberty to apply requested"
