@@ -89,4 +89,3 @@ When('I upload header correction', async function () {
   await anyCcdPage.uploadFile('writeFinalDecisionPreviewDocument', 'issue1.pdf');
   await anyCcdPage.clickSubmit();
 });
-
