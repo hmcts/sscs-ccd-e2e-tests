@@ -50,7 +50,6 @@ Feature: Liberty To Apply
     And I navigate to an existing case
     And I choose 'Action further evidence'
     And I fill the further evidence form with "sendToInterlocReviewByJudge" and "Liberty to Apply application"
-    And submit the event
     Then the case should be in "Post hearing" appeal status
     And the interloc state should be in "Review by Judge"
     And FTA State should be set to "Liberty to apply requested"
