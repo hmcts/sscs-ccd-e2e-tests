@@ -85,6 +85,11 @@ When('I select {string} and submit', async function (buttonLabel: string) {
   await anyCcdPage.clickSubmit();
 });
 
+When('I select {string} and continue', async function (buttonLabel: string) {
+  await anyCcdPage.clickElementByXpath(`//div[label[contains(., '${buttonLabel}')]]/input`);
+  await anyCcdPage.clickContinue();
+});
+
 When('I upload header correction', async function () {
   await anyCcdPage.uploadFile('writeFinalDecisionPreviewDocument', 'issue1.pdf');
   await anyCcdPage.clickSubmit();

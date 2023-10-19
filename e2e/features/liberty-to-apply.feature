@@ -26,9 +26,8 @@ Feature: Liberty To Apply
     Given I am signed in as a DWPResponse Writer
     And I navigate to an existing case
     And I choose "Post Hearing Request"
-    And I select "Liberty to Apply" post hearing request
-    And I click "Continue"
-    And I select "Liberty to Apply" "Upload request"
+    And I select "Liberty to Apply" and continue
+    And I select "Upload request" and continue
     And I click "Continue"
     And I upload a pdf file
     And submit the event
@@ -39,8 +38,8 @@ Feature: Liberty To Apply
     Given I am signed in as a DWPResponse Writer
     And I navigate to an existing case
     And I choose "Post Hearing Request"
-    And I select "Liberty to Apply" post hearing request
-    And I select "Liberty to Apply" "Enter request details"
+    And I select "Liberty to Apply" and continue
+    And I select "Enter request details" and continue
     And I fill "Liberty to Apply" reasons with "reasons for liberty to apply"
     And I click "Continue"
     And submit the event
