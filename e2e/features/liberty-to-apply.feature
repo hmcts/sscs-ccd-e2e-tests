@@ -1,4 +1,4 @@
-@posthearing
+@posthearing @nightly-test
 Feature: Liberty To Apply
   Background:
     Given I presetup an "SANDLDLA" SYA case
@@ -55,6 +55,6 @@ Feature: Liberty To Apply
     And submit the event
     # And submit the event
     Then the case should be in "Post hearing" appeal status
-    And Interlocutory review state should be set "Review by Judge"
+    And the interloc state should be in "Review by Judge"
     And FTA State should be set to "Liberty to apply requested"
     And I see "Liberty to Apply application"

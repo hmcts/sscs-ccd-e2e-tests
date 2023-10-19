@@ -1,16 +1,12 @@
 import { Given, Then, When } from '@cucumber/cucumber';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
-import { Logger } from '@hmcts/nodejs-logging';
 import { CaseDetailsPage } from '../../pages/case-details.page';
 import { assert } from 'chai';
 
 const anyCcdPage = new AnyCcdPage();
-const logger = Logger.getLogger('libery-to-apply.steps');
 const caseDetailsPage = new CaseDetailsPage();
 
 When('I select {string} post hearing request', async function (request) {
-  // Write code here that turns the phrase above into concrete actions
-  logger.info('stupid compiler');
   switch (request) {
     case 'Liberty to Apply':
       await anyCcdPage.clickElementById('postHearingRequestType-libertyToApply');
@@ -73,3 +69,24 @@ Then('FTA State should be set to {string}', async function (ftaState: string) {
     assert.equal(ftaState, actText);
   });
 });
+
+When('I upload correction request', async function () {
+  await anyCcdPage.clickElementById('postHearingRequestType-correction');
+  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickElementById('correction_requestFormat-upload');
+  await anyCcdPage.clickContinue();
+  await anyCcdPage.uploadFile('previewDocument', 'issue1.pdf');
+  await anyCcdPage.clickSubmit();
+  await anyCcdPage.clickSubmit();
+});
+
+When('I select {string} and submit', async function (buttonLabel: string) {
+  await anyCcdPage.clickElementByXpath(`//div[label[contains(., '${buttonLabel}')]]/input`);
+  await anyCcdPage.clickSubmit();
+});
+
+When('I upload header correction', async function () {
+  await anyCcdPage.uploadFile('writeFinalDecisionPreviewDocument', 'issue1.pdf');
+  await anyCcdPage.clickSubmit();
+});
+
