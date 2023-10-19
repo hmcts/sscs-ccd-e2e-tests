@@ -29,7 +29,7 @@ Given('I click {string}', async function (buttonName) {
 function getPosthearingType(postHearingRequest: string) {
   switch (postHearingRequest) {
     case 'Liberty to Apply':
-      return 'liberyToApply';
+      return 'libertyToApply';
     case 'Set aside':
       return 'setAside';
     case 'Correction':
@@ -98,3 +98,18 @@ When('I upload header correction', async function () {
   await anyCcdPage.uploadFile('writeFinalDecisionPreviewDocument', 'issue1.pdf');
   await anyCcdPage.clickSubmit();
 });
+
+When(
+  'I fill the form with {string} and {string} for send to judge and {string} for notice generation',
+  async function (actionType: string, sendToJudge: string, generateNotice: string) {
+    await anyCcdPage.chooseOptionByValue('setAside_action', actionType);
+    await anyCcdPage.clickElementById(`setAside_requestStatementOfReasons_${sendToJudge}`);
+    await anyCcdPage.clickElementById(`generateNotice_${generateNotice}`);
+
+    if (generateNotice === 'Yes') {
+      await anyCcdPage.fillValues('bodyContent', 'body content');
+      await anyCcdPage.fillValues('signedBy', 'FirstName LastName');
+      await anyCcdPage.fillValues('signedRole', 'Role');
+    }
+  }
+);
