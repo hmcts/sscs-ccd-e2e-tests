@@ -1,4 +1,4 @@
-@posthearing
+@posthearing @nightly-test
 Feature: Post hearing
   Background:
     Given I presetup an "SANDLDLA" SYA case
