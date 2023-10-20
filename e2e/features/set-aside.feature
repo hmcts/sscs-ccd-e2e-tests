@@ -58,4 +58,5 @@ Feature: Set Aside
     And I click "Continue"
     And I upload a post hearing request pdf file
     And submit the event
+    And submit the event
     And I see "Set aside refused decision notice"
