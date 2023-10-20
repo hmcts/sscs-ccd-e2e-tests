@@ -42,6 +42,7 @@ Feature: Liberty To Apply
     And I fill "Liberty to Apply" reasons with "reasons for liberty to apply"
     And I click "Continue"
     And submit the event
+    And submit the event
     And I see "Liberty to Apply application"
 
 
