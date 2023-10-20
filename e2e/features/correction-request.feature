@@ -26,7 +26,9 @@ Feature: Correction Request
     Then the case should be in "Dormant" appeal status
     And I see "Final Decision Notice"
 
-    Given I choose 'Post Hearing Request'
+    Given I am signed in as a Case Officer
+    And I navigate to an existing case
+    And I choose 'Post Hearing Request'
     And I upload correction request
     Then the case should be in "Post Hearing" state
     And I see "Correction application"
