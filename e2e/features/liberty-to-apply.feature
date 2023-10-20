@@ -6,13 +6,13 @@ Feature: Liberty To Apply
     And I navigate to an existing case
     And the case should be in "With FTA" state
 
-    # When I switch to be a DWPResponse Writer
-    # And I navigate to an existing case
+    When I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     And I choose "Upload response" 
     And I respond to the appeal with upload contains further information "No" option and "EI" issue code
 
-    # When I switch to be a Judge
-    # And I navigate to an existing case
+    When I switch to be a Judge
+    And I navigate to an existing case
     When I choose "Write final decision"
     And I choose manual upload
     And I see "Draft Decision Notice"
@@ -46,8 +46,8 @@ Feature: Liberty To Apply
     And I see "Liberty to Apply application"
 
   Scenario: Submitting a Valid Liberty to Apply Request
-    # Given I am signed in as a Case Officer
-    # And I navigate to an existing case
+    Given I am signed in as a Case Officer
+    And I navigate to an existing case
     And I choose 'Action further evidence'
     And I fill the further evidence form with "sendToInterlocReviewByJudge" and "Liberty to Apply application"
     Then the case should be in "Post Hearing" appeal status
@@ -56,8 +56,8 @@ Feature: Liberty To Apply
     And I see "Liberty to Apply application"
 
   Scenario: Submitting a Valid Liberty to Apply Request from FTA
-    # Given I am signed in as a Case Officer
-    # And I navigate to an existing case
+    Given I am signed in as a Case Officer
+    And I navigate to an existing case
     And I choose 'Action further evidence'
     And I fill the further evidence form with "sendToInterlocReviewByJudge" and "Liberty to Apply application" and "FTA" as sender
     Then the case should be in "Post Hearing" appeal status
