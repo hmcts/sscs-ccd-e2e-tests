@@ -21,6 +21,11 @@ Given('I am signed in as a Clerk', async function () {
   await anyCcdPage.waitUntilLoaded();
 });
 
+Given('I am signed in as a Judge', async function () {
+  await authenticationFlow.signInAsJudge();
+  await anyCcdPage.waitUntilLoaded();
+});
+
 Given('I switch to be a DWPResponse Writer', async function () {
   await browser.sleep(100);
   const currentUrl = await browser.driver.getCurrentUrl();

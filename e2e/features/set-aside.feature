@@ -1,13 +1,13 @@
 @posthearing @nightly-test
-Feature: Post hearing
+Feature: Set Aside
   Background:
     Given I presetup an "SANDLDLA" SYA case
     And I am signed in as a Case Officer
     And I navigate to an existing case
     And the case should be in "With FTA" state
 
-    #When I switch to be a DWPResponse Writer
-    #And I navigate to an existing case
+    When I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     And I choose "Upload response" 
     And I respond to the appeal with upload contains further information "No" option and "EI" issue code
 
