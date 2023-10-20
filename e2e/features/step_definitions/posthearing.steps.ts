@@ -1,10 +1,16 @@
-import { Given, Then, When } from '@cucumber/cucumber';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
+import { AnyCcdFormPage } from '../../pages/any-ccd-form.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
-import { assert } from 'chai';
+import { Given, Then, When } from '@cucumber/cucumber';
+import { IssueDecisionPage } from '../../pages/issue-decision.page';
+import { assert, expect } from 'chai';
+import { browser } from 'protractor';
+import * as remote from 'selenium-webdriver/remote';
 
 const anyCcdPage = new AnyCcdPage();
+const anyCcdFormPage = new AnyCcdFormPage();
 const caseDetailsPage = new CaseDetailsPage();
+const issueDecisionPage = new IssueDecisionPage();
 
 When('I select {string} post hearing request', async function (request) {
   switch (request) {
@@ -99,6 +105,8 @@ When('I select {string}', async function (buttonLabel: string) {
 });
 
 When('I upload header correction', async function () {
+  await browser.waitForAngular();
+  browser.setFileDetector(new remote.FileDetector());
   await anyCcdPage.uploadFile('writeFinalDecisionPreviewDocument', 'issue1.pdf');
   await anyCcdPage.clickSubmit();
 });
@@ -117,3 +125,66 @@ When(
     }
   }
 );
+
+When('I write a final decision yes to generate notice', async function () {
+  await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
+  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-allowed');
+  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickElementById('writeFinalDecisionTypeOfHearing-faceToFace');
+  await anyCcdPage.clickElementById('writeFinalDecisionPresentingOfficerAttendedQuestion_Yes');
+  await anyCcdPage.clickElementById('writeFinalDecisionAppellantAttendedQuestion_Yes');
+  await anyCcdPage.clickContinue();
+  expect(await anyCcdPage.pageHeadingContains('Panel members')).to.equal(true);
+  await issueDecisionPage.addPanelMembers();
+  await anyCcdPage.clickContinue();
+  expect(await anyCcdPage.pageHeadingContains('Decision date')).to.equal(true);
+  await caseDetailsPage.addDayItems('writeFinalDecisionDateOfDecision');
+  await anyCcdPage.clickContinue();
+  expect(await anyCcdPage.pageHeadingContains('Bundle page')).to.equal(true);
+  await issueDecisionPage.pageReference();
+  await anyCcdPage.clickContinue();
+  expect(await anyCcdPage.pageHeadingContains('Summary of outcome decision')).to.equal(true);
+  await issueDecisionPage.fillSummary();
+  await anyCcdPage.clickContinue();
+  expect(await anyCcdPage.pageHeadingContains('Reasons for decision')).to.equal(true);
+  await anyCcdFormPage.addNewCollectionItem('Reasons for decision');
+  await anyCcdFormPage.setCollectionItemFieldValue('Reasons for decision', 0, 'Reasons for decision', 'Some text');
+  await anyCcdPage.clickContinue();
+  expect(await anyCcdPage.pageHeadingContains('Anything else?')).to.equal(true);
+  await anyCcdPage.clickContinue();
+  // decision generated
+  await anyCcdPage.waitForSpinner();
+  expect(await anyCcdPage.pageHeadingContains('Preview Decision Notice')).to.equal(true);
+  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
+  const errors = await anyCcdPage.numberOfCcdErrorMessages();
+  expect(errors).to.equal(0);
+});
+
+Then('I write a final decision correction and submit', async function () {
+  await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_Yes');
+  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickContinue();
+  expect(await anyCcdPage.pageHeadingContains('Panel members')).to.equal(true);
+  await anyCcdPage.clickContinue();
+  expect(await anyCcdPage.pageHeadingContains('Decision date')).to.equal(true);
+  await anyCcdPage.clickContinue();
+  expect(await anyCcdPage.pageHeadingContains('Bundle page')).to.equal(true);
+  await anyCcdPage.fillValues('writeFinalDecisionPageSectionReference', '_correction_');
+  await anyCcdPage.clickContinue();
+  expect(await anyCcdPage.pageHeadingContains('Summary of outcome decision')).to.equal(true);
+  await anyCcdPage.clickContinue();
+  expect(await anyCcdPage.pageHeadingContains('Reasons for decision')).to.equal(true);
+  await anyCcdPage.clickContinue();
+  expect(await anyCcdPage.pageHeadingContains('Anything else?')).to.equal(true);
+  await anyCcdPage.clickContinue();
+  // decision generated
+  await anyCcdPage.waitForSpinner();
+  expect(await anyCcdPage.pageHeadingContains('Preview Decision Notice')).to.equal(true);
+  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
+  const errors = await anyCcdPage.numberOfCcdErrorMessages();
+  expect(errors).to.equal(0);
+});
