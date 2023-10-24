@@ -13,7 +13,7 @@
     "webdriverUpdate": "webdriver-manager update --versions.chrome 113.0.5672.63 --gecko=false",
     "e2e": "yarn test:fullfunctional",
     "test:local": "yarn build && cross-env NODE_ENV=development protractor ./dist/e2e/features.parallel.conf.js --cucumberOpts.tags=~@wip --cucumberOpts.tags=@nightly-test",
-    "test:aat": "yarn build && cross-env NODE_ENV=aat protractor ./dist/e2e/features.parallel.conf.js --tags \"not @wip and @nightly-test\"",
+    "test:aat": "yarn build && cross-env NODE_ENV=aat protractor ./dist/e2e/features.parallel.conf.js --tags \"not @wip and @posthearing\"",
     "test:fullfunctional": "yarn build && cross-env NODE_ENV=aat protractor ./dist/e2e/features.parallel.conf.js --cucumberOpts.tags=@posthearing",
     "test:previewfunctional": "yarn build && cross-env NODE_ENV=aat protractor ./dist/e2e/features.parallel.conf.js --cucumberOpts.tags=@preview-test",
     "test:crossbrowser": "yarn build && cross-env NODE_ENV=test-crossbrowser protractor ./dist/e2e/features.crossbrowser.conf.js --cucumberOpts.tags=@crossbrowser",
