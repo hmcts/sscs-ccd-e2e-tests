@@ -1,11 +1,11 @@
 {
   "ApiCallTimeout": 40000,
   "ccd": {
-    "gatewayUrl": "https://gateway-ccd.aat.platform.hmcts.net",
-    "webUrl": "https://manage-case.aat.platform.hmcts.net/list/case?jurisdiction=sscs"
+    "gatewayUrl": "https://gateway-ccd.demo.platform.hmcts.net",
+    "webUrl": "https://manage-case.demo.platform.hmcts.net/list/case?jurisdiction=sscs"
   },
   "tribunals": {
-    "uri": "http://sscs-tribunals-api-aat.service.core-compute-aat.internal"
+    "uri": "http://sscs-tribunals-api-demo.service.core-compute-demo.internal"
   },
   "proxy": {
     "url": "",

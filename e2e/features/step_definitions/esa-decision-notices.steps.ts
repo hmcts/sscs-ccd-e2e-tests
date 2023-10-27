@@ -129,7 +129,7 @@ When('I provide reasons and check answers for non WCA To Allowed {string}', asyn
 });
 
 When('I choose manual upload', async function () {
-  await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice-No');
+  await anyCcdPage.clickElementById('writeFinalDecisionGenerateNotice_No');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('writeFinalDecisionAllowedOrRefused-allowed');
   await anyCcdPage.clickContinue();

@@ -31,6 +31,27 @@ When(
   }
 );
 
+When(
+  'I fill the further evidence form with {string} and {string} and {string} as sender',
+  async function (actionType: string, requestType: string, sender: string) {
+    expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
+    await anyCcdPage.chooseOptionByValue('furtherEvidenceAction', actionType);
+    await anyCcdPage.chooseOptionContainingText('originalSender', sender);
+    await anyCcdPage.clickAddNew();
+
+    expect(await anyCcdPage.pageHeadingContains('Document Type')).to.equal(true);
+    await anyCcdPage.chooseOptionContainingText('scannedDocuments_0_type', requestType);
+    await anyCcdPage.uploadFile('scannedDocuments_0_url', 'issue1.pdf');
+    await furtherEvidencePage.enterFileName('scannedDocuments_0_fileName', 'testfile.pdf');
+    await furtherEvidencePage.enterScannedDate('20', '1', '2021');
+    await anyCcdPage.clickElementById('scannedDocuments_0_includeInBundle_Yes');
+
+    await anyCcdPage.clickSubmit();
+    await browser.sleep(Wait.extended);
+    await anyCcdPage.clickSubmit();
+  }
+);
+
 When('I fill the further evidence form with {string} invalid file', async function (testFile: string) {
   expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
   await anyCcdPage.chooseOptionByValue('furtherEvidenceAction', 'sendToInterlocReviewByJudge');

@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker/locale/en_GB';
 const maxValidMrnDays = 25;
 
 export function mrnDate(): string {
-  return utc(faker.date.recent(maxValidMrnDays)).format('DD/MM/YYYY');
+  return utc(faker.date.recent({ days: maxValidMrnDays })).format('DD/MM/YYYY');
 }
 
 export const formData = [
