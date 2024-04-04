@@ -38,6 +38,7 @@ Feature: Hearing recording
     And I navigate to an existing case
     Then the hearing recording should be in "Documents" tab
 
+ @nightly-test-CI-bug
  Scenario: Refuse Hearing recording  - an offline hearing recording request
     And I select a hearing
     And I upload a hearing recording

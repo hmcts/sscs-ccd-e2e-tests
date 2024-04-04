@@ -25,7 +25,6 @@ export class AdjournmentPage extends AnyPage {
     await element(by.id('hearings_0_venue_googleMapLink')).sendKeys(
       'https://www.google.com/maps/place/4th+Floor+30+Brooke+Street+EC1N+7RS/@51.518706,-0.110348'
     );
-    await element(by.id('hearings_0_judge')).sendKeys('Judge');
     await element(by.id('hearingDate-day')).sendKeys(day);
     await element(by.id('hearingDate-month')).sendKeys(month);
     await element(by.id('hearingDate-year')).sendKeys(year);
@@ -49,19 +48,19 @@ export class AdjournmentPage extends AnyPage {
     await element(by.id('hearings_0_venueId')).sendKeys('142');
 
     await element(by.id('hearingRequested-day')).sendKeys('21');
-    await element(by.id('hearingRequested-month')).sendKeys('02');
-    await element(by.id('hearingRequested-year')).sendKeys('2022');
+    await element(by.id('hearingRequested-month')).sendKeys('01');
+    await element(by.id('hearingRequested-year')).sendKeys('2024');
 
     await element(by.id('hearings_0_versionNumber')).sendKeys('123');
     await anyCcdPage.chooseOptionContainingText('hearings_0_hearingStatus', 'Hearing has been Listed');
 
-    await element(by.id('start-day')).sendKeys('22');
-    await element(by.id('start-month')).sendKeys('02');
-    await element(by.id('start-year')).sendKeys('2022');
+    await element(by.id('start-day')).sendKeys('21');
+    await element(by.id('start-month')).sendKeys('01');
+    await element(by.id('start-year')).sendKeys('2024');
 
-    await element(by.id('end-day')).sendKeys('22');
-    await element(by.id('end-month')).sendKeys('02');
-    await element(by.id('end-year')).sendKeys('2022');
+    await element(by.id('end-day')).sendKeys('21');
+    await element(by.id('end-month')).sendKeys('01');
+    await element(by.id('end-year')).sendKeys('2024');
 
     await element(by.id('hearings_0_epimsId')).sendKeys('372653');
 

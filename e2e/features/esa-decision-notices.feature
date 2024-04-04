@@ -10,7 +10,7 @@ Feature: ESA Final Decision Notices
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
     When I choose "Upload response"
-    And I upload contains further information "NO" for "ESA"
+    And I perform upload contains further information "NO" on a esa case
 
     When I switch to be a Judge
     And I navigate to an existing case

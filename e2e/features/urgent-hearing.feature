@@ -1,6 +1,6 @@
 @urgent-hearing @nightly-test @migrated-to-exui
 Feature: Urgent hearing functionality
-
+  
   Scenario: Grant urgent hearing for a case
     Given I preset up a test case
     And I am signed in as a Case Officer
@@ -20,7 +20,7 @@ Feature: Urgent hearing functionality
     When I choose "Issue directions notice"
     And I fill the direction notice form with "Grant urgent hearing"
     Then the case should be "Granted" permissions for "Urgent hearing"
-
+ 
   Scenario: Refuse urgent hearing for a case
     Given I preset up a test case
     And I am signed in as a Case Officer

@@ -28,6 +28,8 @@ Then('I should see supplementary response in the Unprocessed Correspondence tab'
 });
 
 Given('I upload a document with redacted content', async function () {
+  await anyCcdPage.chooseOptionContainingText('furtherEvidenceAction', 'Issue further evidence to all parties');
+  await anyCcdPage.chooseOptionContainingText('originalSender', 'Appellant (or Appointee)');
   await anyCcdPage.uploadFile('scannedDocuments_0_editedUrl', 'issue2.pdf');
   await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();

@@ -23,6 +23,7 @@ export class HearingRecordingPage extends AnyPage {
     await anyCcdPage.clickContinue();
     await browser.sleep(Wait.long);
     await anyCcdPage.clickSubmit();
+    await browser.manage().window().maximize();
   }
 
   async selectHearing() {

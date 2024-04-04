@@ -33,7 +33,7 @@ When(
 
 When('I fill the further evidence form with {string} invalid file', async function (testFile: string) {
   expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
-  await anyCcdPage.chooseOptionByValue('furtherEvidenceAction', 'sendToInterlocReviewByJudge');
+  await anyCcdPage.chooseOptionContainingText('furtherEvidenceAction', 'Send to Interloc - Review by Judge');
   await anyCcdPage.chooseOptionContainingText('originalSender', 'Appellant (or Appointee)');
   await anyCcdPage.clickAddNew();
 
@@ -52,6 +52,7 @@ Then('the case should have successfully processed {string} event', async functio
 });
 
 When('I fill the direction notice form with {string}', async function (reinstatement) {
+  await anyCcdPage.chooseOptionContainingText('prePostHearing', 'Pre Hearing');
   await anyCcdPage.chooseOptionContainingText('directionTypeDl', reinstatement);
   await anyCcdPage.clickElementById('confidentialityType-general');
   await caseDetailsPage.addDayItems('directionDueDate');

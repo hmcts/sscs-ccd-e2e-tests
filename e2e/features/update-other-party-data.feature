@@ -10,6 +10,7 @@ Feature: Update Other Party Data
     And I choose "Update other party data"
     And I add other party data
     Then the case should end in "With FTA" state
+    And the "Other Party Details" tab is seen with "Paying parent" content
 
   Scenario: Update Other Party Data
     Given I presetup an "Tax Credit" SYA case
@@ -20,6 +21,7 @@ Feature: Update Other Party Data
     And I choose "Update other party data"
     And I add taxCredit other party data
     Then the case should end in "With FTA" state
+    And the "Other Party Details" tab is seen with "Other" content
 
 
 

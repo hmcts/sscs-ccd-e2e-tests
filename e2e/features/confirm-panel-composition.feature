@@ -9,7 +9,7 @@ Feature: Panel composition
   Scenario: Judicial user accepts panel member
     Then the case should be in "With FTA" state
     When I choose "Upload response"
-    And dwp responds requesting "Yes" for the uploads contains further info option
+    And I respond to the taxCredit appeal with upload contains further information "Yes" option and "CE" issue code
     Then the case should be in "Response received" state
 
     When I choose "Confirm panel composition"

@@ -11,6 +11,12 @@ Given('I am signed in as a Case Officer', async function () {
   await anyCcdPage.waitUntilLoaded();
 });
 
+Given('I am signed in as a Hearing Case Officer', async function () {
+  await authenticationFlow.signInAsHearingCaseOfficer();
+  await anyCcdPage.waitUntilLoaded();
+});
+
+
 Given('I am signed in as a DWPResponse Writer', async function () {
   await authenticationFlow.signInAsDWPResponseWriter();
   await anyCcdPage.waitUntilLoaded();

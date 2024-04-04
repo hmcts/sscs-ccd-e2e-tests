@@ -5,6 +5,7 @@ import { DwpResponsePage } from '../../pages/dwpresponse.page';
 import { Then, When } from '@cucumber/cucumber';
 import { expect } from 'chai';
 import { browser } from 'protractor';
+import { Wait } from '../../enums/wait';
 
 const anyCcdPage = new AnyCcdFormPage();
 const caseDetailsPage = new CaseDetailsPage();
@@ -12,6 +13,7 @@ const appointeePage = new AppointeePage();
 const dwpresponse = new DwpResponsePage();
 
 When('I populate fields and continue', async function () {
+  await browser.sleep(Wait.long);
   await caseDetailsPage.addReasonAndDate('notListableDueDate');
   await anyCcdPage.clickSubmit();
   await anyCcdPage.clickTab('Summary');
@@ -88,9 +90,6 @@ When(
     const isUCB = docType === 'UCB';
     const isPHME = docType === 'PHME';
     await dwpresponse.uploadResponseWithUcbAndPhme(dwpState, docLink, isUCB, isPHME, isContainsFurtherInfo);
-    if (benefitType !== 'UC') {
-      await anyCcdPage.selectIssueCode();
-    }
     await anyCcdPage.clickContinue();
     if (benefitType === 'UC') {
       await anyCcdPage.clickElementById('elementsDisputedList-general');
@@ -112,7 +111,6 @@ When('I do not upload edited docs after selecting {string} option', async functi
   const isContainsFurtherInfo = 'NO';
   const isPHME = docType === 'PHME';
   await dwpresponse.uploadResponseWithoutPhmeDocs(dwpState, isPHME, isContainsFurtherInfo);
-  await anyCcdPage.selectIssueCode();
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
 });

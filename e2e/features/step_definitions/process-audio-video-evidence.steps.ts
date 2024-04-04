@@ -14,7 +14,6 @@ const dwpresponse = new DwpResponsePage();
 When('I upload AV evidence and complete Upload response event for {string} case', async function (benefitType) {
   const dwpState = 'YES';
   await dwpresponse.uploadResponseWithAV(dwpState, benefitType);
-  await anyCcdPage.selectIssueCode();
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();
   await browser.sleep(Wait.long);
@@ -45,7 +44,7 @@ When('I process the AV evidence using the {string} action', async function (acti
   await element(by.id('signedRole')).sendKeys('Signed role test content');
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.contentContains('Preview Document')).to.equal(true);
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   expect(await anyCcdPage.contentContains('Event summary (optional)')).to.equal(true);
   await browser.sleep(Wait.long);
   await anyCcdPage.clickSubmit();

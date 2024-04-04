@@ -28,6 +28,10 @@
       "user": "TEST_CASEOFFICER_USERNAME",
       "password": "TEST_CASEOFFICER_PASSWORD"
     },
+    "hearingCaseOfficer": {
+      "user": "TEST_HMC_CASEOFFICER_USERNAME",
+      "password": "TEST_HMC_CASEOFFICER_PASSWORD"
+    },
     "clerk": {
       "user": "TEST_CLERK_USERNAME",
       "password": "TEST_CLERK_PASSWORD"

@@ -33,7 +33,7 @@ if (useProxy) {
   };
 }
 
-const featuresPath = path.resolve(process.cwd(), 'e2e/features/*.feature');
+const featuresPath = path.resolve(process.cwd(), 'e2e/features/schedule-listing-create-hearing.feature');
 
 const capabilities = {
   browserName: 'chrome',
@@ -65,7 +65,7 @@ const cucumberOpts: IConfiguration = <IConfiguration>{
   require: ['./cucumber.conf.js', './features/step_definitions/*.steps.js', './support/hooks.js'],
   backtrace: true,
   // failFast,
-  // retry: retries,
+  retry: retries,
 };
 
 const frameworkPath = require.resolve('protractor-cucumber-framework');

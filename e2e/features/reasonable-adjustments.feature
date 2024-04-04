@@ -1,7 +1,6 @@
 @reasonable-adjustments @nightly-test-wip
 Feature: Reasonable adjustments functionality
 
-
   Scenario: Actioned reasonable adjustments
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer

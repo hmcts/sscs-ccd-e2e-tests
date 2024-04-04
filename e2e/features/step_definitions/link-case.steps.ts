@@ -4,7 +4,7 @@ import { AnyCcdPage } from '../../pages/any-ccd.page';
 import * as ccd from '../../helpers/ccd';
 import { Logger } from '@hmcts/nodejs-logging';
 import { Wait } from '../../enums/wait';
-import { browser } from 'protractor';
+import { browser, element, by } from 'protractor';
 
 const logger = Logger.getLogger('link-case');
 
@@ -19,7 +19,7 @@ When('I add a case to be linked', async function () {
   await browser.sleep(Wait.normal);
 
   await anyCcdPage.clickAddNew();
-  await anyCcdPage.setText('//*[@id="linkedCase_0_0"]', linkedCaseReference);
+  await element(by.css('input#linkedCase_0_0')).sendKeys(linkedCaseReference);
 
   await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();

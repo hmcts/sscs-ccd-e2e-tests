@@ -16,7 +16,7 @@ export class ResponseReviewedPage extends AnyPage {
     await anyCcdPage.clickContinue();
     // Reference appeal  page
     expect(await anyCcdPage.pageHeadingContains('Linked appeal reference')).to.equal(true);
-    await anyCcdPage.clickContinue();
+    await anyCcdPage.clickSubmit();
   }
 
   async isInterlocRequired(yesOrNo: string) {
