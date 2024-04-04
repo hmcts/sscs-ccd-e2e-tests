@@ -16,7 +16,7 @@ const useHeadlessBrowser = Boolean(JSON.parse(serviceConfig.get('protractor.UseH
 const maxInstances: number = Math.max(serviceConfig.get('protractor.RunWithNumberOfBrowsers'), 1);
 const ccdWebUrl: string = serviceConfig.get('ccd.webUrl');
 // const failFast = Boolean(JSON.parse(serviceConfig.get('protractor.FailFast')));
-const retries: number = Math.max(serviceConfig.get('protractor.testRetries'), 0);
+const retries: number = Math.max(serviceConfig.get('protractor.testRetries'), 1);
 const testOutputDir: string = path.resolve(process.cwd(), serviceConfig.get('protractor.TestOutputDir'));
 const reportDir: string = path.resolve(testOutputDir, 'functional');
 

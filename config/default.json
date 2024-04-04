@@ -13,12 +13,12 @@
     "tunnelIdentifier": "reformtunnel"
   },
   "protractor": {
-    "UseHeadlessBrowser": false,
+    "UseHeadlessBrowser": true,
     "TestOutputDir": "./reports/tests-results",
     "RunWithNumberOfBrowsers": 2,
     "WaitForAngular": true,
     "FailFast": true,
-    "testRetries": 0
+    "testRetries": 1
   },
   "users": {
     "caseOfficer": {
