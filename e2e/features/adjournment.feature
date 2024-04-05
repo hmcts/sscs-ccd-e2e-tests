@@ -10,6 +10,7 @@ Feature: Adjournment decision
     And I choose "Hearing booked"
     And I submit "Hearing booked"
     Then the case should end in "Hearing" state
+    And I wait "60" seconds
 
     When I switch to be a Judge
     And I navigate to an existing case

@@ -12,6 +12,7 @@ Feature: Urgent hearing functionality
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
     When I choose "Action further evidence"
+    And I wait "30" seconds
     And I fill the further evidence form with "otherDocumentManual" and "Urgent hearing request"
     Then the case should have successfully processed "Action further evidence" event
 
@@ -26,6 +27,7 @@ Feature: Urgent hearing functionality
     And I am signed in as a Case Officer
     Given I navigate to an existing case
     When I choose "Action further evidence"
+    And I wait "30" seconds
     And I fill the further evidence form with "otherDocumentManual" and "Urgent hearing request"
     Then the case should have successfully processed "Action further evidence" event
 

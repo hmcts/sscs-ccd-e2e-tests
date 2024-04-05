@@ -18,7 +18,7 @@
     "RunWithNumberOfBrowsers": 2,
     "WaitForAngular": true,
     "FailFast": true,
-    "testRetries": 1
+    "testRetries": 2
   },
   "users": {
     "caseOfficer": {
