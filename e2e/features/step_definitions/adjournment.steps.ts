@@ -107,7 +107,7 @@ When('I generate an adjournment notice with new hearing type and duration', asyn
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('adjournCaseTypeOfNextHearing-telephone');
   await anyCcdPage.clickContinue();
-  await anyCcdPage.clickContinue(); 
+  await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('adjournCaseNextHearingListingDurationType-standardTimeSlot');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('adjournCaseInterpreterRequired_Yes');
@@ -150,7 +150,7 @@ When(
 
     await anyCcdPage.clickElementById('adjournCaseTypeOfNextHearing-video');
     await anyCcdPage.clickContinue();
-    await anyCcdPage.clickContinue(); 
+    await anyCcdPage.clickContinue();
     await anyCcdPage.clickElementById('adjournCaseNextHearingListingDurationType-nonStandardTimeSlot');
     await element(by.id('adjournCaseNextHearingListingDuration')).sendKeys('2');
     await anyCcdPage.chooseOptionContainingText('adjournCaseNextHearingListingDurationUnits', 'Session(s)');
@@ -192,7 +192,7 @@ When('I generate an adjournment notice with Paper hearing type', async function 
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('adjournCaseTypeOfNextHearing-paper');
   await anyCcdPage.clickContinue();
-  await anyCcdPage.clickContinue(); 
+  await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('adjournCaseNextHearingDateType-firstAvailableDate');
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Reasons for adjournment')).to.equal(true);

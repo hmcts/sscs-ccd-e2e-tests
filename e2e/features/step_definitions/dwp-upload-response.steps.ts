@@ -62,7 +62,6 @@ When('I perform upload contains further information {string} on a esa case', asy
   await anyCcdPage.clickSubmit();
 });
 
-
 When('I upload only evidence and original documents', async function () {
   const dwpState = 'YES';
   const benefitType = 'PIP';
@@ -93,10 +92,12 @@ When(
   }
 );
 
-When('I respond to the dla appeal with upload contains further information {string} option and {string} issue code',
-      async function (action: string, issueCode: string) {
-        await dwpresponse.uploadResponseForDla(action, issueCode);
-});
+When(
+  'I respond to the dla appeal with upload contains further information {string} option and {string} issue code',
+  async function (action: string, issueCode: string) {
+    await dwpresponse.uploadResponseForDla(action, issueCode);
+  }
+);
 
 When(
   'I respond to the taxCredit appeal with upload contains further information {string} option and {string} issue code',

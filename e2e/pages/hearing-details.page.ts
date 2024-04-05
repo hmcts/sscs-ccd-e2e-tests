@@ -121,8 +121,8 @@ export class HearingDetailsPage extends AnyPage {
     await browser.manage().window().maximize();
     await anyCcdPage.clickTab('Hearings');
     await browser.sleep(Wait.short);
-    let actText = await element(by.xpath('//table/tbody/tr/td[3]/strong')).getText();
-    expect((actText.trim())).to.equal(statusHearing);
+    const actText = await element(by.xpath('//table/tbody/tr/td[3]/strong')).getText();
+    expect(actText.trim()).to.equal(statusHearing);
   }
 
   async verifyHearingChannel(hearingChannel: string) {

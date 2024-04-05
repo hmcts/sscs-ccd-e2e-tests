@@ -391,8 +391,8 @@ export class AnyCcdPage extends AnyPage {
   }
 
   async verifyTextOnPageUsingXpath(elementVal: string, expText: string): Promise<void> {
-    let actDocType = await element(by.xpath(elementVal)).getText();
-   expect((actDocType.trim())).to.equal(expText);
+    const actDocType = await element(by.xpath(elementVal)).getText();
+    expect(actDocType.trim()).to.equal(expText);
   }
 
   async waitForSpinner(): Promise<void> {
