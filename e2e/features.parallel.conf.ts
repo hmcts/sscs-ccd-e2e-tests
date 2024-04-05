@@ -13,7 +13,7 @@ const logger = Logger.getLogger('features.parallel.conf');
 const proxyUrl: string = serviceConfig.get('proxy.url');
 const useProxy = Boolean(JSON.parse(serviceConfig.get('proxy.use')));
 const useHeadlessBrowser = Boolean(JSON.parse(serviceConfig.get('protractor.UseHeadlessBrowser')));
-const maxInstances: number = Math.max(serviceConfig.get('protractor.RunWithNumberOfBrowsers'), 1);
+const maxInstances: number = Math.max(serviceConfig.get('protractor.RunWithNumberOfBrowsers'), 2);
 const ccdWebUrl: string = serviceConfig.get('ccd.webUrl');
 // const failFast = Boolean(JSON.parse(serviceConfig.get('protractor.FailFast')));
 const retries: number = Math.max(serviceConfig.get('protractor.testRetries'), 1);
@@ -33,7 +33,7 @@ if (useProxy) {
   };
 }
 
-const featuresPath = path.resolve(process.cwd(), 'e2e/features/schedule-listing-create-hearing.feature');
+const featuresPath = path.resolve(process.cwd(), 'e2e/features/*.feature');
 
 const capabilities = {
   browserName: 'chrome',
