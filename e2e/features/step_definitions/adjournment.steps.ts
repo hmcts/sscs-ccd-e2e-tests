@@ -1,14 +1,12 @@
 import { When, Then } from '@cucumber/cucumber';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { AdjournmentPage } from '../../pages/adjournment.page';
-//import { ListingRequirementsPage } from '../../pages/listing-requirements.page';
 import { expect } from 'chai';
 import { Wait } from '../../enums/wait';
 import { browser, element, by } from 'protractor';
 
 const anyCcdPage = new AnyCcdPage();
 const adjournmentPage = new AdjournmentPage();
-//const listingRequirementsPage = new ListingRequirementsPage();
 
 When('I book a hearing', async function () {
   await anyCcdPage.clickAddNew();
