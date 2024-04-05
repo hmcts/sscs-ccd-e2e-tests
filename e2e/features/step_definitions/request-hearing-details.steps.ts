@@ -55,7 +55,7 @@ Then('I update the length of hearing to {string} hours', async function (hearing
 });
 
 Then('the hearing status should be updated to {string}', async function (hearingStatus: string) {
-     await hearingDetailsPage.verifyHearingStatus(hearingStatus);
+  await hearingDetailsPage.verifyHearingStatus(hearingStatus);
 });
 
 When(

@@ -1,14 +1,12 @@
 import { When, Then } from '@cucumber/cucumber';
 import { AnyCcdPage } from '../../pages/any-ccd.page';
 import { AdjournmentPage } from '../../pages/adjournment.page';
-//import { ListingRequirementsPage } from '../../pages/listing-requirements.page';
 import { expect } from 'chai';
 import { Wait } from '../../enums/wait';
 import { browser, element, by } from 'protractor';
 
 const anyCcdPage = new AnyCcdPage();
 const adjournmentPage = new AdjournmentPage();
-//const listingRequirementsPage = new ListingRequirementsPage();
 
 When('I book a hearing', async function () {
   await anyCcdPage.clickAddNew();
@@ -109,7 +107,7 @@ When('I generate an adjournment notice with new hearing type and duration', asyn
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('adjournCaseTypeOfNextHearing-telephone');
   await anyCcdPage.clickContinue();
-  await anyCcdPage.clickContinue(); 
+  await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('adjournCaseNextHearingListingDurationType-standardTimeSlot');
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('adjournCaseInterpreterRequired_Yes');
@@ -152,7 +150,7 @@ When(
 
     await anyCcdPage.clickElementById('adjournCaseTypeOfNextHearing-video');
     await anyCcdPage.clickContinue();
-    await anyCcdPage.clickContinue(); 
+    await anyCcdPage.clickContinue();
     await anyCcdPage.clickElementById('adjournCaseNextHearingListingDurationType-nonStandardTimeSlot');
     await element(by.id('adjournCaseNextHearingListingDuration')).sendKeys('2');
     await anyCcdPage.chooseOptionContainingText('adjournCaseNextHearingListingDurationUnits', 'Session(s)');
@@ -194,7 +192,7 @@ When('I generate an adjournment notice with Paper hearing type', async function 
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('adjournCaseTypeOfNextHearing-paper');
   await anyCcdPage.clickContinue();
-  await anyCcdPage.clickContinue(); 
+  await anyCcdPage.clickContinue();
   await anyCcdPage.clickElementById('adjournCaseNextHearingDateType-firstAvailableDate');
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Reasons for adjournment')).to.equal(true);
