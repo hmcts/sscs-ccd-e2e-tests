@@ -10,6 +10,7 @@ export class LapseCasePage extends AnyPage {
   async uploadResponse(action: string) {
     expect(await anyCcdPage.pageHeadingContains('Lapse appeal')).to.equal(true);
     await browser.waitForAngular();
+    await browser.sleep(Wait.short);
 
     browser.setFileDetector(new remote.FileDetector());
     await anyCcdPage.uploadFile('dwpLT203_documentLink', 'issue1.pdf');
