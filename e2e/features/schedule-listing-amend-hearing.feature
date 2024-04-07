@@ -1,6 +1,6 @@
-@nightly-test
 Feature: Auto Amend and Manual Amend Hearing - Schedule and Listing
-
+  
+  @nightly-test
   Scenario: Manual amend Hearing for PIP case
 
     Given I presetup an "SANDLDLA" SYA case
