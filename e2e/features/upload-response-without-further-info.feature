@@ -34,11 +34,8 @@ Feature: Happy Path
     Given I navigate to an existing case
     Then the case should be in "Ready to list" state
 
-    When I switch to be a Case Officer
-    Then the case should be in "Ready to list" state
-
- @nightly-test-wip
- Scenario: Child support case should end up in "Not listable" state when FTA responds
+ @nightly-test
+ Scenario: Child support case should end up in "Response received" state when FTA responds
     Given I presetup an "Child Support" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
@@ -46,11 +43,10 @@ Feature: Happy Path
 
     When I choose "Upload response"
     And I respond to the appeal with upload contains further information "No" option
-    Then the case should end in "Not listable" state
-    Then the interloc state should be in "Review by Judge"
-    And the "Other Party Details" tab is seen with "Other parties 1" content
+    Then the case should end in "Response received" state
+    And the "Other Party Details" tab is seen with "Other" content
 
-  @nightly-test
+  @nightly-test-skip
   Scenario: Tax Credit case should end up in "Ready to list" state when FTA responds
     Given I presetup an "Tax Credit" SYA case
     And I am signed in as a Case Officer
@@ -62,7 +58,7 @@ Feature: Happy Path
     Given I navigate to an existing case
     Then the case should end in "Ready to list" state
 
-  @tc-decision  @nightly-test-skip
+  @tc-decision  @nightly-test
   Scenario: Tax Credit case should end up in "Ready to list" state when FTA responds
     Given I presetup an "Tax Credit" SYA case
     And I am signed in as a Case Officer

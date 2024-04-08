@@ -56,13 +56,17 @@ export class AnyCcdPage extends AnyPage {
     return this.clickElement('button', text);
   }
 
+  async clickLink(text: string): Promise<ElementFinder> {
+    return this.clickElement('a', text);
+  }
+
   async clickTab(tabTitle: string): Promise<ElementFinder> {
     await this.waitForTabsToLoad();
     return this.clickElement('div', tabTitle);
   }
 
   async clickElement(elementType: string, text: string): Promise<ElementFinder> {
-    return this.clickElementByXpath(`//${elementType}[text()="${text}"]`);
+    return this.clickElementByXpath(`//${elementType}[normalize-space()="${text}"]`);
   }
 
   async clickElementByXpath(xpath: string): Promise<ElementFinder> {
@@ -81,7 +85,6 @@ export class AnyCcdPage extends AnyPage {
   }
 
   async clickAction(locator: Locator): Promise<ElementFinder> {
-    await this.waitForSpinner();
     await this.waitForElement(locator);
     const elementFinder = element(locator);
     await elementFinder.click();
@@ -108,14 +111,18 @@ export class AnyCcdPage extends AnyPage {
   }
 
   async chooseOption(elementId: string, locator: Locator): Promise<void> {
+    await browser.sleep(Wait.short);
     const choiceLocator = by.id(elementId);
-    await this.waitForElement(choiceLocator);
     await element(choiceLocator).element(locator).click();
     await browser.sleep(Wait.short);
   }
 
   async chooseOptionContainingText(elementId: string, text: string): Promise<void> {
     await this.chooseOption(elementId, by.xpath(`//option[normalize-space(text())='${text}']`));
+  }
+
+  async chooseOptionByText(elementId: string, text: string): Promise<void> {
+    await this.chooseOption(elementId, by.xpath(`//option[contains(text(),'${text}')]`));
   }
 
   async chooseOptionByValue(elementId: string, value: string): Promise<void> {
@@ -200,14 +207,12 @@ export class AnyCcdPage extends AnyPage {
   }
 
   async waitForTabsToLoad(): Promise<void> {
-    await this.waitForSpinner();
     await this.waitForElement(by.tagName('mat-tab-header'));
   }
 
   async reloadPage(): Promise<void> {
     await browser.navigate().refresh();
     await this.waitUntilLoaded();
-    await this.waitForSpinner();
     await browser.sleep(Wait.short);
   }
 
@@ -387,6 +392,11 @@ export class AnyCcdPage extends AnyPage {
       logger.error(error);
       return false;
     }
+  }
+
+  async verifyTextOnPageUsingXpath(elementVal: string, expText: string): Promise<void> {
+    const actDocType = await element(by.xpath(elementVal)).getText();
+    expect(actDocType.trim()).to.equal(expText);
   }
 
   async waitForSpinner(): Promise<void> {

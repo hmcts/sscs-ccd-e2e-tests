@@ -1,6 +1,6 @@
 Feature: Enhanced confidentiality
 
-    @nightly-test-skip @preview-test-skip @ec-10106
+    @nightly-test @preview-test-skip @ec-10106
     Scenario: Enhanced confidentiality scenario
         Given I presetup an "UC" SYA case
         And I am signed in as a Case Officer
@@ -10,6 +10,7 @@ Feature: Enhanced confidentiality
         And I upload UC further information with disputed General disputed by others No and further info No
         And I wait "120" seconds
         And I choose "Action further evidence"
+        And I wait "60" seconds
         And I fill the further evidence form with "sendToInterlocReviewByJudge" and "Confidentiality request"
         And I choose "Review confidentiality request"
         When I "grant" confidentiality request

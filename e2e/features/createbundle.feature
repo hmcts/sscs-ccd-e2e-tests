@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test
+@migrated-to-exui
 Feature: Create bundle for a case
 
   Background:
@@ -11,7 +11,7 @@ Feature: Create bundle for a case
     And I upload contains further information "NO" for "PIP"
     Then the case should end in "Ready to list" state
 
-  @bundle @preview-test-skip
+  @bundle @preview-test-skip @nightly-test
   Scenario: Verify create bundle event for cases
     Given I navigate to an existing case
     And I choose "Create a bundle"

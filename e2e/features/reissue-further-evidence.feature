@@ -7,6 +7,7 @@ Feature: Reissue evidence on a case
     And I navigate to an existing case
     Then the case should end in "With FTA" state
     When I choose "Action further evidence"
+    And I wait "30" seconds
     And I fill the further evidence form with "otherDocumentManual" and "Form"
     Then the case should have successfully processed "Action further evidence" event
 

@@ -6,6 +6,7 @@ import { by } from 'protractor';
 const anyCcdPage = new AnyCcdPage();
 
 When('I allow the appeal to proceed', async function () {
+  await anyCcdPage.chooseOptionContainingText('prePostHearing', 'Pre Hearing');
   await anyCcdPage.chooseOptionContainingText('directionTypeDl', 'Appeal to Proceed');
   await anyCcdPage.clickElementById('confidentialityType-general');
   await anyCcdPage.scrollPage('//*[@id="generateNotice_Yes"]');
@@ -14,7 +15,7 @@ When('I allow the appeal to proceed', async function () {
   await anyCcdPage.fillValues('signedRole', 'This is a test signed role content');
   await anyCcdPage.clickSubmit();
   await anyCcdPage.waitForElement(by.xpath('//span[contains(text(),"Preview Document")]'));
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
 });
 

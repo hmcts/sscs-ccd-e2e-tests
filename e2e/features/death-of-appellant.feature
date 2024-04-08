@@ -1,7 +1,7 @@
 @migrated-to-exui @nightly-test
 Feature: Record the death of an appellant
-
-  @death-of-appellant
+ 
+  @death-of-appellant 
   Scenario: Record the death of an appellant : No Appointee
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer

@@ -1,11 +1,11 @@
-@nightly-test-skip
+@nightly-test
 Feature: Case Access Management
 
  Scenario: SSCS1 benefit - check RPC and case management location on the appearl details page
   Given I presetup an "CAMPIP" SYA case
   And I am signed in as a Case Officer
   Given I navigate to an existing case
-  And the case should be in "With FTA" state
+  Then the case should be in "With FTA" state
   And "Summary" tab should contain "Manchester" value for case management "Processing venue" field
   And "CAM Fields" tab should contain "DWP" value for case management "OGD type" field
   And "CAM Fields" tab should contain "personalIndependencePayment" value for case management "Case access category" field

@@ -39,9 +39,6 @@ When(
   async function (action: string, benefitType: string) {
     const dwpState = 'YES';
     await dwpresponse.uploadResponse(action, dwpState, benefitType);
-    if (benefitType !== 'UC') {
-      await anyCcdPage.selectIssueCode();
-    }
     await anyCcdPage.scrollBar('//div/form/div/button[2]');
     if (benefitType === 'UC') {
       await anyCcdPage.clickElementById('elementsDisputedList-general');
@@ -59,11 +56,17 @@ When(
   }
 );
 
+When('I perform upload contains further information {string} on a esa case', async function (action: string) {
+  await dwpresponse.esaUploadResponse(action);
+  await anyCcdPage.scrollBar('//div/form/div/button[2]');
+  await anyCcdPage.clickSubmit();
+});
+
 When('I upload only evidence and original documents', async function () {
   const dwpState = 'YES';
   const benefitType = 'PIP';
   await dwpresponse.uploadOnlyResponseAndEvidence('No', dwpState, benefitType);
-  await anyCcdPage.selectIssueCode();
+  // await anyCcdPage.selectIssueCode();
   await browser.sleep(2000);
   await anyCcdPage.scrollBar('//div/form/div/button[2]');
 });
@@ -90,7 +93,14 @@ When(
 );
 
 When(
-  'I respond to the taxCredit appeal with upload contains further information {string} option',
+  'I respond to the dla appeal with upload contains further information {string} option and {string} issue code',
+  async function (action: string, issueCode: string) {
+    await dwpresponse.uploadResponseForDla(action, issueCode);
+  }
+);
+
+When(
+  'I respond to the taxCredit appeal with upload contains further information {string} option and {string} issue code',
   async function (action: string, issueCode: string) {
     await dwpresponse.uploadResponseForTaxCredit(action, issueCode);
   }

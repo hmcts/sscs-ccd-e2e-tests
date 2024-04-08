@@ -237,18 +237,15 @@ When('I choose the next step {string}', async function (action) {
 
 Then('the case should be in {string} state', async function (state: string): Promise<void> {
   await anyCcdPage.waitForEndState(state);
+  await browser.manage().window().maximize();
 });
 
 Then('the {string} event should be successfully listed in the History', async function (event: string) {
   await caseDetailsPage.reloadPage();
+  await browser.manage().window().maximize();
   let events = await caseDetailsPage.getHistoryEvents();
   if (events.includes(event)) {
     await browser.sleep(Wait.normal);
-    await caseDetailsPage.reloadPage();
-    events = await caseDetailsPage.getHistoryEvents();
-  }
-  if (events.includes(event)) {
-    await browser.sleep(Wait.extended);
     await caseDetailsPage.reloadPage();
     events = await caseDetailsPage.getHistoryEvents();
   }

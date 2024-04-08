@@ -84,6 +84,7 @@ export class CaseDetailsPage extends AnyCcdPage {
   }
 
   private async addDate(dateType: string, tomorrow: Date) {
+    await browser.sleep(1000);
     await element(by.id(`${dateType}-day`)).sendKeys(tomorrow.getDate());
     await element(by.id(`${dateType}-month`)).sendKeys(tomorrow.getMonth() + 1);
     await element(by.id(`${dateType}-year`)).sendKeys(tomorrow.getFullYear());

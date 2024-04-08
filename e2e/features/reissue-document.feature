@@ -1,4 +1,4 @@
-@reissue-document @migrated-to-exui
+@reissue-document @migrated-to-exui @nightly-test
 Feature: Reissue document
 
     Scenario: Reissue an document to appellants

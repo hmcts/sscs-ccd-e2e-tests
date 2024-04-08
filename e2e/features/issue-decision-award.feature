@@ -22,7 +22,7 @@ Feature: Issue decision award
       Then the case should be in "Dormant" appeal status
       Then I should see "Final Decision Notice" in documents tab
 
-  @issue-decision-4 @nightly-test-1 @Deferred
+  @issue-decision-4 @nightly-test-wip @Deferred
     Scenario: Award is about daily living or mobility
       Given I am signed in as a Case Officer
       When I switch to be a Judge

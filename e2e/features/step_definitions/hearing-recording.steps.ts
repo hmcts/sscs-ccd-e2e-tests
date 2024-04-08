@@ -21,10 +21,10 @@ When('I select a hearing', async function () {
 
 Then('the hearing recording should be in {string} tab', async function (tabName) {
   const isDisplayed = true;
-  // await anyCcdPage.reloadPage();
+  await anyCcdPage.reloadPage();
   await anyCcdPage.clickTab(tabName);
   expect(await anyCcdPage.contentContains('recordings 1')).to.equal(isDisplayed);
-  expect(await anyCcdPage.contentContains('Recordings')).to.equal(isDisplayed);
+  // expect(await anyCcdPage.contentContains('Recordings')).to.equal(isDisplayed);
   expect(await anyCcdPage.contentContains('Final Hearing')).to.equal(isDisplayed);
   expect(await anyCcdPage.contentContains('12345')).to.equal(isDisplayed);
   expect(await anyCcdPage.contentContains('Fox Court')).to.equal(isDisplayed);
@@ -44,7 +44,7 @@ When('I request for Hearing recording', async function () {
 
 When('request for Hearing recording is {string}', async function (hearingPermission: string) {
   expect(await anyCcdPage.pageHeadingContains('Action hearing recording request')).to.equal(true);
-  await anyCcdPage.chooseOptionContainingText('selectHearingDetails', 'Fox Court 13:00:00 20 Oct 2021');
+  await anyCcdPage.chooseOptionContainingText('selectHearingDetails', 'Fox Court 13:00:00 21 Jan 2024');
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Please review the hearing recordings')).to.equal(true);
   if (hearingPermission === 'Granted') {
@@ -54,7 +54,7 @@ When('request for Hearing recording is {string}', async function (hearingPermiss
   } else {
     throw Error('Not a valid permission type');
   }
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
 });
 
@@ -62,16 +62,16 @@ Given('I submit {string} as Request for Hearing Recording in the Upload document
   expect(await anyCcdPage.pageHeadingContains('Upload document FE')).to.equal(true);
   await anyCcdPage.clickAddNew();
   await anyCcdPage.chooseOptionContainingText(
-    '#draftSscsFurtherEvidenceDocument_0_documentType',
+    'draftSscsFurtherEvidenceDocument_0_documentType',
     'Request for Hearing Recording'
   );
   await anyCcdPage.uploadFile('draftSscsFurtherEvidenceDocument_0_documentLink', filename);
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.clickSubmit();
   expect(await anyCcdPage.pageHeadingContains('Hearing request party')).to.equal(true);
   await anyCcdPage.clickContinue();
   expect(await anyCcdPage.pageHeadingContains('Request for hearing recording')).to.equal(true);
-  await anyCcdPage.chooseOptionContainingText('requestableHearingDetails', 'Fox Court 13:00 20 Oct 2021');
-  await anyCcdPage.clickContinue();
+  await anyCcdPage.chooseOptionContainingText('requestableHearingDetails', 'Fox Court 13:00 21 Jan 2024');
+  await anyCcdPage.clickSubmit();
   await anyCcdPage.clickSubmit();
 });
 

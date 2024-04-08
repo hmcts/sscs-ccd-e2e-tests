@@ -1,15 +1,14 @@
 @nightly-test @dla
 Feature: Create / Adjournment Schedule and Listing
 
-  @nightly-test
   Scenario: Auto request a Hearing & adjournment for a DLA case
     Given I presetup an "SANDLDLA" SYA case
-    And I am signed in as a Case Officer
+    And I am signed in as a Hearing Case Officer
     And I navigate to an existing case
     And the case should be in "With FTA" state
 
     When I choose "Upload response"
-    And I respond to the appeal with upload contains further information "No" option and "EI" issue code
+    And I respond to the dla appeal with upload contains further information "No" option and "EI" issue code
     Then the case should be in "Ready to list" state
 
     And I should see a hearing request generated for the appeal
@@ -28,15 +27,14 @@ Feature: Create / Adjournment Schedule and Listing
     And new hearing value requirements should be seen against the case
     And new hearing request must be triggered against the case
 
-  @nightly-test
-  Scenario: Auto request a Hearing for PIP case
+  Scenario: Auto request a Hearing for UC case
    Given I presetup an "SANDLUCVIDEO" SYA case
-   And  I am signed in as a Case Officer
+   And I am signed in as a Hearing Case Officer
    And I navigate to an existing case
    Then the case should be in "With FTA" state
 
    And I choose "Upload response"
-   And I upload UC further information with disputed General disputed by others No and further info No
+   And I upload contains further information "NO" for "UC"
    Then the case should be in "Ready to list" state
 
    And I should see a hearing request generated for the appeal
@@ -55,10 +53,9 @@ Feature: Create / Adjournment Schedule and Listing
    And new hearing value requirements for video hearing type should be seen against the case
    And new hearing request must be triggered against the case
  
-  @nightly-test
   Scenario: Auto request a Hearing for PIP with Rep and paper hearing
     Given I presetup an "SANDLPIPREP" SYA case
-    And I am signed in as a Case Officer
+    And I am signed in as a Hearing Case Officer
     And I navigate to an existing case
     And the case should be in "With FTA" state
 
@@ -82,10 +79,9 @@ Feature: Create / Adjournment Schedule and Listing
     And new hearing value requirements for paper hearing type should be seen against the case
     And new hearing request must be triggered against the case
 
-  @nightly-test
   Scenario: Auto request a Hearing for PIP with Rep and F2F hearing
     Given I presetup an "SANDLPIPREPF2F" SYA case
-    And I am signed in as a Case Officer
+    And I am signed in as a Hearing Case Officer
     And I navigate to an existing case
     And the case should be in "With FTA" state
 

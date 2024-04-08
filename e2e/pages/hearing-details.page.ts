@@ -4,6 +4,7 @@ import { browser, by, element } from 'protractor';
 import { AnyPage } from './any.page';
 import { expect } from 'chai';
 import { AnyCcdPage } from './any-ccd.page';
+import { Wait } from '../enums/wait';
 
 const anyCcdPage = new AnyCcdPage();
 const hearingStatus = 'WAITING TO BE LISTED ';
@@ -49,6 +50,7 @@ export class HearingDetailsPage extends AnyPage {
   }
 
   async verifyHearingStatusSummary() {
+    await anyCcdPage.reloadPage();
     await browser.sleep(5000);
     await element(by.xpath('//exui-case-hearings-list[1]/table/tbody/tr/td[3]/strong'))
       .getText()
@@ -98,31 +100,29 @@ export class HearingDetailsPage extends AnyPage {
 
   async updateHearingDetails(hearingDuration: string) {
     await anyCcdPage.clickElementById('hearingLength');
-    expect(await anyCcdPage.contentContains('Select length, date and priority level of hearing')).to.equal(true);
-    await element(by.id('durationhours'))
-      .clear()
-      .then(function () {
-        // eslint-disable-next-line no-void
-        void element(by.id('durationhours')).sendKeys(2);
-      });
-    await browser.sleep(500);
+    expect(await anyCcdPage.contentContains('Length, date and priority level of hearing')).to.equal(true);
+    await browser.sleep(Wait.short);
+    await element(by.css('#durationhours')).clear();
+    await element(by.css('#durationhours')).sendKeys(Number(hearingDuration));
+    await browser.sleep(Wait.min);
     await anyCcdPage.clickButton('Continue');
-    await browser.sleep(500);
+    await browser.sleep(Wait.min);
     await anyCcdPage.clickButton('Submit updated request');
-    await browser.sleep(500);
+    await browser.sleep(Wait.min);
     await anyCcdPage.clickElementById('adminreq');
-    await browser.sleep(500);
+    await browser.sleep(Wait.min);
     await anyCcdPage.clickButton('Submit change request');
-    await browser.sleep(500);
-    await anyCcdPage.clickButton('view the status of this hearing in the hearings tab');
+    await browser.sleep(Wait.min);
+    await anyCcdPage.clickLink('view the status of this hearing in the hearings tab');
   }
 
   async verifyHearingStatus(statusHearing: string) {
     await browser.sleep(1500);
     await browser.manage().window().maximize();
     await anyCcdPage.clickTab('Hearings');
-    await browser.sleep(1500);
-    expect(await anyCcdPage.contentContains(statusHearing.toUpperCase())).to.equal(true);
+    await browser.sleep(Wait.short);
+    const actText = await element(by.xpath('//table/tbody/tr/td[3]/strong')).getText();
+    expect(actText.trim()).to.equal(statusHearing);
   }
 
   async verifyHearingChannel(hearingChannel: string) {

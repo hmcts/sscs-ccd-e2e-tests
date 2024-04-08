@@ -11,6 +11,10 @@
       "user": "local.test@example.com",
       "password": "Pa55word11"
     },
+    "hearingCaseOfficer": {
+      "user": "",
+      "password": ""
+    },
     "clerk": {
       "user": "",
       "password": ""

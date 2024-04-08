@@ -10,7 +10,7 @@ export class UpdateListingRequirementsPage extends AnyPage {
     await browser.sleep(1500);
     expect(await anyCcdPage.pageHeadingContains('Update Listing Requirements')).to.equal(true);
     await browser.sleep(1500);
-    await anyCcdPage.chooseOptionContainingText('#overrideFields_appellantHearingChannel', video);
+    await anyCcdPage.chooseOptionContainingText('overrideFields_appellantHearingChannel', video);
     await browser.sleep(1500);
     await anyCcdPage.clickContinue();
   }
@@ -27,7 +27,7 @@ export class UpdateListingRequirementsPage extends AnyPage {
     await browser.sleep(1500);
     await anyCcdPage.clickElementById('amendReasons-judgereq');
     await browser.sleep(1500);
-    await anyCcdPage.clickContinue();
+    await anyCcdPage.clickSubmit();
     await browser.sleep(1500);
     await anyCcdPage.clickSubmit();
   }

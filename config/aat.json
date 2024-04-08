@@ -7,6 +7,10 @@
       "user": "sscs.superuser@mailinator.com",
       "password": "Testing123"
     },
+    "hearingCaseOfficer": {
+      "user": "sscs.superuserhmc@justice.gov.uk",
+      "password": "Testing123"
+    },
     "clerk": {
       "user": "",
       "password": ""

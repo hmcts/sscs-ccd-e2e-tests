@@ -10,6 +10,7 @@ Feature: Reinstatement functionality
     When I switch to be a DWPResponse Writer
     And I navigate to an existing case
     When I choose "Action further evidence"
+    And I wait "30" seconds
     And I fill the further evidence form with "otherDocumentManual" and "Reinstatement request"
     Then the case should have successfully processed "Action further evidence" event
 

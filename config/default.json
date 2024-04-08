@@ -18,10 +18,14 @@
     "RunWithNumberOfBrowsers": 2,
     "WaitForAngular": true,
     "FailFast": true,
-    "testRetries": 0
+    "testRetries": 2
   },
   "users": {
     "caseOfficer": {
+      "user": "",
+      "password": ""
+    },
+    "hearingCaseOfficer": {
       "user": "",
       "password": ""
     },

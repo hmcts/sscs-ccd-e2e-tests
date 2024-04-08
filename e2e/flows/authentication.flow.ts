@@ -24,6 +24,10 @@ export class AuthenticationFlow {
     await this.signIn('caseOfficer');
   }
 
+  async signInAsHearingCaseOfficer(): Promise<void> {
+    await this.signIn('hearingCaseOfficer');
+  }
+
   async signInAsClerk(): Promise<void> {
     await this.signIn('clerk');
   }
