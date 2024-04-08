@@ -4,6 +4,7 @@ Feature: Adjournment decision
   Background:
     Given I presetup an "PIP" SYA case
     When I switch to be a Case Officer
+    And I wait "60" seconds
     And I navigate to an existing case
     When I choose "Add a hearing"
     And I book a hearing

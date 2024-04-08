@@ -121,6 +121,10 @@ export class AnyCcdPage extends AnyPage {
     await this.chooseOption(elementId, by.xpath(`//option[normalize-space(text())='${text}']`));
   }
 
+  async chooseOptionByText(elementId: string, text: string): Promise<void> {
+    await this.chooseOption(elementId, by.xpath(`//option[contains(text(),'${text}')]`));
+  }
+
   async chooseOptionByValue(elementId: string, value: string): Promise<void> {
     await this.chooseOption(elementId, by.xpath(`.//option[contains(@value,'${value}')]`));
   }

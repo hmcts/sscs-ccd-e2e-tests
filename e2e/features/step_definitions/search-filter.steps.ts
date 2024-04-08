@@ -8,7 +8,7 @@ const anyCcdPage = new AnyCcdPage();
 
 When('I choose to filter with benefit and issue code in workbasket filter', async function () {
   await browser.sleep(Wait.long);
-  await anyCcdPage.chooseOptionContainingText('wb-case-type', 'SSCS Case 6.3.16 AAT');
+  await anyCcdPage.chooseOptionByText('wb-case-type', ' AAT');
   await anyCcdPage.chooseOptionContainingText('benefitCode', '002');
   await anyCcdPage.chooseOptionContainingText('issueCode', 'DD');
   await anyCcdPage.clickButton('Apply');
