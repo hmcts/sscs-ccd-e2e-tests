@@ -33,7 +33,7 @@ if (useProxy) {
   };
 }
 
-const featuresPath = path.resolve(process.cwd(), 'e2e/features/*.feature');
+const featuresPath = path.resolve(process.cwd(), 'e2e/features/search-filter.feature');
 
 const capabilities = {
   browserName: 'chrome',

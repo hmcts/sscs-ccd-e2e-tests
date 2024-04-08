@@ -2,10 +2,10 @@
   "ApiCallTimeout": 40000,
   "ccd": {
     "gatewayUrl": "https://gateway-ccd.aat.platform.hmcts.net",
-    "webUrl": "https://manage-case.aat.platform.hmcts.net/list/case?jurisdiction=sscs"
+    "webUrl": "https://xui-sscs-tribunals-api-pr-3712.preview.platform.hmcts.net"
   },
   "tribunals": {
-    "uri": "http://sscs-tribunals-api-aat.service.core-compute-aat.internal"
+    "uri": "https://sscs-tribunals-api-pr-3712.preview.platform.hmcts.net"
   },
   "proxy": {
     "url": "",
@@ -13,7 +13,7 @@
     "tunnelIdentifier": "reformtunnel"
   },
   "protractor": {
-    "UseHeadlessBrowser": true,
+    "UseHeadlessBrowser": false,
     "TestOutputDir": "./reports/tests-results",
     "RunWithNumberOfBrowsers": 2,
     "WaitForAngular": true,
