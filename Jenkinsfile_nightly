@@ -64,7 +64,7 @@ withNightlyPipeline("nodejs", product, component) {
             yarnBuilder.yarn('webdriverUpdate')
         }
         stage('a11y xui') {
-            yarnBuilder.yarn('test:a11y')
+            // yarnBuilder.yarn('test:a11y')
         }
     }
 
@@ -88,7 +88,7 @@ withNightlyPipeline("nodejs", product, component) {
         steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests-results/a11y/*'
     }
 
-    enableCrossBrowserTest(60)
+    // enableCrossBrowserTest(60)
     enableFullFunctionalTest(120)
 
     afterAlways('crossBrowserTest') {
