@@ -1,11 +1,11 @@
 {
   "ApiCallTimeout": 40000,
   "ccd": {
-    "gatewayUrl": "https://gateway-ccd.aat.platform.hmcts.net",
-    "webUrl": "https://manage-case.aat.platform.hmcts.net/list/case?jurisdiction=sscs"
+    "gatewayUrl": "https://gateway-ccd.demo.platform.hmcts.net",
+    "webUrl": "https://manage-case.demo.platform.hmcts.net/list/case?jurisdiction=sscs"
   },
   "tribunals": {
-    "uri": "http://sscs-tribunals-api-aat.service.core-compute-aat.internal"
+    "uri": "http://sscs-tribunals-api-demo.service.core-compute-demo.internal"
   },
   "proxy": {
     "url": "",
@@ -22,24 +22,24 @@
   },
   "users": {
     "caseOfficer": {
-      "user": "",
-      "password": ""
+      "user": "sscs.superuser@mailinator.com",
+      "password": "Testing123"
     },
     "hearingCaseOfficer": {
-      "user": "",
-      "password": ""
+      "user": "josh.caseworker@justice.gov.uk",
+      "password": "Testing123"
     },
     "clerk": {
-      "user": "",
-      "password": ""
+      "user": "josh.caseworker2@mailinator.com",
+      "password": "Testing123"
     },
     "judge": {
-      "user": "",
-      "password": ""
+      "user": "district.tribs.sscs.demo@ejudiciary.net",
+      "password": "Testing123"
     },
     "DWPResponseWriter": {
-      "user": "",
-      "password": ""
+      "user": "josh.dwp2@mailinator.com",
+      "password": "Testing123"
     }
   },
   "tests": {
