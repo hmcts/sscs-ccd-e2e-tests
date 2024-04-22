@@ -1,26 +1,26 @@
 {
   "tribunals": {
-    "uri": "http://sscs-tribunals-api-aat.service.core-compute-aat.internal"
+    "uri": "http://sscs-tribunals-api-demo.service.core-compute-demo.internal"
   },
   "users": {
     "caseOfficer": {
-      "user": "sscs.superuser@mailinator.com",
+      "user": "SSCS-ctsc-clerk2@justice.gov.uk",
       "password": "Testing123"
     },
     "hearingCaseOfficer": {
-      "user": "sscs.superuserhmc@justice.gov.uk",
+      "user": "josh.caseworker@justice.gov.uk",
       "password": "Testing123"
     },
     "clerk": {
-      "user": "",
-      "password": ""
-    },
-    "judge": {
-      "user": "sscs.judge.user@mailinator.com",
+      "user": "josh.caseworker2@mailinator.com",
       "password": "Testing123"
     },
+    "judge": {
+      "user": "josh.judge@mailinator.com",
+      "password": "Testing1234"
+    },
     "DWPResponseWriter": {
-      "user": "sscs.dwp.user@mailinator.com",
+      "user": "hmrc_share2@mailinator.com",
       "password": "Testing123"
     }
   }
