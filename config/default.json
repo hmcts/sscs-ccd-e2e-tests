@@ -13,7 +13,7 @@
     "tunnelIdentifier": "reformtunnel"
   },
   "protractor": {
-    "UseHeadlessBrowser": true,
+    "UseHeadlessBrowser": false,
     "TestOutputDir": "./reports/tests-results",
     "RunWithNumberOfBrowsers": 2,
     "WaitForAngular": true,
@@ -22,7 +22,7 @@
   },
   "users": {
     "caseOfficer": {
-      "user": "sscs.superuser@mailinator.com",
+      "user": "SSCS-ctsc-clerk2@justice.gov.uk",
       "password": "Testing123"
     },
     "hearingCaseOfficer": {
