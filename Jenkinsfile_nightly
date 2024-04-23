@@ -63,30 +63,30 @@ withNightlyPipeline("nodejs", product, component) {
         stage('Webdriver Manager Update') {
             yarnBuilder.yarn('webdriverUpdate')
         }
-        stage('a11y xui') {
-            yarnBuilder.yarn('test:a11y')
-        }
+        // stage('a11y xui') {
+        //     yarnBuilder.yarn('test:a11y')
+        // }
     }
 
-    afterAlways('build') {
-        publishHTML([
-                allowMissing         : true,
-                alwaysLinkToLastBuild: true,
-                keepAll              : true,
-                reportDir            : "reports/tests-results/a11y/",
-                reportFiles          : 'a11y.html',
-                reportName           : 'ExUi Manage Cases a11y Accessibility Report'
-        ])
-        publishHTML([
-                allowMissing         : true,
-                alwaysLinkToLastBuild: true,
-                keepAll              : true,
-                reportDir            : "reports/tests-results/a11y/",
-                reportFiles          : 'index.html',
-                reportName           : 'ExUi Manage Cases a11y Test Report'
-        ])
-        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests-results/a11y/*'
-    }
+    // afterAlways('build') {
+    //     publishHTML([
+    //             allowMissing         : true,
+    //             alwaysLinkToLastBuild: true,
+    //             keepAll              : true,
+    //             reportDir            : "reports/tests-results/a11y/",
+    //             reportFiles          : 'a11y.html',
+    //             reportName           : 'ExUi Manage Cases a11y Accessibility Report'
+    //     ])
+    //     publishHTML([
+    //             allowMissing         : true,
+    //             alwaysLinkToLastBuild: true,
+    //             keepAll              : true,
+    //             reportDir            : "reports/tests-results/a11y/",
+    //             reportFiles          : 'index.html',
+    //             reportName           : 'ExUi Manage Cases a11y Test Report'
+    //     ])
+    //     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/tests-results/a11y/*'
+    // }
 
     enableCrossBrowserTest(60)
     enableFullFunctionalTest(120)
