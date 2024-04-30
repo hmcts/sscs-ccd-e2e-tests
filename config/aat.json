@@ -4,11 +4,11 @@
   },
   "users": {
     "caseOfficer": {
-      "user": "SSCS-hearing-centre-leader4@justice.gov.uk",
+      "user": "SSCS-hearing-centre-leader@justice.gov.uk ",
       "password": "Testing123"
     },
     "hearingCaseOfficer": {
-      "user": "SSCS-hearing-centre-leader4@justice.gov.uk",
+      "user": "SSCS-hearing-centre-leader@justice.gov.uk ",
       "password": "Testing123"
     },
     "clerk": {
