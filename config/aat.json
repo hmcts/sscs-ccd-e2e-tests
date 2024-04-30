@@ -4,11 +4,11 @@
   },
   "users": {
     "caseOfficer": {
-      "user": "sscs.superuser@mailinator.com",
+      "user": "SSCS-ctsc-clerk3@justice.gov.uk",
       "password": "Testing123"
     },
     "hearingCaseOfficer": {
-      "user": "sscs.superuserhmc@justice.gov.uk",
+      "user": "SSCS-ctsc-clerk3@justice.gov.uk",
       "password": "Testing123"
     },
     "clerk": {
@@ -16,11 +16,11 @@
       "password": ""
     },
     "judge": {
-      "user": "sscs.judge.user@mailinator.com",
+      "user": "zaara.duke@ejudiciary.net",
       "password": "Testing123"
     },
     "DWPResponseWriter": {
-      "user": "sscs.dwp.user@mailinator.com",
+      "user": "SSCS-dwp-cw4@justice.gov.uk",
       "password": "Testing123"
     }
   }
