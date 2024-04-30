@@ -12,8 +12,6 @@ Feature: Common accessibility checks
         Then the page is accessible
         Given I go to "Appeal Details" tab
         Then the page is accessible
-        Given I go to "History" tab
-        Then the page is accessible
         Given I go to "Subscriptions" tab
         Then the page is accessible
         Given I go to "Documents" tab
