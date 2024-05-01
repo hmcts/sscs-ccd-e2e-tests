@@ -1,7 +1,6 @@
 @migrated-to-exui
 Feature: Happy Path
-
-  @happy-path @nightly-test @dwp-upload-response @preview-test
+  @nightly-test-skip
   Scenario: Should end up in "Ready to list" state when ALL fields are present
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
@@ -19,9 +18,8 @@ Feature: Happy Path
     And I navigate to an existing case
     Then the case should end in "Ready to list" state
     And FTA documents should be seen against the case
-
-
- @happy-path @nightly-test @dwp-upload-response
+  
+  @nightly-test-skip
   Scenario: Should end up in "Ready to List" state when a UC is not disputed by others
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer

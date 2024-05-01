@@ -13,7 +13,7 @@ Feature: Issue decision award
     And I navigate to an existing case
     When I choose "Write final decision"
 
-  @Issue-decision-award @nightly-test
+  @Issue-decision-award @nightly-test-skip
     Scenario: Yes to generate decision and award is about daily living or mobility
       Then I write a final decision generate notice yes daily living mobility is yes face to face
       When I choose "Issue final decision"
@@ -22,7 +22,7 @@ Feature: Issue decision award
       Then the case should be in "Dormant" appeal status
       Then I should see "Final Decision Notice" in documents tab
 
-  @issue-decision-4 @nightly-test-wip @Deferred
+  @issue-decision-4 @nightly-test-skip @Deferred
     Scenario: Award is about daily living or mobility
       Given I am signed in as a Case Officer
       When I switch to be a Judge

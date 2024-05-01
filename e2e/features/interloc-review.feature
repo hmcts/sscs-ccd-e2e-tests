@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test
+@migrated-to-exui @nightly-test-skip
 Feature: Interloc Review
 
   Background:

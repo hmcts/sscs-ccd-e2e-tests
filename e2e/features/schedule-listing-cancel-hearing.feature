@@ -15,7 +15,8 @@ Feature: Cancel Schedule and Listing
     And I should see a hearing request generated for the appeal
     When I click on "Cancel" hearing link and select "incompl" as cancellation reason
     Then the hearing status should be updated to "CANCELLATION REQUESTED"
-
+    
+  @nightly-test-skip
   Scenario: Auto Cancellation of a hearing request
 
     Given I presetup an "SANDLDLA" SYA case

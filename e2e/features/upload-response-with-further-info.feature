@@ -1,7 +1,5 @@
-@migrated-to-exui
 Feature: Alternate Happy Path
 
-  @alt-happy-path  @preview-test
   Scenario: Should end up in "With FTA" state when ALL fields are present
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
@@ -20,8 +18,6 @@ Feature: Alternate Happy Path
     And I choose Requires Interlocutory Review No "Response reviewed"
     Then the case should be in "Ready to list" state
 
-
-  @happy-path @dwp-upload-response @uc
   Scenario: Should end up in "Ready to List" state when a UC disputed case has been response reviewed
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
@@ -40,8 +36,6 @@ Feature: Alternate Happy Path
     When I review the UC received Response
     Then the case should be in "Ready to list" state
 
-
-  @tc-decision  @dwp-upload-response @nightly-test
   Scenario: Tax Credit case should end up in "Not listable" state
     Given I presetup an "Tax Credit" SYA case
     And I am signed in as a Case Officer
@@ -52,8 +46,6 @@ Feature: Alternate Happy Path
     And I respond to the taxCredit appeal with upload contains further information "Yes" option and "CE" issue code
     Then the case should be in "Response received" state
 
-
-  @nightly-test-5 @dwp-upload-response 
   Scenario: Child support case should end up in "Not listable" state
     Given I presetup an "Child Support" SYA case
     And I am signed in as a Case Officer

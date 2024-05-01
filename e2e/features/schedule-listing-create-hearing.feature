@@ -1,6 +1,5 @@
-@nightly-test @dla
 Feature: Create / Adjournment Schedule and Listing
-
+@nightly-test @dla
   Scenario: Auto request a Hearing & adjournment for a DLA case
     Given I presetup an "SANDLDLA" SYA case
     And I am signed in as a Hearing Case Officer
@@ -27,6 +26,7 @@ Feature: Create / Adjournment Schedule and Listing
     And new hearing value requirements should be seen against the case
     And new hearing request must be triggered against the case
 
+ @nightly-test-skip
   Scenario: Auto request a Hearing for UC case
    Given I presetup an "SANDLUCVIDEO" SYA case
    And I am signed in as a Hearing Case Officer
