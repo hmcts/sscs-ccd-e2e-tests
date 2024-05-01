@@ -1,6 +1,6 @@
-@nightly-test-skip
-Feature: Cancel Schedule and Listing
 
+Feature: Cancel Schedule and Listing
+  @nightly-test
   Scenario: Manual Cancellation of a hearing request
 
     Given I presetup an "SANDLDLA" SYA case
