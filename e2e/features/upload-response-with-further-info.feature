@@ -1,7 +1,7 @@
 @migrated-to-exui
 Feature: Alternate Happy Path
 
-  @alt-happy-path @nightly-test @preview-test
+  @alt-happy-path  @preview-test
   Scenario: Should end up in "With FTA" state when ALL fields are present
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
@@ -21,7 +21,7 @@ Feature: Alternate Happy Path
     Then the case should be in "Ready to list" state
 
 
-  @happy-path @dwp-upload-response @uc @nightly-test
+  @happy-path @dwp-upload-response @uc
   Scenario: Should end up in "Ready to List" state when a UC disputed case has been response reviewed
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer

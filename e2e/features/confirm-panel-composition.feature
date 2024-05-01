@@ -1,4 +1,4 @@
-@panel-composition @nightly-test
+@panel-composition
 Feature: Panel composition
 
   Background:

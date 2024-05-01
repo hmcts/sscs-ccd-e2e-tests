@@ -236,8 +236,8 @@ When('I choose the next step {string}', async function (action) {
 });
 
 Then('the case should be in {string} state', async function (state: string): Promise<void> {
-  await anyCcdPage.waitForEndState(state);
   await browser.manage().window().maximize();
+  await anyCcdPage.waitForEndState(state);
 });
 
 Then('the {string} event should be successfully listed in the History', async function (event: string) {

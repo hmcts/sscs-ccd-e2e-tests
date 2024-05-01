@@ -1,4 +1,4 @@
-@tc-decision @nightly-test
+@tc-decision
 Feature: TC Final Decision Notices
 
   Background:

@@ -32,7 +32,6 @@ Feature: Error messages
     And I upload with default issue code
     Then I should see "Issue code cannot be set to the default value of DD" error message
 
-  @nightly-test
   Scenario: Verify encrypted error message warning for users
     Given I am signed in as a Case Officer
     And I navigate to an existing case
@@ -42,7 +41,6 @@ Feature: Error messages
     And I fill the further evidence form with "test-encrypted-file" invalid file
     Then I should see "The below PDF document(s) cannot be password protected, please correct this" error message
 
-  @nightly-test
   Scenario: Verify encrypted error message warning for users
     Given I am signed in as a Case Officer
     And I navigate to an existing case

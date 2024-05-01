@@ -1,6 +1,6 @@
 Feature: Update UCB
 
-@update-ucb @migrated-to-exui @nightly-test
+@update-ucb @migrated-to-exui
   Scenario: Update UCB flag with upload response Granted and Refused
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer

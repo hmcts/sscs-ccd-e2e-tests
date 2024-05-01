@@ -9,7 +9,7 @@ Feature: Withdrawal
     Given I complete the event
     Then the case should be in "With FTA" state
 
-  @withdrawal  @nightly-test @crossbrowser99
+  @withdrawal @crossbrowser99
   Scenario: Should end up in "With FTA" state when ALL fields are present
     When I choose "Admin Appeal Withdrawn"
     And I click submit withdrawal "Admin Appeal Withdrawn"

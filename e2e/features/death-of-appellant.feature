@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test
+@migrated-to-exui
 Feature: Record the death of an appellant
  
   @death-of-appellant 
