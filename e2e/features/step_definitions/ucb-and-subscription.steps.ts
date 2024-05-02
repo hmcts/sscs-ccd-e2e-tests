@@ -59,15 +59,18 @@ Then('I enter date of appellant death with {string} to appointee', async functio
   await anyCcdPage.clickSubmit();
 });
 
-Then('I see appelant deceased info in Appeal details tab when {string} to appointee was selected', async function (hasAppointee) {
-   await anyCcdPage.clickTab('Appeal Details');
-   expect(await anyCcdPage.contentContains('Date of appellant death')).to.equal(true);
-   if (hasAppointee === 'No') {
+Then(
+  'I see appelant deceased info in Appeal details tab when {string} to appointee was selected',
+  async function (hasAppointee) {
+    await anyCcdPage.clickTab('Appeal Details');
+    expect(await anyCcdPage.contentContains('Date of appellant death')).to.equal(true);
+    if (hasAppointee === 'No') {
       await browser.driver.sleep(10);
       expect(await anyCcdPage.contentContains('Appointee details needed')).to.equal(true);
-   }
-   await anyCcdPage.clickTab('History');
-});
+    }
+    await anyCcdPage.clickTab('History');
+  }
+);
 
 Then('I enter {string} to appointee and continue', async function (hasAppointee) {
   await anyCcdPage.clickElementById('appeal_appellant_isAppointee_Yes');
