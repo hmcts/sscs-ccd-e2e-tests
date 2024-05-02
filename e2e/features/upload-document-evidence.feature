@@ -12,7 +12,7 @@ Feature: Upload evidences to a case
     And I upload a new document
     Then I should see uploaded file within documents tab
 
-  @nightly-test-skip
+  @nightly-test-skip @nightly-test
   Scenario: Upload an evidence using Upload document FE event
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
