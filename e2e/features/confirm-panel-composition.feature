@@ -1,4 +1,4 @@
-@panel-composition
+@panel-composition @nightly-test
 Feature: Panel composition
 
   Background:
@@ -15,5 +15,8 @@ Feature: Panel composition
     When I choose "Confirm panel composition"
     And I select "Yes" to include a financial panel member for hearing
     Then the case should be in "Response received" state
+
+    When I switch to be a Judge
+    And I navigate to an existing case
     And "Appeal Details" tab should contain "Yes" value for "Case requires a Financially Qualified Panel Member (FQPM)" field
     And "Listing Requirements" tab should contain "Yes" value for "Case requires a Financially Qualified Panel Member (FQPM)" field
