@@ -57,13 +57,16 @@ Then('I enter date of appellant death with {string} to appointee', async functio
     throw new Error('Appointee option not provided ');
   }
   await anyCcdPage.clickSubmit();
-  await anyCcdPage.clickTab('Appeal Details');
-  expect(await anyCcdPage.contentContains('Date of appellant death')).to.equal(true);
-  if (hasAppointee === 'No') {
-    await browser.driver.sleep(10);
-    expect(await anyCcdPage.contentContains('Appointee details needed')).to.equal(true);
-  }
-  await anyCcdPage.clickTab('History');
+});
+
+Then('I see appelant deceased info in Appeal details tab when {string} to appointee was selected', async function (hasAppointee) {
+   await anyCcdPage.clickTab('Appeal Details');
+   expect(await anyCcdPage.contentContains('Date of appellant death')).to.equal(true);
+   if (hasAppointee === 'No') {
+      await browser.driver.sleep(10);
+      expect(await anyCcdPage.contentContains('Appointee details needed')).to.equal(true);
+   }
+   await anyCcdPage.clickTab('History');
 });
 
 Then('I enter {string} to appointee and continue', async function (hasAppointee) {

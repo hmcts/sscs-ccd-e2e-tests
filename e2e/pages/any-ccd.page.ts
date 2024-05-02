@@ -418,6 +418,7 @@ export class AnyCcdPage extends AnyPage {
   async waitForEndState(state: string): Promise<void> {
     const endStateLabel = 'End state';
     await this.reloadPage();
+    await browser.manage().window().maximize();
     await this.clickTab('History');
     if (!(await this.isFieldValueDisplayed(endStateLabel, state))) {
       logger.info(`end state not found, waiting for ${Wait.normal / 1000}s`);
