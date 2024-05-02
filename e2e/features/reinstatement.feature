@@ -1,4 +1,4 @@
-@migrated-to-exui @reinstatement @nightly-test-skip
+@migrated-to-exui @reinstatement @nightly-test
 Feature: Reinstatement functionality
 
   Background:
@@ -7,7 +7,7 @@ Feature: Reinstatement functionality
     And I navigate to an existing case
     Then the case should end in "With FTA" state
 
-    When I switch to be a DWPResponse Writer
+    When I switch to be a Case Officer
     And I navigate to an existing case
     When I choose "Action further evidence"
     And I wait "30" seconds
