@@ -1,4 +1,4 @@
-@urgent-hearing @migrated-to-exui @nightly-test-skip
+@urgent-hearing @migrated-to-exui @nightly-test
 Feature: Urgent hearing functionality
   
   Scenario: Grant urgent hearing for a case
@@ -9,7 +9,7 @@ Feature: Urgent hearing functionality
     Given I complete the event
     Then the case should be in "With FTA" state
 
-    When I switch to be a DWPResponse Writer
+    #When I switch to be a DWPResponse Writer
     And I navigate to an existing case
     When I choose "Action further evidence"
     And I wait "30" seconds
