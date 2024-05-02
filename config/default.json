@@ -13,7 +13,7 @@
     "tunnelIdentifier": "reformtunnel"
   },
   "protractor": {
-    "UseHeadlessBrowser": true,
+    "UseHeadlessBrowser": false,
     "TestOutputDir": "./reports/tests-results",
     "RunWithNumberOfBrowsers": 2,
     "WaitForAngular": true,
@@ -38,6 +38,10 @@
       "password": ""
     },
     "DWPResponseWriter": {
+      "user": "",
+      "password": ""
+    },
+    "HMRCuser": {
       "user": "",
       "password": ""
     }

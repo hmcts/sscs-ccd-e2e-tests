@@ -22,6 +22,10 @@
     "DWPResponseWriter": {
       "user": "SSCS-dwp-cw4@justice.gov.uk",
       "password": "Testing123"
+    },
+    "HMRCuser": {
+      "user": "SSCS-hmrc-cw4@justice.gov.uk",
+      "password": "Testing123"
     }
   }
 }

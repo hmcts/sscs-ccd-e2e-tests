@@ -43,6 +43,10 @@
     "DWPResponseWriter": {
       "user": "TEST_DWP_USERNAME",
       "password": "TEST_DWP_PASSWORD"
+    },
+    "HMRCuser": {
+      "user": "TEST_HMRC_USERNAME",
+      "password": "TEST_HMRC_PASSWORD"
     }
   },
   "logging": {
