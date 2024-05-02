@@ -279,6 +279,7 @@ Given('I navigate to an existing case', async function () {
   logger.info(`the saved case id is ${caseReference}`);
   await anyCcdPage.get(`/v2/case/${caseReference}`);
   await anyCcdPage.waitForSpinner();
+  await browser.manage().window().maximize();
 });
 
 Given('I complete the event', async function () {

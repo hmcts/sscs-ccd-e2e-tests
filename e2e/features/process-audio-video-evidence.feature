@@ -1,4 +1,4 @@
-@migrated-to-exui
+@migrated-to-exui @nightly-test
 Feature: Process audio video evidence event
 
     Background: Set up PIP case
@@ -9,6 +9,9 @@ Feature: Process audio video evidence event
         And I navigate to an existing case
         And I choose "Upload response"
         When I upload AV evidence and complete Upload response event for "PIP" case 
+
+        Given I am signed in as a Case Officer
+        And I navigate to an existing case
         Then I should see the AV evidence after clicking the AV tab
         And I should see the RIP1 document
         And I should see that the AV evidence was uploaded by "FTA"
