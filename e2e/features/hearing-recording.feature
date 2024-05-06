@@ -1,4 +1,4 @@
-@migrated-to-exui @hearing-recording  @nightly-test
+@migrated-to-exui @hearing-recording
 Feature: Hearing recording
 
   Background:
@@ -15,6 +15,7 @@ Feature: Hearing recording
     And I navigate to an existing case
     When I choose "Upload hearing recording"
 
+  @nightly-test
   Scenario: Grant Hearing recording - Upload and Action hearing recordings
     And I select a hearing
     And I upload a hearing recording
