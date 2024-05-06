@@ -2,11 +2,9 @@
 Feature: Urgent hearing functionality
   
   Scenario: Grant urgent hearing for a case
-    Given I preset up a test case
+    Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
-    And I choose "Admin - send to With FTA"
-    Given I complete the event
     Then the case should be in "With FTA" state
 
     #When I switch to be a DWPResponse Writer
@@ -23,7 +21,7 @@ Feature: Urgent hearing functionality
     Then the case should be "Granted" permissions for "Urgent hearing"
  
   Scenario: Refuse urgent hearing for a case
-    Given I preset up a test case
+    Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
     When I choose "Action further evidence"

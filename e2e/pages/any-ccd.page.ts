@@ -30,6 +30,10 @@ export class AnyCcdPage extends AnyPage {
     return this.clickButton('Add new');
   }
 
+  async clickFEAddNewButton(): Promise<void> {
+    await element(by.xpath('//*[@id="scannedDocuments"]/div/button')).click();
+  }
+
   async clickNextStep(): Promise<ElementFinder> {
     return this.clickElementByXpath('//ccd-event-trigger//button[@type="submit"]');
   }

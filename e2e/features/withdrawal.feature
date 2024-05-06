@@ -2,11 +2,9 @@
 Feature: Withdrawal
 
   Background:
-    Given I preset up a test case
+    Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
     Given I navigate to an existing case
-    And I choose "Admin - send to With FTA"
-    Given I complete the event
     Then the case should be in "With FTA" state
 
   @withdrawal @crossbrowser99
