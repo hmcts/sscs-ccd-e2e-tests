@@ -26,7 +26,7 @@ Then('the hearing recording should be in {string} tab', async function (tabName)
   const isDisplayed = true;
   await browser.sleep(Wait.long);
   await browser.manage().window().maximize();
-  if (tabName == 'Hearing Recordings') {
+  if (tabName === 'Hearing Recordings') {
     await anyCcdPage.clickElementByCss('.mat-tab-header-pagination-after .mat-tab-header-pagination-chevron');
   }
   await anyCcdPage.clickTab(tabName);
