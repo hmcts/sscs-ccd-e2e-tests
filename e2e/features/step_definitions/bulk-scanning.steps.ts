@@ -241,12 +241,16 @@ Then('the case should be in {string} state', async function (state: string): Pro
 });
 
 Then('the {string} event should be successfully listed in the History', async function (event: string) {
-  await caseDetailsPage.reloadPage();
+  // await caseDetailsPage.reloadPage();
   await browser.manage().window().maximize();
+  await browser.sleep(Wait.normal);
+  await anyCcdPage.clickElementByCss('.mat-tab-header-pagination-before .mat-tab-header-pagination-chevron');
   let events = await caseDetailsPage.getHistoryEvents();
   if (events.includes(event)) {
     await browser.sleep(Wait.normal);
     await caseDetailsPage.reloadPage();
+    await browser.sleep(Wait.normal);
+    await anyCcdPage.clickElementByCss('.mat-tab-header-pagination-before .mat-tab-header-pagination-chevron');
     events = await caseDetailsPage.getHistoryEvents();
   }
   expect(events).to.include(event);
