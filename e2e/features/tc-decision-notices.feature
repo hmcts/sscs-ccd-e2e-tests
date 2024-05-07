@@ -7,10 +7,10 @@ Feature: TC Final Decision Notices
     When I navigate to an existing case
     Then the case should be in "With FTA" state
 
-    When I switch to be a DWPResponse Writer
+    When I switch to be a HMRC User
     And I navigate to an existing case
     When I choose "Upload response"
-    And I upload contains further information "NO" for "Tax Credit"
+    And I respond to the taxCredit appeal with upload contains further information "No" option and "CE" issue code
 
     When I switch to be a Judge
     And I navigate to an existing case

@@ -1,7 +1,6 @@
 @migrated-to-exui
 Feature: Happy Path
-
-  @happy-path @nightly-test @dwp-upload-response @preview-test
+  @nightly-test
   Scenario: Should end up in "Ready to list" state when ALL fields are present
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
@@ -12,16 +11,13 @@ Feature: Happy Path
     And I navigate to an existing case
     When I choose "Upload response"
     And I upload contains further information "NO" for "PIP"
-    Given I navigate to an existing case
-    Then the case should end in "Ready to list" state
 
     When I switch to be a Case Officer
     And I navigate to an existing case
     Then the case should end in "Ready to list" state
     And FTA documents should be seen against the case
-
-
- @happy-path @nightly-test @dwp-upload-response
+  
+  @nightly-test
   Scenario: Should end up in "Ready to List" state when a UC is not disputed by others
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
@@ -31,8 +27,10 @@ Feature: Happy Path
     When I switch to be a DWPResponse Writer
     And I choose "Upload response"
     And I upload UC further information with disputed General disputed by others No and further info No
-    Given I navigate to an existing case
-    Then the case should be in "Ready to list" state
+
+    When I switch to be a Case Officer
+    And I navigate to an existing case
+    Then the case should end in "Ready to list" state
 
  @nightly-test
  Scenario: Child support case should end up in "Response received" state when FTA responds

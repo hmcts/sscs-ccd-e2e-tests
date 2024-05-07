@@ -40,6 +40,10 @@
     "DWPResponseWriter": {
       "user": "",
       "password": ""
+    },
+    "HMRCuser": {
+      "user": "",
+      "password": ""
     }
   },
   "tests": {

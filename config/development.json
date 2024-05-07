@@ -26,6 +26,10 @@
     "DWPResponseWriter": {
       "user": "dwpuser@example.com",
       "password": "Pa55word11"
+    },
+    "HMRCuser": {
+      "user": "",
+      "password": ""
     }
   }
 }

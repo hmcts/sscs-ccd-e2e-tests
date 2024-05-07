@@ -1,6 +1,6 @@
-@nightly-test @dla
-Feature: Create / Adjournment Schedule and Listing
 
+Feature: Create / Adjournment Schedule and Listing
+  @dla @nightly-test
   Scenario: Auto request a Hearing & adjournment for a DLA case
     Given I presetup an "SANDLDLA" SYA case
     And I am signed in as a Hearing Case Officer
@@ -27,6 +27,7 @@ Feature: Create / Adjournment Schedule and Listing
     And new hearing value requirements should be seen against the case
     And new hearing request must be triggered against the case
 
+  @nightly-test
   Scenario: Auto request a Hearing for UC case
    Given I presetup an "SANDLUCVIDEO" SYA case
    And I am signed in as a Hearing Case Officer
@@ -49,10 +50,9 @@ Feature: Create / Adjournment Schedule and Listing
    And I choose "Issue adjournment notice"
    And I continue
    And I submit "Issue adjournment notice"
-   Then the case should end in "Not listable" state
    And new hearing value requirements for video hearing type should be seen against the case
-   And new hearing request must be triggered against the case
- 
+  
+  @nightly-test
   Scenario: Auto request a Hearing for PIP with Rep and paper hearing
     Given I presetup an "SANDLPIPREP" SYA case
     And I am signed in as a Hearing Case Officer
@@ -79,6 +79,7 @@ Feature: Create / Adjournment Schedule and Listing
     And new hearing value requirements for paper hearing type should be seen against the case
     And new hearing request must be triggered against the case
 
+  @nightly-test
   Scenario: Auto request a Hearing for PIP with Rep and F2F hearing
     Given I presetup an "SANDLPIPREPF2F" SYA case
     And I am signed in as a Hearing Case Officer

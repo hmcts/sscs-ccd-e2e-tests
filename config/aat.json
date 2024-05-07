@@ -4,24 +4,28 @@
   },
   "users": {
     "caseOfficer": {
-      "user": "sscs.superuser@mailinator.com",
-      "password": "Testing123"
+      "user": "",
+      "password": ""
     },
     "hearingCaseOfficer": {
-      "user": "sscs.superuserhmc@justice.gov.uk",
-      "password": "Testing123"
+      "user": "",
+      "password": ""
     },
     "clerk": {
       "user": "",
       "password": ""
     },
     "judge": {
-      "user": "sscs.judge.user@mailinator.com",
-      "password": "Testing123"
+      "user": "",
+      "password": ""
     },
     "DWPResponseWriter": {
-      "user": "sscs.dwp.user@mailinator.com",
-      "password": "Testing123"
+      "user": "",
+      "password": ""
+    },
+    "HMRCuser": {
+      "user": "",
+      "password": ""
     }
   }
 }

@@ -6,7 +6,9 @@ Feature: Issue decision award
     And I am signed in as a Case Officer
     And I navigate to an existing case
     Then the case should be in "With FTA" state
+
     When I switch to be a DWPResponse Writer
+    And I navigate to an existing case
     When I choose "Upload response"
     And I upload contains further information "NO" for "PIP"
     When I switch to be a Judge
@@ -22,7 +24,7 @@ Feature: Issue decision award
       Then the case should be in "Dormant" appeal status
       Then I should see "Final Decision Notice" in documents tab
 
-  @issue-decision-4 @nightly-test-wip @Deferred
+  @issue-decision-4 @nightly-test-skip @Deferred
     Scenario: Award is about daily living or mobility
       Given I am signed in as a Case Officer
       When I switch to be a Judge

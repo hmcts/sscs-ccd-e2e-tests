@@ -16,7 +16,7 @@ When(
     expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
     await anyCcdPage.chooseOptionByValue('furtherEvidenceAction', actionType);
     await anyCcdPage.chooseOptionContainingText('originalSender', 'Appellant (or Appointee)');
-    await anyCcdPage.clickAddNew();
+    await anyCcdPage.clickFEAddNewButton();
 
     expect(await anyCcdPage.pageHeadingContains('Document Type')).to.equal(true);
     await anyCcdPage.chooseOptionContainingText('scannedDocuments_0_type', requestType);
@@ -35,7 +35,7 @@ When('I fill the further evidence form with {string} invalid file', async functi
   expect(await anyCcdPage.pageHeadingContains('Action further evidence')).to.equal(true);
   await anyCcdPage.chooseOptionContainingText('furtherEvidenceAction', 'Send to Interloc - Review by Judge');
   await anyCcdPage.chooseOptionContainingText('originalSender', 'Appellant (or Appointee)');
-  await anyCcdPage.clickAddNew();
+  await anyCcdPage.clickFEAddNewButton();
 
   await anyCcdPage.chooseOptionContainingText('scannedDocuments_0_type', 'Confidentiality request');
   await anyCcdPage.uploadFile('scannedDocuments_0_url', `${testFile}.pdf`);

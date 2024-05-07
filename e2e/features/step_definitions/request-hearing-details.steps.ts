@@ -78,3 +78,8 @@ Then('the hearing status should be {string}', async function (hearingStats: stri
   await hearingDetailsPage.requestAutoHearing();
   await hearingDetailsPage.verifyCancelHearingStatus(hearingStats);
 });
+
+Then('I navigate to {string} tab', async function (tabName: string) {
+  await anyCcdPage.clickElementByCss('.mat-tab-header-pagination-after  .mat-tab-header-pagination-chevron');
+  await anyCcdPage.clickTab(tabName);
+});

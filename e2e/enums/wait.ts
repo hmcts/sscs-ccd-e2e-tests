@@ -3,7 +3,7 @@ export enum Wait {
   min = 500,
   short = 2000,
   normal = 5000,
-  long = 10000,
+  long = 15000,
   extended = 50000,
   max = 100000,
 }

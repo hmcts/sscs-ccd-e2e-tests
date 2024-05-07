@@ -1,6 +1,7 @@
+
 @nightly-test
 Feature: Cancel Schedule and Listing
-
+  
   Scenario: Manual Cancellation of a hearing request
 
     Given I presetup an "SANDLDLA" SYA case
@@ -30,5 +31,6 @@ Feature: Cancel Schedule and Listing
     And I should see a hearing request generated for the appeal
     When I choose "Strike out case"
     And submit the event
-    Then the hearing status should be updated to "CANCELLATION REQUESTED"
+    Then I navigate to "Hearings" tab
+    And the hearing status should be updated to "CANCELLATION REQUESTED"
 

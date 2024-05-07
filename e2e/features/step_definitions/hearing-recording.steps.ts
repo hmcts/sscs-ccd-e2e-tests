@@ -3,6 +3,8 @@ import { HearingRecordingPage } from '../../pages/hearing-recording.page';
 import { CaseDetailsPage } from '../../pages/case-details.page';
 import { Then, When, Given } from '@cucumber/cucumber';
 import { expect } from 'chai';
+import { browser } from 'protractor';
+import { Wait } from '../../enums/wait';
 
 const anyCcdPage = new AnyCcdPage();
 const hearingRecordingPage = new HearingRecordingPage();
@@ -15,13 +17,18 @@ When('I upload a hearing recording', async function () {
 
 When('I select a hearing', async function () {
   expect(await anyCcdPage.pageHeadingContains('Upload hearing recording')).to.equal(true);
+  await browser.sleep(Wait.normal);
   await hearingRecordingPage.selectHearing();
   await anyCcdPage.clickContinue();
 });
 
 Then('the hearing recording should be in {string} tab', async function (tabName) {
   const isDisplayed = true;
-  await anyCcdPage.reloadPage();
+  await browser.sleep(Wait.long);
+  await browser.manage().window().maximize();
+  if (tabName === 'Hearing Recordings') {
+    await anyCcdPage.clickElementByCss('.mat-tab-header-pagination-after .mat-tab-header-pagination-chevron');
+  }
   await anyCcdPage.clickTab(tabName);
   expect(await anyCcdPage.contentContains('recordings 1')).to.equal(isDisplayed);
   // expect(await anyCcdPage.contentContains('Recordings')).to.equal(isDisplayed);
@@ -31,12 +38,14 @@ Then('the hearing recording should be in {string} tab', async function (tabName)
 });
 
 Then('the {string} should be successfully listed in the History', async function (action) {
+  await anyCcdPage.clickElementByCss('.mat-tab-header-pagination-before .mat-tab-header-pagination-chevron');
   const events = await caseDetailsPage.getHistoryEvents();
   expect(events).to.include(action);
 });
 
 When('I request for Hearing recording', async function () {
   expect(await anyCcdPage.pageHeadingContains('Request hearing recording')).to.equal(true);
+  await browser.sleep(Wait.short);
   await hearingRecordingPage.requestDwpHearingRecording();
   await anyCcdPage.clickContinue();
   await anyCcdPage.clickSubmit();

@@ -7,7 +7,7 @@ Feature: Update UCB
     Given I navigate to an existing case
     Then the case should end in "With FTA" state
 
-    When I switch to be a DWPResponse Writer
+    When I switch to be a Case Officer
     And I navigate to an existing case
     And I choose "Upload response"
     And I upload a "UCB" doc contains further information "YES" for "PIP"

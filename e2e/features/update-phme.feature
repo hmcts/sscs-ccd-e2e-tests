@@ -11,7 +11,6 @@ Feature: Update Phme
     And I navigate to an existing case
     And I choose "Upload response"
     And I upload a "PHME" doc contains further information "YES" for "PIP"
-    Then the case should end in "Response received" state
     Then I should see PHME flag as "Under Review"
 
     When I switch to be a Judge

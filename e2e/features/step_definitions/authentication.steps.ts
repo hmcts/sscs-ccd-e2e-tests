@@ -53,3 +53,12 @@ Given('I switch to be a Judge', async function () {
   await anyCcdPage.get(currentUrl);
   await browser.sleep(5000);
 });
+
+Given('I switch to be a HMRC User', async function () {
+  await browser.sleep(100);
+  const currentUrl = await browser.driver.getCurrentUrl();
+  await authenticationFlow.signInAsHMRC();
+  await browser.sleep(100);
+  await anyCcdPage.waitUntilLoaded();
+  await anyCcdPage.get(currentUrl);
+});

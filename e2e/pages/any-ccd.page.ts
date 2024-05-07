@@ -30,6 +30,10 @@ export class AnyCcdPage extends AnyPage {
     return this.clickButton('Add new');
   }
 
+  async clickFEAddNewButton(): Promise<void> {
+    await element(by.xpath('//*[@id="scannedDocuments"]/div/button')).click();
+  }
+
   async clickNextStep(): Promise<ElementFinder> {
     return this.clickElementByXpath('//ccd-event-trigger//button[@type="submit"]');
   }
@@ -418,6 +422,7 @@ export class AnyCcdPage extends AnyPage {
   async waitForEndState(state: string): Promise<void> {
     const endStateLabel = 'End state';
     await this.reloadPage();
+    await browser.manage().window().maximize();
     await this.clickTab('History');
     if (!(await this.isFieldValueDisplayed(endStateLabel, state))) {
       logger.info(`end state not found, waiting for ${Wait.normal / 1000}s`);

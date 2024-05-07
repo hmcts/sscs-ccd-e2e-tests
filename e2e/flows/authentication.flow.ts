@@ -40,6 +40,10 @@ export class AuthenticationFlow {
     await this.signIn('DWPResponseWriter');
   }
 
+  async signInAsHMRC(): Promise<void> {
+    await this.signIn('HMRCuser');
+  }
+
   async signIn(user: string): Promise<void> {
     await this.goToSignInPage();
     this.userName = config.get(`users.${user}.user`);

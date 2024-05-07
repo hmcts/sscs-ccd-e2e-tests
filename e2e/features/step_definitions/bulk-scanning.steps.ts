@@ -236,17 +236,21 @@ When('I choose the next step {string}', async function (action) {
 });
 
 Then('the case should be in {string} state', async function (state: string): Promise<void> {
-  await anyCcdPage.waitForEndState(state);
   await browser.manage().window().maximize();
+  await anyCcdPage.waitForEndState(state);
 });
 
 Then('the {string} event should be successfully listed in the History', async function (event: string) {
-  await caseDetailsPage.reloadPage();
+  // await caseDetailsPage.reloadPage();
   await browser.manage().window().maximize();
+  await browser.sleep(Wait.normal);
+  await anyCcdPage.clickElementByCss('.mat-tab-header-pagination-before .mat-tab-header-pagination-chevron');
   let events = await caseDetailsPage.getHistoryEvents();
   if (events.includes(event)) {
     await browser.sleep(Wait.normal);
     await caseDetailsPage.reloadPage();
+    await browser.sleep(Wait.normal);
+    await anyCcdPage.clickElementByCss('.mat-tab-header-pagination-before .mat-tab-header-pagination-chevron');
     events = await caseDetailsPage.getHistoryEvents();
   }
   expect(events).to.include(event);
@@ -279,6 +283,7 @@ Given('I navigate to an existing case', async function () {
   logger.info(`the saved case id is ${caseReference}`);
   await anyCcdPage.get(`/v2/case/${caseReference}`);
   await anyCcdPage.waitForSpinner();
+  await browser.manage().window().maximize();
 });
 
 Given('I complete the event', async function () {
