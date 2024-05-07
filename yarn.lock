@@ -28,18 +28,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/core@npm:16.1.3":
-  version: 16.1.3
-  resolution: "@angular/core@npm:16.1.3"
-  dependencies:
-    tslib: ^2.3.0
-  peerDependencies:
-    rxjs: ^6.5.3 || ^7.4.0
-    zone.js: ~0.13.0
-  checksum: ae8d69542bebd2b12becc1cc8866b93e977c4cf8636c8e2854a5480023d6733f2038d5db281c9fe319b81cb696af099bbd2a6267bac026f9c51e6306484c2162
-  languageName: node
-  linkType: hard
-
 "@angular/core@npm:9.0.0":
   version: 9.0.0
   resolution: "@angular/core@npm:9.0.0"
@@ -5297,7 +5285,6 @@ __metadata:
   resolution: "sscs-ccd-e2e-tests@workspace:."
   dependencies:
     "@angular/compiler": 16.1.3
-    "@angular/core": 16.1.3
     "@axe-core/webdriverjs": 4.7.1
     "@cucumber/cucumber": ^9.1.2
     "@cucumber/messages": 22.0.0
