@@ -4,28 +4,28 @@
   },
   "users": {
     "caseOfficer": {
-      "user": "SSCS-hearing-centre-leader@justice.gov.uk",
-      "password": "Testing123"
+      "user": "",
+      "password": ""
     },
     "hearingCaseOfficer": {
-      "user": "SSCS-hearing-centre-leader@justice.gov.uk",
-      "password": "Testing123"
+      "user": "",
+      "password": ""
     },
     "clerk": {
       "user": "",
       "password": ""
     },
     "judge": {
-      "user": "zaara.duke@ejudiciary.net",
-      "password": "Testing123"
+      "user": "",
+      "password": ""
     },
     "DWPResponseWriter": {
-      "user": "SSCS-dwp-cw4@justice.gov.uk",
-      "password": "Testing123"
+      "user": "",
+      "password": ""
     },
     "HMRCuser": {
-      "user": "SSCS-hmrc-cw4@justice.gov.uk",
-      "password": "Testing123"
+      "user": "",
+      "password": ""
     }
   }
 }
