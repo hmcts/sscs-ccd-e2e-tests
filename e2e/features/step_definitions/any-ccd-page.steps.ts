@@ -14,6 +14,8 @@ Given('I wait {string} seconds', async function (number) {
 });
 
 Then('I should see {string} as a case field', async function (value: string) {
+  await browser.sleep(Wait.short);
+  await anyCcdPage.clickElementByCss('.mat-tab-header-pagination-before .mat-tab-header-pagination-chevron');
   await anyCcdPage.clickTab('Summary');
   const titleVal = await anyCcdPage.getTitleAttribute();
   logger.info(titleVal);
