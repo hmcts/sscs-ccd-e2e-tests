@@ -295,9 +295,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cucumber/pretty-formatter@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@cucumber/pretty-formatter@npm:1.0.0"
+"@cucumber/pretty-formatter@npm:1.0.1":
+  version: 1.0.1
+  resolution: "@cucumber/pretty-formatter@npm:1.0.1"
   dependencies:
     ansi-styles: ^5.0.0
     cli-table3: ^0.6.0
@@ -306,7 +306,7 @@ __metadata:
   peerDependencies:
     "@cucumber/cucumber": ">=7.0.0"
     "@cucumber/messages": "*"
-  checksum: 97ce01bd68e739cc730deffeff95607f4471a5f950372d3d05736d00bf283e8fcbc933ad45274dc04a881059bdbeff9fe3499c2b6549e3456ee1bf530722150f
+  checksum: bd84ff9fcf0d0a6c8d190f5c7acec426a1ff6eb2f67c743abb8ff226768121bae482be191b9db64449df09be8aecdd93661a91ba4db708f55e3e14a7ce7dede2
   languageName: node
   linkType: hard
 
@@ -5116,13 +5116,11 @@ __metadata:
   linkType: hard
 
 "semver@npm:^7.0.0, semver@npm:^7.3.4, semver@npm:^7.3.7":
-  version: 7.6.0
-  resolution: "semver@npm:7.6.0"
-  dependencies:
-    lru-cache: ^6.0.0
+  version: 7.6.1
+  resolution: "semver@npm:7.6.1"
   bin:
     semver: bin/semver.js
-  checksum: 7427f05b70786c696640edc29fdd4bc33b2acf3bbe1740b955029044f80575fc664e1a512e4113c3af21e767154a94b4aa214bf6cd6e42a1f6dba5914e0b208c
+  checksum: 2c9c89b985230c0fcf02c96ae6a3ca40c474f2f4e838634394691e6e10c347a0c6def0f14fc355d82f90f1744a073b8b9c45457b108aa728280b5d68ed7961cd
   languageName: node
   linkType: hard
 
@@ -5301,7 +5299,7 @@ __metadata:
     "@axe-core/webdriverjs": 4.7.1
     "@cucumber/cucumber": ^9.1.2
     "@cucumber/messages": 22.0.0
-    "@cucumber/pretty-formatter": 1.0.0
+    "@cucumber/pretty-formatter": 1.0.1
     "@faker-js/faker": 8.0.1
     "@hmcts/eslint-config": 1.4.0
     "@hmcts/nodejs-logging": 4.0.4
