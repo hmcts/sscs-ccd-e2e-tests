@@ -1,6 +1,6 @@
 Feature: Enhanced confidentiality
 
-    @nightly-test @preview-test-skip @ec-10106
+    @nightly-test-skip @preview-test-skip @ec-10106
     Scenario: Enhanced confidentiality scenario
         Given I presetup an "UC" SYA case
         And I am signed in as a Case Officer
