@@ -13,6 +13,7 @@ Feature: Hearing recording
     When I switch to be a Case Officer
 
     And I navigate to an existing case
+    And I wait "60" seconds
     When I choose "Upload hearing recording"
 
   @nightly-test
