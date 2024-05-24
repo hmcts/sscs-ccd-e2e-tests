@@ -5,17 +5,17 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@angular/compiler@npm:16.1.3":
-  version: 16.1.3
-  resolution: "@angular/compiler@npm:16.1.3"
+"@angular/compiler@npm:16.2.12":
+  version: 16.2.12
+  resolution: "@angular/compiler@npm:16.2.12"
   dependencies:
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/core": 16.1.3
+    "@angular/core": 16.2.12
   peerDependenciesMeta:
     "@angular/core":
       optional: true
-  checksum: 83d100b8f6aafd904ae371017e3d743fc2c395c52880d12798c5f54f02a626d552fb09648f72cc26c81abb40bacad8d8f53f21735ff29f6388f9c106b103bbe5
+  checksum: 061903d04445acae39fb85048952a5451c3c2a198d0b55541afdc943e0cb5de3b7164c1efa4d9d2c3d92dba2dbf3143150f72449230d48074562e1c1be6f0108
   languageName: node
   linkType: hard
 
@@ -28,15 +28,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/core@npm:16.1.3":
-  version: 16.1.3
-  resolution: "@angular/core@npm:16.1.3"
+"@angular/core@npm:16.2.12":
+  version: 16.2.12
+  resolution: "@angular/core@npm:16.2.12"
   dependencies:
     tslib: ^2.3.0
   peerDependencies:
     rxjs: ^6.5.3 || ^7.4.0
     zone.js: ~0.13.0
-  checksum: ae8d69542bebd2b12becc1cc8866b93e977c4cf8636c8e2854a5480023d6733f2038d5db281c9fe319b81cb696af099bbd2a6267bac026f9c51e6306484c2162
+  checksum: ccbfa810402ee1102fe0e7996e560c21737e07069c17d4ddde740c621d1b5053e1bf757f0fcedc1000b29fe2d6f8a9eee048b521fc3977fc96e948dd317e830f
   languageName: node
   linkType: hard
 
@@ -5277,9 +5277,9 @@ __metadata:
   linkType: hard
 
 "spdx-license-ids@npm:^3.0.0":
-  version: 3.0.17
-  resolution: "spdx-license-ids@npm:3.0.17"
-  checksum: 0aba5d16292ff604dd20982200e23b4d425f6ba364765039bdbde2f6c956b9909fce1ad040a897916a5f87388e85e001f90cb64bf706b6e319f3908cfc445a59
+  version: 3.0.18
+  resolution: "spdx-license-ids@npm:3.0.18"
+  checksum: 457825df5dd1fc0135b0bb848c896143f70945cc2da148afc71c73ed0837d1d651f809006e406d82109c9dd71a8cb39785a3604815fe46bc0548e9d3976f6b69
   languageName: node
   linkType: hard
 
@@ -5294,8 +5294,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sscs-ccd-e2e-tests@workspace:."
   dependencies:
-    "@angular/compiler": 16.1.3
-    "@angular/core": 16.1.3
+    "@angular/compiler": 16.2.12
+    "@angular/core": 16.2.12
     "@axe-core/webdriverjs": 4.7.1
     "@cucumber/cucumber": ^9.1.2
     "@cucumber/messages": 22.0.0
