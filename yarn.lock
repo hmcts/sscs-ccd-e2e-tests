@@ -28,15 +28,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/core@npm:16.2.12":
-  version: 16.2.12
-  resolution: "@angular/core@npm:16.2.12"
+"@angular/core@npm:17.0.0":
+  version: 17.0.0
+  resolution: "@angular/core@npm:17.0.0"
   dependencies:
     tslib: ^2.3.0
   peerDependencies:
     rxjs: ^6.5.3 || ^7.4.0
-    zone.js: ~0.13.0
-  checksum: ccbfa810402ee1102fe0e7996e560c21737e07069c17d4ddde740c621d1b5053e1bf757f0fcedc1000b29fe2d6f8a9eee048b521fc3977fc96e948dd317e830f
+    zone.js: ~0.14.0
+  checksum: a28782dacf04aac96c58cda193d144aeb001c02e57f03a6458be82b26571b9ea2e76a7ee3b7908dd80bb8f3f2a9f0bfcc83c09c0491ffc47e0f25edfce2beff6
   languageName: node
   linkType: hard
 
@@ -5409,7 +5409,7 @@ __metadata:
   resolution: "sscs-ccd-e2e-tests@workspace:."
   dependencies:
     "@angular/compiler": 16.2.12
-    "@angular/core": 16.2.12
+    "@angular/core": 17.0.0
     "@axe-core/webdriverjs": 4.7.1
     "@cucumber/cucumber": ^9.1.2
     "@cucumber/messages": 22.0.0
