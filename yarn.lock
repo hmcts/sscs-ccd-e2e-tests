@@ -3760,10 +3760,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jasmine-core@npm:5.0.0":
-  version: 5.0.0
-  resolution: "jasmine-core@npm:5.0.0"
-  checksum: e54b746d6fc54f2e36ea0bc48eb375ea3c31547ea9e7719e64184184d00c1845e6a3d82e7a5afada93e7ea16241e181c0bf68562fcd9699210cafc07ba2120cc
+"jasmine-core@npm:5.1.2":
+  version: 5.1.2
+  resolution: "jasmine-core@npm:5.1.2"
+  checksum: 42e8db69879b64392d797b2e35b108782b73c70302787903af49fec27cb12daf795f1e3b7e8c30ef5d4ab501f37aa347590f6b472fc336568e9ada2d06e9726f
   languageName: node
   linkType: hard
 
@@ -5437,7 +5437,7 @@ __metadata:
     eslint-plugin-import: 2.27.5
     eslint-plugin-jsdoc: 44.2.7
     eslint-plugin-prettier: 4.2.1
-    jasmine-core: 5.0.0
+    jasmine-core: 5.1.2
     jasmine-spec-reporter: 7.0.0
     moment: 2.29.4
     multiple-cucumber-html-reporter: ^3.4.0
