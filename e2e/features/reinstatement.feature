@@ -18,10 +18,12 @@ Feature: Reinstatement functionality
     And I navigate to an existing case
     When I choose "Issue directions notice"
 
+  @nightly-test-migrated-to-playwright
   Scenario: Grant reinstatement
     And I fill the direction notice form with "Grant reinstatement"
     Then the case should be "Granted" permissions for "Reinstatement"
 
+  @nightly-test-migrated-to-playwright
   Scenario: Refuse reinstatement
     And I fill the direction notice form with "Refuse reinstatement"
     Then the case should be "Refused" permissions for "Reinstatement"
