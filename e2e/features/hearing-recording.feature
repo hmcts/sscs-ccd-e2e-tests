@@ -16,7 +16,7 @@ Feature: Hearing recording
     And I wait "60" seconds
     When I choose "Upload hearing recording"
 
-  @nightly-test
+  @nightly-test-migrated-to-playwright
   Scenario: Grant Hearing recording - Upload and Action hearing recordings
     And I select a hearing
     And I upload a hearing recording
@@ -39,7 +39,7 @@ Feature: Hearing recording
     And I navigate to an existing case
     Then the hearing recording should be in "Documents" tab
 
- @nightly-test-CI-bug
+ @nightly-test-migrated-to-playwright
  Scenario: Refuse Hearing recording  - an offline hearing recording request
     And I select a hearing
     And I upload a hearing recording

@@ -1,4 +1,4 @@
-@request-time-extension @migrated-to-exui
+@request-time-extension @migrated-to-exui @nightly-test-migrated-to-playwright
 Feature: Request time extension functionality
 
   Background:
