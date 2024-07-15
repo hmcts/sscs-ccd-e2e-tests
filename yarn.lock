@@ -51,14 +51,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@axe-core/webdriverjs@npm:4.7.1":
-  version: 4.7.1
-  resolution: "@axe-core/webdriverjs@npm:4.7.1"
+"@axe-core/webdriverjs@npm:4.9.1":
+  version: 4.9.1
+  resolution: "@axe-core/webdriverjs@npm:4.9.1"
   dependencies:
-    axe-core: ^4.7.0
+    axe-core: ~4.9.1
   peerDependencies:
     selenium-webdriver: ">3.0.0-beta  || >=2.53.1 || >4.0.0-alpha"
-  checksum: 49f6db44251761bf33e7299d80fd5be5d5303d2a7cd32faebc2c4efba230e3a94640e37697fb58e7d74ef78dc0c973bcc0626a68bfc340b8f99f7513c2123b7c
+  checksum: 15dbcaef6bbad203e308392df46d9c3d3788c91fd2815a0e023796ba0716908679720f196b1bfdea1ff3f718f14fefeac0ad4f961e7d6e78ae5113ec31cdad78
   languageName: node
   linkType: hard
 
@@ -92,21 +92,21 @@ __metadata:
   linkType: hard
 
 "@babel/runtime-corejs3@npm:^7.12.1":
-  version: 7.24.7
-  resolution: "@babel/runtime-corejs3@npm:7.24.7"
+  version: 7.24.8
+  resolution: "@babel/runtime-corejs3@npm:7.24.8"
   dependencies:
     core-js-pure: ^3.30.2
     regenerator-runtime: ^0.14.0
-  checksum: fb5cae960a2d4cbcb2144059dfa9dbe5530d027fa210a5bc37c67c3014226c32390f221320066124872f3d6c4830af17a19da09c10ab114da9b6fa8ab4377cea
+  checksum: d23c4ecdef5d7ca3e0ed454a66b1c1d603ab9d3a884796fbf545156ac1909e134e4f303ff810930365508aeccc09fdd4cc26417db7a65619bac08e03ab27a7b0
   languageName: node
   linkType: hard
 
 "@babel/runtime@npm:^7.15.4":
-  version: 7.24.7
-  resolution: "@babel/runtime@npm:7.24.7"
+  version: 7.24.8
+  resolution: "@babel/runtime@npm:7.24.8"
   dependencies:
     regenerator-runtime: ^0.14.0
-  checksum: d17f29eed6f848ac15cdf4202a910b741facfb0419a9d79e5c7fa37df6362fc3227f1cc2e248cc6db5e53ddffb4caa6686c488e6e80ce3d29c36a4e74c8734ea
+  checksum: 6b1e4230580f67a807ad054720812bbefbb024cc2adc1159d050acbb764c4c81c7ac5f7a042c48f578987c5edc2453c71039268df059058e9501fa6023d764b0
   languageName: node
   linkType: hard
 
@@ -442,9 +442,9 @@ __metadata:
   linkType: hard
 
 "@jridgewell/sourcemap-codec@npm:^1.4.10":
-  version: 1.4.15
-  resolution: "@jridgewell/sourcemap-codec@npm:1.4.15"
-  checksum: b881c7e503db3fc7f3c1f35a1dd2655a188cc51a3612d76efc8a6eb74728bef5606e6758ee77423e564092b4a518aba569bbb21c9bac5ab7a35b0c6ae7e344c8
+  version: 1.5.0
+  resolution: "@jridgewell/sourcemap-codec@npm:1.5.0"
+  checksum: 05df4f2538b3b0f998ea4c1cd34574d0feba216fa5d4ccaef0187d12abf82eafe6021cec8b49f9bb4d90f2ba4582ccc581e72986a5fcf4176ae0cfeb04cf52ec
   languageName: node
   linkType: hard
 
@@ -929,11 +929,11 @@ __metadata:
   linkType: hard
 
 "acorn@npm:^8.11.0, acorn@npm:^8.4.1, acorn@npm:^8.8.0":
-  version: 8.12.0
-  resolution: "acorn@npm:8.12.0"
+  version: 8.12.1
+  resolution: "acorn@npm:8.12.1"
   bin:
     acorn: bin/acorn
-  checksum: ae142de8739ef15a5d936c550c1d267fc4dedcdbe62ad1aa2c0009afed1de84dd0a584684a5d200bb55d8db14f3e09a95c6e92a5303973c04b9a7413c36d1df0
+  checksum: 677880034aee5bdf7434cc2d25b641d7bedb0b5ef47868a78dadabedccf58e1c5457526d9d8249cd253f2df087e081c3fe7d903b448d8e19e5131a3065b83c07
   languageName: node
   linkType: hard
 
@@ -1269,10 +1269,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:4.7.1, axe-core@npm:^4.7.0":
+"axe-core@npm:4.7.1":
   version: 4.7.1
   resolution: "axe-core@npm:4.7.1"
   checksum: ff6fb92d6cadb749977af72b7d28009dec2b1842d4fdc4114a295ce973a39d0ac477e541be360eb9482a8d63f55840196813d7d892c0bd8437f52d9f7349c788
+  languageName: node
+  linkType: hard
+
+"axe-core@npm:~4.9.1":
+  version: 4.9.1
+  resolution: "axe-core@npm:4.9.1"
+  checksum: 41d9227871781f96c2952e2a777fca73624959dd0e98864f6d82806a77602f82b4fc490852082a7e524d8cd864e50d8b4d9931819b4a150112981d8c932110c5
   languageName: node
   linkType: hard
 
@@ -5410,7 +5417,7 @@ __metadata:
   dependencies:
     "@angular/compiler": 16.2.12
     "@angular/core": 16.2.12
-    "@axe-core/webdriverjs": 4.7.1
+    "@axe-core/webdriverjs": 4.9.1
     "@cucumber/cucumber": ^9.1.2
     "@cucumber/messages": 22.0.0
     "@cucumber/pretty-formatter": 1.0.1
