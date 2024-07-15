@@ -1,4 +1,4 @@
-@migrated-to-exui @reinstatement @nightly-test
+@migrated-to-exui @reinstatement @nightly-test-migrated-to-playwright
 Feature: Reinstatement functionality
 
   Background:

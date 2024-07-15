@@ -1,6 +1,6 @@
 Feature: Alternate Happy Path
   
-  @nightly-test
+  @nightly-test-migrated-to-playwright
   Scenario: Should end up in "With FTA" state when ALL fields are present
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
@@ -19,7 +19,7 @@ Feature: Alternate Happy Path
     And I choose Requires Interlocutory Review No "Response reviewed"
     Then the case should be in "Ready to list" state
   
-  @nightly-test
+  @nightly-test-migrated-to-playwright
   Scenario: Should end up in "Ready to List" state when a UC disputed case has been response reviewed
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
@@ -38,7 +38,7 @@ Feature: Alternate Happy Path
     When I review the UC received Response
     Then the case should be in "Ready to list" state
 
-  @nightly-test
+  @nightly-test-migrated-to-playwright
   Scenario: Tax Credit case should end up in "Not listable" state
     Given I presetup an "Tax Credit" SYA case
     And I am signed in as a Case Officer

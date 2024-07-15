@@ -1,4 +1,4 @@
-@urgent-hearing @migrated-to-exui @nightly-test
+@urgent-hearing @migrated-to-exui @nightly-test-migrated-to-playwright
 Feature: Urgent hearing functionality
   
   Scenario: Grant urgent hearing for a case
