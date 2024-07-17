@@ -16,7 +16,7 @@ Feature: Auto Amend and Manual Amend Hearing - Schedule and Listing
     When I click on hearing details
     Then the venue of the hearing should be in "Cardiff Social Security And Child Support Tribunal"
     And the duration of the hearing should be "1 Hour"
-    And the earliest hearing date should be from "28" days of hearing requested
+    And the earliest hearing date should be from "31" days of hearing requested
 
     When I update the length of hearing to "2" hours
     Then the hearing status should be updated to "UPDATE REQUESTED"
