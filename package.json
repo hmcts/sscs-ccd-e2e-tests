@@ -51,7 +51,7 @@
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jsdoc": "44.2.7",
     "eslint-plugin-prettier": "4.2.1",
-    "jasmine-core": "5.0.0",
+    "jasmine-core": "5.2.0",
     "jasmine-spec-reporter": "7.0.0",
     "moment": "2.29.4",
     "multiple-cucumber-html-reporter": "^3.4.0",
