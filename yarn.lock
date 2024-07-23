@@ -1269,14 +1269,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:4.7.1":
-  version: 4.7.1
-  resolution: "axe-core@npm:4.7.1"
-  checksum: ff6fb92d6cadb749977af72b7d28009dec2b1842d4fdc4114a295ce973a39d0ac477e541be360eb9482a8d63f55840196813d7d892c0bd8437f52d9f7349c788
-  languageName: node
-  linkType: hard
-
-"axe-core@npm:~4.9.1":
+"axe-core@npm:4.9.1, axe-core@npm:~4.9.1":
   version: 4.9.1
   resolution: "axe-core@npm:4.9.1"
   checksum: 41d9227871781f96c2952e2a777fca73624959dd0e98864f6d82806a77602f82b4fc490852082a7e524d8cd864e50d8b4d9931819b4a150112981d8c932110c5
@@ -5433,7 +5426,7 @@ __metadata:
     "@types/node": 20.2.3
     "@typescript-eslint/eslint-plugin": 5.59.7
     "@typescript-eslint/parser": 5.59.7
-    axe-core: 4.7.1
+    axe-core: 4.9.1
     chai: 4.4.1
     chai-as-promised: 7.1.2
     codelyzer: 6.0.2
