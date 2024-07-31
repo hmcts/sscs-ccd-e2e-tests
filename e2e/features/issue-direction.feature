@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test @issue-direction
+@migrated-to-exui @nightly-test-migrated-to-playwright @issue-direction
 Feature: Issue direction
 
   @issue-direction @preview-test

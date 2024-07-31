@@ -1,6 +1,6 @@
 @migrated-to-exui
 Feature: Happy Path
-  @nightly-test
+  @nightly-test-migrated-to-playwright
   Scenario: Should end up in "Ready to list" state when ALL fields are present
     Given I presetup an "PIP" SYA case
     And I am signed in as a Case Officer
@@ -17,7 +17,7 @@ Feature: Happy Path
     Then the case should end in "Ready to list" state
     And FTA documents should be seen against the case
   
-  @nightly-test
+  @nightly-test-migrated-to-playwright
   Scenario: Should end up in "Ready to List" state when a UC is not disputed by others
     Given I presetup an "UC" SYA case
     And I am signed in as a Case Officer
@@ -32,7 +32,7 @@ Feature: Happy Path
     And I navigate to an existing case
     Then the case should end in "Ready to list" state
 
- @nightly-test
+ @nightly-test-migrated-to-playwright
  Scenario: Child support case should end up in "Response received" state when FTA responds
     Given I presetup an "Child Support" SYA case
     And I am signed in as a Case Officer
@@ -56,7 +56,7 @@ Feature: Happy Path
     Given I navigate to an existing case
     Then the case should end in "Ready to list" state
 
-  @tc-decision  @nightly-test
+  @tc-decision  @nightly-test-migrated-to-playwright
   Scenario: Tax Credit case should end up in "Ready to list" state when FTA responds
     Given I presetup an "Tax Credit" SYA case
     And I am signed in as a Case Officer

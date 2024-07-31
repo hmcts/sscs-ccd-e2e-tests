@@ -15,7 +15,7 @@ Feature: Create / Adjournment Schedule and Listing
     When I click on hearing details
     Then the venue of the hearing should be in "Cardiff Social Security And Child Support Tribunal"
     And the duration of the hearing should be "1 Hour"
-    And the earliest hearing date should be from "28" days of hearing requested
+    And the earliest hearing date should be from "31" days of hearing requested
 
     And I navigate to an existing case
     When I choose "Write adjournment notice"
@@ -42,7 +42,7 @@ Feature: Create / Adjournment Schedule and Listing
    When I click on hearing details
    Then the venue of the hearing should be in "Cardiff Social Security And Child Support Tribunal"
    And the duration of the hearing should be "30 Minutes"
-   And the earliest hearing date should be from "28" days of hearing requested
+   And the earliest hearing date should be from "31" days of hearing requested
 
    And I navigate to an existing case
    When I choose "Write adjournment notice"
@@ -67,7 +67,7 @@ Feature: Create / Adjournment Schedule and Listing
     When I click on hearing details
     Then the venue of the hearing should be in "Cardiff Social Security And Child Support Tribunal"
     And the duration of the hearing should be "1 Hour"
-    And the earliest hearing date should be from "28" days of hearing requested
+    And the earliest hearing date should be from "31" days of hearing requested
 
     And I navigate to an existing case
     When I choose "Write adjournment notice"
@@ -94,7 +94,7 @@ Feature: Create / Adjournment Schedule and Listing
     When I click on hearing details
     Then the venue of the hearing should be in "Cardiff Social Security And Child Support Tribunal"
     And the duration of the hearing should be "30 Minutes"
-    And the earliest hearing date should be from "28" days of hearing requested
+    And the earliest hearing date should be from "31" days of hearing requested
 
     And I navigate to an existing case
     When I choose "Write adjournment notice"

@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test
+@migrated-to-exui @nightly-test-migrated-to-playwright
 Feature: Link a case
 
   Background:

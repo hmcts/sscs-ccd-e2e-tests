@@ -1,4 +1,4 @@
-@nightly-test
+@nightly-test-migrated-to-playwright
 Feature: Lapse Appeal
 
   Background:

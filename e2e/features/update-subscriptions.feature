@@ -1,4 +1,4 @@
-@migrated-to-exui @nightly-test @update-subscriptions @preview-test
+@migrated-to-exui @nightly-test-migrated-to-playwright @update-subscriptions @preview-test
 Feature: Update subscriptions
 
   Background:
