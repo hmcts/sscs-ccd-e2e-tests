@@ -110,6 +110,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bazel/runfiles@npm:^5.8.1":
+  version: 5.8.1
+  resolution: "@bazel/runfiles@npm:5.8.1"
+  checksum: b1067d3dec8b2d853f883fe34b663f07e44742d2688103db1da322a47013eb04f1acad0d79c7d6fc9f75fc2798b1de41ba1a03999ac6354fb1288fdd8407be4d
+  languageName: node
+  linkType: hard
+
 "@colors/colors@npm:1.5.0":
   version: 1.5.0
   resolution: "@colors/colors@npm:1.5.0"
@@ -5205,14 +5212,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"selenium-webdriver@npm:4.9.2":
-  version: 4.9.2
-  resolution: "selenium-webdriver@npm:4.9.2"
+"selenium-webdriver@npm:4.23.0":
+  version: 4.23.0
+  resolution: "selenium-webdriver@npm:4.23.0"
   dependencies:
+    "@bazel/runfiles": ^5.8.1
     jszip: ^3.10.1
-    tmp: ^0.2.1
-    ws: ">=8.13.0"
-  checksum: 35a28f322539d61b40564b472ced48b0a96c926745cd95b8b8d3e3f5d5708a3d282e0c066b418b441a5fbbd6c60c7eec382cba0fef5518e198eb3ae958d79bf5
+    tmp: ^0.2.3
+    ws: ^8.17.1
+  checksum: 426f7648d5e1e9b45e6d52c017868d37e97daa628fdd1ad7177d63429e930d0a316458737cb60087c96f3f37e651a84c209bb393ef9d4862996332d5e284d2e3
   languageName: node
   linkType: hard
 
@@ -5484,7 +5492,7 @@ __metadata:
     puppeteer: ^20.3.0
     request-promise: 4.2.6
     rxjs: 7.8.1
-    selenium-webdriver: 4.9.2
+    selenium-webdriver: 4.23.0
     ts-loader: 9.4.4
     ts-node: 10.9.2
     typescript: 5.0.4
@@ -5822,7 +5830,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tmp@npm:^0.2.1":
+"tmp@npm:^0.2.1, tmp@npm:^0.2.3":
   version: 0.2.3
   resolution: "tmp@npm:0.2.3"
   checksum: 73b5c96b6e52da7e104d9d44afb5d106bb1e16d9fa7d00dbeb9e6522e61b571fbdb165c756c62164be9a3bbe192b9b268c236d370a2a0955c7689cd2ae377b95
@@ -6410,7 +6418,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:8.13.0, ws@npm:>=8.13.0":
+"ws@npm:8.13.0":
   version: 8.13.0
   resolution: "ws@npm:8.13.0"
   peerDependencies:
@@ -6422,6 +6430,21 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: 53e991bbf928faf5dc6efac9b8eb9ab6497c69feeb94f963d648b7a3530a720b19ec2e0ec037344257e05a4f35bd9ad04d9de6f289615ffb133282031b18c61c
+  languageName: node
+  linkType: hard
+
+"ws@npm:^8.17.1":
+  version: 8.18.0
+  resolution: "ws@npm:8.18.0"
+  peerDependencies:
+    bufferutil: ^4.0.1
+    utf-8-validate: ">=5.0.2"
+  peerDependenciesMeta:
+    bufferutil:
+      optional: true
+    utf-8-validate:
+      optional: true
+  checksum: 91d4d35bc99ff6df483bdf029b9ea4bfd7af1f16fc91231a96777a63d263e1eabf486e13a2353970efc534f9faa43bdbf9ee76525af22f4752cbc5ebda333975
   languageName: node
   linkType: hard
 
